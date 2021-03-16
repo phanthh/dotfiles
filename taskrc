@@ -1,0 +1,47 @@
+# [Created by task 2.5.1 9/2/2020 13:08:10]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color', 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /usr/share/doc/task/rc/light-16.theme
+#include /usr/share/doc/task/rc/light-256.theme
+#include /usr/share/doc/task/rc/dark-16.theme
+#include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-red-256.theme
+#include /usr/share/doc/task/rc/dark-green-256.theme
+#include /usr/share/doc/task/rc/dark-blue-256.theme
+#include /usr/share/doc/task/rc/dark-violets-256.theme
+include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
+#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/share/doc/task/rc/solarized-light-256.theme
+#include /usr/share/doc/task/rc/no-color.theme
+
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,due,until.remaining,description.count,urgency
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,DL,Until,Description,Urg
+report.next.sort=urgency-,due+
+
+#taskd.certificate=~/.task/private.certificate.pem
+#taskd.key=~/.task/private.key.pem
+#taskd.ca=~/.task/ca.cert.pem
+#taskd.server=taskwarrior.inthe.am:53589
+#taskd.credentials=inthe_am/phanthehauah1/00228128-1134-4e0e-8d6f-7abe415ce0a9
+#taskd.trust=ignore hostname
+
+report.long.sort=due+
+
+context.school=pro:uni or +course or +study
+weekstart=monday
+
+dateformat=D-M-Y
