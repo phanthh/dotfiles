@@ -1,0 +1,421 @@
+#===================================================================# 
+#========================== VARIABLES ==============================#
+#===================================================================#
+
+
+# Color
+set $darker              #050505
+set $black               #000000
+set $dark                #000000 
+set $lightdark           #424242
+set $light               #ebdbb2
+set $lighter             #ffffff
+set $grey                #767676
+set $lightgrey           #d5c4a1
+set $green               #00cc6a
+set $blue                #0078d7
+set $yellow              #ffb900
+set $orange              #fe8019
+set $red                 #e81123
+set $white               #ffffff
+set $browser             brave
+set $browserclass        Brave-browser
+
+# Mod and Submod keys
+set $mod Mod1
+set $smod Mod4
+
+# Workspaces
+set $ws1 "1:usr"
+set $ws2 "2:msg"
+set $ws3 "3:soc"
+set $ws4 "4:vid"
+set $ws5 "5:lib"
+set $ws6 "6:media"
+set $ws7 "7:dev"
+set $ws8 "8:work"
+set $ws9 "9:term"
+set $ws10 "10:web"
+
+floating_modifier $mod 
+
+#==================================================================#
+#======================== AUTOSTART ===============================#
+#==================================================================#
+
+# Alt tab
+exec_always --no-startup-id alttab
+
+# Lock daemon
+exec        --no-startup-id xss-lock --transfer-sleep-lock -- slock
+
+# Hot switch monitors
+# exec --no-startup-id ~/.bin/utils/hotswitch
+
+# Default layout
+exec        --no-startup-id ~/.bin/screen/hdmi
+
+# Background
+# exec_always --no-startup-id hsetroot -cover ~/Pictures/wallpaper/7zav1np1ss761.jpg
+exec_always --no-startup-id hsetroot -solid "#000000"
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/beautiful-city_-wallpaper.jpg
+
+# Keymap
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+
+# Startup Brightness
+exec        --no-startup-id "brightnessctl s 5%"
+
+# Notification Manager
+exec_always --no-startup-id dunst
+
+
+# Applications
+exec        --no-startup-id ~/.bin/i3/autostart
+
+#===================================================================#
+#============================ KEYBINDING ===========================#
+#===================================================================#
+
+#============ CONTROLS 
+
+# Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+
+bindsym $mod+F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+F6 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym $mod+bracketright exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+bracketleft exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# Brightness
+bindsym $mod+F2 exec --no-startup-id "brightnessctl s 5%-"
+bindsym $mod+F3 exec --no-startup-id "brightnessctl s 5%+"
+
+# Display
+bindsym $smod+p exec ~/.bin/dmenu/displaylayout
+
+# Power
+bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
+
+# I3
+bindsym $smod+Shift+c reload
+bindsym $smod+Shift+r restart
+
+# Systems 
+bindsym --release $smod+x exec slock
+bindsym --release $smod+Shift+x exec systemctl suspend
+bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "systemctl reboot"
+bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "systemctl poweroff"
+bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "i3-msg exit"
+
+
+#=========== WINDOW 
+
+# Kill 
+bindsym $mod+q kill
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Change focus between tiling / floating windows
+bindsym $mod+Shift+Space floating toggle
+
+# Focus parent/child 
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
+
+# Split 
+bindsym $mod+w split h
+bindsym $mod+Shift+w split v
+
+# Fullscreen 
+bindsym $mod+f fullscreen toggle
+
+# Resize
+mode "resize" {
+        set $inc 5
+        bindsym h resize shrink width $inc px or $inc ppt
+        bindsym j resize grow height $inc px or $inc ppt
+        bindsym k resize shrink height $inc px or $inc ppt 
+        bindsym l resize grow width $inc px or $inc ppt 
+        bindsym Left resize shrink width $inc px or $inc ppt
+        bindsym Down resize grow height $inc px or $inc ppt
+        bindsym Up resize shrink height $inc px or $inc ppt
+
+
+        # Exit mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Move window to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2 
+bindsym $mod+Shift+3 move container to workspace $ws3 
+bindsym $mod+Shift+4 move container to workspace $ws4 
+bindsym $mod+Shift+5 move container to workspace $ws5 
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+#============ UTILS 
+
+# bindsym $mod+Ctrl+s exec ~/.bin/dmenu/githubpush
+# bindsym $mod+y exec "~/.bin/yt -r"
+
+# Terminal
+bindsym $mod+Return exec "kitty --single-instance"
+
+# Browser/Browser apps
+bindsym $mod+n exec ~/.bin/i3/open $browser
+# bindsym $mod+Shift+n exec $browser ; workspace number $ws10 
+
+# Dmenu
+bindsym $smod+d exec ~/.bin/dmenu_run
+
+# Screen Shot
+bindsym $mod+Print exec "~/.bin/prtsc current_screen"
+bindsym Print exec "~/.bin/prtsc area_c"
+
+# Windows
+bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
+
+# Apps
+bindsym $mod+Shift+m exec "~/.bin/i3/open messenger"
+bindsym $mod+Shift+f exec "~/.bin/i3/open facebook"
+bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
+bindsym $mod+Shift+c exec "~/.bin/i3/open calendar"
+bindsym $mod+Shift+n exec "~/.bin/i3/open remnote"
+bindsym $mod+Shift+e exec "~/.bin/i3/open thunar"
+bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
+bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
+bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
+bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
+
+#============ WORKSPACE 
+
+# Kill workspace
+bindsym $mod+Shift+q exec ~/.bin/i3/killworkspace
+
+# Change workspace layout 
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+# bindsym $mod+space floating toggle
+
+# Switch next/previous workspace
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
+
+# Focus workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused workspace between monitors
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
+
+#==================================================================#
+#=========================== CONFIG ===============================#
+#==================================================================#
+
+#=========== WINDOW 
+
+for_window  [class=".*"] title_format "<b>%title</b>"
+title_align center
+new_window  pixel 1
+
+
+# Colors
+#                       border      background     text       indicator  child_border
+client.focused          $lightdark  $lightdark     $lighter   $blue    $lightdark
+client.unfocused        $lightdark  $darker        $lighter   $blue    $darker
+client.focused_inactive $darker     $darker        $lighter   $blue    $darker
+client.urgent           $blue     $lightdark     $lighter   $blue  $blue
+
+#=========== MOUSE
+
+mouse_warping none
+focus_follows_mouse no 
+# workspace_auto_back_and_forth yes
+
+#=========== FONT 
+
+font pango:Font Awesome 5 Free 10, NotoSans Nerd Font 9
+
+#=========== WORKSPACE 
+
+# for_window [workspace=$ws10] layout tabbed
+# for_window [workspace=$ws1] layout tabbed
+# for_window [workspace=$ws2] layout tabbed
+# for_window [workspace=$ws5] layout tabbed
+workspace_layout tabbed
+
+#=========== STATUSBAR
+
+# Bar1
+bar {
+    output eDP-1
+    # disk traffic memory cpu redshift playerctl spotify
+    # status_command bumblebee-status \
+    #     -m traffic sensors2 cpu2 memory disk pomodoro taskwarrior battery brightness pasource pasink weather timetz time date \
+    #     -t night-powerline \
+    #     -p root.path=/ timetz.timezone="Europe/Helsinki" \
+    #       weather.showcity="false" battery.showpowerconsumption="true"\
+    #       sensors2.showtemp="false" sensors2.showfan="false"\
+    #       cpu2.layout="cpu2.cpuload cpu2.coresload"\
+    #       traffic.exclude="wl,lo,virbr,docker,vboxnet,veth"\
+    #       disk.path="/" disk.format="{left}" memory.format="{used} ({percent:05.02f}%)"\
+    #       timetz.format="FI %H:%M" time.format="VN %H:%M"\
+    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
+    #       pomodoro.work=60 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'
+    
+
+    status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
+
+    colors {
+        background $dark
+        separator $light
+        statusline $lighter
+
+        #                  border             background         text
+        focused_workspace  $lightdark         $lightdark         $lighter
+        active_workspace   $lightdark         $lightdark         $lighter
+        inactive_workspace $dark              $dark            $lighter
+        urgent_workspace   $blue            $blue            $lighter
+        binding_mode       $blue            $blue            $lighter
+    }
+
+    workspace_min_width 50
+    tray_output none
+    strip_workspace_numbers yes
+}
+
+# Bar2
+bar {
+    output HDMI-1
+    # spotify progress taskwarrior uptime weather kernel
+    # status_command bumblebee-status \
+    #     -m cmus progress nvidiagpu pomodoro memory battery pasource pasink datetimetz timetz time date\
+    #     -t night-powerline \
+    #     -p root.path=/ timetz.timezone="Europe/Helsinki" datetimetz.timezone="America/Mazatlan" datetimetz.format="US %H:%M"\
+    #       weather.showcity="false" progress.placeholder="" battery.showpowerconsumption="true"\
+    #       timetz.format="FI %H:%M" time.format="VN %H:%M" memory.format="{used} ({percent:05.02f}%)"\
+    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
+    #       pomodoro.work=10 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'\
+    #       progress.barwidth=8 progress.format="{cmd} {speed} {percentage}% {bar}" \
+    #       progress.baremptychar="    " progress.barfilledchar="█" 
+
+
+    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+
+    colors {
+        background $dark
+        separator $light
+        statusline $lighter
+
+        #                  border             background         text
+        focused_workspace  $lightdark         $lightdark         $lighter
+        active_workspace   $lightdark         $lightdark         $lighter
+        inactive_workspace $dark              $dark            $lighter
+        urgent_workspace   $blue              $blue            $lighter
+        binding_mode       $blue              $blue            $lighter
+    }
+    workspace_min_width 50
+    strip_workspace_numbers yes
+}
+
+
+
+#==================================================================#
+#=========================== ASSIGN ===============================#
+#==================================================================#
+
+# ws1 usr
+assign     [class="Thunderbird"] $ws1
+assign     [class="Mailspring" instance="mailspring" ] $ws1
+assign     [class="Brave-browser" instance="app.keeweb.info"] $ws1
+assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
+
+# ws2 msg
+assign     [instance="signal" class="Signal"] $ws2
+assign     [class="discord"] $ws2
+assign     [class="TelegramDesktop"] $ws2
+assign     [class="Brave-browser" instance="www.messenger.com"] $ws2
+assign     [class="Brave-browser" instance="web.whatsapp.com"] $ws2
+
+# ws3 soc
+assign     [class="Brave-browser" instance="facebook.com$"] $ws3
+assign     [class="Brave-browser" instance="linkedin.com$"] $ws3
+
+# ws4 vid
+assign     [class="zoom"] $ws4
+
+# ws5 lib
+assign     [class="calibre"] $ws5
+assign     [class="obsidian"] $ws5
+assign     [class="RemNote" instance="remnote"] $ws5
+
+# ws6 media
+assign     [class="Spotify"] $ws6
+for_window [class="Spotify"] move to workspace $ws6
+
+# ws7 dev
+assign     [class="scrcpy"] $ws7
+assign     [class="VirtualBox Machine" instance="VirtualBox Machine"] $ws7
+assign     [class="jetbrains-idea-ce"] $ws7
+assign     [class="jetbrains-studio"] $ws7
+assign     [instance="jetbrains-studio"] $ws7
+assign     [instance="staruml" class="StarUML"] $ws7
+
+# ws8 work
+
+# ws9 term
+
+# ws10 web
+assign     [class="Vivaldi-stable"] $ws10
+assign     [class="Brave-browser"] $ws10
+assign     [class="firefox"] $ws10

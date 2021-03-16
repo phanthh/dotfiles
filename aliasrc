@@ -1,0 +1,76 @@
+#=============================== SUDO ===============================#
+alias su="sudo !!"
+alias sctl="sudo systemctl"
+alias ufw="sudo ufw"
+alias root="sudo -i"
+alias su="sudo -i"
+alias iftop="sudo iftop"
+alias powertop="sudo powertop"
+alias hostrc="sudoedit /etc/hosts"
+
+#=============================== UTILS ===============================#
+
+alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
+alias nb="newsboat"
+
+alias mdl="ytmdl --disable-file"
+
+alias myip="curl ifconfig.me"
+
+alias aliasrc="$EDITOR ~/.config/aliasrc"
+
+alias lsmnt="findmnt"
+alias lserv="systemctl --type=service"
+alias lsz="du -sch *(D) | sort -h"
+alias ls="ls --color=always --group-directories-first --time-style=iso"
+
+alias iotop="sudo iotop"
+alias intop="sudo intel_gpu_top"
+alias ratop="sudo radeontop"
+
+alias cat="highlight -O xterm256 --force"
+alias diff="colordiff"
+alias mount="mount | column -t"
+
+alias weather="curl wttr.in"
+alias notetopy="jupyter nbconvert --to script"
+alias kiwixs="kiwix-serve /mnt/database/Documents\ File/Wikipedia/*"
+alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
+alias pastex="xclip -o -selection clipboard >"
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias midef="mimeopen --ask-default"
+alias timer="termdown -f standard "
+alias gitstore="git config credential.helper store"
+alias cvimg="mogrify -format png"
+alias ds="conda activate tfgpu"
+alias cmus="cd ~/Musics && cmus"
+alias spt="speedtest-cli"
+
+#============================ SAFETY NETS ============================#
+
+alias rm='rm -I --preserve-root'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias wget='wget -c'
+alias mkd="mkdir -pv"
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# NVIM
+alias svim="sudoedit"
+alias edit="$EDITOR"
+
+#============================ QUICK CD ========================#
+
+alias repo="cd ~/Repository"
+alias bin="cd ~/.bin"
+alias dev="cd ~/Development"
+alias aca="cd ~/Academia/"
+alias dl="cd ~/Downloads"
+alias tex="cd ~/Documents/Latex"
+alias hm="cd ~"
+alias home="cd ~"
+alias ana="cd ~/Analysis"
+alias de="cd ~/Desktop"

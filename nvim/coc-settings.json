@@ -1,0 +1,20 @@
+{
+  "suggest.noselect": false,
+  "python.jediEnabled": false,
+  "suggest.maxCompleteItemCount": 7,
+  "suggest.detailField": "abbr",
+  "suggest.floatEnable": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "python"
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "emmet.includeLanguages": { "javascript": "javascriptreact" }
+}

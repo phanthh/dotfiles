@@ -1,0 +1,175 @@
+#=========================== CONFIG ===========================#
+alias rc="conf"
+conf() {
+  case $1 in
+      auto)              $EDITOR ~/.bin/i3/autostart ;;
+      zshrc|zsh)         $EDITOR ~/.config/zsh/.zshrc ;;
+      zshenv|env)        $EDITOR ~/.zshenv ;;
+      zprofile)          $EDITOR ~/.config/zsh/.zprofile ;;
+      bashrc)            $EDITOR ~/.bashrc ;;
+      xres)              $EDITOR ~/.Xresources && xrdb ~/.Xresources ;;
+      xinit)             $EDITOR ~/.xinitrc ;;
+      tmux)              $EDITOR ~/.config/tmux/tmux.conf ;;
+      i3)                $EDITOR ~/.config/i3/config ;;
+      bsp)               $EDITOR ~/.config/bspwm/bspwmrc ;;
+      ohmyzsh)           $EDITOR ~/.oh-my-zsh ;;
+      kit|kitty)         $EDITOR ~/.config/kitty/kitty.conf ;;
+      ala|alacritty)     $EDITOR ~/.config/alacritty/alacritty.yml ;;
+      sx)                $EDITOR ~/.config/sxhkd/sxhkdrc ;;
+      vim|nvim)          $EDITOR ~/.vimrc ;;
+      polybar)           $EDITOR ~/.config/polybar/config ;;
+      zathura)           $EDITOR ~/.config/zathura/zathurarc ;;
+      alias|ali)         $EDITOR ~/.config/aliasrc ;;
+      func|function|fun) $EDITOR ~/.config/funcrc ;;
+      task)              $EDITOR ~/.taskrc ;;
+      conky)             $EDITOR ~/.config/conky/conky.conf ;;
+      npm)               $EDITOR ~/.config/npm/npmrc ;;
+      dunst)             $EDITOR ~/.config/dunst/dunstrc ;;
+      newsconf|news)     $EDITOR ~/.config/newsboat/config ;;
+      newsurl|nb)        $EDITOR ~/.config/newsboat/urls  ;;
+      autostart)         $EDITOR ~/.bin/i3/autostart ;;
+      picom)             $EDITOR ~/.config/picom/picom.conf ;;
+      i3rs)              $EDITOR ~/.config/i3status-rust/config.toml ;;
+      fstab)             sudoedit /etc/fstab ;;
+      grub)              sudoedit /etc/default/grub ;;
+      pacman)            sudoedit /etc/pacman.conf ;;
+      mirror)            sudoedit /etc/pacman.d/mirrorlist ;;
+      sudo)              sudoedit /etc/sudoers ;;
+      *)                 $EDITOR ~/.config ;;
+  esac
+}
+
+#=========================== FZF ===========================#
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+ff() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && xdg-open "${files[@]}"
+}
+
+alias ffc="cd $HOME/.config && ff"
+
+# fdh - cd to selected directory, include hidden
+fdh() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+alias fd="fdh $HOME"
+
+# cdf - cd into the directory of the selected file
+fdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# fk - kill process
+alias ki="fk"
+fk() {
+    local pid 
+    if [ "$UID" != "0" ]; then
+        pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+    else
+        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+    fi  
+
+    if [ "x$pid" != "x" ]
+    then
+        echo $pid | xargs kill -${1:-9}
+    fi  
+}
+
+#=========================== PACMAN ===========================#
+
+# Install packages using yay (change to pacman/AUR helper of your choice)
+in() {
+    if [ -z "$1" ]; then
+      yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+    else 
+      yay -S $1
+    fi
+}
+
+# Remove installed packages (change to pacman/AUR helper of your choice)
+re() {
+    if [ -z "$1" ]; then
+      yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+    else 
+      yay -Rns $1
+    fi
+}
+
+# Install packages using yay (change to pacman/AUR helper of your choice)
+up() {
+    yay -Syu
+}
+
+#=========================== NNN ===========================#
+n ()
+{
+    # Block nesting of nnn in subshells
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # To cd on quit only on ^G, remove the "export" as in:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # NOTE: NNN_TMPFILE is fixed, should not be modified
+    
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    nnn "$@"
+    if [ -f "$NNN_TMPFILE" ]; then
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+#=========================== GIT ===========================#
+# push everything - dangerous !
+push()
+{
+    git add -A 
+    git commit -a -m $1
+    git push origin master --force
+}
+
+#=========================== TOOLS ===========================#
+# ex - archive extractor
+# usage: ex <file>
+ex () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2) tar xjf $1   ;;
+      *.tar.gz)  tar xzf $1   ;;
+      *.bz2)     bunzip2 $1   ;;
+      *.rar)     unrar x $1     ;;
+      *.gz)      gunzip $1    ;;
+      *.tar)     tar xf $1    ;;
+      *.tbz2)    tar xjf $1   ;;
+      *.tgz)     tar xzf $1   ;;
+      *.zip)     unzip $1     ;;
+      *.Z)       uncompress $1;;
+      *.7z)      7z x $1      ;;
+      *)         echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file" 
+  fi
+} 
+
+op () {
+  xdg-open $1 &
+}
+
