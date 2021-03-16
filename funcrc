@@ -145,6 +145,7 @@ push()
     git push origin master --force
 }
 
+
 #=========================== TOOLS ===========================#
 # ex - archive extractor
 # usage: ex <file>
