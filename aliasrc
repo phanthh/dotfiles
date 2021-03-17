@@ -66,6 +66,7 @@ alias edit="$EDITOR"
 
 alias repo="cd ~/Repository"
 alias bin="cd ~/.bin"
+alias config="cd ~/.config"
 alias dev="cd ~/Development"
 alias aca="cd ~/Academia/"
 alias dl="cd ~/Downloads"

@@ -1,5 +1,5 @@
 #=========================== CONFIG ===========================#
-alias rc="conf"
+alias cf="conf"
 conf() {
   case $1 in
       auto)              $EDITOR ~/.bin/i3/autostart ;;
@@ -135,16 +135,6 @@ n ()
         rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
-
-#=========================== GIT ===========================#
-# push everything - dangerous !
-# push()
-# {
-#     git add -A 
-#     git commit -a -m $1
-#     git push origin master --force
-# }
-
 
 #=========================== TOOLS ===========================#
 # ex - archive extractor
