@@ -26,28 +26,33 @@ set $mod Mod1
 set $smod Mod4
 
 # Workspaces
-set $ws1 "1:usr"
-set $ws2 "2:msg"
-set $ws3 "3:soc"
-set $ws4 "4:vid"
-set $ws5 "5:lib"
-set $ws6 "6:media"
-set $ws7 "7:dev"
-set $ws8 "8:work"
-set $ws9 "9:term"
-set $ws10 "10:web"
+# set $ws1 "1:usr"
+# set $ws2 "2:msg"
+# set $ws3 "3:soc"
+# set $ws4 "4:vid"
+# set $ws5 "5:lib"
+# set $ws6 "6:media"
+# set $ws7 "7:dev"
+# set $ws8 "8:work"
+# set $ws9 "9:term"
+# set $ws10 "10:web"
+
+set $ws1 "1   "
+set $ws2 "2   "
+set $ws3 "3   "
+set $ws4 "4   "
+set $ws5 "5   "
+set $ws6 "6   "
+set $ws7 "7   "
+set $ws8 "8   "
+set $ws9 "9   "
+set $ws10 "10  "
 
 floating_modifier $mod 
 
 #==================================================================#
 #======================== AUTOSTART ===============================#
 #==================================================================#
-
-# Alt tab
-exec_always --no-startup-id alttab
-
-# Lock daemon
-exec        --no-startup-id xss-lock --transfer-sleep-lock -- slock
 
 # Hot switch monitors
 # exec --no-startup-id ~/.bin/utils/hotswitch
@@ -60,15 +65,8 @@ exec        --no-startup-id ~/.bin/screen/hdmi
 exec_always --no-startup-id hsetroot -solid "#000000"
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/beautiful-city_-wallpaper.jpg
 
-# Keymap
-exec_always --no-startup-id xmodmap ~/.Xmodmap
-
 # Startup Brightness
 exec        --no-startup-id "brightnessctl s 5%"
-
-# Notification Manager
-exec_always --no-startup-id dunst
-
 
 # Applications
 exec        --no-startup-id ~/.bin/i3/autostart
@@ -129,11 +127,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # Move focused
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -161,10 +154,10 @@ bindsym $mod+f fullscreen toggle
 
 # Resize
 set $inc 5
-bindsym $mod+y resize shrink width $inc px or $inc ppt
-bindsym $mod+u resize grow height $inc px or $inc ppt
-bindsym $mod+i resize shrink height $inc px or $inc ppt 
-bindsym $mod+o resize grow width $inc px or $inc ppt 
+bindsym $mod+Left resize shrink width $inc px or $inc ppt
+bindsym $mod+Down resize grow height $inc px or $inc ppt
+bindsym $mod+Up resize shrink height $inc px or $inc ppt 
+bindsym $mod+Right resize grow width $inc px or $inc ppt 
 
 # Move window to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -181,7 +174,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #============ UTILS 
 
 # bindsym $mod+Ctrl+s exec ~/.bin/dmenu/githubpush
-# bindsym $mod+y exec "~/.bin/yt -r"
+bindsym $mod+y exec "~/.bin/yt -r"
 
 # Terminal
 bindsym $mod+Return exec "kitty --single-instance"
@@ -211,6 +204,7 @@ bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
 bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
+bindsym $mod+Shift+i exec "~/.bin/i3/open code"
 
 #============ WORKSPACE 
 
@@ -223,8 +217,8 @@ bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # Switch next/previous workspace
-bindsym $mod+bracketleft workspace prev
-bindsym $mod+bracketright workspace next
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
 
 # Focus workspace
 bindsym $mod+1 workspace $ws1
@@ -315,7 +309,7 @@ bar {
 
     workspace_min_width 50
     tray_output none
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
 }
 
 # Bar2
@@ -349,7 +343,7 @@ bar {
         binding_mode       $blue              $blue            $lighter
     }
     workspace_min_width 50
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
 }
 
 
@@ -368,12 +362,12 @@ assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
 assign     [instance="signal" class="Signal"] $ws2
 assign     [class="discord"] $ws2
 assign     [class="TelegramDesktop"] $ws2
-assign     [class="Brave-browser" instance="www.messenger.com"] $ws2
-assign     [class="Brave-browser" instance="web.whatsapp.com"] $ws2
+assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
+assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
 
 # ws3 soc
-assign     [class="Brave-browser" instance="facebook.com$"] $ws3
-assign     [class="Brave-browser" instance="linkedin.com$"] $ws3
+assign     [instance="facebook.com$" class="Brave-browser" ] $ws3
+assign     [instance="linkedin.com$" class="Brave-browser" ] $ws3
 
 # ws4 vid
 assign     [class="zoom"] $ws4
@@ -381,21 +375,24 @@ assign     [class="zoom"] $ws4
 # ws5 lib
 assign     [class="calibre"] $ws5
 assign     [class="obsidian"] $ws5
-assign     [class="RemNote" instance="remnote"] $ws5
+assign     [instance="remnote" class="RemNote"] $ws5
+assign     [class="okular"] $ws5
 
 # ws6 media
+assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
 for_window [class="Spotify"] move to workspace $ws6
 
 # ws7 dev
 assign     [class="scrcpy"] $ws7
-assign     [class="VirtualBox Machine" instance="VirtualBox Machine"] $ws7
+assign     [class="VirtualBox Machine"] $ws7
 assign     [class="jetbrains-idea-ce"] $ws7
 assign     [class="jetbrains-studio"] $ws7
-assign     [instance="jetbrains-studio"] $ws7
-assign     [instance="staruml" class="StarUML"] $ws7
+assign     [class="Code"] $ws7
 
 # ws8 work
+assign     [class="Zathura"] $ws8
+assign     [class="libreoffice"] $ws8
 
 # ws9 term
 
