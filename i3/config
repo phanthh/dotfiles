@@ -94,6 +94,7 @@ bindsym $mod+F3 exec --no-startup-id "brightnessctl s 5%+"
 
 # Display
 bindsym $smod+p exec ~/.bin/dmenu/displaylayout
+bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
 
 # Power
 bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
@@ -376,7 +377,6 @@ assign     [class="zoom"] $ws4
 assign     [class="calibre"] $ws5
 assign     [class="obsidian"] $ws5
 assign     [instance="remnote" class="RemNote"] $ws5
-assign     [class="okular"] $ws5
 
 # ws6 media
 assign     [class="mpv"] $ws6
@@ -393,6 +393,7 @@ assign     [class="Code"] $ws7
 # ws8 work
 assign     [class="Zathura"] $ws8
 assign     [class="libreoffice"] $ws8
+assign     [class="okular"] $ws8
 
 # ws9 term
 

@@ -1,3 +1,9 @@
+#========================= HISTORY =============================#
+
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE=~/.cache/zsh/history
+
 #======================= AUTOSTART TMUX ========================#
 
 # if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
@@ -16,8 +22,8 @@ source $ZSH/oh-my-zsh.sh
 
 #======================= ALIASES ===============================#
 
-source $HOME/.config/aliasrc
-source $HOME/.config/funcrc
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc"
 
 #======================= VIM KEYBIND ===========================#
 
