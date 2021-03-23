@@ -393,7 +393,7 @@ assign     [class="Code"] $ws7
 
 # ws8 work
 assign     [class="Zathura"] $ws8
-assign     [class="libreoffice"] $ws8
+assign     [instance="libreoffice"] $ws8
 assign     [class="okular"] $ws8
 
 # ws9 term
