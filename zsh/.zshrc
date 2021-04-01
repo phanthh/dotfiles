@@ -25,6 +25,9 @@ source $ZSH/oh-my-zsh.sh
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc"
 
+#======================= PRIVATE ===============================# 
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc"
+
 #======================= VIM KEYBIND ===========================#
 
 # # MENU COMPLETION

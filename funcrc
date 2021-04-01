@@ -1,42 +1,54 @@
+#============================ EDIT  ===========================#
+
+ed() {
+  if [ -w "$1" ]
+  then
+    $EDITOR $*
+  else
+    sudoedit $*
+  fi
+}
+
 #=========================== CONFIG ===========================#
 alias cf="conf"
 conf() {
+  ed $(
   case $1 in
-      auto)              $EDITOR ~/.bin/i3/autostart ;;
-      zshrc|zsh)         $EDITOR ~/.config/zsh/.zshrc ;;
-      zshenv|env)        $EDITOR ~/.zshenv ;;
-      zprofile)          $EDITOR ~/.config/zsh/.zprofile ;;
-      bashrc)            $EDITOR ~/.bashrc ;;
-      xres)              $EDITOR ~/.Xresources && xrdb ~/.Xresources ;;
-      xinit)             $EDITOR ~/.xinitrc ;;
-      tmux)              $EDITOR ~/.config/tmux/tmux.conf ;;
-      i3)                $EDITOR ~/.config/i3/config ;;
-      bsp)               $EDITOR ~/.config/bspwm/bspwmrc ;;
-      ohmyzsh)           $EDITOR ~/.oh-my-zsh ;;
-      kit|kitty)         $EDITOR ~/.config/kitty/kitty.conf ;;
-      ala|alacritty)     $EDITOR ~/.config/alacritty/alacritty.yml ;;
-      sx)                $EDITOR ~/.config/sxhkd/sxhkdrc ;;
-      vim|nvim)          $EDITOR ~/.vimrc ;;
-      polybar)           $EDITOR ~/.config/polybar/config ;;
-      zathura)           $EDITOR ~/.config/zathura/zathurarc ;;
-      alias|ali)         $EDITOR ~/.config/aliasrc ;;
-      func|function|fun) $EDITOR ~/.config/funcrc ;;
-      task)              $EDITOR ~/.taskrc ;;
-      conky)             $EDITOR ~/.config/conky/conky.conf ;;
-      npm)               $EDITOR ~/.config/npm/npmrc ;;
-      dunst)             $EDITOR ~/.config/dunst/dunstrc ;;
-      newsconf|news)     $EDITOR ~/.config/newsboat/config ;;
-      newsurl|nb)        $EDITOR ~/.config/newsboat/urls  ;;
-      autostart)         $EDITOR ~/.bin/i3/autostart ;;
-      picom)             $EDITOR ~/.config/picom/picom.conf ;;
-      i3rs)              $EDITOR ~/.config/i3status-rust/config.toml ;;
-      fstab)             sudoedit /etc/fstab ;;
-      grub)              sudoedit /etc/default/grub ;;
-      pacman)            sudoedit /etc/pacman.conf ;;
-      mirror)            sudoedit /etc/pacman.d/mirrorlist ;;
-      sudo)              sudoedit /etc/sudoers ;;
-      *)                 $EDITOR ~/.config ;;
-  esac
+      auto)              echo ~/.bin/i3/autostart ;;
+      zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
+      zshenv|env)        echo ~/.zshenv ;;
+      zprofile)          echo ~/.config/zsh/.zprofile ;;
+      bashrc)            echo ~/.bashrc ;;
+      xres)              echo ~/.Xresources && xrdb ~/.Xresources ;;
+      xinit)             echo ~/.xinitrc ;;
+      tmux)              echo ~/.config/tmux/tmux.conf ;;
+      i3)                echo ~/.config/i3/config ;;
+      bsp)               echo ~/.config/bspwm/bspwmrc ;;
+      ohmyzsh)           echo ~/.oh-my-zsh ;;
+      kit|kitty)         echo ~/.config/kitty/kitty.conf ;;
+      ala|alacritty)     echo ~/.config/alacritty/alacritty.yml ;;
+      sx)                echo ~/.config/sxhkd/sxhkdrc ;;
+      vim|nvim)          echo ~/.vimrc ;;
+      polybar)           echo ~/.config/polybar/config ;;
+      zathura)           echo ~/.config/zathura/zathurarc ;;
+      alias|ali)         echo ~/.config/aliasrc ;;
+      func|function|fun) echo ~/.config/funcrc ;;
+      task)              echo ~/.taskrc ;;
+      conky)             echo ~/.config/conky/conky.conf ;;
+      npm)               echo ~/.config/npm/npmrc ;;
+      dunst)             echo ~/.config/dunst/dunstrc ;;
+      newsconf|news)     echo ~/.config/newsboat/config ;;
+      newsurl|nb)        echo ~/.config/newsboat/urls  ;;
+      autostart)         echo ~/.bin/i3/autostart ;;
+      picom)             echo ~/.config/picom/picom.conf ;;
+      i3rs)              echo ~/.config/i3status-rust/config.toml ;;
+      fstab)             echo /etc/fstab ;;
+      grub)              echo /etc/default/grub ;;
+      pacman)            echo /etc/pacman.conf ;;
+      mirror)            echo /etc/pacman.d/mirrorlist ;;
+      sudo)              echo /etc/sudoers ;;
+      *)                 echo ~/.config ;;
+  esac)
 }
 
 #=========================== FZF ===========================#
@@ -164,3 +176,11 @@ op () {
   xdg-open $1 &
 }
 
+bak () {
+  mv "$1" "$(basename $1).bak"
+}
+
+mkcd () {
+  mkdir "$1"
+  cd "$1"
+}

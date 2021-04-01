@@ -2,10 +2,6 @@
 export MON0="eDP-1"
 export MON1="HDMI-1"
 
-#=========================== PRIVATE KEYS ===========================#
-export DJANGO_DATABASE_USER=""
-export DJANGO_DATABASE_PASSWORD=""
-
 #=========================== XDG ====================================#
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -74,3 +70,4 @@ export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
 #============================== ZSH =================================# 
 export ZDOTDIR="$HOME/.config/zsh"
+

@@ -293,8 +293,8 @@ bar {
     #       pomodoro.work=60 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'
     
 
-    # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
-    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+    status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
+    # status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
     colors {
         background $dark
