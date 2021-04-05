@@ -18,9 +18,7 @@ set $yellow              #ffb900
 set $orange              #fe8019
 set $red                 #e81123
 set $white               #ffffff
-set $browser             brave
-set $browserclass        Brave-browser
-
+set $browser             brave set $browserclass        Brave-browser 
 # Mod and Submod keys
 set $mod Mod1
 set $smod Mod4
@@ -293,8 +291,8 @@ bar {
     #       pomodoro.work=60 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'
     
 
-    status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
-    # status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+    # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
+    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
     colors {
         background $dark
@@ -310,7 +308,7 @@ bar {
     }
 
     workspace_min_width 50
-    tray_output none
+    # tray_output none
     # strip_workspace_numbers yes
 }
 
