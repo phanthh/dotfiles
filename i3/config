@@ -172,8 +172,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 #============ UTILS 
 
-# bindsym $mod+Ctrl+s exec ~/.bin/dmenu/githubpush
-bindsym $mod+y exec "~/.bin/yt -r"
+# Youtube
+bindsym $mod+Shift+y exec "~/.bin/yt -r"
 
 # Terminal
 bindsym $mod+Return exec "kitty --single-instance"
@@ -184,6 +184,9 @@ bindsym $mod+n exec ~/.bin/i3/open $browser
 
 # Dmenu
 bindsym $smod+d exec ~/.bin/dmenu_run
+
+# Timer
+bindsym $mod+d exec ~/.bin/dmenu/dtimer
 
 # Screen Shot
 bindsym $mod+Print exec "~/.bin/prtsc current_screen"
