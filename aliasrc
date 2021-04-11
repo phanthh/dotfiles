@@ -7,8 +7,12 @@ alias su="sudo -i"
 alias iftop="sudo iftop"
 alias powertop="sudo powertop"
 alias hostrc="sudoedit /etc/hosts"
+alias btr="sudo btrfs"
+alias btrfs="sudo btrfs"
+alias etckeeper="sudo etckeeper"
 
 #=============================== UTILS ===============================#
+alias lsnap="sudo snapper -c homebk list"
 
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias nb="newsboat"
@@ -57,10 +61,6 @@ alias mkd="mkdir -pv"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-
-# NVIM
-alias svim="sudoedit"
-alias edit="$EDITOR"
 
 #============================ QUICK CD ========================#
 

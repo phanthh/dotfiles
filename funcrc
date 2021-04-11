@@ -1,6 +1,7 @@
 #============================ EDIT  ===========================#
 
-ed() {
+alias ed="edit"
+edit() {
   if [ -w "$1" ]
   then
     $EDITOR $*
@@ -12,7 +13,7 @@ ed() {
 #=========================== CONFIG ===========================#
 alias cf="conf"
 conf() {
-  ed $(
+  edit $(
   case $1 in
       auto)              echo ~/.bin/i3/autostart ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
@@ -47,6 +48,7 @@ conf() {
       pacman)            echo /etc/pacman.conf ;;
       mirror)            echo /etc/pacman.d/mirrorlist ;;
       sudo)              echo /etc/sudoers ;;
+      snap)              echo /etc/snapper/configs/homebk ;;
       *)                 echo ~/.config ;;
   esac)
 }
@@ -96,7 +98,7 @@ fk() {
 
 #=========================== PACMAN ===========================#
 
-# Install packages using yay (change to pacman/AUR helper of your choice)
+# Install packages 
 in() {
     if [ -z "$1" ]; then
       yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
@@ -105,7 +107,7 @@ in() {
     fi
 }
 
-# Remove installed packages (change to pacman/AUR helper of your choice)
+# Remove installed packages 
 re() {
     if [ -z "$1" ]; then
       yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
@@ -114,7 +116,7 @@ re() {
     fi
 }
 
-# Install packages using yay (change to pacman/AUR helper of your choice)
+# Update system
 up() {
     yay -Syu
 }
@@ -172,10 +174,6 @@ ex () {
   fi
 } 
 
-op () {
-  xdg-open $1 &
-}
-
 bak () {
   mv "$1" "$(basename $1).bak"
 }
@@ -188,4 +186,22 @@ mkcd () {
 cpcd () {
   cp -r "$1" "$2"
   cd "$2"
+}
+
+#==================== BTRFS SNAPSHOTS =========================#
+
+delsnap() {
+  sudo snapper -c homebk delete $1
+}
+
+cdsnap() {
+  cd /home/.snapshots/$1/snapshot/
+}
+
+snapshot() {
+  if [ $# -eq 0 ] then
+      sudo snapper -c homebk create -d $(date --iso-8601)
+  else 
+      sudo snapper -c homebk create -d $1
+  fi
 }
