@@ -199,7 +199,7 @@ cdsnap() {
 }
 
 snapshot() {
-  if [ $# -eq 0 ] then
+  if [ $# -eq 0 ]; then
       sudo snapper -c homebk create -d $(date --iso-8601)
   else 
       sudo snapper -c homebk create -d $1

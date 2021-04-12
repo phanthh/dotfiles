@@ -317,7 +317,7 @@ let g:python3_host_prog='/usr/bin/python'
 " GVIM
 " set guioptions=
 " set guioptions+=c
-" set guifont=Consolas:h15:cANSI
+set guifont=Consolas:h20:cANSI
 
 " AIRLINE
 " let g:airline#extensions#fzf#enabled = 1
