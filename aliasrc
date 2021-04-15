@@ -13,6 +13,7 @@ alias etckeeper="sudo etckeeper"
 
 #=============================== UTILS ===============================#
 alias lsnap="sudo snapper -c homebk list"
+alias dedup="sudo duperemove -dr --hashfile=/home/.duphashes/phanth /home/phanth"
 
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias nb="newsboat"
@@ -54,7 +55,7 @@ alias spt="speedtest-cli"
 
 alias rm='rm -I --preserve-root'
 alias mv='mv -i'
-alias cp='cp -i'
+alias cp='cp -i -r --reflink=auto'
 alias ln='ln -i'
 alias wget='wget -c'
 alias mkd="mkdir -pv"
