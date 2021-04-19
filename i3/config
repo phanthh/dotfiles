@@ -378,7 +378,6 @@ assign     [class="zoom"] $ws4
 # ws5 lib
 assign     [class="calibre"] $ws5
 assign     [class="obsidian"] $ws5
-assign     [instance="remnote" class="RemNote"] $ws5
 
 # ws6 media
 assign     [class="mpv"] $ws6
@@ -396,6 +395,7 @@ assign     [class="Code"] $ws7
 assign     [class="Zathura"] $ws8
 assign     [instance="libreoffice"] $ws8
 assign     [class="okular"] $ws8
+assign     [instance="remnote" class="RemNote"] $ws8
 
 # ws9 term
 
