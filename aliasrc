@@ -55,7 +55,7 @@ alias spt="speedtest-cli"
 
 alias rm='rm -I --preserve-root'
 alias mv='mv -i'
-alias cp='cp -i -r --reflink=auto'
+alias cp='cp -r --reflink=auto'
 alias ln='ln -i'
 alias wget='wget -c'
 alias mkd="mkdir -pv"

@@ -307,7 +307,7 @@ let &t_EI = "\<Esc>[2 q"
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_open_on_warning = 0
-let g:vimtex_quickfix_enabled = 0
+let g:vimtex_quickfix_enabled = 1
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
 
