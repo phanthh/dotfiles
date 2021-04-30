@@ -11,7 +11,7 @@ edit() {
 }
 
 #=========================== CONFIG ===========================#
-alias cf="conf"
+alias c="conf"
 conf() {
   edit $(
   case $1 in
@@ -66,12 +66,10 @@ ff() {
 alias ffc="cd $HOME/.config && ff"
 
 # fdh - cd to selected directory, include hidden
-fdh() {
+fd() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
-
-alias fd="fdh $HOME"
 
 # cdf - cd into the directory of the selected file
 fdf() {
