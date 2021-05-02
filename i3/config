@@ -207,6 +207,7 @@ bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
 bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/i3/open code"
+bindsym $mod+Shift+v exec "~/.bin/i3/open neovide"
 
 #============ WORKSPACE 
 
@@ -396,6 +397,7 @@ assign     [class="Zathura"] $ws8
 assign     [instance="libreoffice"] $ws8
 assign     [class="okular"] $ws8
 assign     [instance="remnote" class="RemNote"] $ws8
+assign     [class="neovide"] $ws8
 
 # ws9 term
 

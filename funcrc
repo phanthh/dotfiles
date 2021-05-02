@@ -1,7 +1,6 @@
 #============================ EDIT  ===========================#
 
-alias ed="edit"
-edit() {
+ed() {
   if [ -w "$1" ]
   then
     $EDITOR $*
@@ -10,10 +9,20 @@ edit() {
   fi
 }
 
+edg() {
+  if [ -w "$1" ]
+  then
+    $GEDITOR $* & disown $!
+  else
+    sudo $GEDITOR $* & disown $!
+  fi
+}
+
+
 #=========================== CONFIG ===========================#
 alias c="conf"
 conf() {
-  edit $(
+  ed $(
   case $1 in
       auto)              echo ~/.bin/i3/autostart ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
@@ -184,6 +193,11 @@ mkcd () {
 cpcd () {
   cp -r "$1" "$2"
   cd "$2"
+}
+
+# Start and disown the process
+s() {
+    $1 & disown $! 
 }
 
 #==================== BTRFS SNAPSHOTS =========================#
