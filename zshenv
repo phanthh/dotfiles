@@ -10,6 +10,7 @@ export XAUTHORITY="$HOME/.Xauthority"
 
 #=========================== BASIC DEFAULTS==========================#
 export EDITOR="nvim"
+export GEDITOR="neovide"
 export BROWSER="brave"
 export VISUAL="nvim"
 export TERMINAL="kitty"

@@ -19,10 +19,10 @@ Plug 'peitalin/vim-jsx-typescript'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes' 
 Plug 'lervag/vimtex'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'mcchrish/nnn.vim'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'morhetz/gruvbox' 
 Plug 'tomasiser/vim-code-dark'
 call plug#end()            
@@ -284,8 +284,6 @@ nmap ga <Plug>(EasyAlign)
 "==================================================================="
 "========================= PLUGINS CONFIG =========================="
 "==================================================================="
-
-
 
 " NERDTREE CONFIG
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
