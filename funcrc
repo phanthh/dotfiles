@@ -1,7 +1,7 @@
 #============================ EDIT  ===========================#
 
-ed() {
-  if [ -w "$1" ]
+e() {
+  if [ -w "$1" ] 
   then
     $EDITOR $*
   else
@@ -22,7 +22,7 @@ edg() {
 #=========================== CONFIG ===========================#
 alias c="conf"
 conf() {
-  ed $(
+  e $(
   case $1 in
       auto)              echo ~/.bin/i3/autostart ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
@@ -52,6 +52,7 @@ conf() {
       autostart)         echo ~/.bin/i3/autostart ;;
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
+      run)               echo ~/.local/bin/run ;;
       fstab)             echo /etc/fstab ;;
       grub)              echo /etc/default/grub ;;
       pacman)            echo /etc/pacman.conf ;;

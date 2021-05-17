@@ -18,7 +18,8 @@ set $yellow              #ffb900
 set $orange              #fe8019
 set $red                 #e81123
 set $white               #ffffff
-set $browser             brave set $browserclass        Brave-browser 
+set $browser             brave 
+set $browserclass        Brave-browser 
 # Mod and Submod keys
 set $mod Mod1
 set $smod Mod4
@@ -141,7 +142,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Space floating toggle
 
 # Focus parent/child 
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 # Split 
@@ -176,11 +177,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+y exec "~/.bin/yt -r"
 
 # Terminal
-bindsym $mod+Return exec "kitty --single-instance"
+bindsym $mod+Return exec "~/.bin/i3/open kitty --single-instance"
+bindsym $mod+Shift+Return exec "kitty --single-instance"
 
 # Browser/Browser apps
 bindsym $mod+n exec ~/.bin/i3/open $browser
-# bindsym $mod+Shift+n exec $browser ; workspace number $ws10 
+bindsym $mod+Shift+n exec $browser ; workspace number $ws10 
 
 # Dmenu
 bindsym $smod+d exec ~/.bin/dmenu_run
@@ -200,7 +202,7 @@ bindsym $mod+Shift+m exec "~/.bin/i3/open messenger"
 bindsym $mod+Shift+f exec "~/.bin/i3/open facebook"
 bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
 bindsym $mod+Shift+c exec "~/.bin/i3/open calendar"
-bindsym $mod+Shift+n exec "~/.bin/i3/open remnote"
+bindsym $mod+Shift+r exec "~/.bin/i3/open remnote"
 bindsym $mod+Shift+e exec "~/.bin/i3/open thunar"
 bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
@@ -208,6 +210,7 @@ bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/i3/open code"
 bindsym $mod+Shift+v exec "~/.bin/i3/open neovide"
+bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
 
 #============ WORKSPACE 
 
@@ -252,9 +255,9 @@ new_window  pixel 1
 
 # Colors
 #                       border      background     text       indicator  child_border
-client.focused          $lightdark  $lightdark     $lighter   $blue    $lightdark
-client.unfocused        $lightdark  $darker        $lighter   $blue    $darker
-client.focused_inactive $darker     $darker        $lighter   $blue    $darker
+client.focused          $lightdark  $lightdark     $lighter   $yellow    $blue
+client.unfocused        $lightdark  $darker        $lighter   $yellow    $darker
+client.focused_inactive $darker     $darker        $lighter   $yellow    $darker
 client.urgent           $blue     $lightdark     $lighter   $blue  $blue
 
 #=========== MOUSE
@@ -265,7 +268,7 @@ focus_follows_mouse no
 
 #=========== FONT 
 
-font pango:Font Awesome 5 Free 10, NotoSans Nerd Font 9
+font pango:Font Awesome 5 Free 11, NotoSans Nerd Font 11
 
 #=========== WORKSPACE 
 
@@ -311,7 +314,7 @@ bar {
         binding_mode       $blue            $blue            $lighter
     }
 
-    workspace_min_width 50
+    workspace_min_width 60
     # tray_output none
     # strip_workspace_numbers yes
 }

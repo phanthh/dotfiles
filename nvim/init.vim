@@ -4,7 +4,7 @@
 
 call plug#begin('~/.config/nvim/plugged') 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'tpope/vim-fugitive' 
+Plug 'tpope/vim-fugitive' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround' 
 Plug 'junegunn/vim-easy-align'
@@ -12,15 +12,14 @@ Plug 'lilydjwg/colorizer'
 Plug 'preservim/nerdtree'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript' 
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'vim-python/python-syntax'
-" plug 'christoomey/vim-tmux-navigator'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes' 
 Plug 'lervag/vimtex'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 " Plug 'mcchrish/nnn.vim'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'morhetz/gruvbox' 
@@ -41,10 +40,8 @@ set belloff=all
 set hidden
 set number
 set numberwidth=5
-set shortmess+=I
-set shortmess+=c
+set shortmess+=Ic
 set wildmenu
-set expandtab
 set autoindent 
 set backspace=indent,eol,start
 set relativenumber
@@ -54,13 +51,14 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-set hidden
 set autoread
 set timeout timeoutlen=350
 set ttimeout ttimeoutlen=350
 set history=1000 
 set updatetime=250
 set laststatus=1
+" set cursorline
+" set cursorcolumn
 set encoding=utf-8
 set tabstop=2
 set shiftwidth=2
@@ -69,12 +67,17 @@ set t_Co=256
 set ttyfast
 set shell=/usr/bin/zsh\ -l
 set textwidth=80
-set fo+=t
-set fo-=l
+set formatoptions+=t
+set formatoptions-=l
 set foldlevel=99
+
+
+set guifont=Consolas:h20:cANSI
 colorscheme codedark
 " colorscheme gruvbox
+
 "========================= SAFE GUARD =============================="
+
 set backup
 set undolevels=1000
 set undofile
@@ -96,7 +99,7 @@ autocmd FileType tex set foldtext=vimtex#fold#text()
 autocmd FileType markdown set spell spelllang=en_us
 
 " CPP
-autocmd FileType cpp,c let b:coc_pairs_disabled = ['<']
+autocmd FileType cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
 
 
 "==================================================================="
@@ -251,6 +254,12 @@ nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>l :wincmd l<CR>
+
+nmap <silent> <leader>K :wincmd K<CR>
+nmap <silent> <leader>J :wincmd J<CR>
+nmap <silent> <leader>G :wincmd H<CR>
+nmap <silent> <leader>L :wincmd L<CR>
+
 nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
 nmap <silent> <leader>v :split <bar> wincmd j<CR> " TAB nmap <silent> <leader>p :tabn<CR>
 nmap <silent> <leader>n :tabp<CR>
@@ -262,14 +271,11 @@ nmap <silent> <leader>r :NERDTreeFocus<CR>R<CR>
 
 " SEARCH
 nmap <silent> <leader>o :GFiles<CR>
+nmap <silent> <leader>p :Buffers<CR>
 
-" EXECUTE
-autocmd FileType rust map <F5> :w <bar> :!rustc % && ./%< <CR>
-autocmd FileType rust imap <F5> <Esc> :w <bar> :!rustc % && ./%< <CR>
-autocmd FileType cpp map <F5> :w <bar> :!g++ % -o %< && ./%< <CR>
-autocmd FileType cpp imap <F5> <Esc> :w <bar> :!g++ % -o %< && ./%< <CR>
-autocmd FileType python nmap <F5> :CocCommand python.execInTerminal <CR>
-autocmd FileType python imap <F5> <Esc> :CocCommand python.execInTerminal <CR>
+" QUICK EXECUTE
+map <S-F10> :w <bar> :!run %<CR>
+imap <S-F10> <Esc> :w <bar> :!run %<CR>
 
 " LATEX 
 autocmd FileType tex map <F5> :w <bar> :VimtexCompile <CR><CR>
@@ -284,6 +290,7 @@ nmap ga <Plug>(EasyAlign)
 "==================================================================="
 "========================= PLUGINS CONFIG =========================="
 "==================================================================="
+
 
 " NERDTREE CONFIG
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
@@ -315,7 +322,6 @@ let g:python3_host_prog='/usr/bin/python'
 " GVIM
 " set guioptions=
 " set guioptions+=c
-set guifont=Consolas:h20:cANSI
 
 " AIRLINE
 " let g:airline#extensions#fzf#enabled = 1
@@ -370,7 +376,7 @@ set guifont=Consolas:h20:cANSI
 " " Or pass a dictionary with window size
 " let g:nnn#layout = { 'left': '~20%' } " or right, up, down
 
-" " Floating window (neovim latest and vim with patch 8.2.191)
+" " floating window (neovim latest and vim with patch 8.2.191)
 " let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 " let g:nnn#command = 'nnn -d'
 

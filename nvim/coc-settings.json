@@ -13,7 +13,8 @@
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "python"
+    "python",
+    "cpp"
   ],
   "coc.preferences.extensionUpdateCheck": "daily",
   "emmet.includeLanguages": { "javascript": "javascriptreact" }
