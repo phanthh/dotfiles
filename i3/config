@@ -208,9 +208,9 @@ bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
 bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
-bindsym $mod+Shift+i exec "~/.bin/i3/open code"
-bindsym $mod+Shift+v exec "~/.bin/i3/open neovide"
+bindsym $mod+Shift+i exec "~/.bin/i3/open neovide"
 bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
+bindsym $mod+Shift+o exec "~/.bin/i3/open okular"
 
 #============ WORKSPACE 
 
@@ -268,7 +268,7 @@ focus_follows_mouse no
 
 #=========== FONT 
 
-font pango:Font Awesome 5 Free 11, NotoSans Nerd Font 11
+font pango:Font Awesome 5 Free 12, NotoSans Nerd Font 12
 
 #=========== WORKSPACE 
 
@@ -396,11 +396,9 @@ assign     [class="jetbrains-studio"] $ws7
 assign     [class="Code"] $ws7
 
 # ws8 work
-assign     [class="Zathura"] $ws8
 assign     [instance="libreoffice"] $ws8
 assign     [class="okular"] $ws8
 assign     [instance="remnote" class="RemNote"] $ws8
-assign     [class="neovide"] $ws8
 
 # ws9 term
 
