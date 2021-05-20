@@ -9,6 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XAUTHORITY="$HOME/.Xauthority"
 
 #=========================== BASIC DEFAULTS==========================#
+export AUR_WRAPPER="paru"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export BROWSER="brave"

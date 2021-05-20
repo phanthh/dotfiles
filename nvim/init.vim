@@ -85,21 +85,6 @@ if has("nvim")
   set backupdir=~/.local/share/nvim/backup
 endif
 
-"==================================================================="
-"====================LANGUAGE SPECIFIC FLAGS ======================="
-"==================================================================="
-
-" LATEX 
-autocmd FileType * set formatoptions-=cro
-autocmd FileType tex set spell spelllang=en_us
-autocmd FileType tex set foldmethod=expr 
-autocmd FileType tex set foldexpr=vimtex#fold#level(v:lnum) 
-autocmd FileType tex set foldtext=vimtex#fold#text()
-" autocmd FileType tex,cpp au BufWrite * :Autoformat<CR>
-autocmd FileType markdown set spell spelllang=en_us
-
-" CPP
-autocmd FileType cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
 
 
 "==================================================================="
@@ -164,7 +149,10 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup Highlight
+  autocmd!
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -278,9 +266,6 @@ map <S-F10> :w <bar> :!run %<CR>
 imap <S-F10> <Esc> :w <bar> :!run %<CR>
 
 " LATEX 
-autocmd FileType tex map <F5> :w <bar> :VimtexCompile <CR><CR>
-autocmd FileType tex imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
-autocmd FileType tex nnoremap <leader><leader> za 
 
 " EASY ALIGN
 xmap ga <Plug>(EasyAlign)
@@ -290,6 +275,9 @@ nmap ga <Plug>(EasyAlign)
 "==================================================================="
 "========================= PLUGINS CONFIG =========================="
 "==================================================================="
+
+" COC PAIRS
+autocmd FileType cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
 
 
 " NERDTREE CONFIG
@@ -380,3 +368,35 @@ let g:python3_host_prog='/usr/bin/python'
 " let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 " let g:nnn#command = 'nnn -d'
 
+"==================================================================="
+"====================LANGUAGE SPECIFIC FLAGS ======================="
+"==================================================================="
+
+" LATEX 
+function LatexFunc()
+  set spell spelllang=en_us 
+  set formatoptions-=cro
+  set foldmethod=expr 
+  set foldexpr=vimtex#fold#level(v:lnum) 
+  set foldtext=vimtex#fold#text()
+  map <F5> :w <bar> :VimtexCompile <CR><CR>
+  imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
+  nnoremap <leader><leader> za 
+endfunction
+
+augroup LatexConf
+  autocmd!
+  autocmd FileType tex call LatexFunc()
+augroup END
+
+" MARKDOWN
+autocmd FileType markdown set spell spelllang=en_us
+
+" autocmd FileType tex,cpp au BufWrite * :Autoformat<CR>
+ 
+" AUTOSAVE
+augroup AutoSave
+  autocmd!
+  let ftToIgnore = ['tex']
+  autocmd TextChanged,TextChangedI * if index(ftToIgnore, &ft) < 0 | silent write
+augroup END

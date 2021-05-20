@@ -49,6 +49,8 @@ conf() {
       dunst)             echo ~/.config/dunst/dunstrc ;;
       newsconf|news)     echo ~/.config/newsboat/config ;;
       newsurl|nb)        echo ~/.config/newsboat/urls  ;;
+      yay)               echo ~/.config/yay/config.json  ;;
+      paru)              echo ~/.config/paru.conf ;;
       autostart)         echo ~/.bin/i3/autostart ;;
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
@@ -109,24 +111,24 @@ fk() {
 # Install packages 
 in() {
     if [ -z "$1" ]; then
-      yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+      $AUR_WRAPPER -Slq | fzf -q "$1" -m --preview '${AUR_WRAPPER} -Si {1}'| xargs -ro $AUR_WRAPPER -S
     else 
-      yay -S $1
+      $AUR_WRAPPER -S $1
     fi
 }
 
 # Remove installed packages 
 re() {
     if [ -z "$1" ]; then
-      yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+      $AUR_WRAPPER -Qq | fzf -q "$1" -m --preview '${AUR_WRAPPER} -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
     else 
-      yay -Rns $1
+      $AUR_WRAPPER -Rns $1
     fi
 }
 
 # Update system
 up() {
-    yay -Syu
+    $AUR_WRAPPER -Syu
 }
 
 #=========================== NNN ===========================#
