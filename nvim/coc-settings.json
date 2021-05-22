@@ -5,6 +5,7 @@
   "suggest.detailField": "abbr",
   "suggest.floatEnable": false,
   "coc.preferences.formatOnSaveFiletypes": [
+    "rust",
     "css",
     "html",
     "javascript",

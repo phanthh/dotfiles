@@ -90,7 +90,7 @@ endif
 "==================================================================="
 "============================= COCNVIM =============================" 
 "===================================================================" 
-
+"
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
@@ -149,10 +149,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-augroup Highlight
-  autocmd!
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -262,8 +259,8 @@ nmap <silent> <leader>o :GFiles<CR>
 nmap <silent> <leader>p :Buffers<CR>
 
 " QUICK EXECUTE
-map <S-F10> :w <bar> :!run %<CR>
-imap <S-F10> <Esc> :w <bar> :!run %<CR>
+map <F10> :w <bar> :!run %<CR>
+imap <F10> <Esc> :w <bar> :!run %<CR>
 
 " LATEX 
 
@@ -277,7 +274,7 @@ nmap ga <Plug>(EasyAlign)
 "==================================================================="
 
 " COC PAIRS
-autocmd FileType cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
+autocmd FileType rust,cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
 
 
 " NERDTREE CONFIG
@@ -372,7 +369,14 @@ let g:python3_host_prog='/usr/bin/python'
 "====================LANGUAGE SPECIFIC FLAGS ======================="
 "==================================================================="
 
-" LATEX 
+augroup LangSpecs
+  autocmd!
+  autocmd FileType tex call LatexFunc()
+  autocmd FileType markdown set spell spelllang=en_us
+  autocmd FileType rust map <S-F10> :w <bar> :!cargo run <CR>
+  autocmd FileType rust imap <S-F10> <Esc> :w <bar> :!cargo run<CR>
+augroup END
+
 function LatexFunc()
   set spell spelllang=en_us 
   set formatoptions-=cro
@@ -384,19 +388,9 @@ function LatexFunc()
   nnoremap <leader><leader> za 
 endfunction
 
-augroup LatexConf
-  autocmd!
-  autocmd FileType tex call LatexFunc()
-augroup END
-
-" MARKDOWN
-autocmd FileType markdown set spell spelllang=en_us
-
-" autocmd FileType tex,cpp au BufWrite * :Autoformat<CR>
- 
 " AUTOSAVE
 augroup AutoSave
   autocmd!
-  let ftToIgnore = ['tex']
-  autocmd TextChanged,TextChangedI * if index(ftToIgnore, &ft) < 0 | silent write
+  let filetypes = ['tex', 'rust', 'cpp', 'javascript', 'typescript']
+  autocmd InsertLeave * if index(filetypes, &ft) >= 0 | silent write
 augroup END
