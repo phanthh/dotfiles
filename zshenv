@@ -9,13 +9,15 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XAUTHORITY="$HOME/.Xauthority"
 
 #=========================== BASIC DEFAULTS==========================#
-export AUR_WRAPPER="paru"
+export AUR_WRAPPER="yay"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export BROWSER="brave"
 export VISUAL="nvim"
 export TERMINAL="kitty"
 export MYVIMRC="$HOME/.vimrc"
+export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
+export TASKDATA="$XDG_CONFIG_HOME/task/"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export NO_AT_BRIDGE=1
 export GTK_IM_MODULE=ibus
