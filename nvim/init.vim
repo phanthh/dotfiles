@@ -12,8 +12,8 @@ Plug 'lilydjwg/colorizer'
 Plug 'preservim/nerdtree'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript' 
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'vim-python/python-syntax'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes' 
@@ -393,4 +393,5 @@ augroup AutoSave
   autocmd!
   let filetypes = ['tex', 'rust', 'cpp', 'javascript', 'typescript']
   autocmd InsertLeave * if index(filetypes, &ft) >= 0 | silent write
+  autocmd InsertEnter * if index(filetypes, &ft) >= 0 | silent write
 augroup END

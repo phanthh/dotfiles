@@ -198,11 +198,6 @@ cpcd () {
   cd "$2"
 }
 
-# Start and disown the process
-s() {
-    $1 & disown $! 
-}
-
 #==================== BTRFS SNAPSHOTS =========================#
 
 delsnap() {
