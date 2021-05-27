@@ -268,7 +268,7 @@ focus_follows_mouse no
 
 #=========== FONT 
 
-font pango:Font Awesome 5 Free 12, NotoSans Nerd Font 12
+font pango:Font Awesome 5 Free 9, NotoSans Nerd Font 9
 
 #=========== WORKSPACE 
 
@@ -314,7 +314,7 @@ bar {
         binding_mode       $blue            $blue            $lighter
     }
 
-    workspace_min_width 60
+    workspace_min_width 50
     # tray_output none
     # strip_workspace_numbers yes
 }

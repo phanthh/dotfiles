@@ -65,7 +65,10 @@ set shiftwidth=2
 set expandtab smarttab
 set t_Co=256
 set ttyfast
-set shell=/usr/bin/zsh\ -l
+
+if has("unix")
+  set shell=/usr/bin/zsh\ -l
+endif
 set textwidth=80
 set formatoptions+=t
 set formatoptions-=l
@@ -81,7 +84,7 @@ colorscheme codedark
 set backup
 set undolevels=1000
 set undofile
-if has("nvim")
+if has("nvim") && !has("win32")
   set backupdir=~/.local/share/nvim/backup
 endif
 
@@ -232,7 +235,7 @@ nnoremap <TAB> :nohl<CR>
 
 " ESC
 inoremap jj <Esc>
-nnoremap <F12> :source ~/.vimrc<CR>
+nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 
 " PANE
 nmap <silent> <leader>k :wincmd k<CR>
@@ -302,7 +305,12 @@ let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
 
 " PYTHON NVIM
-let g:python3_host_prog='/usr/bin/python'
+if has("unix")
+  let g:python3_host_prog='/usr/bin/python'
+elseif has("win32")
+  let g:python3_host_prog='$HOME/AppData/Local/Programs/Python/Python39/python.exe'
+endif
+
 
 " GVIM
 " set guioptions=
@@ -395,3 +403,5 @@ augroup AutoSave
   autocmd InsertLeave * if index(filetypes, &ft) >= 0 | silent write
   autocmd InsertEnter * if index(filetypes, &ft) >= 0 | silent write
 augroup END
+
+
