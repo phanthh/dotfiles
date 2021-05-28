@@ -51,6 +51,7 @@ conf() {
       newsurl|nb)        echo ~/.config/newsboat/urls  ;;
       yay)               echo ~/.config/yay/config.json  ;;
       paru)              echo ~/.config/paru.conf ;;
+      ytmdl)             echo ~/.config/ytmdl/config ;;
       autostart)         echo ~/.bin/i3/autostart ;;
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
