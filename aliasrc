@@ -27,7 +27,11 @@ alias aliasrc="$EDITOR ~/.config/aliasrc"
 alias lsmnt="findmnt"
 alias lserv="systemctl --type=service"
 alias lsz="du -sch *(D) | sort -h"
-alias ls="ls --color=always --group-directories-first --time-style=iso"
+
+alias ls="exa -ghb --git --color=always --group-directories-first --time-style=iso"
+alias l="ls -l"
+
+alias la="ls -la"
 
 alias iotop="sudo iotop"
 alias intop="sudo intel_gpu_top"

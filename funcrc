@@ -56,6 +56,7 @@ conf() {
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
       run)               echo ~/.local/bin/run ;;
+      prompt)            echo $ZSH/custom/themes/windows.zsh-theme ;;
       fstab)             echo /etc/fstab ;;
       grub)              echo /etc/default/grub ;;
       pacman)            echo /etc/pacman.conf ;;
