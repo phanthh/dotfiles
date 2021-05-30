@@ -381,6 +381,7 @@ augroup LangSpecs
   autocmd!
   autocmd FileType tex call LatexFunc()
   autocmd FileType markdown set spell spelllang=en_us
+  autocmd FileType text set spell spelllang=en_us
   autocmd FileType rust map <S-F10> :w <bar> :!cargo run <CR>
   autocmd FileType rust imap <S-F10> <Esc> :w <bar> :!cargo run<CR>
 augroup END

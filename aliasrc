@@ -41,6 +41,7 @@ alias cat="highlight -O xterm256 --force"
 alias diff="colordiff"
 alias mount="mount | column -t"
 
+alias t="task"
 alias weather="curl wttr.in"
 alias notetopy="jupyter nbconvert --to script"
 alias kiwixs="kiwix-serve /mnt/database/Documents\ File/Wikipedia/*"
