@@ -24,7 +24,6 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
-      auto)              echo ~/.bin/i3/autostart ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
       zshenv|env)        echo ~/.zshenv ;;
       zprofile)          echo ~/.config/zsh/.zprofile ;;
@@ -43,6 +42,7 @@ conf() {
       zathura)           echo ~/.config/zathura/zathurarc ;;
       alias|ali)         echo ~/.config/aliasrc ;;
       func|function|fun) echo ~/.config/funcrc ;;
+      htop)              echo ~/.config/htop/htoprc ;;
       task)              echo ~/.taskrc ;;
       conky)             echo ~/.config/conky/conky.conf ;;
       npm)               echo ~/.config/npm/npmrc ;;
@@ -52,7 +52,7 @@ conf() {
       yay)               echo ~/.config/yay/config.json  ;;
       paru)              echo ~/.config/paru.conf ;;
       ytmdl)             echo ~/.config/ytmdl/config ;;
-      autostart)         echo ~/.bin/i3/autostart ;;
+      autostart|auto)    echo ~/.bin/i3/autostart ;;
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
       run)               echo ~/.local/bin/run ;;

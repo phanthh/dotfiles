@@ -68,7 +68,9 @@ set ttyfast
 
 if has("unix")
   set shell=/usr/bin/zsh\ -l
+
 endif
+
 set textwidth=80
 set formatoptions+=t
 set formatoptions-=l
@@ -265,11 +267,13 @@ nmap <silent> <leader>p :Buffers<CR>
 map <F10> :w <bar> :!run %<CR>
 imap <F10> <Esc> :w <bar> :!run %<CR>
 
-" LATEX 
+" PASTE WITHOUT REPLACE 
+vnoremap p "_c<C-r><C-o>+<Esc>
 
 " EASY ALIGN
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
 
 
 "==================================================================="
@@ -400,9 +404,9 @@ endfunction
 " AUTOSAVE
 augroup AutoSave
   autocmd!
-  let filetypes = ['tex', 'rust', 'cpp', 'javascript', 'typescript']
-  autocmd InsertLeave * if index(filetypes, &ft) >= 0 | silent write
-  autocmd InsertEnter * if index(filetypes, &ft) >= 0 | silent write
+  let blacklist = ['tex', 'rust', 'cpp', 'javascript', 'typescript']
+  autocmd InsertLeave * if index(blacklist, &ft) >= 0 | silent write
+  autocmd InsertEnter * if index(blacklist, &ft) >= 0 | silent write
 augroup END
 
 

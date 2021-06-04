@@ -197,7 +197,7 @@ bindsym Print exec "~/.bin/prtsc area_c"
 # Windows
 bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
-# Apps
+# Applications
 bindsym $mod+Shift+m exec "~/.bin/i3/open messenger"
 bindsym $mod+Shift+f exec "~/.bin/i3/open facebook"
 bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
@@ -210,7 +210,7 @@ bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/i3/open neovide"
 bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
-bindsym $mod+Shift+o exec "~/.bin/i3/open okular"
+bindsym $mod+Shift+s exec "~/.bin/i3/open slack"
 
 #============ WORKSPACE 
 
@@ -366,6 +366,7 @@ assign     [class="Brave-browser" instance="app.keeweb.info"] $ws1
 assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
 
 # ws2 msg
+assign     [class="Slack"] $ws2
 assign     [instance="signal" class="Signal"] $ws2
 assign     [class="discord"] $ws2
 assign     [class="TelegramDesktop"] $ws2
@@ -386,7 +387,6 @@ assign     [class="obsidian"] $ws5
 # ws6 media
 assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
-for_window [class="Spotify"] move to workspace $ws6
 
 # ws7 dev
 assign     [class="scrcpy"] $ws7
@@ -398,7 +398,7 @@ assign     [class="Code"] $ws7
 # ws8 work
 assign     [instance="libreoffice"] $ws8
 assign     [class="okular"] $ws8
-assign     [instance="remnote" class="RemNote"] $ws8
+assign     [class="RemNote"] $ws8
 
 # ws9 term
 
@@ -406,3 +406,65 @@ assign     [instance="remnote" class="RemNote"] $ws8
 assign     [class="Vivaldi-stable"] $ws10
 assign     [class="Brave-browser"] $ws10
 assign     [class="firefox"] $ws10
+
+#==================================================================#
+#===================== MOVE WHEN RELOAD ===========================#
+#==================================================================#
+
+############## General
+
+# ws1 usr
+for_window     [class="Thunderbird"] move to workspace $ws1
+for_window     [class="Mailspring"] move to workspace $ws1
+
+# ws2 msg
+for_window     [class="Slack"] move to workspace $ws2
+for_window     [class="Signal"] move to workspace $ws2
+for_window     [class="discord"] move to workspace $ws2
+for_window     [class="TelegramDesktop"] move to workspace $ws2
+
+# ws3 soc
+
+# ws4 vid
+for_window     [class="zoom"] move to workspace $ws4
+
+# ws5 lib
+for_window     [class="calibre"] move to workspace $ws5
+for_window     [class="obsidian"] move to workspace $ws5
+
+# ws6 media
+for_window     [class="mpv"] move to workspace $ws6
+for_window     [class="Spotify"] move to workspace $ws6
+
+# ws7 dev
+for_window     [class="scrcpy"] move to workspace $ws7
+for_window     [class="VirtualBox Machine"] move to workspace $ws7
+for_window     [class="*jetbrains*"] move to workspace $ws7
+for_window     [class="Code"] move to workspace $ws7
+
+# ws8 work
+for_window     [class="libreoffice"] move to workspace $ws8
+for_window     [class="okular"] move to workspace $ws8
+for_window     [class="RemNote"] move to workspace $ws8
+
+# ws9 term
+for_window     [class="kitty"] move to workspace $ws9
+
+# ws10 web
+for_window     [class="Vivaldi-stable"] move to workspace $ws10
+for_window     [class="Brave-browser"] move to workspace $ws10
+for_window     [class="firefox"] move to workspace $ws10
+
+############## Specifics
+
+# ws1 usr
+for_window     [instance="app.keeweb.info" class="Brave-browser"] move to workspace $ws1
+for_window     [instance="calendar.google.com" class="Brave-browser" ] move to workspace $ws1
+
+# ws2 msg
+for_window     [instance="www.messenger.com" class="Brave-browser"] move to workspace $ws2
+for_window     [instance="web.whatsapp.com" class="Brave-browser"] move to workspace $ws2
+
+# ws3 soc
+for_window     [instance="facebook.com$" class="Brave-browser" ] move to workspace $ws3
+for_window     [instance="linkedin.com$" class="Brave-browser" ] move to workspace $ws3
