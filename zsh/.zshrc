@@ -19,7 +19,9 @@ export ZSH="$HOME/.local/share/oh-my-zsh"
 setopt autocd
 source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-PROMPT="C:%{${${${(%):-%~}//\//\\}/\~/\\Users\\$USER}%${#${${(%):-%~}//\//\\}/\~/\\Users\\$USER}G%}> "
+
+setopt prompt_subst
+PROMPT='C:%{${${${(%):-%~}//\//\\}/\~/\\Users\\$USER}%${#${${(%):-%~}//\//\\}/\~/\\Users\\$USER}G%}> '
 
 #======================= ALIASES ===============================#
 
@@ -66,13 +68,13 @@ echo -ne '\e[5 q'
 preexec() { echo -ne '\e[5 q' ;} 
 
 
-#======================= SHORTBUTS ==============================#
+#======================= SHORTCUTS ==============================#
 
 bindkey '^F' autosuggest-accept
 bindkey -s '^O' 'n^M'
 bindkey -s '^P' 'ff ^M'
 bindkey -s '^N' 'newsboat ^M'
-bindkey -s '^K' 'task ^M'
+bindkey -s '^K' 'vit ^M'
 
 #======================= MINICONDA ==============================#
 
@@ -88,4 +90,4 @@ fi
 # <<< conda initialize <<<
 
 #======================= START PROMPT ============================#
-task
+task 

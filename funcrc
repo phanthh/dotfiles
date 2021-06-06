@@ -39,11 +39,13 @@ conf() {
       sx)                echo ~/.config/sxhkd/sxhkdrc ;;
       vim|nvim)          echo ~/.vimrc ;;
       polybar)           echo ~/.config/polybar/config ;;
+      psd)               echo ~/.config/psd/psd.conf ;;
       zathura)           echo ~/.config/zathura/zathurarc ;;
       alias|ali)         echo ~/.config/aliasrc ;;
       func|function|fun) echo ~/.config/funcrc ;;
       htop)              echo ~/.config/htop/htoprc ;;
-      task)              echo ~/.taskrc ;;
+      task)              echo ~/.config/task/taskrc ;;
+      vit)               echo ~/.vitrc ;;
       conky)             echo ~/.config/conky/conky.conf ;;
       npm)               echo ~/.config/npm/npmrc ;;
       dunst)             echo ~/.config/dunst/dunstrc ;;

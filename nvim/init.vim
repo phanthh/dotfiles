@@ -14,16 +14,12 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript' 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'vim-python/python-syntax'
+Plug 'lervag/vimtex'
+Plug 'honza/vim-snippets'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes' 
-Plug 'lervag/vimtex'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-" Plug 'mcchrish/nnn.vim'
-" Plug 'Chiel92/vim-autoformat'
-" Plug 'morhetz/gruvbox' 
 Plug 'tomasiser/vim-code-dark'
+" Plug 'morhetz/gruvbox' 
 call plug#end()            
 
 
@@ -31,7 +27,6 @@ call plug#end()
 "============================= FLAGS ==============================="
 "==================================================================="
 
-filetype on
 filetype plugin indent on
 syntax on
 set colorcolumn=80
@@ -57,25 +52,21 @@ set ttimeout ttimeoutlen=350
 set history=1000 
 set updatetime=250
 set laststatus=1
-" set cursorline
-" set cursorcolumn
 set encoding=utf-8
 set tabstop=2
 set shiftwidth=2
 set expandtab smarttab
 set t_Co=256
 set ttyfast
-
-if has("unix")
-  set shell=/usr/bin/zsh\ -l
-
-endif
-
 set textwidth=80
 set formatoptions+=t
 set formatoptions-=l
 set foldlevel=99
-
+" set cursorline
+" set cursorcolumn
+if has("unix")
+  set shell=/usr/bin/zsh\ -l
+endif
 
 set guifont=Consolas:h20:cANSI
 colorscheme codedark
@@ -89,8 +80,6 @@ set undofile
 if has("nvim") && !has("win32")
   set backupdir=~/.local/share/nvim/backup
 endif
-
-
 
 "==================================================================="
 "============================= COCNVIM =============================" 
@@ -297,9 +286,6 @@ let g:python_highlight_all = 1
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" TMUX
-" let g:tmux_navigator_no_mappings = 1
-
 " LATEX
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
@@ -315,45 +301,9 @@ elseif has("win32")
   let g:python3_host_prog='$HOME/AppData/Local/Programs/Python/Python39/python.exe'
 endif
 
-
 " GVIM
-" set guioptions=
-" set guioptions+=c
-
-" AIRLINE
-" let g:airline#extensions#fzf#enabled = 1
-" let g:airline_powerline_fonts = 1
-" let g:airline_symbols = {}
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = 'L'
-" let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.dirty=''
-" let g:airline_theme = 'gruvbox'
-" let g:airline_mode_map = {
-"     \ '__'     : '-',
-"     \ 'c'      : 'C',
-"     \ 'i'      : 'I',
-"     \ 'ic'     : 'I',
-"     \ 'ix'     : 'I',
-"     \ 'n'      : 'N',
-"     \ 'multi'  : 'M',
-"     \ 'ni'     : 'N',
-"     \ 'no'     : 'N',
-"     \ 'R'      : 'R',
-"     \ 'Rv'     : 'R',
-"     \ 's'      : 'S',
-"     \ 'S'      : 'S',
-"     \ ''     : 'S',
-"     \ 't'      : 'T',
-"     \ 'v'      : 'V',
-"     \ 'V'      : 'V',
-"     \ ''     : 'V',
-"     \ }
+set guioptions=
+set guioptions+=c
 
 " WSL
 " let s:clip = '/mnt/c/Windows/System32/clip.exe'
@@ -363,19 +313,6 @@ endif
 "     autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
 "   augroup END
 " endif
-
-" NNN
-" let g:nnn#set_default_mappings = 0
-" nnoremap <leader>c :NnnPicker '%:p:h'<CR>
-" " Opens the nnn window in a split
-" let g:nnn#layout = 'new' " or vnew, tabnew etc.
-
-" " Or pass a dictionary with window size
-" let g:nnn#layout = { 'left': '~20%' } " or right, up, down
-
-" " floating window (neovim latest and vim with patch 8.2.191)
-" let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
-" let g:nnn#command = 'nnn -d'
 
 "==================================================================="
 "====================LANGUAGE SPECIFIC FLAGS ======================="

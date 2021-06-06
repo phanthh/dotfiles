@@ -9,13 +9,17 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XAUTHORITY="$HOME/.Xauthority"
 
 #=========================== BASIC DEFAULTS==========================#
+# APPLICATION
 export AUR_WRAPPER="yay"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export BROWSER="brave"
 export VISUAL="nvim"
 export TERMINAL="kitty"
-export MYVIMRC="$HOME/.vimrc"
+export FILE_MANAGER="pcmanfm"
+export GMAIL="thunderbird"
+
+export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export TASKDATA="$XDG_CONFIG_HOME/task/"
 export QT_QPA_PLATFORMTHEME=qt5ct

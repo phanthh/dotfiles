@@ -203,12 +203,12 @@ bindsym $mod+Shift+f exec "~/.bin/i3/open facebook"
 bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
 bindsym $mod+Shift+c exec "~/.bin/i3/open calendar"
 bindsym $mod+Shift+r exec "~/.bin/i3/open remnote"
-bindsym $mod+Shift+e exec "~/.bin/i3/open thunar"
+bindsym $mod+Shift+e exec "~/.bin/i3/open $FILE_MANAGER"
 bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
-bindsym $mod+Shift+t exec "~/.bin/i3/open thunderbird"
+bindsym $mod+Shift+a exec "~/.bin/i3/open $GMAIL"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
-bindsym $mod+Shift+i exec "~/.bin/i3/open neovide"
+bindsym $mod+Shift+i exec "~/.bin/i3/open $GEDITOR"
 bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
 bindsym $mod+Shift+s exec "~/.bin/i3/open slack"
 
@@ -315,6 +315,7 @@ bar {
     }
 
     workspace_min_width 50
+    # position top
     # tray_output none
     # strip_workspace_numbers yes
 }
