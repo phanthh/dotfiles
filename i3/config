@@ -1,7 +1,4 @@
-#===================================================================# 
 #========================== VARIABLES ==============================#
-#===================================================================#
-
 
 # Color
 set $darker              #050505
@@ -49,9 +46,7 @@ set $ws10 "10  "
 
 floating_modifier $mod 
 
-#==================================================================#
 #======================== AUTOSTART ===============================#
-#==================================================================#
 
 # Hot switch monitors
 # exec --no-startup-id ~/.bin/utils/hotswitch
@@ -70,9 +65,7 @@ exec        --no-startup-id "brightnessctl s 5%"
 # Applications
 exec        --no-startup-id ~/.bin/i3/autostart
 
-#===================================================================#
 #============================ KEYBINDING ===========================#
-#===================================================================#
 
 #============ CONTROLS 
 
@@ -206,7 +199,7 @@ bindsym $mod+Shift+r exec "~/.bin/i3/open remnote"
 bindsym $mod+Shift+e exec "~/.bin/i3/open $FILE_MANAGER"
 bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
-bindsym $mod+Shift+a exec "~/.bin/i3/open $GMAIL"
+bindsym $mod+Shift+a exec "~/.bin/i3/open $MAIL_CLIENT"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/i3/open $GEDITOR"
 bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
@@ -242,9 +235,7 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
-#==================================================================#
 #=========================== CONFIG ===============================#
-#==================================================================#
 
 #=========== WINDOW 
 
@@ -356,13 +347,11 @@ bar {
 
 
 
-#==================================================================#
 #=========================== ASSIGN ===============================#
-#==================================================================#
 
 # ws1 usr
 assign     [class="Thunderbird"] $ws1
-assign     [class="Mailspring" instance="mailspring" ] $ws1
+assign     [class="Mailspring"] $ws1
 assign     [class="Brave-browser" instance="app.keeweb.info"] $ws1
 assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
 
@@ -408,9 +397,7 @@ assign     [class="Vivaldi-stable"] $ws10
 assign     [class="Brave-browser"] $ws10
 assign     [class="firefox"] $ws10
 
-#==================================================================#
 #===================== MOVE WHEN RELOAD ===========================#
-#==================================================================#
 
 ############## General
 

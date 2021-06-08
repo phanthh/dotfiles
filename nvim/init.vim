@@ -1,6 +1,4 @@
-"==================================================================="
 "============================= PLUGINS =============================" 
-"===================================================================" 
 
 call plug#begin('~/.config/nvim/plugged') 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -16,75 +14,92 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes' 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes' 
 Plug 'tomasiser/vim-code-dark'
-" Plug 'morhetz/gruvbox' 
 call plug#end()            
 
-
-"==================================================================="
-"============================= FLAGS ==============================="
-"==================================================================="
+"============================= OPTIONS ==============================="
 
 filetype plugin indent on
 syntax on
-set colorcolumn=80
-set clipboard=unnamedplus
-set belloff=all
+
+" Coc.nvim
 set hidden
+set wildmenu
+set updatetime=250
+set encoding=utf-8
+set shortmess+=Ic
+
+" Indicator
+set colorcolumn=80
+set textwidth=80
+set foldlevel=99
+set belloff=all
+
 set number
 set numberwidth=5
-set shortmess+=Ic
-set wildmenu
-set autoindent 
-set backspace=indent,eol,start
 set relativenumber
-set copyindent
-set mouse=a
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-set autoread
-set timeout timeoutlen=350
-set ttimeout ttimeoutlen=350
-set history=1000 
-set updatetime=250
-set laststatus=1
-set encoding=utf-8
-set tabstop=2
-set shiftwidth=2
-set expandtab smarttab
+
 set t_Co=256
 set ttyfast
-set textwidth=80
+
+" Search
+set incsearch
+set hlsearch
+set ignorecase
+
+" Key
+set timeout 
+set timeoutlen=350
+set ttimeout 
+set ttimeoutlen=350
+
+" Type
+set autoindent 
+set copyindent
+set backspace=indent,eol,start
+set clipboard=unnamedplus
+set tabstop=2
+set expandtab 
+set smarttab
+set shiftwidth=2
+
+" Mouse
+set mouse=a
+
+" File
+set autoread
+set laststatus=1
 set formatoptions+=t
 set formatoptions-=l
-set foldlevel=99
-" set cursorline
-" set cursorcolumn
+
+" Color
+colorscheme codedark
+
+" Shell
 if has("unix")
   set shell=/usr/bin/zsh\ -l
 endif
 
-set guifont=Consolas:h20:cANSI
-colorscheme codedark
-" colorscheme gruvbox
-
-"========================= SAFE GUARD =============================="
-
+" Safe guard
+set history=1000 
 set backup
 set undolevels=1000
 set undofile
-if has("nvim") && !has("win32")
+
+if has("nvim") && has("unix")
   set backupdir=~/.local/share/nvim/backup
 endif
 
-"==================================================================="
+if has("gui_running")
+  set guifont=Consolas:h20:cANSI
+  set guioptions=
+  set guioptions+=c
+endif
+
 "============================= COCNVIM =============================" 
-"===================================================================" 
-"
+
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
@@ -210,25 +225,21 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-"==================================================================="
-"========================= KEY BINDING ============================="
-"==================================================================="
+"========================= KEY BINDS ============================="
 
-" LEADER
+" Leader
 nnoremap <SPACE> <Nop>
+inoremap jj <Esc>
+
 let mapleader=" "
 
-" QUICK
 " ZZ : Save and quit
 " ZQ : Save without quit
 
 nnoremap <TAB> :nohl<CR>
-
-" ESC
-inoremap jj <Esc>
 nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 
-" PANE
+" Switch Pane
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
@@ -240,53 +251,50 @@ nmap <silent> <leader>G :wincmd H<CR>
 nmap <silent> <leader>L :wincmd L<CR>
 
 nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
-nmap <silent> <leader>v :split <bar> wincmd j<CR> " TAB nmap <silent> <leader>p :tabn<CR>
-nmap <silent> <leader>n :tabp<CR>
-nmap <silent> <leader>t :tabnew<CR>
+nmap <silent> <leader>v :split <bar> wincmd j<CR> 
 
-" NERDTREE
+" Switch Buffer
+nmap <silent> <leader>i :bnext<CR>
+nmap <silent> <leader>u :bprev<CR>
+
+" Nerd tree
 nmap <silent> <leader>e :NERDTreeToggle<CR>
 nmap <silent> <leader>r :NERDTreeFocus<CR>R<CR>
 
-" SEARCH
+" FZF Search
 nmap <silent> <leader>o :GFiles<CR>
 nmap <silent> <leader>p :Buffers<CR>
 
-" QUICK EXECUTE
+" Execute
 map <F10> :w <bar> :!run %<CR>
 imap <F10> <Esc> :w <bar> :!run %<CR>
 
-" PASTE WITHOUT REPLACE 
+" Visual paste 
 vnoremap p "_c<C-r><C-o>+<Esc>
 
-" EASY ALIGN
+" Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-
-
-"==================================================================="
 "========================= PLUGINS CONFIG =========================="
-"==================================================================="
 
-" COC PAIRS
+" Coc-pairs blacklist <
 autocmd FileType rust,cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
 
-
-" NERDTREE CONFIG
+" Nerdtree
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 let NERDTreeMapActivateNode='l'
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" PYTHON HIGHLIGHT
+" Python highlight
 let g:python_highlight_all = 1 
 
-" CURSOR
+" Cursor
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" LATEX
+" Latex
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_open_on_warning = 0
@@ -294,18 +302,17 @@ let g:vimtex_quickfix_enabled = 1
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
 
-" PYTHON NVIM
+" Python path
 if has("unix")
   let g:python3_host_prog='/usr/bin/python'
-elseif has("win32")
-  let g:python3_host_prog='$HOME/AppData/Local/Programs/Python/Python39/python.exe'
 endif
 
-" GVIM
-set guioptions=
-set guioptions+=c
+" Airline theme
+let g:airline_theme = 'codedark'
+let g:airline#extensions#tabline#enabled = 1
 
-" WSL
+" Use system clipboard wsl
+
 " let s:clip = '/mnt/c/Windows/System32/clip.exe'
 " if executable(s:clip)
 "   augroup WSLYank
@@ -314,18 +321,23 @@ set guioptions+=c
 "   augroup END
 " endif
 
-"==================================================================="
-"====================LANGUAGE SPECIFIC FLAGS ======================="
-"==================================================================="
-
+" Language specific configuration
 augroup LangSpecs
   autocmd!
+  " Latex
   autocmd FileType tex call LatexFunc()
+
+  " Markdown
   autocmd FileType markdown set spell spelllang=en_us
+
+  " Txt
   autocmd FileType text set spell spelllang=en_us
+
+  " Rust
   autocmd FileType rust map <S-F10> :w <bar> :!cargo run <CR>
   autocmd FileType rust imap <S-F10> <Esc> :w <bar> :!cargo run<CR>
-augroup END
+
+augroup end
 
 function LatexFunc()
   set spell spelllang=en_us 
@@ -337,13 +349,3 @@ function LatexFunc()
   imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
   nnoremap <leader><leader> za 
 endfunction
-
-" AUTOSAVE
-augroup AutoSave
-  autocmd!
-  let blacklist = ['tex', 'rust', 'cpp', 'javascript', 'typescript']
-  autocmd InsertLeave * if index(blacklist, &ft) >= 0 | silent write
-  autocmd InsertEnter * if index(blacklist, &ft) >= 0 | silent write
-augroup END
-
-

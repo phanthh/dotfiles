@@ -9,6 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XAUTHORITY="$HOME/.Xauthority"
 
 #=========================== BASIC DEFAULTS==========================#
+
 # APPLICATION
 export AUR_WRAPPER="yay"
 export EDITOR="nvim"
@@ -17,7 +18,7 @@ export BROWSER="brave"
 export VISUAL="nvim"
 export TERMINAL="kitty"
 export FILE_MANAGER="pcmanfm"
-export GMAIL="thunderbird"
+export MAIL_CLIENT="mailspring"
 
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
