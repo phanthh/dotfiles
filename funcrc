@@ -1,20 +1,18 @@
 #============================ EDIT  ===========================#
 
 e() {
-  if [ -w "$PWD" ] 
-  then
-    $EDITOR $*
-  else
+  if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudoedit $*
+  else
+    $EDITOR $*
   fi
 }
 
 edg() {
-  if [ -w "$1" ]
-  then
-    $GEDITOR $* & disown $!
-  else
+  if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudo $GEDITOR $* & disown $!
+  else
+    $GEDITOR $* & disown $!
   fi
 }
 
@@ -124,7 +122,7 @@ in() {
 # Remove installed packages 
 re() {
     if [ -z "$1" ]; then
-      $AUR_WRAPPER -Qq | fzf -q "$1" -m --preview '${AUR_WRAPPER} -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
+      $AUR_WRAPPER -Qe | fzf -q "$1" -m --preview '${AUR_WRAPPER} -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
     else 
       $AUR_WRAPPER -Rns $1
     fi

@@ -1,6 +1,16 @@
 #========================== VARIABLES ==============================#
 
 # Color
+set_from_resource $foreground foreground
+set_from_resource $color0 color0
+set_from_resource $color1 color1
+set_from_resource $color2 color2
+set_from_resource $color3 color3
+set_from_resource $color4 color4
+set_from_resource $color5 color5
+set_from_resource $color6 color6
+set_from_resource $color7 color7
+
 set $darker              #050505
 set $black               #000000
 set $dark                #000000 
@@ -15,6 +25,7 @@ set $yellow              #ffb900
 set $orange              #fe8019
 set $red                 #e81123
 set $white               #ffffff
+
 set $browser             brave 
 set $browserclass        Brave-browser 
 # Mod and Submod keys
@@ -352,7 +363,7 @@ bar {
 # ws1 usr
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
-assign     [class="Brave-browser" instance="app.keeweb.info"] $ws1
+assign     [class="Keeweb"] $ws1
 assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
 
 # ws2 msg
@@ -404,6 +415,7 @@ assign     [class="firefox"] $ws10
 # ws1 usr
 for_window     [class="Thunderbird"] move to workspace $ws1
 for_window     [class="Mailspring"] move to workspace $ws1
+for_window     [class="Keeweb"] move to workspace $ws1
 
 # ws2 msg
 for_window     [class="Slack"] move to workspace $ws2
@@ -446,7 +458,6 @@ for_window     [class="firefox"] move to workspace $ws10
 ############## Specifics
 
 # ws1 usr
-for_window     [instance="app.keeweb.info" class="Brave-browser"] move to workspace $ws1
 for_window     [instance="calendar.google.com" class="Brave-browser" ] move to workspace $ws1
 
 # ws2 msg

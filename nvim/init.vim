@@ -238,6 +238,7 @@ let mapleader=" "
 
 nnoremap <TAB> :nohl<CR>
 nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
+nnoremap <F11> :e $MYVIMRC <CR>
 
 " Switch Pane
 nmap <silent> <leader>k :wincmd k<CR>
@@ -247,11 +248,23 @@ nmap <silent> <leader>l :wincmd l<CR>
 
 nmap <silent> <leader>K :wincmd K<CR>
 nmap <silent> <leader>J :wincmd J<CR>
-nmap <silent> <leader>G :wincmd H<CR>
+nmap <silent> <leader>H :wincmd H<CR>
 nmap <silent> <leader>L :wincmd L<CR>
 
+nmap <silent> <leader>K :wincmd K<CR>
+nmap <silent> <leader>J :wincmd J<CR>
+nmap <silent> <leader>H :wincmd H<CR>
+nmap <silent> <leader>L :wincmd L<CR>
+
+nmap <silent> <leader><Up> :wincmd +<CR>
+nmap <silent> <leader><Down> :wincmd -<CR>
+nmap <silent> <leader><Left> :wincmd <<CR>
+nmap <silent> <leader><Right> :wincmd ><CR>
+
 nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
-nmap <silent> <leader>v :split <bar> wincmd j<CR> 
+nmap <silent> <leader>s :split <bar> wincmd j<CR> 
+
+nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
 
 " Switch Buffer
 nmap <silent> <leader>i :bnext<CR>
@@ -262,8 +275,9 @@ nmap <silent> <leader>e :NERDTreeToggle<CR>
 nmap <silent> <leader>r :NERDTreeFocus<CR>R<CR>
 
 " FZF Search
-nmap <silent> <leader>o :GFiles<CR>
+nmap <silent> <leader>o :Files<CR>
 nmap <silent> <leader>p :Buffers<CR>
+nmap <silent> <c-p> :Commands<CR>
 
 " Execute
 map <F10> :w <bar> :!run %<CR>
@@ -336,6 +350,12 @@ augroup LangSpecs
   " Rust
   autocmd FileType rust map <S-F10> :w <bar> :!cargo run <CR>
   autocmd FileType rust imap <S-F10> <Esc> :w <bar> :!cargo run<CR>
+
+  " Scala
+  autocmd FileType scala map <S-F10> :w <bar> :!sbt run <CR>
+  autocmd FileType scala imap <S-F10> <Esc> :w <bar> :!sbt run<CR>
+  autocmd FileType scala map <F9> :w <bar> :!sbt test <CR>
+  autocmd FileType scala imap <F9> <Esc> :w <bar> :!sbt test<CR>
 
 augroup end
 
