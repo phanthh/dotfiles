@@ -87,13 +87,13 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 
-bindsym $mod+F8 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym $mod+F7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym $mod+F6 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F4 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Brightness
-bindsym $mod+F2 exec --no-startup-id "brightnessctl s 5%-"
-bindsym $mod+F3 exec --no-startup-id "brightnessctl s 5%+"
+bindsym $mod+F7 exec --no-startup-id "brightnessctl s 5%-"
+bindsym $mod+F8 exec --no-startup-id "brightnessctl s 5%+"
 
 # Display
 bindsym $smod+p exec ~/.bin/dmenu/displaylayout
@@ -118,12 +118,6 @@ bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want 
 
 # Kill 
 bindsym $mod+q kill
-
-# The middle button over a titlebar kills the window
-bindsym --release button2 kill
-
-# The middle button and a modifer over any part of the window kills the window
-bindsym --whole-window $mod+button2 kill
 
 # Change focus
 bindsym $mod+h focus left
@@ -203,7 +197,6 @@ bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
 bindsym $mod+Shift+m exec "~/.bin/i3/open messenger"
-bindsym $mod+Shift+f exec "~/.bin/i3/open facebook"
 bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
 bindsym $mod+Shift+c exec "~/.bin/i3/open calendar"
 bindsym $mod+Shift+r exec "~/.bin/i3/open remnote"
@@ -363,7 +356,7 @@ bar {
 # ws1 usr
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
-assign     [class="Keeweb"] $ws1
+assign     [instance="keeweb" class="Keeweb"] $ws1
 assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
 
 # ws2 msg
@@ -375,7 +368,6 @@ assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
 assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
 
 # ws3 soc
-assign     [instance="facebook.com$" class="Brave-browser" ] $ws3
 assign     [instance="linkedin.com$" class="Brave-browser" ] $ws3
 
 # ws4 vid
@@ -415,7 +407,7 @@ assign     [class="firefox"] $ws10
 # ws1 usr
 for_window     [class="Thunderbird"] move to workspace $ws1
 for_window     [class="Mailspring"] move to workspace $ws1
-for_window     [class="Keeweb"] move to workspace $ws1
+for_window     [instance="keeweb" class="Keeweb"] move to workspace $ws1
 
 # ws2 msg
 for_window     [class="Slack"] move to workspace $ws2
@@ -465,5 +457,4 @@ for_window     [instance="www.messenger.com" class="Brave-browser"] move to work
 for_window     [instance="web.whatsapp.com" class="Brave-browser"] move to workspace $ws2
 
 # ws3 soc
-for_window     [instance="facebook.com$" class="Brave-browser" ] move to workspace $ws3
 for_window     [instance="linkedin.com$" class="Brave-browser" ] move to workspace $ws3

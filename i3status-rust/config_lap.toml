@@ -1,0 +1,54 @@
+theme = "space-villain"
+icons = "awesome"
+
+[[block]]
+block = "net"
+device = "enp2s0"
+format = "{ssid} {speed_down} {speed_up}"
+interval = 5
+use_bits = false
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization} {frequency}"
+
+[[block]]
+block = "memory"
+format_mem = "{Mug}/{MTg}GiB({Mup}%)"
+format_swap = "{SUg}/{STg}GiB({SUp}%)"
+display_type = "memory"
+icons = true
+clickable = true
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "used"
+unit = "GiB"
+format = "{icon}{available}{unit}"
+
+[[block]]
+block = "nvidia_gpu"
+label = "GTX 1660Ti"
+show_memory = true
+show_clocks = true
+interval = 1
+
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "time"
+interval = 60
+format = "VN %a %d/%m %R"

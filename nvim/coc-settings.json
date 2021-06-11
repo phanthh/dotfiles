@@ -1,6 +1,5 @@
 {
   "suggest.noselect": false,
-  "python.jediEnabled": false,
   "suggest.maxCompleteItemCount": 7,
   "suggest.detailField": "abbr",
   "suggest.floatEnable": false,

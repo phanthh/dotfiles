@@ -1,15 +1,24 @@
 "============================= PLUGINS =============================" 
 
 call plug#begin('~/.config/nvim/plugged') 
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'tpope/vim-fugitive' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround' 
 Plug 'junegunn/vim-easy-align'
-Plug 'lilydjwg/colorizer'
+
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript' 
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'lilydjwg/colorizer'
+Plug 'alvan/vim-closetag'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
@@ -56,13 +65,10 @@ set ttimeout
 set ttimeoutlen=350
 
 " Type
-set autoindent 
-set copyindent
+set autoindent
 set backspace=indent,eol,start
 set clipboard=unnamedplus
 set tabstop=2
-set expandtab 
-set smarttab
 set shiftwidth=2
 
 " Mouse
@@ -293,13 +299,35 @@ nmap ga <Plug>(EasyAlign)
 "========================= PLUGINS CONFIG =========================="
 
 " Coc-pairs blacklist <
-autocmd FileType rust,cpp,c,javascript,typescript let b:coc_pairs_disabled = ['<']
+autocmd FileType rust,cpp,c,javascript,typescript,scala let b:coc_pairs_disabled = ['<']
 
 " Nerdtree
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 let NERDTreeMapActivateNode='l'
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.js"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb,*.js'
+" let g:closetag_emptyTags_caseSensitive = 1
+" let g:closetag_shortcut = '>'
+" let g:closetag_close_shortcut = '<leader>>'
+
 
 " Python highlight
 let g:python_highlight_all = 1 
