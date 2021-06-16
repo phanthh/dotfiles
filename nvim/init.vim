@@ -26,6 +26,8 @@ Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' 
 Plug 'tomasiser/vim-code-dark'
+
+Plug 'ActivityWatch/aw-watcher-vim'
 call plug#end()            
 
 "============================= OPTIONS ==============================="
@@ -252,10 +254,10 @@ nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 
-nmap <silent> <leader>K :wincmd K<CR>
-nmap <silent> <leader>J :wincmd J<CR>
-nmap <silent> <leader>H :wincmd H<CR>
-nmap <silent> <leader>L :wincmd L<CR>
+" nmap <silent> <leader>K :wincmd K<CR>
+" nmap <silent> <leader>J :wincmd J<CR>
+" nmap <silent> <leader>H :wincmd H<CR>
+" nmap <silent> <leader>L :wincmd L<CR>
 
 nmap <silent> <leader>K :wincmd K<CR>
 nmap <silent> <leader>J :wincmd J<CR>

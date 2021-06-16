@@ -122,7 +122,7 @@ in() {
 # Remove installed packages 
 re() {
     if [ -z "$1" ]; then
-      $AUR_WRAPPER -Qq | fzf --multi --preview '$AUR_WRAPPER -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
+      $AUR_WRAPPER -Qeq | fzf --multi --preview '$AUR_WRAPPER -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
     else 
       $AUR_WRAPPER -Rns $*
     fi

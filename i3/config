@@ -111,8 +111,8 @@ bindsym $smod+Shift+r restart
 # Systems 
 bindsym --release $smod+x exec slock
 bindsym --release $smod+Shift+x exec systemctl suspend
-bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "systemctl reboot"
-bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "systemctl poweroff"
+bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "reboot"
+bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "poweroff"
 bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "i3-msg exit"
 
 
@@ -147,7 +147,7 @@ bindsym $mod+c focus child
 
 # Split 
 bindsym $mod+w split h
-bindsym $mod+Shift+w split v
+bindsym $mod+ssplit v
 
 # Fullscreen 
 bindsym $mod+f fullscreen toggle
@@ -173,16 +173,20 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 #============ UTILS 
 
+
 # Youtube
-bindsym $mod+Shift+y exec "~/.bin/yt -r"
+bindsym $smod+y exec "~/.bin/yt -r"
 
 # Terminal
 bindsym $mod+Return exec "~/.bin/i3/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
 
 # Browser/Browser apps
-bindsym $mod+n exec ~/.bin/i3/open $browser
+bindsym $mod+n exec "~/.bin/i3/open $browser"
 bindsym $mod+Shift+n exec $browser ; workspace number $ws10 
+
+# Youtube
+bindsym $mod+y exec "~/.bin/i3/open freetube"
 
 # Dmenu
 bindsym $smod+d exec ~/.bin/dmenu_run
@@ -191,7 +195,7 @@ bindsym $smod+d exec ~/.bin/dmenu_run
 bindsym $mod+d exec ~/.bin/dmenu/dtimer
 
 # Screen Shot
-bindsym $mod+Print exec "~/.bin/prtsc current_screen"
+bindsym $smod+Print exec "~/.bin/prtsc current_screen"
 bindsym Print exec "~/.bin/prtsc area_c"
 
 # Windows
@@ -199,13 +203,14 @@ bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
 bindsym $mod+Shift+m exec "~/.bin/i3/open messenger"
+bindsym $mod+Shift+w exec "~/.bin/i3/open ActivityWatch"
 bindsym $mod+Shift+p exec "~/.bin/i3/open keeweb"
 bindsym $mod+Shift+c exec "~/.bin/i3/open calendar"
 bindsym $mod+Shift+r exec "~/.bin/i3/open remnote"
 bindsym $mod+Shift+e exec "~/.bin/i3/open $FILE_MANAGER"
 bindsym $mod+Shift+d exec "~/.bin/i3/open discord"
 bindsym $mod+Shift+z exec "~/.bin/i3/open zoom"
-bindsym $mod+Shift+a exec "~/.bin/i3/open $MAIL_CLIENT"
+bindsym $mod+Shift+a exec "~/.bin/i3/open mailspring"
 bindsym $mod+Shift+b exec "~/.bin/i3/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/i3/open $GEDITOR"
 bindsym $mod+Shift+g exec "~/.bin/i3/open telegram-desktop"
@@ -358,8 +363,9 @@ bar {
 # ws1 usr
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
-assign     [instance="keeweb" class="Keeweb"] $ws1
+assign     [class="KeeWeb"] $ws1
 assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
+assign 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] $ws1 
 
 # ws2 msg
 assign     [class="Slack"] $ws2
@@ -382,6 +388,7 @@ assign     [class="obsidian"] $ws5
 # ws6 media
 assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
+assign 		 [class="FreeTube"] $ws6
 
 # ws7 dev
 assign     [class="scrcpy"] $ws7
@@ -409,7 +416,8 @@ assign     [class="firefox"] $ws10
 # ws1 usr
 for_window     [class="Thunderbird"] move to workspace $ws1
 for_window     [class="Mailspring"] move to workspace $ws1
-for_window     [instance="keeweb" class="Keeweb"] move to workspace $ws1
+for_window     [class="KeeWeb"] move to workspace $ws1
+for_window 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] move to workspace $ws1 
 
 # ws2 msg
 for_window     [class="Slack"] move to workspace $ws2
@@ -429,6 +437,7 @@ for_window     [class="obsidian"] move to workspace $ws5
 # ws6 media
 for_window     [class="mpv"] move to workspace $ws6
 for_window     [class="Spotify"] move to workspace $ws6
+for_window 		 [class="FreeTube"] move to workspace $ws6
 
 # ws7 dev
 for_window     [class="scrcpy"] move to workspace $ws7
