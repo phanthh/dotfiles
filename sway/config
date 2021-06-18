@@ -1,14 +1,14 @@
 #========================== VARIABLES ==============================#
 
-# Color from Xresources
-set_from_resource $foreground foreground
-set_from_resource $background background
-set_from_resource $background2 color8
-set_from_resource $primary color12
-set_from_resource $secondary color3
-set_from_resource $warning color1
-set_from_resource $border color0
-set_from_resource $border2 color0
+# Colors 
+set $foreground #ffffff
+set $background #101010
+set $background2 #424242
+set $primary #0078d7
+set $secondary #ffb900
+set $warning #e81123
+set $border #101010
+set $border2 #101010
 
 # Mod and Submod keys
 set $mod Mod1
@@ -39,27 +39,36 @@ set $ws10 "10  "
 
 floating_modifier $mod 
 
+#======================== INPUT ===============================#
+
+input type:keyboard {
+		repeat_delay 200
+		repeat_rate 200
+}
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+input * xkb_numlock enable
+
+
+seat seat0 xcursor_theme Adwaita 48
+
+seat seat0 hide_cursor 10000
+
+seat seat0 hide_cursor when-typing enable
+
 #======================== AUTOSTART ===============================#
 
-# Lock daemon
-exec 				--no-startup-id "xss-lock --transfer-sleep-lock -- slock"
-
-# Enable numlock
-exec 				--no-startup-id "numlockx"
-
+# Hot switch monitors
 # Default layout
-exec        --no-startup-id ~/.bin/screen/hdmi
-
 # Background
-# exec_always --no-startup-id hsetroot -cover ~/Pictures/wallpaper/7zav1np1ss761.jpg
-exec_always --no-startup-id hsetroot -solid "#000000"
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/beautiful-city_-wallpaper.jpg
-
+output * bg #000000 solid_color
 # Startup Brightness
 exec        --no-startup-id "brightnessctl s 5%"
-
 # Applications
-exec        --no-startup-id ~/.config/i3/autostart
+exec        --no-startup-id ~/.config/sway/autostart
 
 #============================ KEYBINDING ===========================#
 
@@ -89,16 +98,21 @@ bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
 # Power
 bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
 
-# I3
-bindsym $smod+Shift+c reload
-bindsym $smod+Shift+r restart
+bindsym $smod+Shift+r reload
 
 # Systems 
-bindsym --release $smod+x exec slock
+# LOCKING
+exec swayidle -w \
+	timeout 300 'swaylock' \
+	timeout 305 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock'
+
+bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
 bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "reboot"
 bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "poweroff"
-bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "i3-msg exit"
+bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "swaymsg exit"
 
 
 #=========== WINDOW 
@@ -167,17 +181,17 @@ bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
 
 # Browser/Browser apps
-bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
-bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
+bindsym $mod+n exec "~/.bin/wm/open firefox"
+bindsym $mod+Shift+n exec firefox ; workspace number $ws10 
 
 # Youtube
 bindsym $mod+y exec "~/.bin/wm/open freetube"
 
 # Dmenu
-bindsym $smod+d exec "~/.bin/wm/menu"
+bindsym $smod+d exec ~/.bin/dmenu_run
 
 # Timer
-bindsym $mod+d exec "~/.bin/dmenu/dtimer"
+bindsym $mod+d exec ~/.bin/dmenu/dtimer
 
 # Screen Shot
 bindsym $smod+Print exec "~/.bin/prtsc current_screen"
@@ -205,7 +219,7 @@ bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
 #============ WORKSPACE 
 
 # Kill workspace
-bindsym $mod+Shift+q exec ~/.bin/i3/killworkspace
+bindsym $mod+Shift+q exec "~/.bin/i3/killworkspace"
 
 # Change workspace layout 
 bindsym $mod+s layout stacking
@@ -235,11 +249,12 @@ bindsym $mod+less move workspace to output left
 #=========================== CONFIG ===============================#
 
 #=========== WINDOW 
+#
 
 for_window  [class=".*"] title_format "<b>%title</b>"
 title_align center
-new_window  pixel 1
-
+default_border pixel 1
+hide_edge_borders --i3 smart
 
 # Colors
 #                       border      background     text       indicator  child_border
@@ -258,6 +273,10 @@ focus_follows_mouse no
 
 font pango:Font Awesome 5 Free 9, NotoSans Nerd Font 9
 
+#=========== GTK THEME IMPORT 
+
+exec_always import-gsettings
+
 #=========== WORKSPACE 
 
 # for_window [workspace=$ws10] layout tabbed
@@ -271,20 +290,6 @@ workspace_layout tabbed
 # Bar1
 bar {
     output eDP-1
-    # disk traffic memory cpu redshift playerctl spotify
-    # status_command bumblebee-status \
-    #     -m traffic sensors2 cpu2 memory disk pomodoro taskwarrior battery brightness pasource pasink weather timetz time date \
-    #     -t night-powerline \
-    #     -p root.path=/ timetz.timezone="Europe/Helsinki" \
-    #       weather.showcity="false" battery.showpowerconsumption="true"\
-    #       sensors2.showtemp="false" sensors2.showfan="false"\
-    #       cpu2.layout="cpu2.cpuload cpu2.coresload"\
-    #       traffic.exclude="wl,lo,virbr,docker,vboxnet,veth"\
-    #       disk.path="/" disk.format="{left}" memory.format="{used} ({percent:05.02f}%)"\
-    #       timetz.format="FI %H:%M" time.format="VN %H:%M"\
-    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
-    #       pomodoro.work=60 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'
-    
 
     # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
@@ -311,19 +316,6 @@ bar {
 # Bar2
 bar {
     output HDMI-1
-    # spotify progress taskwarrior uptime weather kernel
-    # status_command bumblebee-status \
-    #     -m cmus progress nvidiagpu pomodoro memory battery pasource pasink datetimetz timetz time date\
-    #     -t night-powerline \
-    #     -p root.path=/ timetz.timezone="Europe/Helsinki" datetimetz.timezone="America/Mazatlan" datetimetz.format="US %H:%M"\
-    #       weather.showcity="false" progress.placeholder="" battery.showpowerconsumption="true"\
-    #       timetz.format="FI %H:%M" time.format="VN %H:%M" memory.format="{used} ({percent:05.02f}%)"\
-    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
-    #       pomodoro.work=10 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'\
-    #       progress.barwidth=8 progress.format="{cmd} {speed} {percentage}% {bar}" \
-    #       progress.baremptychar="    " progress.barfilledchar="█" 
-
-
     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
     colors {
@@ -342,38 +334,35 @@ bar {
     # strip_workspace_numbers yes
 }
 
-
-
 #=========================== ASSIGN ===============================#
 
 # ws1 usr
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
-assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
-assign 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] $ws1 
+assign     [app_id="Brave-browser" title="Calendar"] $ws1
+for_window  [app_id="Brave-browser" title="Calendar"] move to workspace $ws1
+assign     [app_id="Brave-browser" title="ActivityWatch"] $ws1
 
 # ws2 msg
 assign     [class="Slack"] $ws2
-assign     [instance="signal" class="Signal"] $ws2
 assign     [class="discord"] $ws2
-assign     [class="TelegramDesktop"] $ws2
-assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
-assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
+assign     [app_id="telegramdesktop"] $ws2
+assign     [app_id="Brave-browser" title="Messenger"] $ws2
+for_window  [app_id="Brave-browser" title="Messenger"] move to workspace $ws2
 
 # ws3 soc
-assign     [instance="linkedin.com$" class="Brave-browser" ] $ws3
 
 # ws4 vid
 assign     [class="zoom"] $ws4
 
 # ws5 lib
-assign     [class="calibre"] $ws5
-assign     [class="obsidian"] $ws5
+assign     [app_id="calibre"] $ws5
 
 # ws6 media
 assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
+for_window  [class="Spotify"] move to workspace $ws6
 assign 		 [class="FreeTube"] $ws6
 
 # ws7 dev
@@ -384,74 +373,16 @@ assign     [class="jetbrains-studio"] $ws7
 assign     [class="Code"] $ws7
 
 # ws8 work
-assign     [instance="libreoffice"] $ws8
-assign     [class="okular"] $ws8
+assign     [app_id="libreoffice"] $ws8
+assign     [app_id="okular"] $ws8
 assign     [class="RemNote"] $ws8
 
 # ws9 term
+# assign     [app_id="kitty"] $ws9
+for_window  [app_id="kitty"] move to workspace $ws9
 
 # ws10 web
-assign     [class="Vivaldi-stable"] $ws10
-assign     [class="Brave-browser"] $ws10
-assign     [class="firefox"] $ws10
+assign     [app_id="firefox"] $ws10
 
 #===================== MOVE WHEN RELOAD ===========================#
 
-############## General
-
-# ws1 usr
-for_window     [class="Thunderbird"] move to workspace $ws1
-for_window     [class="Mailspring"] move to workspace $ws1
-for_window     [class="KeeWeb"] move to workspace $ws1
-for_window 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] move to workspace $ws1 
-
-# ws2 msg
-for_window     [class="Slack"] move to workspace $ws2
-for_window     [class="Signal"] move to workspace $ws2
-for_window     [class="discord"] move to workspace $ws2
-for_window     [class="TelegramDesktop"] move to workspace $ws2
-
-# ws3 soc
-
-# ws4 vid
-for_window     [class="zoom"] move to workspace $ws4
-
-# ws5 lib
-for_window     [class="calibre"] move to workspace $ws5
-for_window     [class="obsidian"] move to workspace $ws5
-
-# ws6 media
-for_window     [class="mpv"] move to workspace $ws6
-for_window     [class="Spotify"] move to workspace $ws6
-for_window 		 [class="FreeTube"] move to workspace $ws6
-
-# ws7 dev
-for_window     [class="scrcpy"] move to workspace $ws7
-for_window     [class="VirtualBox Machine"] move to workspace $ws7
-for_window     [class="*jetbrains*"] move to workspace $ws7
-for_window     [class="Code"] move to workspace $ws7
-
-# ws8 work
-for_window     [class="libreoffice"] move to workspace $ws8
-for_window     [class="okular"] move to workspace $ws8
-for_window     [class="RemNote"] move to workspace $ws8
-
-# ws9 term
-for_window     [class="kitty"] move to workspace $ws9
-
-# ws10 web
-for_window     [class="Vivaldi-stable"] move to workspace $ws10
-for_window     [class="Brave-browser"] move to workspace $ws10
-for_window     [class="firefox"] move to workspace $ws10
-
-############## Specifics
-
-# ws1 usr
-for_window     [instance="calendar.google.com" class="Brave-browser" ] move to workspace $ws1
-
-# ws2 msg
-for_window     [instance="www.messenger.com" class="Brave-browser"] move to workspace $ws2
-for_window     [instance="web.whatsapp.com" class="Brave-browser"] move to workspace $ws2
-
-# ws3 soc
-for_window     [instance="linkedin.com$" class="Brave-browser" ] move to workspace $ws3

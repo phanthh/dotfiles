@@ -77,7 +77,7 @@ set shiftwidth=2
 set mouse=a
 
 " File
-set autoread
+" set autoread
 set laststatus=1
 set formatoptions+=t
 set formatoptions-=l
@@ -306,6 +306,7 @@ autocmd FileType rust,cpp,c,javascript,typescript,scala let b:coc_pairs_disabled
 " Nerdtree
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 let NERDTreeMapActivateNode='l'
+let NERDTreeShowHidden=1
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -353,7 +354,7 @@ endif
 
 " Airline theme
 let g:airline_theme = 'codedark'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 " Use system clipboard wsl
 
@@ -399,3 +400,14 @@ function LatexFunc()
   imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
   nnoremap <leader><leader> za 
 endfunction
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None

@@ -30,6 +30,7 @@ conf() {
       xinit)             echo ~/.xinitrc ;;
       tmux)              echo ~/.config/tmux/tmux.conf ;;
       i3)                echo ~/.config/i3/config ;;
+      sway)              echo ~/.config/sway/config ;;
       bsp)               echo ~/.config/bspwm/bspwmrc ;;
       ohmyzsh)           echo ~/.oh-my-zsh ;;
       kit|kitty)         echo ~/.config/kitty/kitty.conf ;;
@@ -52,7 +53,8 @@ conf() {
       yay)               echo ~/.config/yay/config.json  ;;
       paru)              echo ~/.config/paru.conf ;;
       ytmdl)             echo ~/.config/ytmdl/config ;;
-      autostart|auto)    echo ~/.bin/i3/autostart ;;
+      autoi3)     			 echo ~/.config/i3/autostart ;;
+			autosway)  			   echo ~/.config/sway/autostart ;;
       picom)             echo ~/.config/picom/picom.conf ;;
       i3rs)              echo ~/.config/i3status-rust/config.toml ;;
       run)               echo ~/.local/bin/run ;;

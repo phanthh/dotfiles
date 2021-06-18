@@ -4,7 +4,7 @@
 
 ! black
 *.color0:       #101010
-*.color8:       #767676
+*.color8:       #424242
 
 ! red
 *.color1:       #e81123
@@ -31,7 +31,7 @@
 *.color14:      #038387
 
 ! white
-*.color7:       #a89985
+*.color7:       #767676
 *.color15:      #ffffff
 
 Xcursor.size: 48

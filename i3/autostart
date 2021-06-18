@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+picom &
+dunst &
+
+# UTILS
+ibus-daemon -drx &
+lxsession &
+unclutter &
+hushboard &
+# keeweb &
+# remnote &
+# udiskie &
+# blueman-applet &
+# conky &
+# optimus-manager-qt &
+
+# AUTOSTART FOLDER
+gammastep-indicator &
+mailspring --background &
+telegram-desktop -startintray &
+slack -s -u &
+discord --start-minimized &
+
+# MESSAGE
+
+# WEBAPP
+sleep 20
+messenger &
+calendar &

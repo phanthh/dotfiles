@@ -1,21 +1,14 @@
 #!/bin/sh
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
-
-# Lock daemon
-xss-lock --transfer-sleep-lock -- slock &
-
+# Input
 xset r rate 255 100 &
 xset m mouse 3/2 10 &
 xset s on &
 xset s 600 &
 xrdb /home/phanth/.Xresources
-
-numlockx &
 # setxkbmap -option caps:escape &
+
+# PRIME offload
 /usr/bin/prime-offload &
 
-# DE / WM
-# startxfce4
-i3
+exec $WM

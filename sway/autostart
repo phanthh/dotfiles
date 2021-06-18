@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+dunst &
+
+# UTILS
+# fcitx5 -d --replace &
+lxsession &
+# hushboard &
+# keeweb &
+# remnote &
+# udiskie &
+# blueman-applet &
+# conky &
+# optimus-manager-qt &
+
+# AUTOSTART FOLDER
+gammastep-indicator &
+mailspring --background &
+telegram-desktop -startintray &
+slack -s -u &
+discord --start-minimized &
+
+# MESSAGE
+
+# WEBAPP
+sleep 20
+messenger &
+calendar &
