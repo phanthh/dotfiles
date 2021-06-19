@@ -11,14 +11,14 @@ export XAUTHORITY="$HOME/.Xauthority"
 #=========================== BASIC DEFAULTS==========================#
 
 # APPLICATION
-export WM="i3" 
+export WM="sway" 
 export AUR_WRAPPER="yay"
 export EDITOR="nvim"
 export GEDITOR="neovide"
-export BROWSER="brave"
 export VISUAL="nvim"
 export TERMINAL="kitty"
 export FILE_MANAGER="pcmanfm"
+export BROWSERAPP="brave"
 export BROWSER="brave"
 
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
@@ -26,6 +26,7 @@ export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export TASKDATA="$XDG_CONFIG_HOME/task/"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export NO_AT_BRIDGE=1
+
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus

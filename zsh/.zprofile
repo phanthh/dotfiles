@@ -1,16 +1,14 @@
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
 		## OFF BLUETOOTH
-		sudo bluetooth off &
-		bluetoothctl power off &
+		sudo bluetooth off &> /dev/null &
+		bluetoothctl power off &> /dev/null &
 
 		# KEYRING
-		eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-		export SSH_AUTH_SOCK
-
+		# eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
+		# export SSH_AUTH_SOCK &
 
 		case $WM in 
 			i3)
-
 				# PRIME switch
 				sudo /usr/bin/prime-switch
 				# XServer -> I3
@@ -18,18 +16,16 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				;;
 			sway)
 				export _JAVA_AWT_WM_NONREPARENTING=1
-				export BEMENU_BACKEND=wayland
 				export MOZ_ENABLE_WAYLAND=1
 				export QT_QPA_PLATFORM=wayland
 				export CLUTTER_BACKEND=wayland
-				export BROWSER="brave --enable-features=UseOzonePlatform --ozone-platform=wayland"
 				exec sway &> /dev/null
 				;;
 			*)
 				echo "No valid DE/WM specified"
 				;;
 		esac 
-		# logout
+		logout
 fi
 
 

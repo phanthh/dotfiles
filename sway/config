@@ -42,8 +42,8 @@ floating_modifier $mod
 #======================== INPUT ===============================#
 
 input type:keyboard {
-		repeat_delay 200
-		repeat_rate 200
+		repeat_delay 255
+		repeat_rate 100
 }
 input type:touchpad {
     tap enabled
@@ -75,13 +75,6 @@ exec        --no-startup-id ~/.config/sway/autostart
 #============ CONTROLS 
 
 # Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-
-
 bindsym $mod+F1 exec --no-startup-id "~/.bin/wm/open pavucontrol"
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -103,8 +96,8 @@ bindsym $smod+Shift+r reload
 # Systems 
 # LOCKING
 exec swayidle -w \
-	timeout 300 'swaylock' \
-	timeout 305 'swaymsg "output * dpms off"' \
+	timeout 1500 'swaylock' \
+	timeout 1505 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock'
 
@@ -114,6 +107,8 @@ bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you 
 bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "poweroff"
 bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "swaymsg exit"
 
+# IBUS
+bindsym $mod+z exec ~/.bin/wm/ibus-toggle
 
 #=========== WINDOW 
 
@@ -181,24 +176,24 @@ bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
 
 # Browser/Browser apps
-bindsym $mod+n exec "~/.bin/wm/open firefox"
-bindsym $mod+Shift+n exec firefox ; workspace number $ws10 
+bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
+bindsym $mod+Shift+n exec "$BROWSER ; workspace number $ws10"
 
 # Youtube
 bindsym $mod+y exec "~/.bin/wm/open freetube"
 
 # Dmenu
-bindsym $smod+d exec ~/.bin/dmenu_run
+bindsym $smod+d exec "~/.bin/wm/menu"
 
 # Timer
-bindsym $mod+d exec ~/.bin/dmenu/dtimer
+bindsym $mod+d exec "~/.bin/dmenu/dtimer"
 
 # Screen Shot
 bindsym $smod+Print exec "~/.bin/prtsc current_screen"
 bindsym Print exec "~/.bin/prtsc area_c"
 
 # Windows
-bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
+# bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
 bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
@@ -213,7 +208,7 @@ bindsym $mod+Shift+z exec "~/.bin/wm/open zoom"
 bindsym $mod+Shift+a exec "~/.bin/wm/open mailspring"
 bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/wm/open $GEDITOR"
-bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-desktop"
+bindsym $mod+Shift+g exec "~/.bin/wm/open -s telegramdesktop telegram-desktop"
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
 
 #============ WORKSPACE 
@@ -340,16 +335,16 @@ bar {
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
-assign     [app_id="Brave-browser" title="Calendar"] $ws1
-for_window  [app_id="Brave-browser" title="Calendar"] move to workspace $ws1
-assign     [app_id="Brave-browser" title="ActivityWatch"] $ws1
+assign     [class="Brave-browser" instance="calendar.google.com"] $ws1 
+assign 		 [instance="localhost" class="Brave-browser" title="ActivityWatch"] $ws1 
+
 
 # ws2 msg
 assign     [class="Slack"] $ws2
 assign     [class="discord"] $ws2
 assign     [app_id="telegramdesktop"] $ws2
-assign     [app_id="Brave-browser" title="Messenger"] $ws2
-for_window  [app_id="Brave-browser" title="Messenger"] move to workspace $ws2
+assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
+assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
 
 # ws3 soc
 
@@ -382,6 +377,8 @@ assign     [class="RemNote"] $ws8
 for_window  [app_id="kitty"] move to workspace $ws9
 
 # ws10 web
+assign     [class="Brave-browser"] $ws10
+assign     [class="Vivaldi-stable"] $ws10
 assign     [app_id="firefox"] $ws10
 
 #===================== MOVE WHEN RELOAD ===========================#

@@ -3,7 +3,8 @@
 dunst &
 
 # UTILS
-# fcitx5 -d --replace &
+xsettingsd &
+ibus-daemon -drx &
 lxsession &
 # hushboard &
 # keeweb &
@@ -24,5 +25,5 @@ discord --start-minimized &
 
 # WEBAPP
 sleep 20
-messenger &
-calendar &
+# messenger &
+# calendar &

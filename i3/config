@@ -184,7 +184,7 @@ bindsym $smod+Print exec "~/.bin/prtsc current_screen"
 bindsym Print exec "~/.bin/prtsc area_c"
 
 # Windows
-bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
+# bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
 bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
@@ -199,13 +199,13 @@ bindsym $mod+Shift+z exec "~/.bin/wm/open zoom"
 bindsym $mod+Shift+a exec "~/.bin/wm/open mailspring"
 bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
 bindsym $mod+Shift+i exec "~/.bin/wm/open $GEDITOR"
-bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-desktop"
+bindsym $mod+Shift+g exec "~/.bin/wm/open -s telegramdesktop telegram-desktop"
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
 
 #============ WORKSPACE 
 
 # Kill workspace
-bindsym $mod+Shift+q exec ~/.bin/i3/killworkspace
+bindsym $mod+Shift+q exec "~/.bin/i3/killworkspace"
 
 # Change workspace layout 
 bindsym $mod+s layout stacking
@@ -271,20 +271,6 @@ workspace_layout tabbed
 # Bar1
 bar {
     output eDP-1
-    # disk traffic memory cpu redshift playerctl spotify
-    # status_command bumblebee-status \
-    #     -m traffic sensors2 cpu2 memory disk pomodoro taskwarrior battery brightness pasource pasink weather timetz time date \
-    #     -t night-powerline \
-    #     -p root.path=/ timetz.timezone="Europe/Helsinki" \
-    #       weather.showcity="false" battery.showpowerconsumption="true"\
-    #       sensors2.showtemp="false" sensors2.showfan="false"\
-    #       cpu2.layout="cpu2.cpuload cpu2.coresload"\
-    #       traffic.exclude="wl,lo,virbr,docker,vboxnet,veth"\
-    #       disk.path="/" disk.format="{left}" memory.format="{used} ({percent:05.02f}%)"\
-    #       timetz.format="FI %H:%M" time.format="VN %H:%M"\
-    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
-    #       pomodoro.work=60 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'
-    
 
     # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
@@ -311,18 +297,6 @@ bar {
 # Bar2
 bar {
     output HDMI-1
-    # spotify progress taskwarrior uptime weather kernel
-    # status_command bumblebee-status \
-    #     -m cmus progress nvidiagpu pomodoro memory battery pasource pasink datetimetz timetz time date\
-    #     -t night-powerline \
-    #     -p root.path=/ timetz.timezone="Europe/Helsinki" datetimetz.timezone="America/Mazatlan" datetimetz.format="US %H:%M"\
-    #       weather.showcity="false" progress.placeholder="" battery.showpowerconsumption="true"\
-    #       timetz.format="FI %H:%M" time.format="VN %H:%M" memory.format="{used} ({percent:05.02f}%)"\
-    #       date.format="%a, %b %d %Y" taskwarrior.taskrc="/home/phanth/.taskrc"\
-    #       pomodoro.work=10 pomodoro.notify='/home/phanth/.bin/i3/pomodoro-notify'\
-    #       progress.barwidth=8 progress.format="{cmd} {speed} {percentage}% {bar}" \
-    #       progress.baremptychar="    " progress.barfilledchar="█" 
-
 
     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
