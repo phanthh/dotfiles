@@ -4,8 +4,9 @@ dunst &
 
 # UTILS
 xsettingsd &
+aw-qt &
 ibus-daemon -drx &
-lxsession &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # hushboard &
 # keeweb &
 # remnote &
@@ -15,7 +16,7 @@ lxsession &
 # optimus-manager-qt &
 
 # AUTOSTART FOLDER
-gammastep-indicator &
+gammastep -m wayland &
 mailspring --background &
 telegram-desktop -startintray &
 slack -s -u &

@@ -1,13 +1,16 @@
 #!/bin/sh
+
 #
 picom &
 dunst &
 
+
 # UTILS
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 ibus-daemon -drx &
-lxsession &
 unclutter &
 hushboard &
+aw-qt &
 # keeweb &
 # remnote &
 # udiskie &
@@ -16,7 +19,7 @@ hushboard &
 # optimus-manager-qt &
 
 # AUTOSTART FOLDER
-gammastep-indicator &
+gammastep -m randr &
 mailspring --background &
 telegram-desktop -startintray &
 slack -s -u &

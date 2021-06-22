@@ -22,7 +22,6 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
-			open)						   echo ~/.bin/wm/open ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
       zshenv|env)        echo ~/.zshenv ;;
       zprofile)          echo ~/.config/zsh/.zprofile ;;

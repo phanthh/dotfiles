@@ -74,6 +74,11 @@ exec        --no-startup-id ~/.config/sway/autostart
 
 #============ CONTROLS 
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
 # Volume
 bindsym $mod+F1 exec --no-startup-id "~/.bin/wm/open pavucontrol"
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle

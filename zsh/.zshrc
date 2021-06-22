@@ -13,15 +13,20 @@ fi
 #======================= OHMYZSH ===============================#
 
 export ZSH="$HOME/.local/share/oh-my-zsh"
-# ZSH_THEME="windows"
-# plugins=(git zsh-autosuggestions)
-# source $ZSH/oh-my-zsh.sh
-setopt autocd
-source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-setopt prompt_subst
-PROMPT='C:%{${${${(%):-%~}//\//\\}/\~/\\Users\\$USER}%${#${${(%):-%~}//\//\\}/\~/\\Users\\$USER}G%}> '
+# kardan
+ZSH_THEME="windows"
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+source $ZSH/oh-my-zsh.sh
+
+# setopt autocd
+# source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $ZSH/plugins/git/git.plugin.zsh
+
+# setopt prompt_subst
+# source $ZSH/custom/themes/windows.zsh-theme
+# PROMPT='C:%{${${${(%):-%~}//\//\\}/\~/\\Users\\$USER}%${#${${(%):-%~}//\//\\}/\~/\\Users\\$USER}G%}> '
 
 #======================= ALIASES ===============================#
 
