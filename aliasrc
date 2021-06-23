@@ -55,6 +55,7 @@ alias cvimg="mogrify -format png"
 alias ds="conda activate tfgpu"
 alias cmus="cd ~/Musics && cmus"
 alias spt="speedtest-cli"
+alias ka="killall"
 
 #============================ SAFETY NETS ============================#
 

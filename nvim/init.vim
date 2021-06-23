@@ -18,6 +18,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'lilydjwg/colorizer'
 Plug 'alvan/vim-closetag'
+Plug 'mlaursen/vim-react-snippets'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -283,7 +284,7 @@ nmap <silent> <leader>e :NERDTreeToggle<CR>
 nmap <silent> <leader>r :NERDTreeFocus<CR>R<CR>
 
 " FZF Search
-nmap <silent> <leader>o :Files<CR>
+nmap <silent> <leader>o :GFiles<CR>
 nmap <silent> <leader>p :Buffers<CR>
 nmap <silent> <c-p> :Commands<CR>
 

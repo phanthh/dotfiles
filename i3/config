@@ -17,7 +17,7 @@ set $smod Mod4
 # Workspaces
 # set $ws1 "1:usr"
 # set $ws2 "2:msg"
-# set $ws3 "3:soc"
+# set $ws3 "3:cal"
 # set $ws4 "4:vid"
 # set $ws5 "5:lib"
 # set $ws6 "6:media"
@@ -28,7 +28,7 @@ set $smod Mod4
 
 set $ws1 "1   "
 set $ws2 "2   "
-set $ws3 "3   "
+set $ws3 "3   "
 set $ws4 "4   "
 set $ws5 "5   "
 set $ws6 "6   "
@@ -42,7 +42,6 @@ floating_modifier $mod
 #======================== AUTOSTART ===============================#
 
 # Lock daemon
-exec 				--no-startup-id "xss-lock --transfer-sleep-lock -- slock"
 
 # Enable numlock
 exec 				--no-startup-id "numlockx"
@@ -86,7 +85,7 @@ bindsym $smod+p exec ~/.bin/dmenu/displaylayout
 bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
 
 # Power
-bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
+bindsym $mod+Shift+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
 
 # I3
 bindsym $smod+Shift+c reload
@@ -165,12 +164,6 @@ bindsym $smod+y exec "~/.bin/yt -r"
 bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
 
-# Browser/Browser apps
-bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
-bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
-
-# Youtube
-bindsym $mod+y exec "~/.bin/wm/open freetube"
 
 # Dmenu
 bindsym $smod+d exec "~/.bin/wm/menu"
@@ -186,20 +179,18 @@ bindsym Print exec "~/.bin/prtsc area_c"
 # bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
-bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
-bindsym $mod+Shift+f exec "~/.bin/wm/open spotify"
-bindsym $mod+Shift+w exec "~/.bin/wm/open ActivityWatch"
-bindsym $mod+Shift+p exec "~/.bin/wm/open keeweb"
-bindsym $mod+Shift+c exec "~/.bin/wm/open calendar"
-bindsym $mod+Shift+r exec "~/.bin/wm/open remnote"
-bindsym $mod+Shift+e exec "~/.bin/wm/open $FILE_MANAGER"
-bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
-bindsym $mod+Shift+z exec "~/.bin/wm/open zoom"
-bindsym $mod+Shift+a exec "~/.bin/wm/open mailspring"
-bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
-bindsym $mod+Shift+i exec "~/.bin/wm/open $GEDITOR"
-bindsym $mod+Shift+g exec "~/.bin/wm/open -s telegramdesktop telegram-desktop"
+# Browser/Browser apps
+bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
+bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
+
+bindsym $mod+m exec "~/.bin/wm/open messenger"
+bindsym $mod+g exec "~/.bin/wm/open telegram-deskstop"
+bindsym $mod+p exec "~/.bin/wm/open keeweb"
+
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
+bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
+
+bindsym $mod+Shift+e exec "~/.bin/wm/open $FILE_MANAGER"
 
 #============ WORKSPACE 
 
@@ -323,19 +314,16 @@ bar {
 assign     [class="Thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
-assign     [class="Brave-browser" instance="calendar.google.com"] $ws1
-assign 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] $ws1 
 
 # ws2 msg
 assign     [class="Slack"] $ws2
 assign     [instance="signal" class="Signal"] $ws2
 assign     [class="discord"] $ws2
 assign     [class="TelegramDesktop"] $ws2
-assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
-assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
+assign     [window_role="pop-up" instance="www.messenger.com" class="Brave-browser"] $ws2
 
 # ws3 soc
-assign     [instance="linkedin.com$" class="Brave-browser" ] $ws3
+assign     [window_role="pop-up" instance="calendar.google.com" class="Brave-browser"] $ws3
 
 # ws4 vid
 assign     [class="zoom"] $ws4
@@ -347,6 +335,7 @@ assign     [class="obsidian"] $ws5
 # ws6 media
 assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
+for_window     [class="Spotify"] move to workspace $ws6
 assign 		 [class="FreeTube"] $ws6
 
 # ws7 dev
@@ -368,63 +357,3 @@ assign     [class="Vivaldi-stable"] $ws10
 assign     [class="Brave-browser"] $ws10
 assign     [class="firefox"] $ws10
 
-#===================== MOVE WHEN RELOAD ===========================#
-
-############## General
-
-# ws1 usr
-for_window     [class="Thunderbird"] move to workspace $ws1
-for_window     [class="Mailspring"] move to workspace $ws1
-for_window     [class="KeeWeb"] move to workspace $ws1
-for_window 		 [window_role="pop-up" class="Brave-browser" title="ActivityWatch"] move to workspace $ws1 
-
-# ws2 msg
-for_window     [class="Slack"] move to workspace $ws2
-for_window     [class="Signal"] move to workspace $ws2
-for_window     [class="discord"] move to workspace $ws2
-for_window     [class="TelegramDesktop"] move to workspace $ws2
-
-# ws3 soc
-
-# ws4 vid
-for_window     [class="zoom"] move to workspace $ws4
-
-# ws5 lib
-for_window     [class="calibre"] move to workspace $ws5
-for_window     [class="obsidian"] move to workspace $ws5
-
-# ws6 media
-for_window     [class="mpv"] move to workspace $ws6
-for_window     [class="Spotify"] move to workspace $ws6
-for_window 		 [class="FreeTube"] move to workspace $ws6
-
-# ws7 dev
-for_window     [class="scrcpy"] move to workspace $ws7
-for_window     [class="VirtualBox Machine"] move to workspace $ws7
-for_window     [class="*jetbrains*"] move to workspace $ws7
-for_window     [class="Code"] move to workspace $ws7
-
-# ws8 work
-for_window     [class="libreoffice"] move to workspace $ws8
-for_window     [class="okular"] move to workspace $ws8
-for_window     [class="RemNote"] move to workspace $ws8
-
-# ws9 term
-for_window     [class="kitty"] move to workspace $ws9
-
-# ws10 web
-for_window     [class="Vivaldi-stable"] move to workspace $ws10
-for_window     [class="Brave-browser"] move to workspace $ws10
-for_window     [class="firefox"] move to workspace $ws10
-
-############## Specifics
-
-# ws1 usr
-for_window     [instance="calendar.google.com" class="Brave-browser" ] move to workspace $ws1
-
-# ws2 msg
-for_window     [instance="www.messenger.com" class="Brave-browser"] move to workspace $ws2
-for_window     [instance="web.whatsapp.com" class="Brave-browser"] move to workspace $ws2
-
-# ws3 soc
-for_window     [instance="linkedin.com$" class="Brave-browser" ] move to workspace $ws3

@@ -11,16 +11,18 @@ ibus-daemon -drx &
 unclutter &
 hushboard &
 aw-qt &
-# keeweb &
+
+# Appclication
+keeweb &
+mailspring &
 # remnote &
 # udiskie &
 # blueman-applet &
 # conky &
 # optimus-manager-qt &
 
-# AUTOSTART FOLDER
+# Tray
 gammastep -m randr &
-mailspring --background &
 telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &
