@@ -85,7 +85,7 @@ bindsym $smod+p exec ~/.bin/dmenu/displaylayout
 bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
 
 # Power
-bindsym $mod+Shift+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
+bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
 
 # I3
 bindsym $smod+Shift+c reload
@@ -183,9 +183,9 @@ bindsym Print exec "~/.bin/prtsc area_c"
 bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
 bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
 
-bindsym $mod+m exec "~/.bin/wm/open messenger"
-bindsym $mod+g exec "~/.bin/wm/open telegram-deskstop"
-bindsym $mod+p exec "~/.bin/wm/open keeweb"
+bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
+bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-deskstop"
+bindsym $mod+Shift+p exec "~/.bin/wm/open keeweb"
 
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
 bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
@@ -351,6 +351,7 @@ assign     [class="okular"] $ws8
 assign     [class="RemNote"] $ws8
 
 # ws9 term
+for_window [class="kitty"] move to workspace $ws9
 
 # ws10 web
 assign     [class="Vivaldi-stable"] $ws10
