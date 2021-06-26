@@ -11,7 +11,7 @@ export XAUTHORITY="$HOME/.Xauthority"
 #=========================== BASIC DEFAULTS==========================#
 
 # APPLICATION
-export WM="i3" 
+export WM="sway"
 export AUR_WRAPPER="yay"
 export EDITOR="nvim"
 export GEDITOR="neovide"
