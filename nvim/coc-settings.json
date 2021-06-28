@@ -1,7 +1,7 @@
 {
   "suggest.noselect": false,
-  "suggest.maxCompleteItemCount": 7,
-  "suggest.detailField": "abbr",
+  "suggest.maxCompleteItemCount": 10,
+  "suggest.detailField": "preview",
   "suggest.floatEnable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "rust",

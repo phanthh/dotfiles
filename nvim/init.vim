@@ -7,7 +7,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround' 
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -22,11 +22,12 @@ Plug 'mlaursen/vim-react-snippets'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' 
 Plug 'tomasiser/vim-code-dark'
+Plug 'glepnir/dashboard-nvim'
 
 Plug 'ActivityWatch/aw-watcher-vim'
 call plug#end()            
@@ -108,6 +109,11 @@ if has("gui_running")
 endif
 
 "============================= COCNVIM =============================" 
+
+" Leader
+nnoremap <SPACE> <Nop>
+inoremap jj <Esc>
+let mapleader=" "
 
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
@@ -236,12 +242,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 "========================= KEY BINDS ============================="
 
-" Leader
-nnoremap <SPACE> <Nop>
-inoremap jj <Esc>
-
-let mapleader=" "
-
 " ZZ : Save and quit
 " ZQ : Save without quit
 
@@ -250,43 +250,28 @@ nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 nnoremap <F11> :e $MYVIMRC <CR>
 
 " Switch Pane
-nmap <silent> <leader>k :wincmd k<CR>
-nmap <silent> <leader>j :wincmd j<CR>
-nmap <silent> <leader>h :wincmd h<CR>
-nmap <silent> <leader>l :wincmd l<CR>
+nmap <silent> <C-w><Up> :wincmd +<CR>
+nmap <silent> <C-w><Down> :wincmd -<CR>
+nmap <silent> <C-w><Left> :wincmd <<CR>
+nmap <silent> <C-w><Right> :wincmd ><CR>
 
-" nmap <silent> <leader>K :wincmd K<CR>
-" nmap <silent> <leader>J :wincmd J<CR>
-" nmap <silent> <leader>H :wincmd H<CR>
-" nmap <silent> <leader>L :wincmd L<CR>
+nmap <silent> <C-w>w :vsplit <bar> wincmd l<CR>
+nmap <silent> <C-w>s :split <bar> wincmd j<CR> 
 
-nmap <silent> <leader>K :wincmd K<CR>
-nmap <silent> <leader>J :wincmd J<CR>
-nmap <silent> <leader>H :wincmd H<CR>
-nmap <silent> <leader>L :wincmd L<CR>
-
-nmap <silent> <leader><Up> :wincmd +<CR>
-nmap <silent> <leader><Down> :wincmd -<CR>
-nmap <silent> <leader><Left> :wincmd <<CR>
-nmap <silent> <leader><Right> :wincmd ><CR>
-
-nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
-nmap <silent> <leader>s :split <bar> wincmd j<CR> 
+nmap <silent> <C-w>x :wincmd q<CR>
 
 nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
 
 " Switch Buffer
-nmap <silent> <leader>i :bnext<CR>
-nmap <silent> <leader>u :bprev<CR>
+nmap <silent> <C-w>i :bnext<CR>
+nmap <silent> <C-w>u :bprev<CR>
 
 " Nerd tree
-nmap <silent> <leader>e :NERDTreeToggle<CR>
-nmap <silent> <leader>r :NERDTreeFocus<CR>R<CR>
+nmap <silent> <C-w>e :NERDTreeToggle<CR>
 
 " FZF Search
-nmap <silent> <leader>o :GFiles<CR>
-nmap <silent> <leader>p :Buffers<CR>
-nmap <silent> <c-p> :Commands<CR>
+nmap <silent> <C-p> :GFiles<CR>
+nmap <silent> <leader>p :Ag<CR>
 
 " Execute
 map <F10> :w <bar> :!run %<CR>
@@ -301,8 +286,20 @@ nmap ga <Plug>(EasyAlign)
 
 "========================= PLUGINS CONFIG =========================="
 
+" fzf window
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+
+" Dashboard
+let g:dashboard_default_executive ='fzf'
+
 " Coc-pairs blacklist <
 autocmd FileType rust,cpp,c,javascript,typescript,scala let b:coc_pairs_disabled = ['<']
+
+" Coc-snippets jump
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 
 " Nerdtree
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
@@ -389,7 +386,7 @@ augroup LangSpecs
   autocmd FileType scala map <F9> :w <bar> :!sbt test <CR>
   autocmd FileType scala imap <F9> <Esc> :w <bar> :!sbt test<CR>
 
-augroup end
+augroup END
 
 function LatexFunc()
   set spell spelllang=en_us 
@@ -412,3 +409,9 @@ endfunction
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
