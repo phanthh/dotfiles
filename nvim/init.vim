@@ -250,6 +250,11 @@ nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 nnoremap <F11> :e $MYVIMRC <CR>
 
 " Switch Pane
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
+
 nmap <silent> <C-w><Up> :wincmd +<CR>
 nmap <silent> <C-w><Down> :wincmd -<CR>
 nmap <silent> <C-w><Left> :wincmd <<CR>
@@ -257,7 +262,10 @@ nmap <silent> <C-w><Right> :wincmd ><CR>
 
 nmap <silent> <C-w>w :vsplit <bar> wincmd l<CR>
 nmap <silent> <C-w>s :split <bar> wincmd j<CR> 
+nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
+nmap <silent> <leader>s :split <bar> wincmd j<CR> 
 
+nmap <silent> <C-w>x :wincmd q<CR>
 nmap <silent> <C-w>x :wincmd q<CR>
 
 nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
@@ -268,6 +276,7 @@ nmap <silent> <C-w>u :bprev<CR>
 
 " Nerd tree
 nmap <silent> <C-w>e :NERDTreeToggle<CR>
+nmap <silent> <leader>e :NERDTreeToggle<CR>
 
 " FZF Search
 nmap <silent> <C-p> :GFiles<CR>
