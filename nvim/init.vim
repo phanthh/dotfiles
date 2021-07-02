@@ -22,6 +22,7 @@ Plug 'mlaursen/vim-react-snippets'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'alvan/vim-closetag'
 " Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
@@ -288,6 +289,9 @@ imap <F10> <Esc> :w <bar> :!run %<CR>
 
 " Visual paste 
 vnoremap p "_c<C-r><C-o>+<Esc>
+
+" Restart coc
+nmap <silent> <F8> :CocRestart<CR>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)

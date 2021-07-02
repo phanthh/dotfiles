@@ -31,11 +31,11 @@ conf() {
       tmux)              echo ~/.config/tmux/tmux.conf ;;
       i3)                echo ~/.config/i3/config ;;
       sway)              echo ~/.config/sway/config ;;
-      bsp)               echo ~/.config/bspwm/bspwmrc ;;
+      bspwm)             echo ~/.config/bspwm/bspwmrc ;;
       ohmyzsh)           echo ~/.oh-my-zsh ;;
       kit|kitty)         echo ~/.config/kitty/kitty.conf ;;
       ala|alacritty)     echo ~/.config/alacritty/alacritty.yml ;;
-      sx)                echo ~/.config/sxhkd/sxhkdrc ;;
+      sx|sxhkd)          echo ~/.config/sxhkd/sxhkdrc ;;
       vim|nvim)          echo ~/.vimrc ;;
       polybar)           echo ~/.config/polybar/config ;;
       psd)               echo ~/.config/psd/psd.conf ;;
@@ -65,9 +65,11 @@ conf() {
       mirror)            echo /etc/pacman.d/mirrorlist ;;
       sudo)              echo /etc/sudoers ;;
       snap)              echo /etc/snapper/configs/homebk ;;
+			tlp)							 echo /etc/tlp.conf ;;
       *)                 echo ~/.config ;;
   esac)
 }
+compctl -k "(zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
 
 #=========================== FZF ===========================#
 

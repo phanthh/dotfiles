@@ -9,6 +9,6 @@ xrdb /home/phanth/.Xresources
 # setxkbmap -option caps:escape &
 
 # PRIME offload
-/usr/bin/prime-offload &
+# /usr/bin/prime-offload &
 
 exec $WM

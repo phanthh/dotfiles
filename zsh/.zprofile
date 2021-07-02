@@ -10,7 +10,7 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 		case $WM in 
 			i3)
 				# PRIME switch
-				sudo /usr/bin/prime-switch
+				# sudo /usr/bin/prime-switch
 				# XServer -> I3
 				exec startx &> /dev/null
 				;;
