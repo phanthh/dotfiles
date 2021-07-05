@@ -4,7 +4,6 @@
 picom &
 dunst &
 
-
 # UTILS
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 ibus-daemon -drx &

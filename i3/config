@@ -345,6 +345,7 @@ assign     [class="VirtualBox Machine"] $ws7
 assign     [class="jetbrains-idea-ce"] $ws7
 assign     [class="jetbrains-studio"] $ws7
 assign     [class="Code"] $ws7
+assign     [class="looking-glass-client"] $ws7
 
 # ws8 work
 assign     [instance="libreoffice"] $ws8

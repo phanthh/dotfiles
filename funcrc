@@ -22,6 +22,7 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
+			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
       zshenv|env)        echo ~/.zshenv ;;
       zprofile)          echo ~/.config/zsh/.zprofile ;;
@@ -69,7 +70,7 @@ conf() {
       *)                 echo ~/.config ;;
   esac)
 }
-compctl -k "(zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
+compctl -k "(kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
 
 #=========================== FZF ===========================#
 
