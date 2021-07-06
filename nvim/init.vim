@@ -90,7 +90,7 @@ colorscheme codedark
 
 " Shell
 if has("unix")
-  set shell=/usr/bin/zsh\ -l
+  set shell=/usr/bin/zsh
 endif
 
 " Safe guard
