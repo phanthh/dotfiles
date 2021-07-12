@@ -67,10 +67,11 @@ conf() {
       sudo)              echo /etc/sudoers ;;
       snap)              echo /etc/snapper/configs/homebk ;;
 			tlp)							 echo /etc/tlp.conf ;;
+			relector)					 echo /etc/xdg/reflector/reflector.conf ;;
       *)                 echo ~/.config ;;
   esac)
 }
-compctl -k "(kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
+compctl -k "(reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
 
 #=========================== FZF ===========================#
 

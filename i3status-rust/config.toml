@@ -48,7 +48,7 @@ critical_swap = 95
 
 [[block]]
 block = "pacman"
-interval = 600
+interval = 3600
 format = "{aur}"
 format_up_to_date = "✓"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"

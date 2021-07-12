@@ -1,6 +1,7 @@
 #=============================== SUDO ===============================#
 alias su="sudo !!"
 alias sctl="sudo systemctl"
+alias jctl="sudo journalctl"
 alias ufw="sudo ufw"
 alias root="sudo -i"
 alias su="sudo -i"
