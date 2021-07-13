@@ -4,14 +4,14 @@
 picom &
 dunst &
 
-# UTILS
+# utils
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 ibus-daemon -drx &
 unclutter &
 hushboard &
 aw-qt &
 
-# Appclication
+# Application
 keeweb &
 mailspring &
 # remnote &
@@ -20,8 +20,11 @@ mailspring &
 # conky &
 # optimus-manager-qt &
 
+# Gammastep
+LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
+gammastep -l $LOCATION &
+
 # Tray
-gammastep -m randr &
 telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &
