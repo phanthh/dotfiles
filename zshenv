@@ -12,7 +12,7 @@ export XAUTHORITY="$HOME/.Xauthority"
 
 # APPLICATION
 export WM="i3"
-export AUR_WRAPPER="yay"
+export AUR_WRAPPER="paru"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export VISUAL="nvim"

@@ -18,6 +18,6 @@ eval $(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf)
 mkdir -p "$CHECKUPDATES_DB"
 ln -s "${DBPath}/local" "$CHECKUPDATES_DB" &> /dev/null
 fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null
-fakeroot $AUR_WRAPPER -Qyu --dbpath "$CHECKUPDATES_DB"
+fakeroot yay -Qyu --dbpath "$CHECKUPDATES_DB"
 
 exit 0

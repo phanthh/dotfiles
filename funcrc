@@ -52,7 +52,7 @@ conf() {
       newsconf|news)     echo ~/.config/newsboat/config ;;
       newsurl|nb)        echo ~/.config/newsboat/urls  ;;
       yay)               echo ~/.config/yay/config.json  ;;
-      paru)              echo ~/.config/paru.conf ;;
+      paru)              echo ~/.config/paru/paru.conf ;;
       ytmdl)             echo ~/.config/ytmdl/config ;;
       autoi3)     			 echo ~/.config/i3/autostart ;;
 			autosway)  			   echo ~/.config/sway/autostart ;;

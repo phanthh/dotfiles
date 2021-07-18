@@ -92,7 +92,7 @@ bindsym $smod+Shift+c reload
 bindsym $smod+Shift+r restart
 
 # Systems 
-bindsym --release $smod+x exec slock
+bindsym --release $smod+x exec i3lock --color=000000 --show-failed-attempts
 bindsym --release $smod+Shift+x exec systemctl suspend
 bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "reboot"
 bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "poweroff"
@@ -123,6 +123,7 @@ bindsym $mod+Shift+Right move right
 
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+Space floating toggle
+bindsym $mod+Space focus mode_toggle
 
 # Focus parent/child 
 # bindsym $mod+a focus parent
