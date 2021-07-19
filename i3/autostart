@@ -5,18 +5,18 @@ picom &
 dunst &
 
 # utils
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-ibus-daemon -drx &
+lxsession &
+ibus-daemon -drxR &
 unclutter &
 hushboard &
-aw-qt &
+# aw-qt &
 
 # Application
-keeweb &
+# keeweb &
 mailspring &
 # remnote &
 # udiskie &
-# blueman-applet &
+blueman-applet &
 # conky &
 # optimus-manager-qt &
 
@@ -33,5 +33,5 @@ discord --start-minimized &
 
 # WEBAPP
 sleep 20
-messenger &
+# messenger &
 calendar &
