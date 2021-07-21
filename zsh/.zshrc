@@ -95,4 +95,4 @@ fi
 # <<< conda initialize <<<
 
 #======================= START PROMPT ============================#
-# task 
+task 
