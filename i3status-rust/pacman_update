@@ -5,7 +5,6 @@ if ! type -P fakeroot >/dev/null; then
 	exit 1
 fi
 
-
 if [[ -z $CHECKUPDATES_DB ]]; then
 	CHECKUPDATES_DB="${TMPDIR:-/tmp}/checkup-db-${USER}/"
 fi
@@ -18,6 +17,10 @@ eval $(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf)
 mkdir -p "$CHECKUPDATES_DB"
 ln -s "${DBPath}/local" "$CHECKUPDATES_DB" &> /dev/null
 fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null
-fakeroot yay -Qyu --dbpath "$CHECKUPDATES_DB"
+if [ "$AUR_HELPER" = "paru" ]; then
+	fakeroot paru -Qub "$CHECKUPDATES_DB" | grep -v "ignore"
+else if [ "$AUR_HELPER" = "yay" ]; then
+	fakeroot yay -Qyu --dbpath "$CHECKUPDATES_DB"
+fi
 
 exit 0

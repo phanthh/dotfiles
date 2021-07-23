@@ -16,12 +16,6 @@ use_nag = true
 nag_path = "i3-nagbar"
 
 [[block]]
-block = "hueshift"
-hue_shifter = "redshift"
-step = 50
-click_temp = 3000
-
-[[block]]
 block = "backlight"
 
 [[block]]
@@ -48,7 +42,7 @@ critical_swap = 95
 
 [[block]]
 block = "pacman"
-interval = 3600
+interval = 7200
 format = "{aur}"
 format_up_to_date = "✓"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"

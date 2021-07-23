@@ -19,7 +19,7 @@ export VISUAL="nvim"
 export TERMINAL="kitty"
 export FILE_MANAGER="pcmanfm"
 export BROWSERAPP="brave"
-export BROWSER="brave"
+export BROWSER="brave" 
 
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"

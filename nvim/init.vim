@@ -103,12 +103,6 @@ if has("nvim") && has("unix")
   set backupdir=~/.local/share/nvim/backup
 endif
 
-if has("gui_running")
-  set guifont=Consolas:h20:cANSI
-  set guioptions=
-  set guioptions+=c
-endif
-
 "============================= COCNVIM =============================" 
 
 " Leader
@@ -376,6 +370,11 @@ let g:airline#extensions#tabline#enabled = 0
 "     autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
 "   augroup END
 " endif
+"
+
+" neovide
+let g:neovide_refresh_rate=144
+set guifont=Hack\ Nerd\ Font\ Mono:h24
 
 " Language specific configuration
 augroup LangSpecs
@@ -427,4 +426,6 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup END
+
+
 
