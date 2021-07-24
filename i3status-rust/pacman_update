@@ -17,10 +17,6 @@ eval $(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf)
 mkdir -p "$CHECKUPDATES_DB"
 ln -s "${DBPath}/local" "$CHECKUPDATES_DB" &> /dev/null
 fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null
-if [ "$AUR_HELPER" = "paru" ]; then
-	fakeroot paru -Qub "$CHECKUPDATES_DB" | grep -v "ignore"
-else if [ "$AUR_HELPER" = "yay" ]; then
-	fakeroot yay -Qyu --dbpath "$CHECKUPDATES_DB"
-fi
+fakeroot yay -Qyu --dbpath "$CHECKUPDATES_DB"
 
 exit 0
