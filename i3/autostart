@@ -33,5 +33,5 @@ discord --start-minimized &
 
 # WEBAPP
 sleep 20
-# messenger &
+messenger &
 calendar &
