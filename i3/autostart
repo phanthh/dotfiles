@@ -29,7 +29,8 @@ telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &
 
-# MESSAGE
+# Lock
+xss-lock -- i3lock --color=000000 --show-failed-attempts &
 
 # WEBAPP
 sleep 20

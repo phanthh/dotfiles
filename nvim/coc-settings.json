@@ -17,5 +17,6 @@
     "cpp"
   ],
   "coc.preferences.extensionUpdateCheck": "daily",
-  "emmet.includeLanguages": { "javascript": "javascriptreact" }
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer"
 }
