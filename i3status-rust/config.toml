@@ -71,13 +71,14 @@ format = "US %R"
 [[block]]
 block = "time"
 interval = 60
-timezone = "Europe/Helsinki"
-format = "FI %R"
+timezone = "Asia/Ho_Chi_Minh"
+format = "VN %R"
 
 [[block]]
 block = "time"
 interval = 60
-format = "VN %R"
+format = "FI %R"
+
 
 [[block]]
 block = "time"
