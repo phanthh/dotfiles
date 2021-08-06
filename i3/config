@@ -189,6 +189,7 @@ bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
 bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-deskstop"
 bindsym $mod+Shift+p exec "~/.bin/wm/open keeweb"
 bindsym $mod+Shift+f exec "~/.bin/wm/open spotify"
+bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
 
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
 bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
