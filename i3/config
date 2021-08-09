@@ -41,24 +41,15 @@ floating_modifier $mod
 
 #======================== AUTOSTART ===============================#
 
-# Lock daemon
-
-# Enable numlock
-exec 				--no-startup-id "numlockx"
+exec        --no-startup-id ~/.config/i3/autostart
 
 # Default layout
-exec        --no-startup-id ~/.bin/screen/hdmi
+# exec        --no-startup-id ~/.bin/screen/hdmi
 
 # Background
 # exec_always --no-startup-id hsetroot -cover ~/Pictures/wallpaper/7zav1np1ss761.jpg
 exec_always --no-startup-id hsetroot -solid "#000000"
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/beautiful-city_-wallpaper.jpg
-
-# Startup Brightness
-exec        --no-startup-id "brightnessctl s 5%"
-
-# Applications
-exec        --no-startup-id ~/.config/i3/autostart
 
 #============================ KEYBINDING ===========================#
 
@@ -289,26 +280,26 @@ bar {
 }
 
 # Bar2
-bar {
-    output HDMI-1
+# bar {
+#     output HDMI-1
 
-    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+#     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
-    colors {
-        background $background
-        separator $foreground
-        statusline $foreground
+#     colors {
+#         background $background
+#         separator $foreground
+#         statusline $foreground
 
-        #                  border           background        text
-        focused_workspace  $border2         $background2        $foreground
-        active_workspace   $border2         $background2        $foreground
-        inactive_workspace $border          $background         $foreground
-        urgent_workspace   $primary         $primary            $foreground
-        binding_mode       $primary         $primary            $foreground
-    }
-    workspace_min_width 50
-    # strip_workspace_numbers yes
-}
+#         #                  border           background        text
+#         focused_workspace  $border2         $background2        $foreground
+#         active_workspace   $border2         $background2        $foreground
+#         inactive_workspace $border          $background         $foreground
+#         urgent_workspace   $primary         $primary            $foreground
+#         binding_mode       $primary         $primary            $foreground
+#     }
+#     workspace_min_width 50
+#     # strip_workspace_numbers yes
+# }
 
 
 

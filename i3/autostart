@@ -1,38 +1,31 @@
 #!/bin/sh
 
-#
+# UTILS
 picom &
 dunst &
-
-# utils
+numlockx &
 lxsession &
 ibus-daemon -drxR &
 unclutter &
 hushboard &
-# aw-qt &
+xss-lock -- i3lock --color=000000 --show-failed-attempts &
+brightnessctl s 5% &
 
-# Application
+# APPLICATION
 # keeweb &
-mailspring &
 # remnote &
-# udiskie &
-blueman-applet &
+# blueman-applet &
 # conky &
 # optimus-manager-qt &
-
-# Gammastep
-LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
+# LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
+LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':')
 gammastep -l $LOCATION &
-
-# Tray
+mailspring --background &
 telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &
 
-# Lock
-xss-lock -- i3lock --color=000000 --show-failed-attempts &
-
 # WEBAPP
 sleep 20
-messenger &
+# messenger &
 calendar &

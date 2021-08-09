@@ -1,8 +1,4 @@
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
-		# KEYRING
-		# eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
-		# export SSH_AUTH_SOCK &
-
 		case $WM in 
 			i3)
 				# PRIME switch

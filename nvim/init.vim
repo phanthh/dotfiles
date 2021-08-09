@@ -272,6 +272,7 @@ nmap <silent> <C-w>u :bprev<CR>
 " Nerd tree
 nmap <silent> <C-w>e :NERDTreeToggle<CR>
 nmap <silent> <leader>e :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeFind<CR>
 
 " FZF Search
 nmap <silent> <C-p> :GFiles<CR>
