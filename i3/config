@@ -302,6 +302,8 @@ bar {
 # }
 
 
+for_window [class="Pcmanfm"] floating enable
+for_window [class="Pcmanfm"] resize set 1280 720
 
 #=========================== ASSIGN ===============================#
 
