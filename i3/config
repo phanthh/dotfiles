@@ -223,7 +223,7 @@ bindsym $mod+less move workspace to output left
 
 for_window  [class=".*"] title_format "<b>%title</b>"
 title_align center
-new_window  pixel 1
+new_window pixel 1
 
 
 # Colors
