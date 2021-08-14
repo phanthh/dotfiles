@@ -57,6 +57,7 @@ alias ds="conda activate tfgpu"
 alias cmus="cd ~/Musics && cmus"
 alias spt="speedtest-cli"
 alias ka="killall"
+alias ca="conda activate"
 
 #============================ SAFETY NETS ============================#
 

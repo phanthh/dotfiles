@@ -12,6 +12,7 @@ xss-lock -- i3lock --color=000000 --show-failed-attempts &
 brightnessctl s 5% &
 
 # APPLICATION
+aw-qt &
 # keeweb &
 # remnote &
 # blueman-applet &
@@ -20,7 +21,7 @@ brightnessctl s 5% &
 # LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
 LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':')
 gammastep -l $LOCATION &
-mailspring --background &
+thunderbird &
 telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &

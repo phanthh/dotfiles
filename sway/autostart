@@ -1,37 +1,37 @@
 #!/bin/sh
 
-#
+# UTILS
+# picom &
 dunst &
-
-# utils
+# numlockx &
 lxsession &
-ibus-daemon -drx &
+# ibus-daemon -drxR &
 # unclutter &
 # hushboard &
-aw-qt &
+swayidle -w \
+	timeout 1500 'swaylock' \
+	timeout 1505 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock' &
 
-# Application
-keeweb &
-mailspring &
+brightnessctl s 5% &
+
+# APPLICATION
+# keeweb &
 # remnote &
-# udiskie &
 # blueman-applet &
 # conky &
 # optimus-manager-qt &
-
-# Gammastep
-LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
+# LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
+LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':')
 gammastep -l $LOCATION &
-
-# Tray
+thunderbird &
 telegram-desktop -startintray &
 slack -s -u &
 discord --start-minimized &
 
-# MESSAGE
-
 # WEBAPP
-sleep 20
-messenger &
-calendar &
+# sleep 20
+# messenger &
+# calendar &
 

@@ -45,6 +45,7 @@ input type:keyboard {
 		repeat_delay 255
 		repeat_rate 100
 }
+
 input type:touchpad {
     tap enabled
     natural_scroll enabled
@@ -53,22 +54,21 @@ input type:touchpad {
 input * xkb_numlock enable
 
 
-seat seat0 xcursor_theme Adwaita 48
+seat seat0 xcursor_theme Adwaita 32
 
-seat seat0 hide_cursor 10000
+seat seat0 hide_cursor 8000
 
 seat seat0 hide_cursor when-typing enable
 
 #======================== AUTOSTART ===============================#
 
-# Hot switch monitors
+exec        --no-startup-id ~/.config/sway/autostart
+
 # Default layout
+
 # Background
 output * bg #000000 solid_color
-# Startup Brightness
-exec        --no-startup-id "brightnessctl s 5%"
 # Applications
-exec        --no-startup-id ~/.config/sway/autostart
 
 #============================ KEYBINDING ===========================#
 
@@ -94,18 +94,11 @@ bindsym $smod+p exec ~/.bin/dmenu/displaylayout
 bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
 
 # Power
-bindsym $mod+p exec --no-startup-id "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ~/.bin/dmenu/powerprofile && :"
+bindsym $mod+p exec --no-startup-id "~/.bin/dmenu/powerprofile"
 
 bindsym $smod+Shift+r reload
 
 # Systems 
-# LOCKING
-exec swayidle -w \
-	timeout 1500 'swaylock' \
-	timeout 1505 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock'
-
 bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
 bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "reboot"
@@ -138,7 +131,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Change focus between tiling / floating windows
-bindsym $mod+Shift+Space floating toggle
+bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border none; [floating con_id=__focused__] border normal
+
 
 # Focus parent/child 
 # bindsym $mod+a focus parent
@@ -152,7 +146,7 @@ bindsym $smod+s split v
 bindsym $mod+f fullscreen toggle
 
 # Resize
-set $inc 5
+set $inc 10
 bindsym $mod+Left resize shrink width $inc px or $inc ppt
 bindsym $mod+Down resize grow height $inc px or $inc ppt
 bindsym $mod+Up resize shrink height $inc px or $inc ppt 
@@ -172,20 +166,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 #============ UTILS 
 
-
 # Youtube
 bindsym $smod+y exec "~/.bin/yt -r"
 
 # Terminal
 bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
-
-# Browser/Browser apps
-bindsym $mod+n exec "~/.bin/wm/open $BROWSER"
-bindsym $mod+Shift+n exec "$BROWSER ; workspace number $ws10"
-
-# Youtube
-bindsym $mod+y exec "~/.bin/wm/open freetube"
 
 # Dmenu
 bindsym $smod+d exec "~/.bin/wm/menu"
@@ -201,20 +187,21 @@ bindsym Print exec "~/.bin/prtsc area_c"
 # bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
+# Browser/Browser apps
+bindsym $mod+n exec "~/.bin/wm/open brave"
+bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
+
 bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
-bindsym $mod+Shift+f exec "~/.bin/wm/open spotify"
-bindsym $mod+Shift+w exec "~/.bin/wm/open ActivityWatch"
+bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-deskstop"
 bindsym $mod+Shift+p exec "~/.bin/wm/open keeweb"
-bindsym $mod+Shift+c exec "~/.bin/wm/open calendar"
-bindsym $mod+Shift+r exec "~/.bin/wm/open remnote"
-bindsym $mod+Shift+e exec "~/.bin/wm/open $FILE_MANAGER"
-bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
-bindsym $mod+Shift+z exec "~/.bin/wm/open zoom"
-bindsym $mod+Shift+a exec "~/.bin/wm/open mailspring"
+bindsym $mod+Shift+f exec "~/.bin/wm/open spotify"
 bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
-bindsym $mod+Shift+i exec "~/.bin/wm/open $GEDITOR"
-bindsym $mod+Shift+g exec "~/.bin/wm/open -s telegramdesktop telegram-desktop"
+
 bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
+bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
+
+bindsym $mod+Shift+e exec "~/.bin/wm/open $FILE_MANAGER"
+
 
 #============ WORKSPACE 
 
@@ -254,6 +241,7 @@ bindsym $mod+less move workspace to output left
 for_window  [class=".*"] title_format "<b>%title</b>"
 title_align center
 default_border pixel 1
+default_floating_border normal
 hide_edge_borders --i3 smart
 
 # Colors
@@ -314,42 +302,42 @@ bar {
 }
 
 # Bar2
-bar {
-    output HDMI-1
-    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+# bar {
+#     output HDMI-1
+#     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
 
-    colors {
-        background $background
-        separator $foreground
-        statusline $foreground
+#     colors {
+#         background $background
+#         separator $foreground
+#         statusline $foreground
 
-        #                  border           background        text
-        focused_workspace  $border2         $background2        $foreground
-        active_workspace   $border2         $background2        $foreground
-        inactive_workspace $border          $background         $foreground
-        urgent_workspace   $primary         $primary            $foreground
-        binding_mode       $primary         $primary            $foreground
-    }
-    workspace_min_width 50
-    # strip_workspace_numbers yes
-}
+#         #                  border           background        text
+#         focused_workspace  $border2         $background2        $foreground
+#         active_workspace   $border2         $background2        $foreground
+#         inactive_workspace $border          $background         $foreground
+#         urgent_workspace   $primary         $primary            $foreground
+#         binding_mode       $primary         $primary            $foreground
+#     }
+#     workspace_min_width 50
+#     # strip_workspace_numbers yes
+# }
+
+for_window [app_id="pcmanfm"] floating enable
+for_window [app_id="pcmanfm"] resize set 1280 720
 
 #=========================== ASSIGN ===============================#
 
 # ws1 usr
-assign     [class="Thunderbird"] $ws1
+assign     [app_id="thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
-assign     [class="Brave-browser" instance="calendar.google.com"] $ws1 
-assign 		 [instance="localhost" class="Brave-browser" title="ActivityWatch"] $ws1 
+assign     [app_id="Brave-browser" title="Calendar"] $ws1 
 
 
 # ws2 msg
 assign     [class="Slack"] $ws2
 assign     [class="discord"] $ws2
 assign     [app_id="telegramdesktop"] $ws2
-assign     [instance="www.messenger.com" class="Brave-browser"] $ws2
-assign     [instance="web.whatsapp.com" class="Brave-browser"] $ws2
 
 # ws3 soc
 
@@ -382,7 +370,7 @@ assign     [class="RemNote"] $ws8
 for_window  [app_id="kitty"] move to workspace $ws9
 
 # ws10 web
-assign     [class="Brave-browser"] $ws10
+assign     [app_id="Brave-browser"] $ws10
 assign     [class="Vivaldi-stable"] $ws10
 assign     [app_id="firefox"] $ws10
 

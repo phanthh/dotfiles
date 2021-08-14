@@ -149,14 +149,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 #============ UTILS 
 
-
 # Youtube
 bindsym $smod+y exec "~/.bin/yt -r"
 
 # Terminal
 bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
 bindsym $mod+Shift+Return exec "kitty --single-instance"
-
 
 # Dmenu
 bindsym $smod+d exec "~/.bin/wm/menu"
