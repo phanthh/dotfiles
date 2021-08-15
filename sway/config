@@ -53,22 +53,27 @@ input type:touchpad {
 
 input * xkb_numlock enable
 
-
-seat seat0 xcursor_theme Adwaita 32
+seat seat0 xcursor_theme default 32
 
 seat seat0 hide_cursor 8000
 
 seat seat0 hide_cursor when-typing enable
 
+# xwayland disable
+
 #======================== AUTOSTART ===============================#
 
-exec        --no-startup-id ~/.config/sway/autostart
+exec --no-startup-id ~/.config/sway/autostart
 
 # Default layout
 
 # Background
 output * bg #000000 solid_color
 # Applications
+#
+output * adaptive_sync on
+
+output * max_render_time 1
 
 #============================ KEYBINDING ===========================#
 
@@ -80,33 +85,26 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Volume
-bindsym $mod+F1 exec --no-startup-id "~/.bin/wm/open pavucontrol"
+bindsym $mod+F1 exec --no-startup-id ~/.bin/open pavucontrol
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym $mod+F4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 
 # Brightness
-bindsym $mod+F7 exec --no-startup-id "brightnessctl s 5%-"
-bindsym $mod+F8 exec --no-startup-id "brightnessctl s 5%+"
-
-# Display
-bindsym $smod+p exec ~/.bin/dmenu/displaylayout
-bindsym $smod+Shift+p exec ~/.bin/dmenu/displayselect
+bindsym $mod+F7 exec --no-startup-id brightnessctl s 5%-
+bindsym $mod+F8 exec --no-startup-id brightnessctl s 5%+
 
 # Power
-bindsym $mod+p exec --no-startup-id "~/.bin/dmenu/powerprofile"
+bindsym $mod+p exec --no-startup-id ~/.bin/powerprofile
 
 bindsym $smod+Shift+r reload
 
 # Systems 
 bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
-bindsym --release $smod+Shift+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to reboot ?" "reboot"
-bindsym --release $smod+Escape exec ~/.bin/dmenu/prompt "Are you sure you want to shutdown ?" "poweroff"
-bindsym --release $smod+Shift+e exec ~/.bin/dmenu/prompt "Are you sure you want to logout ?" "swaymsg exit"
-
-# IBUS
-bindsym $mod+z exec ~/.bin/wm/ibus-toggle
+bindsym --release $smod+Shift+Escape exec ~/.bin/rebootoption
+bindsym --release $smod+Escape exec ~/.bin/prompt "Shutdown" "poweroff"
+bindsym --release $smod+Shift+e exec ~/.bin/prompt "Logout" "swaymsg exit"
 
 #=========== WINDOW 
 
@@ -131,7 +129,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Change focus between tiling / floating windows
-bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border none; [floating con_id=__focused__] border normal
+bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border pixel 1; [floating con_id=__focused__] border normal
 
 
 # Focus parent/child 
@@ -167,46 +165,43 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #============ UTILS 
 
 # Youtube
-bindsym $smod+y exec "~/.bin/yt -r"
+bindsym $smod+y exec ~/.bin/yt -r
 
 # Terminal
-bindsym $mod+Return exec "~/.bin/wm/open kitty --single-instance"
-bindsym $mod+Shift+Return exec "kitty --single-instance"
+bindsym $mod+Return exec ~/.bin/open kitty --single-instance
+bindsym $mod+Shift+Return exec kitty --single-instance
 
 # Dmenu
-bindsym $smod+d exec "~/.bin/wm/menu"
+bindsym $smod+d exec ~/.bin/menu
 
 # Timer
-bindsym $mod+d exec "~/.bin/dmenu/dtimer"
+bindsym $mod+d exec ~/.bin/timer
 
 # Screen Shot
-bindsym $smod+Print exec "~/.bin/prtsc current_screen"
-bindsym Print exec "~/.bin/prtsc area_c"
+# bindsym $smod+Print exec "~/.bin/prtsc current_screen"
+# bindsym Print exec "~/.bin/prtsc area_c"
+bindsym Print exec ~/.bin/prtsc_wl
 
 # Windows
 # bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
 
 # Applications
 # Browser/Browser apps
-bindsym $mod+n exec "~/.bin/wm/open brave"
-bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
+bindsym $mod+n exec ~/.bin/open firefox
 
-bindsym $mod+Shift+m exec "~/.bin/wm/open messenger"
-bindsym $mod+Shift+g exec "~/.bin/wm/open telegram-deskstop"
-bindsym $mod+Shift+p exec "~/.bin/wm/open keeweb"
-bindsym $mod+Shift+f exec "~/.bin/wm/open spotify"
-bindsym $mod+Shift+b exec "~/.bin/wm/open calibre"
+bindsym $mod+Shift+m exec ~/.bin/open messenger
+bindsym $mod+Shift+g exec ~/.bin/open telegram-deskstop
+bindsym $mod+Shift+p exec ~/.bin/open keeweb
+bindsym $mod+Shift+f exec ~/.bin/open spotify
+bindsym $mod+Shift+b exec ~/.bin/open calibre
 
-bindsym $mod+Shift+s exec "~/.bin/wm/open slack"
-bindsym $mod+Shift+d exec "~/.bin/wm/open discord"
+bindsym $mod+Shift+s exec ~/.bin/open slack
+bindsym $mod+Shift+d exec ~/.bin/open discord
 
-bindsym $mod+Shift+e exec "~/.bin/wm/open $FILE_MANAGER"
+bindsym $mod+Shift+e exec ~/.bin/open $FILE_MANAGER
 
 
 #============ WORKSPACE 
-
-# Kill workspace
-bindsym $mod+Shift+q exec "~/.bin/i3/killworkspace"
 
 # Change workspace layout 
 bindsym $mod+s layout stacking
@@ -280,7 +275,7 @@ bar {
     output eDP-1
 
     # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
-    status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
 
     colors {
         background $background

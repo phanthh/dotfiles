@@ -21,7 +21,11 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 					mv $DIS_USER_FLAGS_FILE $USER_FLAGS_FILE
 				fi
 				export _JAVA_AWT_WM_NONREPARENTING=1
+
+				# firefox
+				export MOZ_DISABLE_RDD_SANDBOX=1
 				export MOZ_ENABLE_WAYLAND=1
+
 				export QT_QPA_PLATFORM=wayland
 				export CLUTTER_BACKEND=wayland
 				exec sway &> /dev/null

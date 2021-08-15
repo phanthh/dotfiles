@@ -34,7 +34,7 @@ format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
 display_type = "memory"
 icons = true
 clickable = true
-interval = 5
+interval = 60
 warning_mem = 80
 warning_swap = 80
 critical_mem = 95
@@ -53,7 +53,7 @@ block = "sound"
 
 [[block]]
 block = "battery"
-interval = 10
+interval = 60
 format = "   {percentage} {time}"
 
 [[block]]

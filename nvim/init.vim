@@ -282,8 +282,8 @@ nmap <silent> <C-p> :GFiles<CR>
 nmap <silent> <leader>p :Ag<CR>
 
 " Execute
-map <F10> :w <bar> :!run %<CR>
-imap <F10> <Esc> :w <bar> :!run %<CR>
+map <F10> :w <bar> :!crun %<CR>
+imap <F10> <Esc> :w <bar> :!crun %<CR>
 
 " Visual paste 
 vnoremap p "_c<C-r><C-o>+<Esc>

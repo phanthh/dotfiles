@@ -6,7 +6,7 @@ HISTFILE=~/.cache/zsh/history
 
 #======================= AUTOSTART TMUX ========================#
 
-if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
+if command -v tmux >/dev/null 2>&1; then
     [ -z "${TMUX}" ] && (tmux attach >/dev/null 2>&1 || tmux)
 fi
 
