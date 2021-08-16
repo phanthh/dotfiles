@@ -11,4 +11,4 @@ xrdb /home/phanth/.Xresources &
 # PRIME offload
 /usr/bin/prime-offload &
 
-exec $WM
+exec $XDG_CURRENT_DESKTOP

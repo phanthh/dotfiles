@@ -4,7 +4,6 @@
 dunst &
 lxsession &
 fcitx5 &
-hushboard &
 
 swayidle -w \
 	timeout 1500 'swaylock' \
@@ -12,7 +11,7 @@ swayidle -w \
 	resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock' &
 
-brightnessctl s 45% &
+brightnessctl s 50% &
 
 # APPLICATION
 # LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')

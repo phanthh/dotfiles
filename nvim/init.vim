@@ -30,10 +30,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasiser/vim-code-dark'
 Plug 'glepnir/dashboard-nvim'
 
-if $WM != "sway"
-	Plug 'ActivityWatch/aw-watcher-vim'
-endif
-
 call plug#end()            
 
 "============================= OPTIONS ==============================="
