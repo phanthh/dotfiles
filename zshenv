@@ -19,6 +19,7 @@ export VISUAL="nvim"
 export TERMINAL="kitty"
 export FILE_MANAGER="pcmanfm"
 export BROWSER="firefox" 
+export CALIBRE_USE_DARK_PALETTE=1
 
 export MYVIMRC="$XDG_CONFIG_HOME/nvem/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"

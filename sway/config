@@ -263,7 +263,11 @@ font pango:Font Awesome 5 Free 9, NotoSans Nerd Font 9
 
 #=========== GTK THEME IMPORT 
 
-exec_always import-gsettings
+exec_always --no-startup-id import-gsettings
+
+#=========== GTK THEME IMPORT 
+
+exec_always --no-startup-id ~/.bin/webrtc
 
 #=========== WORKSPACE 
 

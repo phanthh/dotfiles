@@ -8,6 +8,7 @@ lxsession &
 ibus-daemon -drxR &
 unclutter &
 xss-lock -- i3lock --color=000000 --show-failed-attempts &
+
 brightnessctl s 50% &
 
 # APPLICATION
