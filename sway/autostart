@@ -6,10 +6,12 @@ lxsession &
 fcitx5 &
 
 swayidle -w \
-	timeout 1500 'swaylock' \
-	timeout 1505 'swaymsg "output * dpms off"' \
+	timeout 300 'swaylock -f' \
+	timeout 305 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock' &
+	before-sleep 'swaylock -f' \
+	timeout 600 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
+
 
 brightnessctl s 50% &
 
