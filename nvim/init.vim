@@ -241,7 +241,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 nnoremap <TAB> :nohl<CR>
 nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
-nnoremap <F11> :e $MYVIMRC <CR>
+" nnoremap <F11> :e $MYVIMRC <CR>
 
 " Switch Pane
 nmap <silent> <leader>j :wincmd j<CR>
@@ -389,16 +389,15 @@ augroup LangSpecs
   autocmd FileType text set spell spelllang=en_us
 
   " Rust
-  autocmd FileType rust map <S-F10> :w <bar> :!cargo run <CR>
-  autocmd FileType rust imap <S-F10> <Esc> :w <bar> :!cargo run<CR>
+  autocmd FileType rust map <F11> :w <bar> :!cargo run <CR>
+  autocmd FileType rust imap <F11> <Esc> :w <bar> :!cargo run<CR>
 
   " Scala
   autocmd FileType scala map <S-F10> :w <bar> :!sbt run <CR>
   autocmd FileType scala imap <S-F10> <Esc> :w <bar> :!sbt run<CR>
   autocmd FileType scala map <F9> :w <bar> :!sbt test <CR>
   autocmd FileType scala imap <F9> <Esc> :w <bar> :!sbt test<CR>
-
-augroup END
+augroup end
 
 function LatexFunc()
   set spell spelllang=en_us 
@@ -425,7 +424,7 @@ autocmd FileChangedShellPost *
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
-augroup END
+augroup end
 
 
 

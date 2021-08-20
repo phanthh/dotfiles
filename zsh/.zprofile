@@ -7,9 +7,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 
 		case $XDG_CURRENT_DESKTOP in 
 			i3)
-				if [[ -f $USER_FLAGS_FILE ]]; then
-					mv $USER_FLAGS_FILE $DIS_USER_FLAGS_FILE
-				fi
+				mv $XDG_CONFIG_HOME/brave-flags.conf $XDG_CONFIG_HOME/brave-flags.conf.dis &
+				mv $XDG_CONFIG_HOME/chromium-flags.conf $XDG_CONFIG_HOME/chromium-flags.conf.dis &
 
 				# PRIME switch
 				sudo /usr/bin/prime-switch
@@ -23,9 +22,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				exec startx &> /dev/null
 				;;
 			sway)
-				if [[ -f $DIS_USER_FLAGS_FILE ]]; then
-					mv $DIS_USER_FLAGS_FILE $USER_FLAGS_FILE
-				fi
+				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &
+				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &
 
 				export QT_QPA_PLATFORMTHEME=qt5ct
 				export GTK_IM_MODULE=fcitx
@@ -41,9 +39,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 
 				;;
 			plasma)
-				if [[ -f $DIS_USER_FLAGS_FILE ]]; then
-					mv $DIS_USER_FLAGS_FILE $USER_FLAGS_FILE
-				fi
+				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &
+				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &
 
 				export GTK_IM_MODULE=fcitx
 				export XMODIFIERS=@im=fcitx

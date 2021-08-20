@@ -42,8 +42,8 @@ floating_modifier $mod
 #======================== INPUT ===============================#
 
 input type:keyboard {
-		repeat_delay 255
-		repeat_rate 150
+		repeat_delay 225
+		repeat_rate 200
 }
 
 input type:touchpad {
@@ -74,6 +74,7 @@ exec --no-startup-id ~/.config/sway/autostart
 
 # Background
 output * bg #000000 solid_color
+output * bg ~/Pictures/vc-takedown.jpg fill
 # Applications
 #
 output * adaptive_sync on
