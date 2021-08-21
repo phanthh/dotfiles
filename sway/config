@@ -74,7 +74,7 @@ exec --no-startup-id ~/.config/sway/autostart
 
 # Background
 output * bg #000000 solid_color
-output * bg ~/Pictures/vc-takedown.jpg fill
+# output * bg ~/Pictures/vc-takedown.jpg fill
 # Applications
 #
 output * adaptive_sync on
@@ -173,9 +173,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Youtube
 bindsym $smod+y exec ~/.bin/yt -r
 
+# Bluetooth manager
+bindsym $smod+b exec blueman-manager
+
 # Terminal
-bindsym $mod+Return exec ~/.bin/open kitty --single-instance
-bindsym $mod+Shift+Return exec kitty --single-instance
+bindsym $mod+Return exec ~/.bin/open alacritty 
+bindsym $mod+Shift+Return exec alacritty
 
 # Dmenu
 bindsym $smod+d exec ~/.bin/menu

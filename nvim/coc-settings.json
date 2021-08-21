@@ -4,7 +4,6 @@
   "suggest.detailField": "preview",
   "suggest.floatEnable": false,
   "coc.preferences.formatOnSaveFiletypes": [
-    "rust",
     "css",
     "html",
     "javascript",
@@ -14,11 +13,11 @@
     "typescriptreact",
     "typescript.tsx",
     "python",
-    "cpp"
+    "cpp",
+    "rust"
   ],
   "coc.preferences.extensionUpdateCheck": "daily",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
-  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
   "python.pythonPath": "/home/phanth/.local/bin/python-conda",
   "python.analysis.typeCheckingMode": "off"
 }

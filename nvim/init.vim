@@ -66,9 +66,7 @@ set ignorecase
 set timeout 
 set timeoutlen=350
 set ttimeout 
-set ttimeoutlen=350
-
-" Type
+set ttimeoutlen=350 
 set autoindent
 set backspace=indent,eol,start
 set clipboard=unnamedplus

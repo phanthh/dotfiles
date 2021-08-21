@@ -7,8 +7,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 
 		case $XDG_CURRENT_DESKTOP in 
 			i3)
-				mv $XDG_CONFIG_HOME/brave-flags.conf $XDG_CONFIG_HOME/brave-flags.conf.dis &
-				mv $XDG_CONFIG_HOME/chromium-flags.conf $XDG_CONFIG_HOME/chromium-flags.conf.dis &
+				mv $XDG_CONFIG_HOME/brave-flags.conf $XDG_CONFIG_HOME/brave-flags.conf.dis &> /dev/null
+				mv $XDG_CONFIG_HOME/chromium-flags.conf $XDG_CONFIG_HOME/chromium-flags.conf.dis &> /dev/null
 
 				# PRIME switch
 				sudo /usr/bin/prime-switch
@@ -22,8 +22,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				exec startx &> /dev/null
 				;;
 			sway)
-				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &
-				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &
+				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &> /dev/null
+				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &> /dev/null
 
 				export QT_QPA_PLATFORMTHEME=qt5ct
 				export GTK_IM_MODULE=fcitx
@@ -39,8 +39,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 
 				;;
 			plasma)
-				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &
-				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &
+				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &> /dev/null
+				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &> /dev/null
 
 				export GTK_IM_MODULE=fcitx
 				export XMODIFIERS=@im=fcitx
