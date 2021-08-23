@@ -1,9 +1,6 @@
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
 		echo "Starting $XDG_CURRENT_DESKTOP..."
 		# brave browser option
-		XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-		USER_FLAGS_FILE="$XDG_CONFIG_HOME/brave-flags.conf"
-		DIS_USER_FLAGS_FILE="$XDG_CONFIG_HOME/brave-flags.conf.dis"
 
 		case $XDG_CURRENT_DESKTOP in 
 			i3)
@@ -26,39 +23,36 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &> /dev/null
 
 				export QT_QPA_PLATFORMTHEME=qt5ct
-				export GTK_IM_MODULE=fcitx
-				export XMODIFIERS=@im=fcitx
-				export QT_IM_MODULE=fcitx
 				export _JAVA_AWT_WM_NONREPARENTING=1
 				export MOZ_DISABLE_RDD_SANDBOX=1
 				export MOZ_ENABLE_WAYLAND=1
 				export QT_QPA_PLATFORM=wayland
 				export CLUTTER_BACKEND=wayland
+				export GTK_IM_MODULE=fcitx
+				export XMODIFIERS=@im=fcitx
+				export QT_IM_MODULE=fcitx
 
 				exec sway &> /dev/null
 
 				;;
-			plasma)
+			gnome)
 				mv $XDG_CONFIG_HOME/brave-flags.conf.dis $XDG_CONFIG_HOME/brave-flags.conf &> /dev/null
 				mv $XDG_CONFIG_HOME/chromium-flags.conf.dis $XDG_CONFIG_HOME/chromium-flags.conf &> /dev/null
 
-				export GTK_IM_MODULE=fcitx
-				export XMODIFIERS=@im=fcitx
-				export QT_IM_MODULE=fcitx
+				export QT_QPA_PLATFORMTHEME=qt5ct
 				export _JAVA_AWT_WM_NONREPARENTING=1
 				export MOZ_DISABLE_RDD_SANDBOX=1
 				export MOZ_ENABLE_WAYLAND=1
-				export QT_QPA_PLATFORM="xcb;wayland"
+				export QT_QPA_PLATFORM=wayland
+				export CLUTTER_BACKEND=wayland
 				export XDG_SESSION_TYPE=wayland
 
-				exec dbus-run-session startplasma-wayland 
-
+				exec gnome-shell --wayland &> /dev/null
 				;;
 			*)
 				echo "No valid desktop specified"
 				;;
 		esac 
-	  # logout
+	  logout
 fi
-
 

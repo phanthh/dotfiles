@@ -383,4 +383,3 @@ assign     [class="Vivaldi-stable"] $ws10
 assign     [app_id="firefox"] $ws10
 
 #===================== MOVE WHEN RELOAD ===========================#
-

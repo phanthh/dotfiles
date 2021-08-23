@@ -6,7 +6,7 @@ export MON1="HDMI-1"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CURRENT_DESKTOP="sway"
+export XDG_CURRENT_DESKTOP="gnome"
 
 #=========================== BASIC DEFAULTS==========================#
 
@@ -15,12 +15,11 @@ export AUR_WRAPPER="paru"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export FILE_MANAGER="pcmanfm"
 export BROWSER="firefox" 
-export CALIBRE_USE_DARK_PALETTE=1
 
-export MYVIMRC="$XDG_CONFIG_HOME/nvem/init.vim"
+export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export TASKDATA="$XDG_CONFIG_HOME/task/"
 export NO_AT_BRIDGE=1
