@@ -28,6 +28,7 @@ colors:
     white:   '#ffffff'
 
 window:
+  decorations: "none"
   padding:
     x: 0
     y: 0
@@ -36,6 +37,6 @@ key_bindings:
     - { key: C, mods: Control|Shift, action: Copy }
 font:
   normal:
-    family: Consolas
+    family: Hack Nerd Font
     style: auto
-  size: 18
+  size: 15

@@ -6,27 +6,19 @@ export MON1="HDMI-1"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CURRENT_DESKTOP="gnome"
+export XDG_CURRENT_DESKTOP="sway"
 
 #=========================== BASIC DEFAULTS==========================#
 
-# APPLICATION
-export AUR_WRAPPER="paru"
+export MENU_CMD="bemenu --bottom --fn 'Segoe UI 9' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
+
 export EDITOR="nvim"
 export GEDITOR="neovide"
-export VISUAL="nvim"
-export TERMINAL="alacritty"
-export FILE_MANAGER="pcmanfm"
-export BROWSER="firefox" 
 
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export TASKDATA="$XDG_CONFIG_HOME/task/"
-export NO_AT_BRIDGE=1
 
-export MENU_CMD="bemenu --bottom --fn 'Segoe UI 9' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
-
-export FZF_DEFAULT_COMMAND=''
 export CALIBRE_USE_DARK_PALETTE=1
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -83,4 +75,3 @@ export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
 #============================== ZSH =================================# 
 export ZDOTDIR="$HOME/.config/zsh"
-

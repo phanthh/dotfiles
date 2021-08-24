@@ -1,6 +1,5 @@
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
+if systemctl -q is-active graphical.target && [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
 		echo "Starting $XDG_CURRENT_DESKTOP..."
-		# brave browser option
 
 		case $XDG_CURRENT_DESKTOP in 
 			i3)
@@ -14,7 +13,6 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				export GTK_IM_MODULE=ibus
 				export XMODIFIERS=@im=ibus
 				export QT_IM_MODULE=ibus
-				export MOZ_X11_EGL=1
 
 				exec startx &> /dev/null
 				;;
@@ -53,6 +51,9 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
 				echo "No valid desktop specified"
 				;;
 		esac 
+
+		echo "Exiting $XDG_CURRENT_DESKTOP..."
+
 	  logout
 fi
 

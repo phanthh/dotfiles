@@ -47,6 +47,7 @@ conf() {
       zathura)           echo ~/.config/zathura/zathurarc ;;
       alias|ali)         echo ~/.config/aliasrc ;;
       func|function|fun) echo ~/.config/funcrc ;;
+      key|keyrc) 				 echo ~/.config/keyrc ;;
       htop)              echo ~/.config/htop/htoprc ;;
       task)              echo ~/.config/task/taskrc ;;
       vit)               echo ~/.vitrc ;;
@@ -78,7 +79,7 @@ conf() {
       *)                 echo ~/.config ;;
   esac)
 }
-compctl -k "(reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
+compctl -k "(reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
 
 #=========================== FZF ===========================#
 
@@ -124,9 +125,10 @@ fk() {
 #=========================== PACMAN ===========================#
 
 # Install packages 
+AUR_WRAPPER=paru
 in() {
     if [ -z "$1" ]; then
-      $AUR_WRAPPER -Slq | fzf --multi --preview '$AUR_WRAPPER -Si {1}' | xargs -ro $AUR_WRAPPER -S
+      $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
     else 
       $AUR_WRAPPER -S $*
     fi
@@ -135,7 +137,7 @@ in() {
 # Remove installed packages 
 re() {
     if [ -z "$1" ]; then
-      $AUR_WRAPPER -Qeq | fzf --multi --preview '$AUR_WRAPPER -Qi {1}' | xargs -ro $AUR_WRAPPER -Rns
+      $AUR_WRAPPER -Qeq | fzf --multi --preview "$AUR_WRAPPER -Qi {1}" | xargs -ro $AUR_WRAPPER -Rns
     else 
       $AUR_WRAPPER -Rns $*
     fi

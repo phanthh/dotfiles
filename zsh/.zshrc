@@ -2,6 +2,7 @@
 
 HISTSIZE=10000000
 SAVEHIST=10000000
+[ ! -d ~/.cache/zsh ] && mkdir ~/.cache/zsh
 HISTFILE=~/.cache/zsh/history
 
 #======================= AUTOSTART TMUX ========================#
@@ -95,4 +96,4 @@ fi
 # <<< conda initialize <<<
 
 #======================= START PROMPT ============================#
-task 
+# task 

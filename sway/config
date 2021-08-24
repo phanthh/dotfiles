@@ -196,7 +196,7 @@ bindsym Print exec ~/.bin/prtsc_wl
 
 # Applications
 # Browser/Browser apps
-bindsym $mod+n exec ~/.bin/open $BROWSER
+bindsym $mod+n exec ~/.bin/open firefox
 
 bindsym $mod+Shift+m exec ~/.bin/open messenger
 bindsym $mod+Shift+g exec ~/.bin/open telegram-deskstop
@@ -207,7 +207,8 @@ bindsym $mod+Shift+b exec ~/.bin/open calibre
 bindsym $mod+Shift+s exec ~/.bin/open slack
 bindsym $mod+Shift+d exec ~/.bin/open discord
 
-bindsym $mod+Shift+e exec ~/.bin/open $FILE_MANAGER
+bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
+
 
 
 #============ WORKSPACE 
@@ -263,11 +264,11 @@ focus_follows_mouse no
 
 #=========== FONT 
 
-font pango:Font Awesome 5 Free 9, NotoSans Nerd Font 9
+font pango:NotoSans Nerd Font 9
 
 #=========== GTK THEME IMPORT 
 
-exec_always --no-startup-id import-gsettings
+exec_always --no-startup-id ~/.bin/import-gsettings
 
 #=========== GTK THEME IMPORT 
 
