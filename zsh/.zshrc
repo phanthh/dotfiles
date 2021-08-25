@@ -20,15 +20,6 @@ ZSH_THEME="windows"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
-# setopt autocd
-# source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source $ZSH/plugins/git/git.plugin.zsh
-
-# setopt prompt_subst
-# source $ZSH/custom/themes/windows.zsh-theme
-# PROMPT='C:%{${${${(%):-%~}//\//\\}/\~/\\Users\\$USER}%${#${${(%):-%~}//\//\\}/\~/\\Users\\$USER}G%}> '
-
 #======================= ALIASES ===============================#
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
@@ -96,4 +87,7 @@ fi
 # <<< conda initialize <<<
 
 #======================= START PROMPT ============================#
-# task 
+echo "Microsoft Windows [Version 10.0.18041.264]\n(c) 2020 Microsoft Corporation. All rights reserved.\n"
+
+echo "Here are your tasks for today: "
+task

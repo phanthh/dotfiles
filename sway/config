@@ -208,6 +208,7 @@ bindsym $mod+Shift+s exec ~/.bin/open slack
 bindsym $mod+Shift+d exec ~/.bin/open discord
 
 bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
+bindsym $mod+Shift+o exec ~/.bin/open obsidian
 
 
 
@@ -268,7 +269,7 @@ font pango:NotoSans Nerd Font 9
 
 #=========== GTK THEME IMPORT 
 
-exec_always --no-startup-id ~/.bin/import-gsettings
+# exec_always --no-startup-id ~/.bin/import-gsettings
 
 #=========== GTK THEME IMPORT 
 

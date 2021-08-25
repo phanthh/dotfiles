@@ -17,14 +17,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'lilydjwg/colorizer'
-Plug 'alvan/vim-closetag'
 Plug 'mlaursen/vim-react-snippets'
+" Plug 'alvan/vim-closetag'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'alvan/vim-closetag'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes' 
 Plug 'tomasiser/vim-code-dark'
@@ -258,13 +258,15 @@ nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
 nmap <silent> <leader>s :split <bar> wincmd j<CR> 
 
 nmap <silent> <C-w>x :wincmd q<CR>
-nmap <silent> <C-w>x :wincmd q<CR>
+nmap <silent> <leader>x :wincmd q<CR>
 
-nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
+" nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
 
 " Switch Buffer
 nmap <silent> <C-w>i :bnext<CR>
 nmap <silent> <C-w>u :bprev<CR>
+nmap <silent> <leader>i :bnext<CR>
+nmap <silent> <leader>u :bprev<CR>
 
 " Nerd tree
 nmap <silent> <C-w>e :NERDTreeToggle<CR>
@@ -411,7 +413,7 @@ endfunction
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
             \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
 " Notification after file change
@@ -423,6 +425,3 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup end
-
-
-
