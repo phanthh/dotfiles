@@ -148,8 +148,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $smod+y exec ~/.bin/yt -r
 
 # Terminal
-bindsym $mod+Return exec ~/.bin/open kitty --single-instance
-bindsym $mod+Shift+Return exec kitty --single-instance
+bindsym $mod+Return exec ~/.bin/open alacritty 
+bindsym $mod+Shift+Return exec alacritty
 
 # Dmenu
 bindsym $smod+d exec ~/.bin/menu
@@ -166,8 +166,7 @@ bindsym Print exec ~/.bin/prtsc area_c
 
 # Applications
 # Browser/Browser apps
-bindsym $mod+n exec ~/.bin/open $BROWSER
-bindsym $mod+Shift+n exec $BROWSER ; workspace number $ws10 
+bindsym $mod+n exec ~/.bin/open firefox
 
 bindsym $mod+Shift+m exec ~/.bin/open messenger
 bindsym $mod+Shift+g exec ~/.bin/open telegram-deskstop
@@ -178,7 +177,7 @@ bindsym $mod+Shift+b exec ~/.bin/open calibre
 bindsym $mod+Shift+s exec ~/.bin/open slack
 bindsym $mod+Shift+d exec ~/.bin/open discord
 
-bindsym $mod+Shift+e exec ~/.bin/open $FILE_MANAGER
+bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 
 #============ WORKSPACE 
 

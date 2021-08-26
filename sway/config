@@ -209,6 +209,7 @@ bindsym $mod+Shift+d exec ~/.bin/open discord
 
 bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 bindsym $mod+Shift+o exec ~/.bin/open obsidian
+bindsym $mod+Shift+z exec ~/.bin/open zotero
 
 
 
@@ -334,6 +335,7 @@ bar {
 
 for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
+for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 
 #=========================== ASSIGN ===============================#
 
@@ -356,6 +358,7 @@ assign     [class="zoom"] $ws4
 
 # ws5 lib
 assign     [app_id="calibre"] $ws5
+assign     [class="Zotero"] $ws5
 
 # ws6 media
 assign     [class="mpv"] $ws6
@@ -374,6 +377,7 @@ assign     [class="Code"] $ws7
 assign     [app_id="libreoffice"] $ws8
 assign     [app_id="okular"] $ws8
 assign     [class="RemNote"] $ws8
+assign     [class="obsidian"] $ws8
 
 # ws9 term
 # assign     [app_id="kitty"] $ws9

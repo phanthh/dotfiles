@@ -16,5 +16,5 @@ brightnessctl s 50% &
 # LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
 LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':')
 gammastep -l $LOCATION &
-thunderbird &
-telegram-desktop -startintray &
+# thunderbird &
+# telegram-desktop -startintray &

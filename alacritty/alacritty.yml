@@ -28,7 +28,6 @@ colors:
     white:   '#ffffff'
 
 window:
-  decorations: "none"
   padding:
     x: 0
     y: 0
