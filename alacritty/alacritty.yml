@@ -36,6 +36,6 @@ key_bindings:
     - { key: C, mods: Control|Shift, action: Copy }
 font:
   normal:
-    family: Hack Nerd Font
+    family: Consolas
     style: auto
-  size: 15
+  size: 17
