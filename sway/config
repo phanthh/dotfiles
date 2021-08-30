@@ -1,4 +1,4 @@
-#========================== VARIABLES ==============================#
+#=============================== VARIABLES ===================================#
 
 # Colors 
 set $foreground #ffffff
@@ -39,82 +39,81 @@ set $ws10 "10  "
 
 floating_modifier $mod 
 
-#======================== INPUT ===============================#
+#================================== INPUT ====================================#
 
+# Keyboard
 input type:keyboard {
 		repeat_delay 225
 		repeat_rate 200
 }
 
+# Touchpad
 input type:touchpad {
     tap enabled
     natural_scroll enabled
 		scroll_factor 0.5
 }
 
+# Mouse
 input type:pointer {
 		scroll_factor 0.5
 }
 
+# Numlock
 input * xkb_numlock enable
 
+# Cursor
 seat seat0 xcursor_theme default 32
 
 seat seat0 hide_cursor 8000
 
 seat seat0 hide_cursor when-typing enable
 
-xwayland disable
+#============================= STARTUP SCRIPTS ===============================#
 
-#======================== AUTOSTART ===============================#
+exec ~/.config/sway/autostart
 
-exec --no-startup-id ~/.config/sway/autostart
-
-# Default layout
+#================================ DISPLAY ====================================#
 
 # Background
 output * bg #000000 solid_color
 # output * bg ~/Pictures/vc-takedown.jpg fill
-# Applications
-#
 output * adaptive_sync on
 
-output * max_render_time 1
+#=============================== KEYBINDING ==================================#
 
-#============================ KEYBINDING ===========================#
-
-#============ CONTROLS 
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Xkeys 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Volume
-bindsym $mod+F1 exec --no-startup-id ~/.bin/open pavucontrol
-bindsym $mod+F2 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym $mod+F4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F4 exec ~/.bin/open pavucontrol
 
 # Brightness
-bindsym $mod+F7 exec --no-startup-id brightnessctl s 5%-
-bindsym $mod+F8 exec --no-startup-id brightnessctl s 5%+
+bindsym $mod+F7 exec brightnessctl s 5%-
+bindsym $mod+F8 exec brightnessctl s 5%+
 
 # Power
-bindsym $mod+p exec --no-startup-id ~/.bin/powerprofile
+bindsym $mod+p exec ~/.bin/powerprofile
 
+# Sway
 bindsym $smod+Shift+r reload
 
-# Systems 
+# System
 bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
 bindsym --release $smod+Shift+Escape exec ~/.bin/rebootoption
 bindsym --release $smod+Escape exec ~/.bin/prompt "Shutdown" "poweroff"
 bindsym --release $smod+Shift+e exec ~/.bin/prompt "Logout" "swaymsg exit"
 
-#=========== WINDOW 
+#============ WINDOWS 
 
-# Kill 
+# Close window 
 bindsym $mod+q kill
 
 # Change focus
@@ -123,7 +122,7 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Move focused
+# Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -137,9 +136,8 @@ bindsym $mod+Shift+Right move right
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border pixel 1; [floating con_id=__focused__] border normal
 
-
 # Focus parent/child 
-# bindsym $mod+a focus parent
+bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 # Split 
@@ -168,11 +166,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-#============ UTILS 
-
-# Youtube
-bindsym $smod+y exec ~/.bin/yt -r
-
 # Bluetooth manager
 bindsym $smod+b exec blueman-manager
 
@@ -180,38 +173,28 @@ bindsym $smod+b exec blueman-manager
 bindsym $mod+Return exec ~/.bin/open alacritty 
 bindsym $mod+Shift+Return exec alacritty
 
-# Dmenu
+# Browser
+bindsym $mod+n exec ~/.bin/open firefox
+
+# Menu launcher
 bindsym $smod+d exec ~/.bin/menu
 
 # Timer
 bindsym $mod+d exec ~/.bin/timer
 
 # Screen Shot
-# bindsym $smod+Print exec "~/.bin/prtsc current_screen"
-# bindsym Print exec "~/.bin/prtsc area_c"
 bindsym Print exec ~/.bin/prtsc_wl
 
-# Windows
-# bindsym $smod+Shift+F12 exec "prime-run VBoxManage startvm Windows10"
-
 # Applications
-# Browser/Browser apps
-bindsym $mod+n exec ~/.bin/open firefox
-
-bindsym $mod+Shift+m exec ~/.bin/open messenger
 bindsym $mod+Shift+g exec ~/.bin/open telegram-deskstop
-bindsym $mod+Shift+p exec ~/.bin/open keeweb
 bindsym $mod+Shift+f exec ~/.bin/open spotify
 bindsym $mod+Shift+b exec ~/.bin/open calibre
-
-bindsym $mod+Shift+s exec ~/.bin/open slack
-bindsym $mod+Shift+d exec ~/.bin/open discord
-
 bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 bindsym $mod+Shift+o exec ~/.bin/open obsidian
 bindsym $mod+Shift+z exec ~/.bin/open zotero
 
-
+# Toggle Ibus
+bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -a "Ibus" -t 2000
 
 #============ WORKSPACE 
 
@@ -240,56 +223,46 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
-#=========================== CONFIG ===============================#
+#================================= CONFIG ====================================#
 
-#=========== WINDOW 
-#
-
+# Window title
 for_window  [class=".*"] title_format "<b>%title</b>"
 title_align center
+
+# Window border
 default_border pixel 1
 default_floating_border normal
 hide_edge_borders --i3 smart
 
-# Colors
-#                       border      background     text       indicator  child_border
-client.focused          $border2    $background2     $foreground   $secondary    $primary
+# Window colors
+#                       border      background     text       	 indicator  	 child_border
+client.focused          $border2    $background2   $foreground   $secondary    $primary
 client.unfocused        $border2    $background    $foreground   $secondary    $background
 client.focused_inactive $border     $background    $foreground   $secondary    $background
-client.urgent           $primary    $background2     $foreground   $primary  $primary
+client.urgent           $primary    $background2   $foreground   $primary  		 $primary
 
-#=========== MOUSE
+# Mouse behaviors
 
 mouse_warping none
 focus_follows_mouse no 
-# workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
-#=========== FONT 
+# Global font 
 
 font pango:NotoSans Nerd Font 9
 
-#=========== GTK THEME IMPORT 
+# Set gtk theme from configuration files of GNOME
+# exec_always  ~/.bin/import-gsettings
 
-# exec_always --no-startup-id ~/.bin/import-gsettings
+# Webrtc set environtment variables
+# exec  ~/.bin/webrtc
 
-#=========== GTK
-
-# exec --no-startup-id ~/.bin/webrtc
-
-#=========== WORKSPACE 
-
-# for_window [workspace=$ws10] layout tabbed
-# for_window [workspace=$ws1] layout tabbed
-# for_window [workspace=$ws2] layout tabbed
-# for_window [workspace=$ws5] layout tabbed
+# Workspace layout 
 workspace_layout tabbed
-
-#=========== STATUSBAR
 
 # Bar1
 bar {
     output eDP-1
-
     # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
     status_command i3status-rs ~/.config/i3status-rust/config.toml
 
@@ -298,7 +271,7 @@ bar {
         separator $foreground
         statusline $foreground
 
-        #                  border         background         text
+        #                  border         background       text
         focused_workspace  $border2       $background2     $foreground
         active_workspace   $border2       $background2     $foreground
         inactive_workspace $border        $background      $foreground
@@ -333,19 +306,19 @@ bar {
 #     # strip_workspace_numbers yes
 # }
 
+#============================ WINDOWS BEHAVIORS ==============================#
+
+# Floating
 for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
 for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 for_window [title="Wi Hotspot"] floating enable
-
-#=========================== ASSIGN ===============================#
 
 # ws1 usr
 assign     [app_id="thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
 assign     [app_id="Brave-browser" title="Calendar"] $ws1 
-
 
 # ws2 msg
 assign     [class="Slack"] $ws2
@@ -364,8 +337,7 @@ assign     [class="Zotero"] $ws5
 # ws6 media
 assign     [class="mpv"] $ws6
 assign     [class="Spotify"] $ws6
-for_window  [class="Spotify"] move to workspace $ws6
-assign 		 [class="FreeTube"] $ws6
+for_window [class="Spotify"] move to workspace $ws6
 
 # ws7 dev
 assign     [class="scrcpy"] $ws7
@@ -377,7 +349,6 @@ assign     [class="Code"] $ws7
 # ws8 work
 assign     [app_id="libreoffice"] $ws8
 assign     [app_id="okular"] $ws8
-assign     [class="RemNote"] $ws8
 assign     [class="obsidian"] $ws8
 
 # ws9 term
@@ -385,7 +356,4 @@ assign     [app_id="alacritty"] $ws9
 
 # ws10 web
 assign     [app_id="Brave-browser"] $ws10
-assign     [class="Vivaldi-stable"] $ws10
 assign     [app_id="firefox"] $ws10
-
-#===================== MOVE WHEN RELOAD ===========================#

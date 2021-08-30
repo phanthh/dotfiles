@@ -1,23 +1,20 @@
 #!/bin/sh
 
-# UTILS
 dunst &
 lxsession &
-fcitx5 &
+ibus-daemon -drxR &
+thunderbird &
+telegram-desktop -startintray &
+brightnessctl s 50% &
 
 swayidle -w \
 	timeout 300 'swaylock -f' \
 	timeout 305 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock -f' \
-	timeout 600 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
+	timeout 600 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] \
+		&& systemctl suspend' &
 
+gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" \
+	| jq '.location | .lat,.lng' | paste -s -d ':') &
 
-brightnessctl s 50% &
-
-# APPLICATION
-# LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | awk 'OFS=":" {print $3,$5}' | tr -d ',}')
-LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':')
-gammastep -l $LOCATION &
-# thunderbird &
-# telegram-desktop -startintray &
