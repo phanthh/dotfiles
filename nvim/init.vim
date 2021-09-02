@@ -18,7 +18,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'lilydjwg/colorizer'
 Plug 'mlaursen/vim-react-snippets'
-" Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

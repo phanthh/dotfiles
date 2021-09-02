@@ -77,8 +77,10 @@ exec ~/.config/sway/autostart
 
 # Background
 output * bg #000000 solid_color
-# output * bg ~/Pictures/vc-takedown.jpg fill
 output * adaptive_sync on
+output eDP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
+focus output eDP-1
 
 #=============================== KEYBINDING ==================================#
 
@@ -245,7 +247,7 @@ client.urgent           $primary    $background2   $foreground   $primary  		 $p
 
 mouse_warping none
 focus_follows_mouse no 
-workspace_auto_back_and_forth yes
+# workspace_auto_back_and_forth yes
 
 # Global font 
 
@@ -285,26 +287,30 @@ bar {
     # strip_workspace_numbers yes
 }
 
-# Bar2
-# bar {
-#     output HDMI-1
-#     status_command /bin/i3status-rs ~/.config/i3status-rust/config.toml
+bar {
+    output HDMI-A-1
+    # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
 
-#     colors {
-#         background $background
-#         separator $foreground
-#         statusline $foreground
+    colors {
+        background $background
+        separator $foreground
+        statusline $foreground
 
-#         #                  border           background        text
-#         focused_workspace  $border2         $background2        $foreground
-#         active_workspace   $border2         $background2        $foreground
-#         inactive_workspace $border          $background         $foreground
-#         urgent_workspace   $primary         $primary            $foreground
-#         binding_mode       $primary         $primary            $foreground
-#     }
-#     workspace_min_width 50
-#     # strip_workspace_numbers yes
-# }
+        #                  border         background       text
+        focused_workspace  $border2       $background2     $foreground
+        active_workspace   $border2       $background2     $foreground
+        inactive_workspace $border        $background      $foreground
+        urgent_workspace   $primary       $primary         $foreground
+        binding_mode       $primary       $primary         $foreground
+    }
+
+    workspace_min_width 50
+    # position top
+    # tray_output none
+    # strip_workspace_numbers yes
+}
+
 
 #============================ WINDOWS BEHAVIORS ==============================#
 

@@ -8,11 +8,7 @@ e() {
   fi
 }
 
-ep() {
-	$GEDITOR $*
-}
-
-edg() {
+eg() {
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudo $GEDITOR $* & disown $!
   else
