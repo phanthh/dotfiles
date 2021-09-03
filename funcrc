@@ -23,6 +23,7 @@ conf() {
   e $(
   case $1 in
 			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
+			kanshi)					   echo ~/.config/kanshi/config ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
       zshenv|env)        echo ~/.zshenv ;;
       zprofile)          echo ~/.config/zsh/.zprofile ;;

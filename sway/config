@@ -78,8 +78,6 @@ exec ~/.config/sway/autostart
 # Background
 output * bg #000000 solid_color
 output * adaptive_sync on
-output eDP-1 pos 0 0
-output HDMI-A-1 pos 1920 0
 focus output eDP-1
 
 #=============================== KEYBINDING ==================================#

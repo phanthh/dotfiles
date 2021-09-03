@@ -6,6 +6,7 @@ ibus-daemon -drxR &
 thunderbird &
 telegram-desktop -startintray &
 brightnessctl s 50% &
+kanshi &
 
 swayidle -w \
 	timeout 300 'swaylock -f' \
