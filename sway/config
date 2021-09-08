@@ -78,7 +78,7 @@ exec ~/.config/sway/autostart
 # Background
 output * bg #000000 solid_color
 output * adaptive_sync on
-focus output eDP-1
+output HDMI-A-1 pos 1920 0
 
 #=============================== KEYBINDING ==================================#
 
@@ -260,12 +260,9 @@ font pango:NotoSans Nerd Font 9
 # Workspace layout 
 workspace_layout tabbed
 
-# Bar1
+# Bar
 bar {
-    output eDP-1
-    # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
     status_command i3status-rs ~/.config/i3status-rust/config.toml
-
     colors {
         background $background
         separator $foreground
@@ -284,31 +281,6 @@ bar {
     # tray_output none
     # strip_workspace_numbers yes
 }
-
-bar {
-    output HDMI-A-1
-    # status_command /bin/i3status-rs ~/.config/i3status-rust/config_lap.toml
-    status_command i3status-rs ~/.config/i3status-rust/config.toml
-
-    colors {
-        background $background
-        separator $foreground
-        statusline $foreground
-
-        #                  border         background       text
-        focused_workspace  $border2       $background2     $foreground
-        active_workspace   $border2       $background2     $foreground
-        inactive_workspace $border        $background      $foreground
-        urgent_workspace   $primary       $primary         $foreground
-        binding_mode       $primary       $primary         $foreground
-    }
-
-    workspace_min_width 50
-    # position top
-    # tray_output none
-    # strip_workspace_numbers yes
-}
-
 
 #============================ WINDOWS BEHAVIORS ==============================#
 
