@@ -10,19 +10,19 @@ Plug 'tpope/vim-surround'
 " Plug 'junegunn/vim-easy-align'
 
 Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'leafgarland/typescript-vim'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'lilydjwg/colorizer'
 Plug 'mlaursen/vim-react-snippets'
 Plug 'alvan/vim-closetag'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
 
 Plug 'vim-airline/vim-airline'
@@ -374,7 +374,7 @@ let g:airline#extensions#tabline#enabled = 0
 
 " neovide
 let g:neovide_refresh_rate=144
-set guifont=Hack\ Nerd\ Font\ Mono:h24
+set guifont=Hack\ Nerd\ Font\ Mono:h12
 
 " Language specific configuration
 augroup LangSpecs

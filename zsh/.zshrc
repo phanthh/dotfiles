@@ -21,7 +21,8 @@ fi
 export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # kardan
-ZSH_THEME="windows"
+# windows
+ZSH_THEME="eastwood"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
