@@ -192,6 +192,7 @@ bindsym $mod+Shift+b exec ~/.bin/open calibre
 bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 bindsym $mod+Shift+o exec ~/.bin/open obsidian
 bindsym $mod+Shift+z exec ~/.bin/open zotero
+bindsym $mod+semicolon exec ~/.bin/open neovide
 
 # Toggle Ibus
 bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -a "Ibus" -t 2000
@@ -300,6 +301,7 @@ assign     [app_id="Brave-browser" title="Calendar"] $ws1
 assign     [class="Slack"] $ws2
 assign     [class="discord"] $ws2
 assign     [app_id="telegramdesktop"] $ws2
+assign 		 [class="Brave-browser"] $ws2
 
 # ws3 soc
 
@@ -328,7 +330,7 @@ assign     [app_id="okular"] $ws8
 assign     [class="obsidian"] $ws8
 
 # ws9 term
-assign     [app_id="alacritty"] $ws9
+assign     [app_id="Alacritty"] $ws9
 
 # ws10 web
 assign     [app_id="Brave-browser"] $ws10

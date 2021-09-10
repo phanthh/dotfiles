@@ -8,6 +8,7 @@ telegram-desktop -startintray &
 brightnessctl s 50% &
 kanshi &
 blueman-applet &
+brave &
 
 swayidle -w \
 	timeout 300 'swaylock -f' \

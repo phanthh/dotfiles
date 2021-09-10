@@ -19,5 +19,6 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
   "python.pythonPath": "/home/phanth/.local/bin/python-conda",
-  "python.analysis.typeCheckingMode": "off"
+  "python.analysis.typeCheckingMode": "off",
+  "eslint.alwaysShowStatus": "true"
 }

@@ -1,6 +1,7 @@
 #========================= STARTUP =============================#
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
 	~/.bin/startsession
+	exit
 fi
 
 #========================= HISTORY =============================#
@@ -12,9 +13,7 @@ HISTFILE=~/.cache/zsh/history
 
 #======================= AUTOSTART TMUX ========================#
 
-if [[ $XDG_SESSION_TYPE != tty ]] && command -v tmux >/dev/null 2>&1 ; then
-    [ -z "${TMUX}" ] && (tmux attach >/dev/null 2>&1 || tmux)
-fi
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 
 #======================= OHMYZSH ===============================#
 

@@ -18,3 +18,4 @@ LOCATION=$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geocl
 gammastep -l $LOCATION &
 # thunderbird &
 # telegram-desktop -startintray &
+ 
