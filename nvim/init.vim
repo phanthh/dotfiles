@@ -60,15 +60,7 @@ set ttyfast
 " Search
 set incsearch
 set hlsearch
-set ignorecase
-
-" Key
-set timeout 
-set timeoutlen=350
-set ttimeout 
-set ttimeoutlen=350 
-set autoindent
-set backspace=indent,eol,start
+set ignorecase " Key set timeout set timeoutlen=350 set ttimeout set ttimeoutlen=350 set autoindent set backspace=indent,eol,start
 set clipboard=unnamedplus
 set tabstop=2
 set shiftwidth=2
@@ -104,7 +96,8 @@ endif
 
 " Leader
 nnoremap <SPACE> <Nop>
-inoremap jj <Esc>
+inoremap jj <Esc>:w<cr>
+inoremap kk <Esc>:w<cr>
 let mapleader=" "
 
 if has("patch-8.1.1564")
@@ -167,18 +160,7 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
+" Symbol renaming.  nmap <leader>rn <Plug>(coc-rename) Formatting selected code.  xmap <leader>f  <Plug>(coc-format-selected) nmap <leader>f  <Plug>(coc-format-selected) augroup mygroup autocmd!  Setup formatexpr specified filetype(s).  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected') Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -394,6 +376,7 @@ augroup LangSpecs
 
   " Scala
   autocmd FileType scala map <S-F10> :w <bar> :!sbt run <CR>
+
   autocmd FileType scala imap <S-F10> <Esc> :w <bar> :!sbt run<CR>
   autocmd FileType scala map <F9> :w <bar> :!sbt test <CR>
   autocmd FileType scala imap <F9> <Esc> :w <bar> :!sbt test<CR>
@@ -425,4 +408,3 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup end
-

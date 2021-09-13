@@ -22,6 +22,7 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
+			kmonad) 					 echo /etc/kmonad/config ;;
 			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
 			kanshi)					   echo ~/.config/kanshi/config ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
@@ -77,7 +78,7 @@ conf() {
       *)                 echo ~/.config ;;
   esac)
 }
-compctl -k "(session reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
+compctl -k "(kmonad session reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
 
 #=========================== FZF ===========================#
 
