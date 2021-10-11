@@ -186,12 +186,14 @@ bindsym $mod+d exec ~/.bin/timer
 bindsym Print exec ~/.bin/prtsc_wl
 
 # Applications
-bindsym $mod+Shift+g exec ~/.bin/open telegram-deskstop
-bindsym $mod+Shift+f exec ~/.bin/open spotify
-bindsym $mod+Shift+b exec ~/.bin/open calibre
+bindsym $mod+Shift+t exec ~/.bin/open telegram-deskstop
+bindsym $mod+Shift+s exec ~/.bin/open spotify
+bindsym $mod+Shift+c exec ~/.bin/open calibre
 bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 bindsym $mod+Shift+o exec ~/.bin/open obsidian
 bindsym $mod+Shift+z exec ~/.bin/open zotero
+bindsym $mod+Shift+f exec ~/.bin/open brave
+bindsym $mod+Shift+b exec ~/.bin/open blueman-manager
 bindsym $mod+semicolon exec ~/.bin/open neovide
 
 # Toggle Ibus
@@ -295,7 +297,6 @@ for_window [title="Wi Hotspot"] floating enable
 assign     [app_id="thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
 assign     [class="KeeWeb"] $ws1
-assign     [app_id="Brave-browser" title="Calendar"] $ws1 
 
 # ws2 msg
 assign     [class="Slack"] $ws2
@@ -326,12 +327,10 @@ assign     [class="Code"] $ws7
 
 # ws8 work
 assign     [app_id="libreoffice"] $ws8
-assign     [app_id="okular"] $ws8
 assign     [class="obsidian"] $ws8
 
 # ws9 term
 assign     [app_id="Alacritty"] $ws9
 
 # ws10 web
-assign     [app_id="Brave-browser"] $ws10
 assign     [app_id="firefox"] $ws10

@@ -10,7 +10,7 @@ Plug 'tpope/vim-surround'
 " Plug 'junegunn/vim-easy-align'
 
 Plug 'preservim/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 
@@ -22,11 +22,11 @@ Plug 'alvan/vim-closetag'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' 
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes' 
 Plug 'tomasiser/vim-code-dark'
 Plug 'glepnir/dashboard-nvim'
 
@@ -60,7 +60,15 @@ set ttyfast
 " Search
 set incsearch
 set hlsearch
-set ignorecase " Key set timeout set timeoutlen=350 set ttimeout set ttimeoutlen=350 set autoindent set backspace=indent,eol,start
+set ignorecase 
+
+" Key 
+set timeout 
+set timeoutlen=350 
+set ttimeout 
+set ttimeoutlen=350 
+set autoindent 
+set backspace=indent,eol,start
 set clipboard=unnamedplus
 set tabstop=2
 set shiftwidth=2
@@ -97,7 +105,7 @@ endif
 " Leader
 nnoremap <SPACE> <Nop>
 inoremap jj <Esc>:w<cr>
-inoremap kk <Esc>:w<cr>
+inoremap jk <Esc>:w<cr>
 let mapleader=" "
 
 if has("patch-8.1.1564")
@@ -160,7 +168,17 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.  nmap <leader>rn <Plug>(coc-rename) Formatting selected code.  xmap <leader>f  <Plug>(coc-format-selected) nmap <leader>f  <Plug>(coc-format-selected) augroup mygroup autocmd!  Setup formatexpr specified filetype(s).  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected') Update signature help on jump placeholder.
+" Symbol renaming.  
+nmap <leader>rn <Plug>(coc-rename) 
+" Formatting selected code.  
+xmap <leader>f  <Plug>(coc-format-selected) 
+nmap <leader>f  <Plug>(coc-format-selected) 
+
+augroup mygroup 
+	autocmd!  
+	" Setup formatexpr specified filetype(s).  
+	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected') 
+	" Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -224,10 +242,10 @@ nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 " nnoremap <F11> :e $MYVIMRC <CR>
 
 " Switch Pane
-nmap <silent> <leader>j :wincmd j<CR>
-nmap <silent> <leader>k :wincmd k<CR>
-nmap <silent> <leader>h :wincmd h<CR>
-nmap <silent> <leader>l :wincmd l<CR>
+" nmap <silent> <leader>j :wincmd j<CR>
+" nmap <silent> <leader>k :wincmd k<CR>
+" nmap <silent> <leader>h :wincmd h<CR>
+" nmap <silent> <leader>l :wincmd l<CR>
 
 nmap <silent> <C-w><Up> :wincmd +<CR>
 nmap <silent> <C-w><Down> :wincmd -<CR>
@@ -235,29 +253,32 @@ nmap <silent> <C-w><Left> :wincmd <<CR>
 nmap <silent> <C-w><Right> :wincmd ><CR>
 
 nmap <silent> <C-w>w :vsplit <bar> wincmd l<CR>
-nmap <silent> <C-w>s :split <bar> wincmd j<CR> 
-nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
-nmap <silent> <leader>s :split <bar> wincmd j<CR> 
+nmap <silent> <C-w>W :split <bar> wincmd j<CR> 
+" nmap <silent> <leader>w :vsplit <bar> wincmd l<CR>
+" nmap <silent> <leader>W :split <bar> wincmd j<CR> 
 
 nmap <silent> <C-w>x :wincmd q<CR>
-nmap <silent> <leader>x :wincmd q<CR>
-
+" nmap <silent> <leader>x :wincmd q<CR>
 " nmap <silent> <leader>x :lclose<bar>b#<bar>bd #<CR>
 
 " Switch Buffer
 nmap <silent> <C-w>i :bnext<CR>
 nmap <silent> <C-w>u :bprev<CR>
-nmap <silent> <leader>i :bnext<CR>
-nmap <silent> <leader>u :bprev<CR>
+" nmap <silent> <leader>i :bnext<CR>
+" nmap <silent> <leader>u :bprev<CR>
 
 " Nerd tree
 nmap <silent> <C-w>e :NERDTreeToggle<CR>
-nmap <silent> <leader>e :NERDTreeToggle<CR>
-nmap <silent> <leader>f :NERDTreeFind<CR>
+nmap <silent> <C-w>f :NERDTreeFind<CR>
+" nmap <silent> <leader>e :NERDTreeToggle<CR>
+" nmap <silent> <leader>f :NERDTreeFind<CR>
 
 " FZF Search
-nmap <silent> <C-p> :GFiles<CR>
-nmap <silent> <leader>p :Ag<CR>
+nmap <silent> <leader>fg :GFiles<CR>
+nmap <silent> <leader>fw :Ag<CR>
+nmap <silent> <leader>ff :Files<CR>
+nmap <silent> <leader>fl :Lines<CR>
+nmap <silent> <C-p> :Commands<CR>
 
 " Execute
 map <F10> :w <bar> :!crun %<CR>
@@ -272,6 +293,10 @@ nmap <silent> <F8> :CocRestart<CR>
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Format
+nmap <silent> <leader>fm :Format<CR>
+
 
 "========================= PLUGINS CONFIG =========================="
 
@@ -344,7 +369,6 @@ let g:airline_theme = 'codedark'
 let g:airline#extensions#tabline#enabled = 0
 
 " Use system clipboard wsl
-
 " let s:clip = '/mnt/c/Windows/System32/clip.exe'
 " if executable(s:clip)
 "   augroup WSLYank
@@ -355,10 +379,22 @@ let g:airline#extensions#tabline#enabled = 0
 "
 
 " neovide
-let g:neovide_refresh_rate=144
+" let g:neovide_refresh_rate=144
 set guifont=Hack\ Nerd\ Font\ Mono:h12
 
 " Language specific configuration
+function LatexFunc()
+  set spell spelllang=en_us 
+  set formatoptions-=cro
+  set foldmethod=expr 
+  set foldexpr=vimtex#fold#level(v:lnum) 
+  set foldtext=vimtex#fold#text()
+  map <F5> :w <bar> :VimtexCompile <CR><CR>
+  imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
+  nnoremap <leader><leader> za 
+	inoremap jj <Esc>
+endfunction
+
 augroup LangSpecs
   autocmd!
   " Latex
@@ -376,28 +412,16 @@ augroup LangSpecs
 
   " Scala
   autocmd FileType scala map <S-F10> :w <bar> :!sbt run <CR>
-
   autocmd FileType scala imap <S-F10> <Esc> :w <bar> :!sbt run<CR>
   autocmd FileType scala map <F9> :w <bar> :!sbt test <CR>
   autocmd FileType scala imap <F9> <Esc> :w <bar> :!sbt test<CR>
 augroup end
 
-function LatexFunc()
-  set spell spelllang=en_us 
-  set formatoptions-=cro
-  set foldmethod=expr 
-  set foldexpr=vimtex#fold#level(v:lnum) 
-  set foldtext=vimtex#fold#text()
-  map <F5> :w <bar> :VimtexCompile <CR><CR>
-  imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
-  nnoremap <leader><leader> za 
-endfunction
-
 " Triger `autoread` when files changes on disk
-" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+					\ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread

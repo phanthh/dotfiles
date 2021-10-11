@@ -54,6 +54,11 @@ format = " {ssid} {signal_strength} {ip} "
 interval = 60
 
 [[block]]
+block = "custom"
+command = "echo '' $(uname -r)"
+interval = "once"
+
+[[block]]
 block = "time"
 interval = 60
 timezone = "America/Mazatlan"

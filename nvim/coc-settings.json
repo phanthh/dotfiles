@@ -13,12 +13,10 @@
     "typescriptreact",
     "typescript.tsx",
     "python",
-    "cpp",
     "rust"
   ],
   "coc.preferences.extensionUpdateCheck": "daily",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
-  "python.pythonPath": "/home/phanth/.local/bin/python-conda",
-  "python.analysis.typeCheckingMode": "off",
-  "eslint.alwaysShowStatus": "true"
+  "python.pythonPath": "/home/phanth/.local/bin/python-env",
+  "python.analysis.typeCheckingMode": "off"
 }

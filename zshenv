@@ -23,6 +23,7 @@ export LC_CTYPE=en_US.UTF-8
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+export MAKEFLAGS="-j16"
 
 #============================= MIGRATE CONFIG ================================#
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
@@ -39,6 +40,8 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave-hsts"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
+export YTFZF_CONFIG_DIR="$XDG_CONFIG_HOME/ytfzf"
+export YTFZF_CONFIG_FILE="$YTFZF_CONFIG_DIR/conf.sh"
 
 #============================ ANDROID VARIABLES ==============================#
 export ANDROID_HOME="$HOME/.android/sdk"

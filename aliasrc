@@ -11,9 +11,10 @@ alias hostrc="sudoedit /etc/hosts"
 alias btr="sudo btrfs"
 alias btrfs="sudo btrfs"
 alias etckeeper="sudo etckeeper"
+alias pamusb-conf="sudo pamusb-conf"
 
 #=============================== UTILS ===============================#
-alias lsnap="sudo snapper -c homebk list"
+alias lsnap="sudo snapper -c home list"
 alias dedup="sudo duperemove -dr --hashfile=/home/.duphashes/phanth /home/phanth"
 
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
@@ -29,7 +30,7 @@ alias lsmnt="findmnt"
 alias lserv="systemctl --type=service"
 alias lsz="du -sch *(D) | sort -h"
 
-alias ls="exa -ghb --git --color=always --group-directories-first --time-style=iso"
+alias ls="exa -gb --git --color=always --group-directories-first --time-style=iso"
 alias l="ls -l"
 
 alias la="ls -la"
@@ -44,7 +45,6 @@ alias mount="mount | column -t"
 
 alias t="task"
 alias weather="curl wttr.in"
-alias notetopy="jupyter nbconvert --to script"
 alias kiwixs="kiwix-serve /mnt/database/Documents\ File/Wikipedia/*"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias pastex="xclip -o -selection clipboard >"
@@ -53,11 +53,11 @@ alias midef="mimeopen --ask-default"
 alias timer="termdown -f standard "
 alias gitstore="git config credential.helper store"
 alias cvimg="mogrify -format png"
-alias ds="conda activate tfgpu"
 alias cmus="cd ~/Musics && cmus"
 alias spt="speedtest-cli"
 alias ka="killall"
-alias ca="conda activate"
+# alias hblock=""
+alias jl="jupyter lab"
 
 #============================ SAFETY NETS ============================#
 
@@ -73,15 +73,14 @@ alias chgrp='chgrp --preserve-root'
 
 #============================ QUICK CD ========================#
 
-alias repo="~/Repository"
+alias src="~/.src"
 alias bin="~/.bin"
 alias config="~/.config"
 alias dev="~/Development"
 alias aca="~/Academia/"
 alias dl="~/Downloads"
 alias tex="~/Documents/Latex"
-alias hm="~"
-alias home="~"
+alias h="~"
 alias ana="~/Analysis"
 alias de="~/Desktop"
 alias con="~/.config"

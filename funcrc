@@ -22,12 +22,15 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
+			efi) 							 echo ~/.local/bin/genefi ;;
+			boot)						   echo /boot/loader/loader.conf ;;
 			kmonad) 					 echo /etc/kmonad/config ;;
 			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
 			kanshi)					   echo ~/.config/kanshi/config ;;
       zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
       zshenv|env)        echo ~/.zshenv ;;
       zprofile)          echo ~/.config/zsh/.zprofile ;;
+			mpv)							 echo ~/.config/mpv/mpv.conf ;;
       bashrc)            echo ~/.bashrc ;;
       xres)              echo ~/.Xresources && xrdb ~/.Xresources ;;
       xinit)             echo ~/.xinitrc ;;
@@ -53,8 +56,8 @@ conf() {
       conky)             echo ~/.config/conky/conky.conf ;;
       npm)               echo ~/.config/npm/npmrc ;;
       dunst)             echo ~/.config/dunst/dunstrc ;;
-      newsconf|news)     echo ~/.config/newsboat/config ;;
-      newsurl|nb)        echo ~/.config/newsboat/urls  ;;
+      nbconf)    			   echo ~/.config/newsboat/config ;;
+      nburls)        		 echo ~/.config/newsboat/urls  ;;
       yay)               echo ~/.config/yay/config.json  ;;
       paru)              echo ~/.config/paru/paru.conf ;;
       ytmdl)             echo ~/.config/ytmdl/config ;;
@@ -70,7 +73,7 @@ conf() {
       pacman)            echo /etc/pacman.conf ;;
       mirror)            echo /etc/pacman.d/mirrorlist ;;
       sudo)              echo /etc/sudoers ;;
-      snap)              echo /etc/snapper/configs/homebk ;;
+      snap|snapper)      echo /etc/snapper/configs/home ;;
 			tlp)							 echo /etc/tlp.conf ;;
 			relector)					 echo /etc/xdg/reflector/reflector.conf ;;
 			geoclue)					 echo /etc/geoclue/geoclue.conf ;;
@@ -78,7 +81,7 @@ conf() {
       *)                 echo ~/.config ;;
   esac)
 }
-compctl -k "(kmonad session reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst newsconf newsurl yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snap tlp)" conf
+compctl -k "(mpv efi boot kmonad session reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst nbconf nburls yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snapper tlp)" conf
 
 #=========================== FZF ===========================#
 
@@ -217,7 +220,7 @@ cpcd () {
 #==================== BTRFS SNAPSHOTS =========================#
 
 delsnap() {
-  sudo snapper -c homebk delete $1
+  sudo snapper -c home delete $1
 }
 
 cdsnap() {
@@ -226,8 +229,8 @@ cdsnap() {
 
 snapshot() {
   if [ $# -eq 0 ]; then
-      sudo snapper -c homebk create -d $(date --iso-8601)
+      sudo snapper -c home create -d $(date --iso-8601)
   else 
-      sudo snapper -c homebk create -d $1
+      sudo snapper -c home create -d $1
   fi
 }

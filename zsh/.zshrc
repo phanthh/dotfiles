@@ -18,10 +18,9 @@ HISTFILE=~/.cache/zsh/history
 #======================= OHMYZSH ===============================#
 
 export ZSH="$HOME/.local/share/oh-my-zsh"
-
 # kardan
 # windows
-ZSH_THEME="eastwood"
+ZSH_THEME="windows"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
@@ -75,24 +74,25 @@ preexec() { echo -ne '\e[5 q' ;}
 bindkey '^F' autosuggest-accept
 bindkey -s '^O' 'n^M'
 bindkey -s '^P' 'ff ^M'
+bindkey -s '^\' 'sysz ^M'
 bindkey -s '^N' 'newsboat ^M'
-bindkey -s '^K' 'vit ^M'
+bindkey -s '^E' '$EDITOR ^M'
 
-#======================= MINICONDA ==============================#
+#========================= CONDA ================================#
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 
-if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "/opt/miniconda3/etc/profile.d/conda.sh"
-else
-    export PATH="/opt/miniconda3/bin:$PATH"
-fi
+# if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+#     . "/opt/miniconda3/etc/profile.d/conda.sh"
+# else
+#     export PATH="/opt/miniconda3/bin:$PATH"
+# fi
 
 # <<< conda initialize <<<
 
 #======================= START PROMPT ============================#
 
 if [[ $XDG_SESSION_TYPE != tty ]]; then
-	echo "Microsoft Windows [Version 10.0.18041.264]\n(c) 2020 Microsoft Corporation. All rights reserved.\n"
+	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) Linux Foundation. All rights reserved.\n"
 fi
