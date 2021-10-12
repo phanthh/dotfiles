@@ -56,7 +56,7 @@ alias cvimg="mogrify -format png"
 alias cmus="cd ~/Musics && cmus"
 alias spt="speedtest-cli"
 alias ka="killall"
-# alias hblock=""
+alias hblock=""
 alias jl="jupyter lab"
 
 #============================ SAFETY NETS ============================#
