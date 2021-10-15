@@ -77,3 +77,7 @@ export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
 #============================== ZSH =================================# 
 export ZDOTDIR="$HOME/.config/zsh"
+
+
+#============================== TENSORFLOW =================================# 
+export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"

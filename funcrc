@@ -22,7 +22,7 @@ alias c="conf"
 conf() {
   e $(
   case $1 in
-			efi) 							 echo ~/.local/bin/genefi ;;
+			efi) 							 echo ~/.local/bin/efigen ;;
 			boot)						   echo /boot/loader/loader.conf ;;
 			kmonad) 					 echo /etc/kmonad/config ;;
 			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
