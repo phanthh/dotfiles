@@ -8,7 +8,7 @@ show_marks = "visible"
 
 [[block]]
 block = "pomodoro"
-length = 25
+length = 55
 break_length = 5
 message = "Take a break!"
 break_message = "Back to work!"

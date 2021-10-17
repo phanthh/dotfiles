@@ -328,6 +328,7 @@ assign     [class="Code"] $ws7
 # ws8 work
 assign     [app_id="libreoffice"] $ws8
 assign     [class="obsidian"] $ws8
+assign 		 [app_id="org.kde.okular"] $ws8
 
 # ws9 term
 assign     [app_id="Alacritty"] $ws9
