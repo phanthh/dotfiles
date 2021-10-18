@@ -26,11 +26,12 @@ source $ZSH/oh-my-zsh.sh
 
 #======================= ALIASES ===============================#
 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" 
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" 
 
 #======================= PRIVATE ===============================# 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc"
+
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/keyrc" 
 
 #======================= VIM KEYBIND ===========================#
 
@@ -73,9 +74,6 @@ preexec() { echo -ne '\e[5 q' ;}
 
 bindkey '^F' autosuggest-accept
 bindkey -s '^O' 'n^M'
-bindkey -s '^P' 'ff ^M'
-bindkey -s '^\' 'sysz ^M'
-bindkey -s '^N' 'newsboat ^M'
 bindkey -s '^E' '$EDITOR ^M'
 
 #========================= CONDA ================================#

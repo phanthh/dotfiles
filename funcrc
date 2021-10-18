@@ -16,84 +16,20 @@ eg() {
   fi
 }
 
-
-#=========================== CONFIG ===========================#
-alias c="conf"
-conf() {
-  e $(
-  case $1 in
-			efi) 							 echo ~/.local/bin/efigen ;;
-			boot)						   echo /boot/loader/loader.conf ;;
-			kmonad) 					 echo /etc/kmonad/config ;;
-			kernel|ker)				 echo /boot/loader/entries/arch.conf ;;
-			kanshi)					   echo ~/.config/kanshi/config ;;
-      zshrc|zsh)         echo ~/.config/zsh/.zshrc ;;
-      zshenv|env)        echo ~/.zshenv ;;
-      zprofile)          echo ~/.config/zsh/.zprofile ;;
-			mpv)							 echo ~/.config/mpv/mpv.conf ;;
-      bashrc)            echo ~/.bashrc ;;
-      xres)              echo ~/.Xresources && xrdb ~/.Xresources ;;
-      xinit)             echo ~/.xinitrc ;;
-      tmux)              echo ~/.config/tmux/tmux.conf ;;
-			session)					 echo ~/.bin/startsession ;;
-      i3)                echo ~/.config/i3/config ;;
-      sway)              echo ~/.config/sway/config ;;
-      bspwm)             echo ~/.config/bspwm/bspwmrc ;;
-      ohmyzsh)           echo ~/.oh-my-zsh ;;
-      kit|kitty)         echo ~/.config/kitty/kitty.conf ;;
-      ala|alacritty)     echo ~/.config/alacritty/alacritty.yml ;;
-      sx|sxhkd)          echo ~/.config/sxhkd/sxhkdrc ;;
-      vim|nvim)          echo ~/.vimrc ;;
-      polybar)           echo ~/.config/polybar/config ;;
-      psd)               echo ~/.config/psd/psd.conf ;;
-      zathura)           echo ~/.config/zathura/zathurarc ;;
-      alias|ali)         echo ~/.config/aliasrc ;;
-      func|function|fun) echo ~/.config/funcrc ;;
-      key|keyrc) 				 echo ~/.config/keyrc ;;
-      htop)              echo ~/.config/htop/htoprc ;;
-      task)              echo ~/.config/task/taskrc ;;
-      vit)               echo ~/.vitrc ;;
-      conky)             echo ~/.config/conky/conky.conf ;;
-      npm)               echo ~/.config/npm/npmrc ;;
-      dunst)             echo ~/.config/dunst/dunstrc ;;
-      nbconf)    			   echo ~/.config/newsboat/config ;;
-      nburls)        		 echo ~/.config/newsboat/urls  ;;
-      yay)               echo ~/.config/yay/config.json  ;;
-      paru)              echo ~/.config/paru/paru.conf ;;
-      ytmdl)             echo ~/.config/ytmdl/config ;;
-      autoi3)     			 echo ~/.config/i3/autostart ;;
-			autosway)  			   echo ~/.config/sway/autostart ;;
-      picom)             echo ~/.config/picom/picom.conf ;;
-      i3rs)              echo ~/.config/i3status-rust/config.toml ;;
-			gamma|gammastep)   echo ~/.config/gammastep/config.ini ;;
-      run)               echo ~/.local/bin/run ;;
-      prompt)            echo $ZSH/custom/themes/windows.zsh-theme ;;
-      fstab)             echo /etc/fstab ;;
-      grub)              echo /etc/default/grub ;;
-      pacman)            echo /etc/pacman.conf ;;
-      mirror)            echo /etc/pacman.d/mirrorlist ;;
-      sudo)              echo /etc/sudoers ;;
-      snap|snapper)      echo /etc/snapper/configs/home ;;
-			tlp)							 echo /etc/tlp.conf ;;
-			relector)					 echo /etc/xdg/reflector/reflector.conf ;;
-			geoclue)					 echo /etc/geoclue/geoclue.conf ;;
-			reflector) 				 echo /etc/xdg/reflector/reflector.conf ;;
-      *)                 echo ~/.config ;;
-  esac)
+c() {
+	local file
+	file=$(find ~/.config -type d \( -name '*calibre*' -o -name '*spotify*' -o -name '*libreoffice*' -o -name '*plugged*' -o -name '*JetBrains*' -o -name '*.git*' -o -name '*obsidian*' -o -name '*GIMP*' -o -name '*coc*' -o -name '*chromium*' -o -name '*BraveSoftware*' \) -prune -o -name "*$1*" -print | fzf -q "$1")
+	[ ! -z "$file" ] && nvim "$file"
 }
-compctl -k "(mpv efi boot kmonad session reflector geoclue gammastep reflector kernel zshrc zshenv zprofile bashrc xres xinit tmux i3 sway bspwm ohmyzsh kitty alacritty sxhkd vim polybar psd zathura alias key func htop task vit conky npm dunst nbconf nburls yay paru ytmdl autoi3 autosway picom i3rs run prompt fstab grub pacman mirror sudo snapper tlp)" conf
+
+ce() {
+	local file
+	file=$(sudo find /etc | fzf -q "$1")
+	[ ! -z "$file" ] && sudoedit "$file"
+
+}
 
 #=========================== FZF ===========================#
-
-# fe [FUZZY PATTERN] - Open the selected file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
-ff() {
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && xdg-open "${files[@]}"
-}
-
-alias ffc="cd $HOME/.config && ff"
 
 # fdh - cd to selected directory, include hidden
 fd() {
@@ -219,18 +155,18 @@ cpcd () {
 
 #==================== BTRFS SNAPSHOTS =========================#
 
-delsnap() {
-  sudo snapper -c home delete $1
-}
+# delsnap() {
+#   sudo snapper -c home delete $1
+# }
 
-cdsnap() {
-  cd /home/.snapshots/$1/snapshot/
-}
+# cdsnap() {
+#   cd /home/.snapshots/$1/snapshot/
+# }
 
-snapshot() {
-  if [ $# -eq 0 ]; then
-      sudo snapper -c home create -d $(date --iso-8601)
-  else 
-      sudo snapper -c home create -d $1
-  fi
-}
+# snapshot() {
+#   if [ $# -eq 0 ]; then
+#       sudo snapper -c home create -d $(date --iso-8601)
+#   else 
+#       sudo snapper -c home create -d $1
+#   fi
+# }

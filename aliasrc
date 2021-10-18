@@ -1,38 +1,22 @@
 #=============================== SUDO ===============================#
-alias su="sudo !!"
+alias s="sudo"
+alias su="sudo -i"
 alias sctl="sudo systemctl"
 alias jctl="sudo journalctl"
-alias ufw="sudo ufw"
-alias root="sudo -i"
-alias su="sudo -i"
-alias iftop="sudo iftop"
-alias powertop="sudo powertop"
-alias hostrc="sudoedit /etc/hosts"
-alias btr="sudo btrfs"
-alias btrfs="sudo btrfs"
-alias etckeeper="sudo etckeeper"
-alias pamusb-conf="sudo pamusb-conf"
 
 #=============================== UTILS ===============================#
 alias lsnap="sudo snapper -c home list"
 alias dedup="sudo duperemove -dr --hashfile=/home/.duphashes/phanth /home/phanth"
+alias delsnap="sudo snapper -c home delete "
 
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias nb="newsboat"
-
 alias mdl="ytmdl --disable-file"
-
 alias myip="curl ifconfig.me"
-
-alias aliasrc="$EDITOR ~/.config/aliasrc"
-
 alias lsmnt="findmnt"
-alias lserv="systemctl --type=service"
 alias lsz="du -sch *(D) | sort -h"
-
 alias ls="exa -gb --git --color=always --group-directories-first --time-style=iso"
 alias l="ls -l"
-
 alias la="ls -la"
 
 alias iotop="sudo iotop"
@@ -41,7 +25,6 @@ alias ratop="sudo radeontop"
 
 alias cat="highlight -O xterm256 --force"
 alias diff="colordiff"
-alias mount="mount | column -t"
 
 alias t="task"
 alias weather="curl wttr.in"
@@ -51,19 +34,15 @@ alias pastex="xclip -o -selection clipboard >"
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 alias midef="mimeopen --ask-default"
 alias timer="termdown -f standard "
-alias gitstore="git config credential.helper store"
 alias cvimg="mogrify -format png"
-alias cmus="cd ~/Musics && cmus"
 alias spt="speedtest-cli"
 alias ka="killall"
 # alias hblock=""
 alias jl="jupyter lab"
 
 #============================ SAFETY NETS ============================#
-
 alias rm='rm -I --preserve-root'
 alias mv='mv -i'
-# alias cp='cp -r --reflink=auto --sparse=always'
 alias ln='ln -i'
 alias wget='wget -c'
 alias mkd="mkdir -pv"
@@ -72,15 +51,13 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 #============================ QUICK CD ========================#
-
 alias src="~/.src"
 alias bin="~/.bin"
-alias config="~/.config"
 alias dev="~/Development"
 alias aca="~/Academia/"
 alias dl="~/Downloads"
 alias tex="~/Documents/Latex"
-alias h="~"
+alias hm="~"
 alias ana="~/Analysis"
 alias de="~/Desktop"
 alias con="~/.config"
