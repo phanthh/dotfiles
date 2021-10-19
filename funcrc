@@ -18,7 +18,7 @@ eg() {
 
 c() {
 	local file
-	file=$(find ~/.config -type d \( -name '*calibre*' -o -name '*spotify*' -o -name '*libreoffice*' -o -name '*plugged*' -o -name '*JetBrains*' -o -name '*.git*' -o -name '*obsidian*' -o -name '*GIMP*' -o -name '*coc*' -o -name '*chromium*' -o -name '*BraveSoftware*' \) -prune -o -name "*$1*" -print | fzf -q "$1")
+	file=$(find ~/.config -type d \( -name '*calibre*' -o -name '*spotify*' -o -name '*libreoffice*' -o -name '*plugged*' -o -name '*JetBrains*' -o -name '*.git*' -o -name '*obsidian*' -o -name '*GIMP*' -o -name '*coc*' -o -name '*chromium*' -o -name '*BraveSoftware*' \) -prune -o -type f -path "*$1*" -print | fzf -q "$1")
 	[ ! -z "$file" ] && nvim "$file"
 }
 
