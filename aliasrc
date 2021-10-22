@@ -1,4 +1,5 @@
 #=============================== SUDO ===============================#
+#
 alias s="sudo"
 alias su="sudo -i"
 alias ss="sudo !!"
@@ -16,7 +17,7 @@ alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"
 alias lsmnt="findmnt"
 alias lsz="du -sch *(D) | sort -h"
-alias ls="exa -gb --git --color=always --group-directories-first --time-style=iso"
+alias ls="ls -gb --color=always --group-directories-first --time-style=iso"
 alias l="ls -l"
 alias la="ls -la"
 
@@ -38,7 +39,6 @@ alias timer="termdown -f standard "
 alias cvimg="mogrify -format png"
 alias spt="speedtest-cli"
 alias ka="killall"
-# alias hblock=""
 alias jl="jupyter lab"
 
 #============================ SAFETY NETS ============================#
