@@ -241,6 +241,9 @@ nnoremap <TAB> :nohl<CR>
 nnoremap <F12> :source ~/.config/nvim/init.vim <CR>
 " nnoremap <F11> :e $MYVIMRC <CR>
 
+" Ctrl-Backspace
+inoremap <C-H> <C-w>
+
 " Switch Pane
 " nmap <silent> <leader>j :wincmd j<CR>
 " nmap <silent> <leader>k :wincmd k<CR>
@@ -392,7 +395,6 @@ function LatexFunc()
   map <F5> :w <bar> :VimtexCompile <CR><CR>
   imap <F5> <Esc> :w <bar> :VimtexCompile <CR><CR>
   nnoremap <leader><leader> za 
-	inoremap jj <Esc>
 endfunction
 
 augroup LangSpecs

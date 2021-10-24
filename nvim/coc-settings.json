@@ -4,7 +4,6 @@
   "suggest.detailField": "preview",
   "suggest.floatEnable": false,
   "coc.preferences.formatOnSaveFiletypes": [
-    "css",
     "html",
     "javascript",
     "javascriptreact",

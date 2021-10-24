@@ -15,7 +15,6 @@ colors:
     magenta: '#b16286'
     cyan:    '#00b294'
     white:   '#a89984'
-
   # Bright colors
   bright:
     black:   '#767676'
