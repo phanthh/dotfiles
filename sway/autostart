@@ -4,10 +4,10 @@ dunst &
 lxsession &
 ibus-daemon -drxR &
 thunderbird &
-brightnessctl s 50% &
+brightnessctl s 0% &
+exmonctl -s 0% &
 kanshi &
 blueman-applet &
-brave &
 
 swayidle -w \
 	timeout 3000 'swaylock -f' \
