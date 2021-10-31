@@ -69,6 +69,9 @@ zle -N zle-line-init
 echo -ne '\e[5 q' 
 preexec() { echo -ne '\e[5 q' ;} 
 
+#==================== BACKSPACE DELETE ===========================#
+bindkey '^H' backward-kill-word
+
 
 #======================= SHORTCUTS ==============================#
 
