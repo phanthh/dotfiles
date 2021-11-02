@@ -1,7 +1,7 @@
 {
   "aururl": "https://aur.archlinux.org",
-  "buildDir": "/home/phanth/.cache/yay",
-  "absdir": "/home/phanth/.cache/yay/abs",
+  "buildDir": "/home/phanthh/.cache/yay",
+  "absdir": "/home/phanthh/.cache/yay/abs",
   "editor": "nvim",
   "editorflags": "",
   "makepkgbin": "makepkg",

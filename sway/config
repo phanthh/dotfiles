@@ -253,7 +253,7 @@ focus_follows_mouse no
 
 # Global font 
 
-font pango:NotoSans Nerd Font 9
+font pango:Noto Sans 9
 
 # Set gtk theme from configuration files of GNOME
 # exec_always  ~/.bin/import-gsettings

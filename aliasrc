@@ -1,5 +1,5 @@
 #=============================== SUDO ===============================#
-#
+alias w="which"
 alias s="sudo"
 alias su="sudo -i"
 alias ss="sudo !!"
@@ -8,10 +8,6 @@ alias jctl="sudo journalctl"
 alias bctl="bluetoothctl"
 
 #=============================== UTILS ===============================#
-alias lsnap="sudo snapper -c home list"
-alias dedup="sudo duperemove -dr --hashfile=/home/.duphashes/phanth /home/phanth"
-alias delsnap="sudo snapper -c home delete "
-
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias nb="newsboat"
 alias mdl="ytmdl --disable-file"

@@ -24,7 +24,7 @@ c() {
 
 ce() {
 	local file
-	file=$(sudo find /etc | fzf -q "$1")
+	file=$(sudo find /etc | sudo fzf -q "$1")
 	[ ! -z "$file" ] && sudoedit "$file"
 
 }

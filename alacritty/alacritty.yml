@@ -32,6 +32,6 @@ window:
     y: 0
 font:
   normal:
-    family: Consolas
+    family: Hack Nerd Font
     style: auto
-  size: 12
+  size: 11
