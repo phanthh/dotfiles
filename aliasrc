@@ -13,6 +13,7 @@ alias nb="newsboat"
 alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"
 alias lsmnt="findmnt"
+alias lsusr="awk -F: '{ print $1 }' /etc/passwd"
 alias lsz="du -sch *(D) | sort -h"
 alias ls="ls --color=always --group-directories-first --time-style=iso"
 alias l="ls -l"
@@ -37,6 +38,7 @@ alias cvimg="mogrify -format png"
 alias spt="speedtest-cli"
 alias ka="killall"
 alias jl="jupyter lab"
+alias R="R --quiet"
 
 #============================ SAFETY NETS ============================#
 alias rm='rm -I --preserve-root'

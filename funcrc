@@ -29,6 +29,7 @@ ce() {
 
 }
 
+
 #=========================== FZF ===========================#
 
 # fdh - cd to selected directory, include hidden
@@ -64,6 +65,14 @@ fk() {
 
 # Install packages 
 AUR_WRAPPER=paru
+qu() {
+    if [ -z "$1" ]; then
+      $AUR_WRAPPER -Qq | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
+    else 
+      $AUR_WRAPPER -Qq "$1" | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
+    fi
+}
+
 in() {
     if [ -z "$1" ]; then
       $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S

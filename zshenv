@@ -1,4 +1,5 @@
 #============================= PICK NEXT SESSION =============================#
+# sway - shell - terminal
 export SESSION="sway"
 
 #================================ MONITORS ===================================#
@@ -11,7 +12,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 #================================ DEFAULTS====================================#
-export MENU_CMD="bemenu --bottom --fn 'NotoSans Nerd Font 9' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
+export MENU_CMD="bemenu --bottom --fn 'NotoSans Nerd Font 8' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
@@ -71,7 +72,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 
 #================================== R PATH ===================================#
 export R_HOME_USER="$XDG_DATA_HOME/R"
-export R_BROWSER="/usr/bin/$BROWSER"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export R_LIBS_USER="$HOME/.local/lib/R"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"

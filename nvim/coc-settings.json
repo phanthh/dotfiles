@@ -16,6 +16,5 @@
   ],
   "coc.preferences.extensionUpdateCheck": "daily",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
-  "python.pythonPath": "/home/phanth/.local/bin/python-env",
   "python.analysis.typeCheckingMode": "off"
 }

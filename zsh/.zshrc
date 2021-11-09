@@ -1,6 +1,7 @@
 #========================= STARTUP =============================#
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
 	~/.local/bin/startsession
+	logout
 	exit
 fi
 

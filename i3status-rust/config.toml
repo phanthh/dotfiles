@@ -48,6 +48,12 @@ interval = 60
 format = "   {percentage} {time}"
 
 [[block]]
+block = "bluetooth"
+mac = "FC:58:FA:15:CB:7B"
+format = "✓"
+format_unavailable = "x"
+
+[[block]]
 block = "net"
 device = "wlp3s0"
 format = " {ssid} {signal_strength} {ip} "

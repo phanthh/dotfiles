@@ -4,7 +4,7 @@
 set $foreground #ffffff
 set $background #101010
 set $background2 #424242
-set $primary #0078d7
+set $primary #00cc6a
 set $secondary #ffb900
 set $warning #e81123
 set $border #101010
@@ -13,29 +13,6 @@ set $border2 #101010
 # Mod and Submod keys
 set $mod Mod1
 set $smod Mod4
-
-# Workspaces
-# set $ws1 "1:usr"
-# set $ws2 "2:msg"
-# set $ws3 "3:soc"
-# set $ws4 "4:vid"
-# set $ws5 "5:lib"
-# set $ws6 "6:media"
-# set $ws7 "7:dev"
-# set $ws8 "8:work"
-# set $ws9 "9:term"
-# set $ws10 "10:web"
-
-set $ws1 "1   "
-set $ws2 "2   "
-set $ws3 "3   "
-set $ws4 "4   "
-set $ws5 "5   "
-set $ws6 "6   "
-set $ws7 "7   "
-set $ws8 "8   "
-set $ws9 "9   "
-set $ws10 "10  "
 
 floating_modifier $mod 
 
@@ -71,16 +48,13 @@ seat seat0 hide_cursor 8000
 
 seat seat0 hide_cursor when-typing enable
 
-#============================= STARTUP SCRIPTS ===============================#
-
-exec ~/.config/sway/autostart
-
 #================================ DISPLAY ====================================#
 
 # Background
 output * bg #000000 solid_color
 output * adaptive_sync on
 output HDMI-A-1 pos 1920 0
+xwayland disable
 
 #=============================== KEYBINDING ==================================#
 
@@ -159,16 +133,8 @@ bindsym $mod+Up resize shrink height $inc px or $inc ppt
 bindsym $mod+Right resize grow width $inc px or $inc ppt 
 
 # Move window to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2 
-bindsym $mod+Shift+3 move container to workspace $ws3 
-bindsym $mod+Shift+4 move container to workspace $ws4 
-bindsym $mod+Shift+5 move container to workspace $ws5 
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+1 move container to workspace number 1
 
 # Terminal
 bindsym $mod+Return exec ~/.bin/open alacritty 
@@ -186,19 +152,10 @@ bindsym $mod+d exec ~/.bin/timer
 # Screen Shot
 bindsym Print exec ~/.bin/prtsc_wl
 
-# Applications
-bindsym $mod+Shift+t exec ~/.bin/open telegram-deskstop
-bindsym $mod+Shift+s exec ~/.bin/open spotify
-bindsym $mod+Shift+c exec ~/.bin/open calibre
-bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
-bindsym $mod+Shift+o exec ~/.bin/open obsidian
-bindsym $mod+Shift+z exec ~/.bin/open zotero
-bindsym $mod+Shift+f exec ~/.bin/open facebook
-bindsym $mod+Shift+b exec ~/.bin/open blueman-manager
-bindsym $mod+semicolon exec ~/.bin/open neovide
-
 # Toggle Ibus
 bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -a "Ibus" -t 2000
+
+bindsym $mod+Shift+e exec ~/.bin/open pcmanfm
 
 #============ WORKSPACE 
 
@@ -212,16 +169,8 @@ bindsym $mod+u workspace prev
 bindsym $mod+i workspace next
 
 # Focus workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace number 0
+bindsym $mod+1 workspace number 1
 
 # Move focused workspace between monitors
 bindsym $mod+greater move workspace to output right
@@ -249,90 +198,7 @@ client.urgent           $primary    $background2   $foreground   $primary  		 $p
 
 mouse_warping none
 focus_follows_mouse no 
-# workspace_auto_back_and_forth yes
+font pango:Noto Sans 9
+#============================= STARTUP SCRIPTS ===============================#
 
-# Global font 
-
-font pango:NotoSans Nerd Font 9
-
-# Set gtk theme from configuration files of GNOME
-# exec_always  ~/.bin/import-gsettings
-
-# Webrtc set environtment variables
-# exec  ~/.bin/webrtc
-
-# Workspace layout 
-workspace_layout tabbed
-
-# Bar
-bar {
-    status_command i3status-rs ~/.config/i3status-rust/config.toml
-    colors {
-        background $background
-        separator $foreground
-        statusline $foreground
-
-        #                  border         background       text
-        focused_workspace  $border2       $background2     $foreground
-        active_workspace   $border2       $background2     $foreground
-        inactive_workspace $border        $background      $foreground
-        urgent_workspace   $primary       $primary         $foreground
-        binding_mode       $primary       $primary         $foreground
-    }
-
-    workspace_min_width 50
-    # position top
-    # tray_output none
-    # strip_workspace_numbers yes
-}
-
-#============================ WINDOWS BEHAVIORS ==============================#
-
-# Floating
-for_window [app_id="pcmanfm"] floating enable
-for_window [app_id="pcmanfm"] resize set 1280 720
-for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
-for_window [title="Wi Hotspot"] floating enable
-
-# ws1 usr
-assign     [app_id="thunderbird"] $ws1
-assign     [class="Mailspring"] $ws1
-assign     [class="KeeWeb"] $ws1
-
-# ws2 msg
-assign     [class="Slack"] $ws2
-assign     [class="discord"] $ws2
-assign     [app_id="telegramdesktop"] $ws2
-assign 		 [class="Brave-browser"] $ws2
-
-# ws3 soc
-
-# ws4 vid
-assign     [class="zoom"] $ws4
-
-# ws5 lib
-assign     [app_id="calibre"] $ws5
-assign     [class="Zotero"] $ws5
-
-# ws6 media
-assign     [class="mpv"] $ws6
-assign     [class="Spotify"] $ws6
-for_window [class="Spotify"] move to workspace $ws6
-
-# ws7 dev
-assign     [class="scrcpy"] $ws7
-assign     [class="VirtualBox Machine"] $ws7
-assign     [class="jetbrains-idea-ce"] $ws7
-assign     [class="jetbrains-studio"] $ws7
-assign     [class="Code"] $ws7
-
-# ws8 work
-assign     [app_id="libreoffice"] $ws8
-assign     [class="obsidian"] $ws8
-assign 		 [app_id="org.kde.okular"] $ws8
-
-# ws9 term
-assign     [app_id="Alacritty"] $ws9
-
-# ws10 web
-assign     [app_id="firefox"] $ws10
+exec ~/.config/sway/autostart-minimal
