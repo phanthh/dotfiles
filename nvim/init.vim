@@ -79,6 +79,8 @@ nmap <silent> <C-w><Up> :wincmd +<CR>
 nmap <silent> <C-w><Down> :wincmd -<CR>
 nmap <silent> <C-w><Left> :wincmd <<CR>
 nmap <silent> <C-w><Right> :wincmd ><CR>
+nmap <F10> :w <bar> :!crun %<CR>
+imap <F10> <Esc> :w <bar> :!crun %<CR>
 
 "============================="
 let g:tex_flavor = 'latex'
@@ -122,6 +124,11 @@ function Scala()
   imap <F9> <Esc> :w <bar> :!sbt test<CR>
 endfunction
 
+function Python()
+	nmap <F10> :w <bar> :!python %<CR>
+	imap <F10> <Esc> :w <bar> :!python %<CR>
+endfunction
+
 augroup LangSpecs
   autocmd!
   " Latex
@@ -134,6 +141,8 @@ augroup LangSpecs
   autocmd FileType rust call Rust()
   " Scala
 	autocmd FileType scala call Scala()
+  " Python
+	autocmd FileType python call Python()
 augroup end
 
 "============================="
