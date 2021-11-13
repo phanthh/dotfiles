@@ -16,12 +16,11 @@ swayidle -w \
 
 sleep 5
 
-gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
-clight --verbose > $XDG_CACHE_HOME/clight.log &
+# gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
+clight &
 # brightnessctl s 0% &
 # exmonctl -s 0% &
-
-brave --app="https://facebook.com" &
+brave &
 
 
 
