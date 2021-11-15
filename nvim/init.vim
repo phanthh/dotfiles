@@ -7,8 +7,12 @@ Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'dpelle/vim-LanguageTool'
+Plug 'junegunn/vim-easy-align'
 call plug#end()            
 "============================="
+set nocompatible
+filetype plugin on
 syntax on
 set updatetime=300
 set encoding=utf-8
@@ -163,13 +167,20 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 inoremap jj <Esc>:w<cr>
 inoremap jk <Esc>:w<cr>
 inoremap <C-H> <C-w>
+nmap <silent> <Tab> :nohl<CR>
 nmap <silent> <C-w><Up> :wincmd +<CR>
 nmap <silent> <C-w><Down> :wincmd -<CR>
 nmap <silent> <C-w><Left> :wincmd <<CR>
 nmap <silent> <C-w><Right> :wincmd ><CR>
 nmap <F10> :w <bar> :!crun %<CR>
 imap <F10> <Esc> :w <bar> :!crun %<CR>
-
+nmap <F12> :LanguageToolCheck<CR>
+nmap <S-F12> :LanguageToolClear<CR>
+"============================="
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 "============================="
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
@@ -231,3 +242,5 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup end
+"============================="
+let g:languagetool_cmd='/usr/bin/languagetool'

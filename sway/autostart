@@ -16,8 +16,8 @@ swayidle -w \
 
 sleep 5
 
-gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 clight &
+gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 # brightnessctl s 0% &
 # exmonctl -s 0% &
 brave &
