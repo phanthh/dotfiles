@@ -24,7 +24,6 @@ export LC_CTYPE=en_US.UTF-8
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-export MAKEFLAGS="-j16"
 
 #============================= MIGRATE CONFIG ================================#
 export HISTFILE="$XDG_DATA_HOME/zsh/history"

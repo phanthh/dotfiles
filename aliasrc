@@ -23,7 +23,6 @@ alias iotop="sudo iotop"
 alias intop="sudo intel_gpu_top"
 alias ratop="sudo radeontop"
 
-alias cat="highlight -O xterm256 --force"
 alias diff="colordiff"
 
 alias t="task"
@@ -62,3 +61,4 @@ alias ana="~/Analysis"
 alias de="~/Desktop"
 alias con="~/.config"
 alias doc="~/Documents"
+alias dr="~/Drives"

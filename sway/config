@@ -201,6 +201,9 @@ bindsym $mod+semicolon exec ~/.bin/open neovide
 # Toggle Ibus
 bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -a "Ibus" -t 2000
 
+# Mount drive
+bindsym $smod+m exec ~/.bin/mntdrive
+
 #============ WORKSPACE 
 
 # Change workspace layout 
