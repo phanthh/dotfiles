@@ -68,6 +68,10 @@ if has("nvim") && has("unix")
   set backupdir=~/.local/share/nvim/backup
 endif
 
+if !has('nvim') 
+	set viminfofile=~/.vim/viminfo
+endif
+
 let mapleader=" "
 "============================="
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()

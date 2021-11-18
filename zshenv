@@ -42,6 +42,8 @@ export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave-hsts"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export YTFZF_CONFIG_DIR="$XDG_CONFIG_HOME/ytfzf"
 export YTFZF_CONFIG_FILE="$YTFZF_CONFIG_DIR/conf.sh"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export KDEHOME="$XDG_CONFIG_HOME/kde"
 
 #============================ ANDROID VARIABLES ==============================#
 export ANDROID_HOME="$HOME/.android/sdk"
