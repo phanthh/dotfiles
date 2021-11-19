@@ -204,6 +204,9 @@ bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -
 # Mount drive
 bindsym $smod+m exec ~/.bin/mntdrive
 
+# Unmount drive
+bindsym $smod+Shift+m exec ~/.bin/umntdrive
+
 #============ WORKSPACE 
 
 # Change workspace layout 
