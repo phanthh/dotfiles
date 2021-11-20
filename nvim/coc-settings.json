@@ -1,20 +1,23 @@
 {
-  "suggest.noselect": false,
-  "suggest.maxCompleteItemCount": 10,
-  "suggest.detailField": "preview",
-  "suggest.floatEnable": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-    "python",
-    "rust"
-  ],
-  "coc.preferences.extensionUpdateCheck": "daily",
-  "emmet.includeLanguages": { "javascript": "javascriptreact" },
-  "python.analysis.typeCheckingMode": "off"
+	"suggest.noselect": false,
+	"suggest.maxCompleteItemCount": 10,
+	"suggest.detailField": "preview",
+	"suggest.floatEnable": false,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"typescript",
+		"typescriptreact",
+		"typescript.tsx",
+		"python",
+		"rust"
+	],
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact"
+	},
+	"python.analysis.typeCheckingMode": "off",
+	"rust-analyzer.server.path": "/usr/bin/rust-analyzer"
 }

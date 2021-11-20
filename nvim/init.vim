@@ -76,6 +76,7 @@ let mapleader=" "
 "============================="
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -180,6 +181,14 @@ nmap <F10> :w <bar> :!crun %<CR>
 imap <F10> <Esc> :w <bar> :!crun %<CR>
 nmap <F12> :LanguageToolCheck<CR>
 nmap <S-F12> :LanguageToolClear<CR>
+"============================="
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 "============================="
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
