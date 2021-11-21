@@ -15,9 +15,5 @@
 		"rust"
 	],
 	"coc.preferences.extensionUpdateCheck": "daily",
-	"emmet.includeLanguages": {
-		"javascript": "javascriptreact"
-	},
-	"python.analysis.typeCheckingMode": "off",
-	"rust-analyzer.server.path": "/usr/bin/rust-analyzer"
+	"python.analysis.typeCheckingMode": "off"
 }

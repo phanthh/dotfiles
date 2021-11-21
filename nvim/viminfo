@@ -11,12 +11,16 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:q
+|2,0,1637438635,,"q"
+:w
+|2,0,1637438634,,"w"
+:help split
+|2,0,1637438583,,"help split"
 :q!
 |2,0,1637169087,,"q!"
 :wq
 |2,0,1637169086,,"wq"
-:w
-|2,0,1637169085,,"w"
 
 # Search String History (newest to oldest):
 
@@ -36,3 +40,7 @@
 # Jumplist (newest first):
 
 # History of marks within files (newest to oldest):
+
+> /usr/share/vim/vim82/doc/windows.txt
+	*	1637438601	0
+	"	144	62
