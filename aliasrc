@@ -39,6 +39,8 @@ alias ka="killall"
 alias jl="jupyter lab"
 alias R="R --quiet"
 
+alias ew="e ~/Academia/PKM/"
+
 #============================ SAFETY NETS ============================#
 alias rm='rm -I --preserve-root'
 alias mv='mv -i'

@@ -6,9 +6,7 @@ melatonin
 dataset
 uncomment
 binarization
-Discretizing
 preprocessing
-Differencing
 differencing
 Hau
 Phan

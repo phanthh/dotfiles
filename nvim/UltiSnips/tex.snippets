@@ -8,9 +8,7 @@ def comment():
 def env(name):
 	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
 	return x != '0' and y != '0'
-
 endglobal
-
 
 snippet tmath "Math template" b
 \documentclass[11pt]{article}
@@ -20,18 +18,6 @@ snippet tmath "Math template" b
 \usepackage{textcomp}
 \usepackage[english]{babel}
 \usepackage{amsmath, amssymb}
-
-
-% figure support
-\usepackage{import}
-\usepackage{xifthen}
-\pdfminorversion=7
-\usepackage{pdfpages}
-\usepackage{transparent}
-\newcommand{\incfig}[1]{%
-	\def\svgwidth{\columnwidth}
-	\import{./figures/}{#1.pdf_tex}
-}
 
 % decor
 \usepackage{fancyhdr}
@@ -46,13 +32,11 @@ snippet tmath "Math template" b
 
 \lhead{}
 \chead{\hspace*{55mm}\raisebox{7mm}{\hspace*{31mm}\small\begin{tabular}{r}
-      \textbf{${1:coursename}} \\\\ ${2:courseid} \\\\ \today \\\\
+      \textbf{${1:@coursename}} \\\\ ${2:@courseid} \\\\ \today \\\\
 \end{tabular}}}
 
-\title{${3:title}}
-\author{${4:subtitle} \vspace*{0.5cm} \\\\ Hau Phan - 886680}
-
-\pdfsuppresswarningpagegroup=1
+\title{${3:@title}}
+\author{${4:@subtitle} \vspace*{0.5cm} \\\\ Hau Phan - 886680}
 
 \begin{document}
 \maketitle
@@ -83,13 +67,11 @@ snippet treport "Report template" b
 
 \lhead{}
 \chead{\hspace*{55mm}\raisebox{7mm}{\hspace*{31mm}\small\begin{tabular}{r}
-      \textbf{${1:coursename}} \\\\ ${2:courseid} \\\\ \today \\\\
+      \textbf{${1:@coursename}} \\\\ ${2:@courseid} \\\\ \today \\\\
 \end{tabular}}}
 
-\title{${3:title}}
-\author{${4:subtitle} \vspace*{0.5cm} \\\\ Hau Phan - 886680}
-
-\pdfsuppresswarningpagegroup=1
+\title{${3:@title}}
+\author{${4:@subtitle} \vspace*{0.5cm} \\\\ Hau Phan - 886680}
 
 \begin{document}
 \maketitle
