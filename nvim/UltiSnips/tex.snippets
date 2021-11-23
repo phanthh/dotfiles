@@ -162,9 +162,11 @@ ${1:${VISUAL}}
 endsnippet
 
 snippet ali "Align" bA
-\begin{align*}
-	${1:${VISUAL}}
-.\end{align*}
+\begin{equation}
+	\begin{aligned}
+		${1:${VISUAL}}
+	.\end{aligned}
+\end{equation}
 endsnippet
 
 
@@ -634,10 +636,12 @@ snippet SI "SI" iA
 endsnippet
 
 snippet bigfun "Big function" iA
-\begin{align*}
-	$1: $2 &\longrightarrow $3 \\\\
-	$4 &\longmapsto $1($4) = $0
-.\end{align*}
+\begin{equation*}
+	\begin{aligned}
+		$1: $2 &\longrightarrow $3 \\\\
+		$4 &\longmapsto $1($4) = $0
+	.\end{aligned}
+\begin{equation*}
 endsnippet
 
 snippet cvec "column vector" iA

@@ -39,7 +39,9 @@ alias ka="killall"
 alias jl="jupyter lab"
 alias R="R --quiet"
 
-alias ew="e ~/Academia/PKM/"
+alias ew="e ~/Academia/PKM/index.md"
+
+alias btrfs-list="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
 
 #============================ SAFETY NETS ============================#
 alias rm='rm -I --preserve-root'

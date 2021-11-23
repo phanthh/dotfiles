@@ -78,8 +78,8 @@ exec ~/.config/sway/autostart
 #================================ DISPLAY ====================================#
 
 # Background
-# output * bg #000000 solid_color
-output * bg ~/Pictures/wallpaper/899784.jpg fill
+output * bg #000000 solid_color
+# output * bg ~/Pictures/wallpaper/899784.jpg fill
 output * adaptive_sync on
 output HDMI-A-1 pos 1920 0
 
