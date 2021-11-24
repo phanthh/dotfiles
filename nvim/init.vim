@@ -5,7 +5,6 @@ filetype plugin on
 set hidden
 set noerrorbells
 
-
 " speed
 set updatetime=50
 set encoding=utf-8
@@ -72,7 +71,7 @@ set guifont=Hack\ Nerd\ Font:h12
 " set dictionary+=/usr/share/dict/american-english
 
 " leader key
-let mapleader=" "
+let mapleader = " "
 
 "=============================" PLUGINS
 call plug#begin('~/.config/nvim/plugged') 
@@ -87,8 +86,8 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " visual
 Plug 'lilydjwg/colorizer'
-Plug 'tomasiser/vim-code-dark'
-Plug 'morhetz/gruvbox'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'morhetz/gruvbox'
 Plug 'bluz71/vim-moonfly-colors'
 
 " writing
@@ -97,6 +96,7 @@ Plug 'sirver/ultisnips'
 Plug 'rhysd/vim-grammarous'
 Plug 'vimwiki/vimwiki'
 " Plug 'reedes/vim-pencil'
+Plug 'ElPiloto/telescope-vimwiki.nvim'
 
 " general tools
 Plug 'tpope/vim-surround'
@@ -107,7 +107,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
 " misc
-Plug 'ElPiloto/telescope-vimwiki.nvim'
 call plug#end()            
 
 "=============================" PLUGINS SETTINGS
@@ -124,7 +123,7 @@ let g:grammarous#languagetool_cmd = '/usr/bin/languagetool'
 let g:grammarous#disabled_rules = {
             \ 'tex' : ['UNIT_SPACE', 'EN_UNPAIRED_BRACKETS'],
             \ }
-let g:grammarous#disabled_categories = {
+let g:grammarous#disabled_ctegories = {
             \ 'tex' : ['TYPOGRAPHY'],
             \ }
 let g:grammarous#hooks = {}
@@ -279,12 +278,11 @@ inoremap { {}<left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap {;<cr> {<cr>};<esc>O
 
-"=============================" LANGUAGE SPECS
+"=============================" SPECS
 function s:spec_tex()
   " call pencil#init()
   set spell spelllang=en_us 
   set foldlevel=99
-	set conceallevel=2
   set foldmethod=expr 
   set foldexpr=vimtex#fold#level(v:lnum) 
   set foldtext=vimtex#fold#text()
@@ -307,7 +305,6 @@ function s:spec_vimwiki()
   unmap ' 
   unmap "
   inoremap * **<left>
-
 endfunction
 
 function s:spec_rust()
