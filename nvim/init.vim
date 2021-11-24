@@ -9,6 +9,7 @@ set noerrorbells
 set updatetime=50
 set encoding=utf-8
 set shortmess+=Ic
+set autoread
 
 " visual
 syntax on
@@ -302,8 +303,6 @@ function s:spec_vimwiki()
   set spell spelllang=en_us
   inoremap ]] <esc><cmd>Telescope vimwiki link<cr>
   nnoremap <tab> <cmd>VimwikiFollowLink<cr>
-  unmap ' 
-  unmap "
   inoremap * **<left>
 endfunction
 

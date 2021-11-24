@@ -17,3 +17,7 @@ recommenders
 determinant
 determinant
 Discretization
+autocorrelation
+autocovariance
+stationarize
+integrability

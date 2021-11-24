@@ -11,7 +11,7 @@ endsnippet
 snippet dm "math" wA
 $$
 ${1:${VISUAL}}
-.$$ $0
+$$ $0
 endsnippet
 
 snippet tm "template" b
@@ -41,10 +41,6 @@ endsnippet
 
 snippet =< "implied by" iA
 \impliedby
-endsnippet
-
-snippet iff "if and only if" iA
-\iff
 endsnippet
 
 snippet // "fraction" iA
@@ -244,7 +240,7 @@ snippet norm "norm" i
 endsnippet
 
 priority 100
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rwA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -254,7 +250,12 @@ snippet dint "integral" wA
 endsnippet
 
 priority 200
-snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta)' "ln" rwA
+snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+snippet '(?<!\\)(pi|zeta|epsilon|sigma|gamma|theta|rho|phi)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
