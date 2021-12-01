@@ -1,17 +1,25 @@
-#============================= PICK NEXT SESSION =============================#
+#=================== PICK NEXT SESSION 
 # sway - shell - terminal
 export SESSION="sway"
 
-#================================ MONITORS ===================================#
+#=================== WAYLAND 
+export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland
+export CLUTTER_BACKEND=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+#=================== MONITORS
 export MON0="eDP-1"
 export MON1="HDMI-1"
 
-#================================== XDG ======================================#
+#=================== XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-#================================ DEFAULTS====================================#
+#=================== DEFAULTS
 export MENU_CMD="bemenu --bottom --fn 'NotoSans Nerd Font 8' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
 export EDITOR="nvim"
 export GEDITOR="neovide"
@@ -25,7 +33,7 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-#============================= MIGRATE CONFIG ================================#
+#=================== MIGRATE CONFIG
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
@@ -46,7 +54,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
-#============================ ANDROID VARIABLES ==============================#
+#=================== ANDROID VARIABLES
 export ANDROID_HOME="$HOME/.android/sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -55,7 +63,7 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
-#=========================== NNN CONFIG VARIABLES ============================#
+#=================== NNN CONFIG VARIABLES
 export LC_COLLATE="C"
 export NNN_OPTS="ceE"
 export NNN_COLORS="2136"
@@ -67,19 +75,22 @@ export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|l
 export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
 # nuke
 export GUI=1
-#=================================== PATH ====================================#
+#=================== PATH
 export LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 export PATH="${LD_LIBRARY_PATH}:/opt/cuda/bin:/opt/miniconda3/condabin::${CARGO_HOME}/bin:${PATH}"
 export PATH="${HOME}/.local/bin:${PATH}"
 
-#================================== R PATH ===================================#
+#=================== R PATH
 export R_HOME_USER="$XDG_DATA_HOME/R"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export R_LIBS_USER="$HOME/.local/lib/R"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
-#============================== ZSH =================================# 
+#=================== ZSH
 export ZDOTDIR="$HOME/.config/zsh"
 
-#============================== TENSORFLOW =================================# 
+#=================== TENSORFLOW
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
+
+#=================== SECRETS
+source $HOME/.config/keyrc

@@ -12,4 +12,4 @@ set selection-clipboard clipboard
 set default-bg "#000000"
 set statusbar-bg "#282828"
 set inputbar-bg "#282828"
-set recolor false
+set recolor true

@@ -14,24 +14,12 @@ set $border2 #101010
 set $mod Mod1
 set $smod Mod4
 
-# Workspaces
-# set $ws1 "1:usr"
-# set $ws2 "2:msg"
-# set $ws3 "3:soc"
-# set $ws4 "4:vid"
-# set $ws5 "5:lib"
-# set $ws6 "6:media"
-# set $ws7 "7:dev"
-# set $ws8 "8:work"
-# set $ws9 "9:term"
-# set $ws10 "10:web"
-
-set $ws1 "1   "
-set $ws2 "2   "
-set $ws3 "3   "
-set $ws4 "4   "
-set $ws5 "5   "
-set $ws6 "6   "
+set $ws1 "1   "
+set $ws2 "2   "
+set $ws3 "3   "
+set $ws4 "4  $ "
+set $ws5 "5  ? "
+set $ws6 "6  ? "
 set $ws7 "7   "
 set $ws8 "8   "
 set $ws9 "9   "
@@ -176,7 +164,7 @@ bindsym $mod+Return exec ~/.bin/open alacritty
 bindsym $mod+Shift+Return exec alacritty
 
 # Browser
-bindsym $mod+n exec ~/.bin/open firefox
+bindsym $mod+n exec ~/.bin/open brave
 
 # Menu launcher
 bindsym $smod+d exec ~/.bin/menu
@@ -199,13 +187,16 @@ bindsym $mod+Shift+b exec ~/.bin/open blueman-manager
 bindsym $mod+semicolon exec ~/.bin/open neovide
 
 # Toggle Ibus
-bindsym $mod+z exec ~/.bin/toggleibus && dunstify "Switched to $(ibus engine)" -a "Ibus" -t 2000
+bindsym $mod+z exec ~/.bin/toggleibus 
 
 # Mount drive
 bindsym $smod+m exec ~/.bin/mntdrive
 
 # Unmount drive
 bindsym $smod+Shift+m exec ~/.bin/umntdrive
+
+# Play track
+bindsym $mod+Shift+m exec ~/.bin/playtrackoption 
 
 #============ WORKSPACE 
 
@@ -301,33 +292,28 @@ for_window [app_id="pcmanfm"] resize set 1280 720
 for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 for_window [title="Wi Hotspot"] floating enable
 
-# ws1 usr
+# ws1 mail
 assign     [app_id="thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
-assign     [class="KeeWeb"] $ws1
 
-# ws2 msg
-assign     [class="Slack"] $ws2
-assign     [class="discord"] $ws2
-assign     [app_id="telegramdesktop"] $ws2
-assign 		 [class="Brave-browser"] $ws2
+# ws2 media
+assign     [class="Spotify"] $ws2
+for_window [class="Spotify"] move to workspace $ws2
+assign     [class="scrcpy"] $ws2
 
-# ws3 soc
+# ws3 lib
+assign     [app_id="calibre"] $ws3
+assign     [class="Zotero"] $ws3
 
-# ws4 vid
-assign     [class="zoom"] $ws4
+# ws4 trade
+assign     [class="Binance"] $ws4
+assign     [class="Exodus"] $ws4
 
-# ws5 lib
-assign     [app_id="calibre"] $ws5
-assign     [class="Zotero"] $ws5
+# ws5 
 
-# ws6 media
-assign     [class="mpv"] $ws6
-assign     [class="Spotify"] $ws6
-for_window [class="Spotify"] move to workspace $ws6
+# ws6 
 
 # ws7 dev
-assign     [class="scrcpy"] $ws7
 assign     [class="VirtualBox Machine"] $ws7
 assign     [class="jetbrains-idea-ce"] $ws7
 assign     [class="jetbrains-studio"] $ws7
@@ -343,3 +329,4 @@ assign     [app_id="Alacritty"] $ws9
 
 # ws10 web
 assign     [app_id="firefox"] $ws10
+assign 		 [app_id="brave-browser"] $ws10

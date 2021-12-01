@@ -14,13 +14,16 @@ swayidle -w \
 	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] \
 		&& systemctl suspend' &
 
-sleep 5
+alacritty &
+brave &
+autoadb $HOME/.local/bin/scrcpy '{}' &
 
+sleep 5
 clight &
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 # brightnessctl s 0% &
 # exmonctl -s 0% &
-brave &
+
 
 
 

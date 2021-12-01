@@ -34,7 +34,6 @@ alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias midef="mimeopen --ask-default"
 alias timer="termdown -f standard "
 alias cvimg="mogrify -format png"
-alias spt="speedtest-cli"
 alias ka="killall"
 alias jl="jupyter lab"
 alias R="R --quiet"

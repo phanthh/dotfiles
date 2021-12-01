@@ -18,6 +18,9 @@ snippet tmath "Math template" b
 \usepackage{textcomp}
 \usepackage[english]{babel}
 \usepackage{amsmath, amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{subcaption}
+\usepackage{graphicx}
 
 % decor
 \usepackage{fancyhdr}
@@ -53,6 +56,9 @@ snippet treport "Report template" b
 \usepackage{textcomp}
 \usepackage[english]{babel}
 \usepackage{amsmath, amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{subcaption}
+\usepackage{graphicx}
 
 % decor
 \usepackage{fancyhdr}
@@ -111,6 +117,34 @@ snippet fig "Figure environment" b
 \end{figure}
 endsnippet
 
+snippet subfig "Subfigure environment" b
+\begin{figure}[${1:htpb}]
+	 \centering
+	 \begin{subfigure}[b]{0.3\textwidth}
+		 \centering
+		 \includegraphics[width=\textwidth]{graph1}
+		 \caption{$y=x$}
+		 \label{fig:y equals x}
+	 \end{subfigure}
+	 \hfill
+	 \begin{subfigure}[b]{0.3\textwidth}
+		 \centering
+		 \includegraphics[width=\textwidth]{graph2}
+		 \caption{$y=3sinx$}
+		 \label{fig:three sin x}
+	 \end{subfigure}
+	 \hfill
+	 \begin{subfigure}[b]{0.3\textwidth}
+		 \includegraphics[width=\textwidth]{graph3}
+		 \centering
+		 \caption{$y=5/x$}
+		 \label{fig:five over x}
+	 \end{subfigure}
+		\caption{Three simple graphs}
+		\label{fig:three graphs}
+\end{figure}
+endsnippet
+
 snippet enum "Enumerate" bA
 \begin{enumerate}
 	\item $0
@@ -162,11 +196,11 @@ ${1:${VISUAL}}
 endsnippet
 
 snippet ali "Align" bA
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		${1:${VISUAL}}
 	.\end{aligned}
-\end{equation}
+\end{equation*}
 endsnippet
 
 
@@ -495,7 +529,13 @@ endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
+snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)(pi|zeta|phi|sigma|gamma|alpha|beta|lambda)' "greek" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -540,9 +580,13 @@ snippet << "<<" iA
 \ll
 endsnippet
 
-
 snippet ~~ "~" iA
 \sim 
+endsnippet
+
+context "math()"
+snippet =~ "~" iA
+\approx 
 endsnippet
 
 context "math()"
