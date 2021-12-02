@@ -20,7 +20,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 #=================== DEFAULTS
-export MENU_CMD="bemenu --bottom --fn 'NotoSans Nerd Font 8' -H 23 --tb #0078d7 --tf #ffffff --hf #0078d7"
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
