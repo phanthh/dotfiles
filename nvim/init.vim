@@ -16,6 +16,7 @@ set autoread
 set numberwidth=5 
 set signcolumn=yes
 set scrolloff=10
+
 if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -263,7 +264,7 @@ nnoremap <c-w>$ :tablast <cr>
 nnoremap <c-w>t :tabnew <cr>
 
 " utils======================="
-noremap <f10> <esc>:w <bar> :!crun %<cr>
+noremap <f10> <esc>:w <bar> :!util_crun %<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>

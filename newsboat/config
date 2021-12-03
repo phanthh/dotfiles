@@ -18,7 +18,7 @@ bind-key H prev-feed
 bind-key L next-feed
 bind-key c toggle-show-read-feeds
 
-browser "~/.bin/browse"
+browser "~/.bin/util_browse"
 
 # Feed settings
 prepopulate-query-feeds yes

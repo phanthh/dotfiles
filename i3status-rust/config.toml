@@ -16,18 +16,13 @@ interval = 60
 [[block]]
 block = "music"
 player = "spotify"
-buttons = ["prev", "play", "next"]
+buttons = ["play", "next"]
 on_collapsed_click = "~/.bin/spotifyd"
 on_click = "killall spotify"
+marquee_interval = 60
 
 [[block]]
 block = "backlight"
-
-[[block]]
-block = "hueshift"
-hue_shifter = "gammastep"
-step = 50
-click_temp = 2000
 
 [[block]]
 block = "memory"

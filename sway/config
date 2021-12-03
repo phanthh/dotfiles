@@ -86,7 +86,8 @@ bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym $mod+F4 exec ~/.bin/wm_open pavucontrol
 
 # Music Control
-bindsym $mod+F12 exec ~/.bin/util_toggleplay
+bindsym $mod+F11 exec playerctl -p spotify play-pause
+bindsym $mod+F12 exec playerctl -p spotify next
 
 # Brightness
 bindsym $mod+F7 exec brightnessctl s 5%-
