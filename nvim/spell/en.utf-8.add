@@ -43,3 +43,7 @@ neighbour
 sparse
 sparse
 sparse
+multicolinearity
+multicollinearity
+heteroscedasticity
+invertible

@@ -16,7 +16,7 @@ swayidle -w \
 
 alacritty &
 brave &
-autoadb $HOME/.local/bin/scrcpy '{}' &
+autoadb scrcpy &
 
 sleep 5
 clight &

@@ -77,7 +77,6 @@ export GUI=1
 #=================== PATH
 export LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 export PATH="${LD_LIBRARY_PATH}:/opt/cuda/bin:/opt/miniconda3/condabin::${CARGO_HOME}/bin:${PATH}"
-export PATH="${HOME}/.local/bin:${PATH}"
 
 #=================== R PATH
 export R_HOME_USER="$XDG_DATA_HOME/R"
@@ -91,5 +90,10 @@ export ZDOTDIR="$HOME/.config/zsh"
 #=================== TENSORFLOW
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 
+#=================== SOLANA
+export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"
+
 #=================== SECRETS
 source $HOME/.config/keyrc
+
+export PATH="$HOME/.local/bin:${PATH}"
