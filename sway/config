@@ -37,10 +37,11 @@ input type:keyboard {
 
 # Touchpad
 input type:touchpad {
-    tap enabled
-    natural_scroll enabled
-		scroll_factor 0.5
-		dwt enabled
+    events disabled
+    # tap enabled
+    # natural_scroll enabled
+		# scroll_factor 0.5
+		# dwt enabled
 }
 
 # Mouse
@@ -69,7 +70,6 @@ exec ~/.config/sway/autostart
 output * bg #000000 solid_color
 # output * bg ~/Pictures/wallpaper/899784.jpg fill
 output * adaptive_sync on
-output HDMI-A-1 pos 1920 0
 
 #=============================== KEYBINDING ==================================#
 
@@ -226,8 +226,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # Move focused workspace between monitors
-bindsym $mod+greater move workspace to output right
-bindsym $mod+less move workspace to output left
+bindsym $mod+greater move workspace to output up
+bindsym $mod+less move workspace to output down
 
 #================================= CONFIG ====================================#
 
@@ -308,6 +308,7 @@ assign     [class="Zotero"] $ws3
 
 # ws4 trade
 assign     [class="Binance"] $ws4
+for_window [class="Binance"] move to workspace $ws4
 assign     [class="Exodus"] $ws4
 
 # ws5 

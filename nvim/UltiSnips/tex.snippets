@@ -17,7 +17,7 @@ snippet tmath "Math template" b
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage[english]{babel}
-\usepackage{amsmath, amssymb}
+\usepackage{mathtools,amsmath,amssymb}
 \usepackage[shortlabels]{enumitem}
 \usepackage{subcaption}
 \usepackage{graphicx}
@@ -365,7 +365,7 @@ snippet part "d/dx" w
 endsnippet
 
 context "math()"
-snippet sq "\sqrt{}" iA
+snippet sqrt "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
@@ -670,9 +670,9 @@ endsnippet
 
 context "math()"
 snippet case "cases" wA
-\begin{cases}
+\begin{dcases}
 	$1
-\end{cases}
+\end{dcases}
 endsnippet
 
 snippet SI "SI" iA
