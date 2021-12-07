@@ -83,7 +83,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym $mod+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym $mod+F4 exec ~/.bin/wm_open pavucontrol
+bindsym $mod+F4 exec ~/.sh/wm_open pavucontrol
 
 # Music Control
 bindsym $mod+F11 exec playerctl -p spotify play-pause
@@ -96,7 +96,7 @@ bindsym $mod+Shift+F7 exec exmonctl -d 5
 bindsym $mod+Shift+F8 exec exmonctl -i 5
 
 # Power
-bindsym $mod+p exec ~/.bin/menu_powerprofile
+bindsym $mod+p exec ~/.sh/menu_powerprofile
 
 # Sway
 bindsym $smod+Shift+r reload
@@ -104,9 +104,9 @@ bindsym $smod+Shift+r reload
 # System
 bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
-bindsym --release $smod+Shift+Escape exec ~/.bin/menu_reboot
-bindsym --release $smod+Escape exec ~/.bin/menu_prompt "Shutdown" "poweroff"
-bindsym --release $smod+Shift+e exec ~/.bin/menu_prompt "Logout" "swaymsg exit"
+bindsym --release $smod+Shift+Escape exec ~/.sh/menu_reboot
+bindsym --release $smod+Escape exec ~/.sh/menu_prompt "Shutdown" "poweroff"
+bindsym --release $smod+Shift+e exec ~/.sh/menu_prompt "Logout" "swaymsg exit"
 
 #============ WINDOWS 
 
@@ -164,43 +164,43 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Terminal
-bindsym $mod+Return exec ~/.bin/wm_open alacritty 
+bindsym $mod+Return exec ~/.sh/wm_open alacritty 
 bindsym $mod+Shift+Return exec alacritty
 
 # Browser
-bindsym $mod+n exec ~/.bin/wm_open brave
+bindsym $mod+n exec ~/.sh/wm_open brave
 
 # Launcher
-bindsym $smod+d exec ~/.bin/menu_run
+bindsym $smod+d exec ~/.sh/menu_run
 
 # Timer
-bindsym $mod+d exec ~/.bin/menu_timer
+bindsym $mod+d exec ~/.sh/menu_timer
 
 # Screen Shot
-bindsym Print exec ~/.bin/wm_prtscwl
+bindsym Print exec ~/.sh/wm_prtscwl
 
 # Applications
-bindsym $mod+Shift+t exec ~/.bin/wm_open telegram-deskstop
-bindsym $mod+Shift+s exec ~/.bin/wm_open spotify
-bindsym $mod+Shift+c exec ~/.bin/wm_open calibre
-bindsym $mod+Shift+e exec ~/.bin/wm_open pcmanfm
-bindsym $mod+Shift+o exec ~/.bin/wm_open obsidian
-bindsym $mod+Shift+z exec ~/.bin/wm_open zotero
-bindsym $mod+Shift+f exec ~/.bin/wm_open facebook
-bindsym $mod+Shift+b exec ~/.bin/wm_open blueman-manager
-bindsym $mod+semicolon exec ~/.bin/wm_open neovide
+bindsym $mod+Shift+t exec ~/.sh/wm_open telegram-deskstop
+bindsym $mod+Shift+s exec ~/.sh/wm_open spotify
+bindsym $mod+Shift+c exec ~/.sh/wm_open calibre
+bindsym $mod+Shift+e exec ~/.sh/wm_open pcmanfm
+bindsym $mod+Shift+o exec ~/.sh/wm_open obsidian
+bindsym $mod+Shift+z exec ~/.sh/wm_open zotero
+bindsym $mod+Shift+f exec ~/.sh/wm_open facebook
+bindsym $mod+Shift+b exec ~/.sh/wm_open blueman-manager
+bindsym $mod+semicolon exec ~/.sh/wm_open neovide
 
 # Toggle Ibus
-bindsym $mod+z exec ~/.bin/util_toggleibus 
+bindsym $mod+z exec ~/.sh/util_toggleibus 
 
 # Mount drive
-bindsym $smod+m exec ~/.bin/menu_mount
+bindsym $smod+m exec ~/.sh/menu_mount
 
 # Unmount drive
-bindsym $smod+Shift+m exec ~/.bin/menu_umount
+bindsym $smod+Shift+m exec ~/.sh/menu_umount
 
 # Play track
-bindsym $mod+Shift+m exec ~/.bin/menu_playtrack 
+bindsym $mod+Shift+m exec ~/.sh/menu_playtrack 
 
 #============ WORKSPACE 
 
@@ -258,7 +258,7 @@ focus_follows_mouse no
 font pango:NotoSans Nerd Font 9
 
 # Set gtk theme from configuration files of GNOME
-# exec_always  ~/.bin/import-gsettings
+# exec_always  ~/.sh/import-gsettings
 
 # Workspace layout 
 workspace_layout tabbed

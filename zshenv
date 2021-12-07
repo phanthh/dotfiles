@@ -74,18 +74,15 @@ export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|l
 export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
 # nuke
 export GUI=1
-#=================== PATH
-export LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
-export PATH="${LD_LIBRARY_PATH}:/opt/cuda/bin:/opt/miniconda3/condabin::${CARGO_HOME}/bin:${PATH}"
+#=================== CARGO 
+export PATH="$PATH:$CARGO_HOME/bin"
 
-#=================== R PATH
+#=================== R 
 export R_HOME_USER="$XDG_DATA_HOME/R"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export R_LIBS_USER="$HOME/.local/lib/R"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
-#=================== ZSH
-export ZDOTDIR="$HOME/.config/zsh"
 
 #=================== TENSORFLOW
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
@@ -96,4 +93,8 @@ export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"
 #=================== SECRETS
 source $HOME/.config/keyrc
 
-export PATH="$HOME/.local/bin:${PATH}"
+#=================== SCRIPTS AND BIN
+export PATH="$HOME/.local/bin:$HOME/.sh:$PATH"
+
+#=================== ZSH
+export ZDOTDIR="$HOME/.config/zsh"

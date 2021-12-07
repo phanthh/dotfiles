@@ -27,7 +27,6 @@ alias diff="colordiff"
 
 alias t="task"
 alias weather="curl wttr.in"
-alias kiwixs="kiwix-serve /mnt/database/Documents\ File/Wikipedia/*"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias pastex="xclip -o -selection clipboard >"
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
@@ -55,7 +54,6 @@ alias chgrp='chgrp --preserve-root'
 
 #============================ QUICK CD ========================#
 alias src="~/.src"
-alias bin="~/.bin"
 alias dev="~/Development"
 alias aca="~/Academia/"
 alias dl="~/Downloads"
