@@ -18,6 +18,7 @@ alias lsz="du -sch *(D) | sort -h"
 alias ls="ls --color=always --group-directories-first --time-style=iso"
 alias l="ls -l"
 alias la="ls -la"
+alias cd="z"
 
 alias iotop="sudo iotop"
 alias intop="sudo intel_gpu_top"

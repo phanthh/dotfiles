@@ -10,10 +10,6 @@ export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-#=================== MONITORS
-export MON0="eDP-1"
-export MON1="HDMI-1"
-
 #=================== XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

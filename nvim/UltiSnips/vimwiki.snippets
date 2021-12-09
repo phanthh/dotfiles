@@ -240,7 +240,7 @@ snippet norm "norm" i
 endsnippet
 
 priority 100
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log)' "ln" rwA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log)' "ln" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -255,7 +255,7 @@ snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec)' "ln" rwA
 endsnippet
 
 priority 100
-snippet '(?<!\\)(pi|zeta|epsilon|sigma|gamma|theta|rho|phi|lambda|beta|alpha)' "ln" rwA
+snippet '(?<!\\)(pi|zeta|epsilon|delta|sigma|gamma|theta|rho|phi|lambda|beta|alpha)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -395,4 +395,31 @@ endsnippet
 
 snippet bf "bb" iA
 \mathbf{$1}$0
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet / "Fraction" i
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+snippet '^.*\)/' "() frac" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i-=1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
 endsnippet

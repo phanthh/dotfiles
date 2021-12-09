@@ -1,6 +1,7 @@
 #========================= STARTUP =============================#
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SESSION ]]; then
   echo "Starting $SESSION session..."
+  echo -e "import art\nart.tprint('welcome',font='sblood')" | python
   case $SESSION in
     sway) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway sway ;;
     shell) XDG_SESSION_TYPE=shell $SHELL ;;
