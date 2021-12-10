@@ -22,6 +22,14 @@ on_click = "killall spotify"
 marquee_interval = 60
 
 [[block]]
+block = "pomodoro"
+length = 50
+break_length = 10
+message = "Take a break!"
+break_message = "Back to work!"
+notifier = "notifysend"
+
+[[block]]
 block = "backlight"
 
 [[block]]
