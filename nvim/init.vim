@@ -1,4 +1,4 @@
-"=============================" GLOBAL SETTINGS
+:"=============================" GLOBAL SETTINGS
 let g:did_load_filetypes = 1
 filetype plugin on
 
@@ -105,6 +105,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'on' : [] }
 
 " misc
 Plug 'nathom/filetype.nvim'
+Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()            
 
 "=============================" PLUGINS SETTINGS
@@ -236,6 +237,16 @@ cmp.setup.cmdline(':', {
 
 EOF
 
+" ipy-magma.nvim=============="
+nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>
+nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>
+xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>
+nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>
+nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>
+nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>
+
+let g:magma_automatically_open_output = v:false
+
 "=============================" KEYMAPS
 " core========================"
 inoremap jj <esc><cmd>w<cr>
@@ -275,6 +286,7 @@ noremap <f8> :Neoformat<cr>
 nmap gf <Plug>(grammarous-fixit)
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
 
 "=============================" SPECS
 function s:writing_spec()
