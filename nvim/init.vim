@@ -106,6 +106,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'on' : [] }
 " misc
 Plug 'nathom/filetype.nvim'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()            
 
 "=============================" PLUGINS SETTINGS
@@ -237,15 +238,6 @@ cmp.setup.cmdline(':', {
 
 EOF
 
-" ipy-magma.nvim=============="
-nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>
-nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>
-xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>
-nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>
-nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>
-nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>
-
-let g:magma_automatically_open_output = v:false
 
 "=============================" KEYMAPS
 " core========================"
@@ -376,6 +368,13 @@ endfunction
 
 function s:spec_python()
   call s:code_spec()
+  nnoremap <silent><expr> <leader>r  :MagmaEvaluateOperator<CR>
+  nnoremap <silent>       <leader>rr :MagmaEvaluateLine<CR>
+  xnoremap <silent>       <leader>r  :<C-u>MagmaEvaluateVisual<CR>
+  nnoremap <silent>       <leader>rc :MagmaReevaluateCell<CR>
+  nnoremap <silent>       <leader>rd :MagmaDelete<CR>
+  nnoremap <silent>       <leader>ro :MagmaShowOutput<CR>
+  let g:magma_automatically_open_output = v:false
 endfunction
 
 augroup s:spec
