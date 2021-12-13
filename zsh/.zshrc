@@ -3,9 +3,9 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SE
   echo "Starting $SESSION session..."
   echo -e "import art\nart.tprint('welcome',font='sblood')" | python
   case $SESSION in
-    sway) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway sway ;;
-    shell) XDG_SESSION_TYPE=shell $SHELL ;;
-    terminal) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway sway -c $XDG_CONFIG_HOME/sway/terminal ;;
+    sway) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway exec sway ;;
+    shell) XDG_SESSION_TYPE=shell exec $SHELL ;;
+    terminal) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway exec sway -c $XDG_CONFIG_HOME/sway/terminal ;;
     *) echo "Session $SESSION is invalid !" ;;
   esac 
 	logout

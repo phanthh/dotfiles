@@ -81,7 +81,7 @@ Plug 'uga-rosa/cmp-dictionary'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " visual
-Plug 'lilydjwg/colorizer', { 'on': [] }
+Plug 'lilydjwg/colorizer'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'morhetz/gruvbox'
 Plug 'bluz71/vim-moonfly-colors'

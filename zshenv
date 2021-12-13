@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 #=================== PICK NEXT SESSION 
 # sway - shell - terminal
 export SESSION="sway"
@@ -87,7 +88,7 @@ export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"
 
 #=================== SECRETS
-source $HOME/.config/keyrc
+. $HOME/.config/keyrc
 
 #=================== SCRIPTS AND BIN
 export PATH="$HOME/.local/bin:$HOME/.sh:$PATH"
