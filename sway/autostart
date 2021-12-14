@@ -15,10 +15,11 @@ swayidle -w \
 		&& systemctl suspend' &
 
 alacritty &
-brave &
+util_browse &
 autoadb scrcpy &
 
 sleep 5
+$HOME/.local/bin/keepassxc &
 clight &
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 # brightnessctl s 0% &

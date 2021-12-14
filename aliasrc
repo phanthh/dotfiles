@@ -52,16 +52,3 @@ alias mkd="mkdir -pv"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-
-#============================ QUICK CD ========================#
-alias src="~/.src"
-alias dev="~/Development"
-alias aca="~/Academia/"
-alias dl="~/Downloads"
-alias tex="~/Documents/Latex"
-alias hm="~"
-alias ana="~/Analysis"
-alias de="~/Desktop"
-alias con="~/.config"
-alias doc="~/Documents"
-alias dr="~/Drives"

@@ -68,8 +68,10 @@ exec ~/.config/sway/autostart
 
 # Background
 output * bg #000000 solid_color
-# output * bg ~/Pictures/wallpaper/899784.jpg fill
+exec_always ~/.sh/wm_pswall
 output * adaptive_sync on
+output HDMI-A-1 enable position 0,-1080
+output eDP-1 enable position 0,0
 
 #=============================== KEYBINDING ==================================#
 
@@ -168,7 +170,7 @@ bindsym $mod+Return exec ~/.sh/wm_open alacritty
 bindsym $mod+Shift+Return exec alacritty
 
 # Browser
-bindsym $mod+n exec ~/.sh/wm_open brave
+bindsym $mod+n exec ~/.sh/wm_open $(xdg-mime query default text/html | cut -f 1 -d '.')
 
 # Launcher
 bindsym $smod+d exec ~/.sh/menu_run
@@ -177,17 +179,17 @@ bindsym $smod+d exec ~/.sh/menu_run
 bindsym $mod+d exec ~/.sh/menu_timer
 
 # Screen Shot
-bindsym Print exec ~/.sh/wm_prtscwl
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 # Applications
-bindsym $mod+Shift+t exec ~/.sh/wm_open telegram-deskstop
+bindsym $mod+Shift+a exec ~/.sh/wm_open $(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.')
 bindsym $mod+Shift+s exec ~/.sh/wm_open spotify
 bindsym $mod+Shift+c exec ~/.sh/wm_open calibre
-bindsym $mod+Shift+e exec ~/.sh/wm_open pcmanfm
+bindsym $mod+Shift+e exec ~/.sh/wm_open $(xdg-mime query default inode/directory | cut -f 1 -d '.')
 bindsym $mod+Shift+o exec ~/.sh/wm_open obsidian
 bindsym $mod+Shift+z exec ~/.sh/wm_open zotero
-bindsym $mod+Shift+f exec ~/.sh/wm_open facebook
 bindsym $mod+Shift+b exec ~/.sh/wm_open blueman-manager
+bindsym $mod+Shift+p exec ~/.sh/wm_open keepassxc
 bindsym $mod+semicolon exec ~/.sh/wm_open neovide
 
 # Toggle Ibus
@@ -248,19 +250,14 @@ client.focused_inactive $border     $background    $foreground   $secondary    $
 client.urgent           $primary    $background2   $foreground   $primary  		 $primary
 
 # Mouse behaviors
-
 mouse_warping none
 focus_follows_mouse no 
 # workspace_auto_back_and_forth yes
 
 # Global font 
-
 font pango:NotoSans Nerd Font 9
 
-# Set gtk theme from configuration files of GNOME
-# exec_always  ~/.sh/import-gsettings
-
-# Workspace layout 
+# Default workspace layout 
 workspace_layout tabbed
 
 # Bar
@@ -296,6 +293,8 @@ for_window [title="Wi Hotspot"] floating enable
 # ws1 mail
 assign     [app_id="thunderbird"] $ws1
 assign     [class="Mailspring"] $ws1
+assign     [app_id="org.keepassxc.KeePassXC"] $ws1
+
 
 # ws2 media
 assign     [class="Spotify"] $ws2
