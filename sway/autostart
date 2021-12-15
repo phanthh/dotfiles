@@ -16,7 +16,7 @@ swayidle -w \
 
 alacritty &
 util_browse &
-autoadb 'aft-mtp-mount $HOME/Drives/phone: &; scrcpy &' &
+autoadb scrcpy &
 
 sleep 5
 keepassxc &
