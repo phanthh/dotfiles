@@ -1,0 +1,5 @@
+0 12 * * * $HOME/.sh/util_push $HOME/.sh
+0 12 * * * cp /var/spool/cron/phanthh $HOME/.config
+0 12 * * * cp /var/spool/cron/phanthh $HOME/.config && $HOME/.sh/util_push $HOME/.config
+0 12 * * * $HOME/.sh/util_push $HOME/Academia/PKM
+*/10 * * * * $HOME/.sh/wm_pswall
