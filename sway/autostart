@@ -16,10 +16,10 @@ swayidle -w \
 
 alacritty &
 util_browse &
-autoadb scrcpy &
+autoadb 'aft-mtp-mount $HOME/Drives/phone: &; scrcpy &' &
 
 sleep 5
-$HOME/.local/bin/keepassxc &
+keepassxc &
 clight &
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 # brightnessctl s 0% &
