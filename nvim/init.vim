@@ -106,6 +106,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'on' : [] }
 " misc
 Plug 'nathom/filetype.nvim'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kmonad/kmonad-vim'
 
 call plug#end()            
 

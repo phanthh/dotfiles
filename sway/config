@@ -9,6 +9,7 @@ set $secondary #ffb900
 set $warning #e81123
 set $border #101010
 set $border2 #101010
+set $opacity 0.9
 
 # Mod and Submod keys
 set $mod Mod1
@@ -289,6 +290,9 @@ for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
 for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 for_window [title="Wi Hotspot"] floating enable
+
+# Transparency
+for_window [app_id="Alacritty"] opacity $opacity
 
 # ws1 mail
 assign     [app_id="thunderbird"] $ws1

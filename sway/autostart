@@ -16,7 +16,6 @@ swayidle -w \
 
 alacritty &
 util_browse &
-autoadb scrcpy &
 
 sleep 5
 keepassxc &
