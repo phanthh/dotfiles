@@ -51,7 +51,7 @@ interval = 7200
 format = "{aur}"
 format_up_to_date = "✓"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
-aur_command = "~/.config/i3status-rust/pacman_update"
+aur_command = "~/.sh/util_pendingupdate"
 
 [[block]]
 block = "sound"
