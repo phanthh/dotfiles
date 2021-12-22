@@ -229,8 +229,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # Move focused workspace between monitors
-bindsym $mod+greater move workspace to output up
-bindsym $mod+less move workspace to output down
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
 
 #================================= CONFIG ====================================#
 
@@ -290,6 +290,7 @@ for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
 for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 for_window [title="Wi Hotspot"] floating enable
+for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
 
 # Transparency
 for_window [app_id="Alacritty"] opacity $opacity
