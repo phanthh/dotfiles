@@ -7,22 +7,21 @@ thunderbird &
 kanshi &
 
 swayidle -w \
-	timeout 3000 'swaylock -f' \
-	timeout 3005 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"' \
+	timeout 300 'swaylock -f' \
+	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	before-sleep 'playerctl pause' \
 	before-sleep 'swaylock -f' \
-	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] \
-		&& systemctl suspend' &
+	timeout 605 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
 alacritty &
 util_browse &
-
-sleep 5
-keepassxc &
 clight &
-gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
+
 # brightnessctl s 0% &
 # exmonctl -s 0% &
+sleep 5
+keepassxc &
+gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 
 
 

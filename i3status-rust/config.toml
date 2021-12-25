@@ -73,10 +73,10 @@ device = "wlp3s0"
 format = " {ssid} {signal_strength} {ip} "
 interval = 60
 
-[[block]]
-block = "custom"
-command = "echo '' $(uname -r)"
-interval = "once"
+# [[block]]
+# block = "custom"
+# command = "echo '' $(uname -r)"
+# interval = "once"
 
 [[block]]
 block = "time"

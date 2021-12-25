@@ -7,7 +7,21 @@ alias sctl="sudo systemctl"
 alias jctl="sudo journalctl"
 alias bctl="bluetoothctl"
 
-#=============================== UTILS ===============================#
+alias iotop="sudo iotop"
+alias intop="sudo intel_gpu_top"
+alias ratop="sudo radeontop"
+
+#=============================== SPEED ==============================#
+alias ls="ls --color=always --group-directories-first --time-style=iso"
+alias ew="e ~/Academia/PKM/index.md"
+alias l="ls -l"
+alias la="ls -la"
+alias cd="z"
+alias ka="killall"
+alias jl="jupyter lab"
+
+#============================== UTILS ===============================#
+alias tt="ttyper --language english1000"
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias nb="newsboat"
 alias mdl="ytmdl --disable-file"
@@ -15,40 +29,24 @@ alias myip="curl ifconfig.me"
 alias lsmnt="findmnt"
 alias lsusr="awk -F: '{ print $1 }' /etc/passwd"
 alias lsz="du -sch *(D) | sort -h"
-alias ls="ls --color=always --group-directories-first --time-style=iso"
-alias l="ls -l"
-alias la="ls -la"
-alias cd="z"
-
-alias iotop="sudo iotop"
-alias intop="sudo intel_gpu_top"
-alias ratop="sudo radeontop"
-
 alias diff="colordiff"
 
-alias t="task"
-alias weather="curl wttr.in"
+# alias weather="curl wttr.in"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias pastex="xclip -o -selection clipboard >"
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 alias midef="mimeopen --ask-default"
-alias timer="termdown -f standard "
-alias cvimg="mogrify -format png"
-alias ka="killall"
-alias jl="jupyter lab"
+alias timer="termdown -f standard"
 alias R="R --quiet"
-
-alias ew="e ~/Academia/PKM/index.md"
-
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
 alias hblock=""
 
 #============================ SAFETY NETS ============================#
-alias rm='rm -I --preserve-root'
-alias mv='mv -i'
-alias ln='ln -i'
-alias wget='wget -c'
-alias mkd="mkdir -pv"
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+alias rm="rm -Iv --preserve-root"
+alias mv="mv -iv"
+alias cp="cp -riv"
+alias mkdir="mkdir -pv"
+alias ln="ln -iv"
+alias wget="wget -c"
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"

@@ -3,13 +3,13 @@
 # Colors 
 set $foreground #ffffff
 set $background #101010
-set $background2 #202020
+set $background2 #424242
 set $primary #0078d7
 set $secondary #ffb900
 set $warning #e81123
 set $border #101010
 set $border2 #101010
-set $opacity 0.9
+set $opacity 0.95
 
 # Mod and Submod keys
 set $mod Mod1
@@ -69,6 +69,7 @@ exec ~/.config/sway/autostart
 
 # Background
 output * bg #000000 solid_color
+exec_always kill kanshi; kanshi
 exec_always ~/.sh/wm_pswall
 output * adaptive_sync on
 output HDMI-A-1 enable position 0,-1080
@@ -203,7 +204,7 @@ bindsym $smod+m exec ~/.sh/menu_mount
 bindsym $smod+Shift+m exec ~/.sh/menu_umount
 
 # Play track
-bindsym $mod+Shift+m exec ~/.sh/menu_playtrack 
+bindsym $mod+Shift+m exec ~/.sh/menu_spotifyplay 
 
 #============ WORKSPACE 
 

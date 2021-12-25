@@ -19,7 +19,7 @@ SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
 #======================= AUTOSTART TMUX ========================#
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1 
 
 #======================= OHMYZSH ===============================#
 export ZSH="$HOME/.local/share/oh-my-zsh"
