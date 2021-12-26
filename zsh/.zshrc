@@ -30,7 +30,7 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 #======================= ZOXIDE ===============================#
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 #======================= ALIASES ===============================#
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" 

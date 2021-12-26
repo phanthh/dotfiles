@@ -16,7 +16,6 @@ alias ls="ls --color=always --group-directories-first --time-style=iso"
 alias ew="e ~/Academia/PKM/index.md"
 alias l="ls -l"
 alias la="ls -la"
-alias cd="z"
 alias ka="killall"
 alias jl="jupyter lab"
 
@@ -38,7 +37,7 @@ alias midef="mimeopen --ask-default"
 alias timer="termdown -f standard"
 alias R="R --quiet"
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
-alias hblock=""
+alias hblock="echo 'are you sure you want to do this ?'"
 
 #============================ SAFETY NETS ============================#
 alias rm="rm -Iv --preserve-root"
