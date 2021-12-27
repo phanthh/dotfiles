@@ -1,4 +1,4 @@
-:"=============================" GLOBAL SETTINGS
+"=============================" GLOBAL SETTINGS
 let g:did_load_filetypes = 1
 filetype plugin on
 
@@ -39,7 +39,6 @@ set clipboard=unnamedplus
 set tabstop=2 softtabstop=2
 set shiftwidth=2 
 set expandtab
-set smartindent
 
 " mouse scrolling
 set mouse=a
@@ -102,11 +101,14 @@ Plug 'junegunn/vim-easy-align'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'on' : [] }
+Plug 'alvan/vim-closetag', { 'on' : [] }
 
 " misc
 Plug 'nathom/filetype.nvim'
+Plug 'honza/vim-snippets'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kmonad/kmonad-vim'
+Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()            
 
@@ -226,6 +228,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = 'buffer', keyword_length = 2 }, 
+		{ name = 'ultisnips'},		
 		{ name = 'path'},		
 	}
 })
@@ -313,7 +316,7 @@ function s:code_spec()
   set conceallevel=0
 
   " plugins
-  call plug#load('colorizer', 'nvim-treesitter')
+  call plug#load('colorizer', 'nvim-treesitter', 'vim-closetag')
 
   " cmp sources
   lua require('cmp').setup.buffer {
@@ -325,6 +328,10 @@ function s:code_spec()
   \   }
   \}
 
+endfunction
+
+function s:spec_web()
+  call s:code_spec()
 endfunction
 
 function s:spec_tex()
@@ -386,6 +393,7 @@ augroup s:spec
   autocmd FileType rust call s:spec_rust()
 	autocmd FileType scala call s:spec_scala()
 	autocmd FileType python call s:spec_python()
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,css,html call s:spec_web()
 augroup end
 
 

@@ -7,11 +7,11 @@ thunderbird &
 kanshi &
 
 swayidle -w \
-	timeout 300 'swaylock -f' \
-	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	timeout 3000 'swaylock -f' \
+	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	before-sleep 'playerctl pause' \
 	before-sleep 'swaylock -f' \
-	timeout 605 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
+	timeout 6005 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
 alacritty &
 util_browse &
