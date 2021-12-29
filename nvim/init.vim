@@ -105,7 +105,7 @@ Plug 'alvan/vim-closetag', { 'on' : [] }
 
 " misc
 Plug 'nathom/filetype.nvim'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kmonad/kmonad-vim'
 Plug 'jxnblk/vim-mdx-js'
@@ -341,8 +341,8 @@ function s:spec_tex()
   set foldtext=vimtex#fold#text()
   call s:writing_spec()
 
-  map <f10> :w <bar> :VimtexCompile <cr><cr>
-  imap <f10> <esc> :w <bar> :VimtexCompile <cr><cr>
+  map <f10> :w <bar> :VimtexCompile<cr><cr>
+  imap <f10> <esc> :w <bar> :VimtexCompile<cr><cr>
   nnoremap <leader><leader> za 
 endfunction
 

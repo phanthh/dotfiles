@@ -8,6 +8,10 @@ e() {
   fi
 }
 
+o() {
+  nohup xdg-open $* >/dev/null 2>&1 &
+}
+
 eg() {
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudo $GEDITOR $* & disown $!
