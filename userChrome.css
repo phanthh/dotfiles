@@ -42,9 +42,9 @@
     /* Comment the color theme you don't want to use */
 
     /* Dark Theme Colors */
-    --window-colour:               #1f2122;
+    --window-colour:               #101010;
     --secondary-colour:            #424242;
-    --inverted-colour:             #FAFAFC;
+    --inverted-colour:             #FFFFFF;
 
     /* Light Theme Colors
     --window-colour:               #FAFAFC;
@@ -215,7 +215,7 @@ window,
 
 
 /* Show Window Control Button */
-.titlebar-buttonbox-container { display: -moz-inline-box !important; }
+.titlebar-buttonbox-container { display: none !important; }
 
 
 /* remove "padding" left and right from tabs */
@@ -410,11 +410,11 @@ window,
     
 
     /* move tabs bar over */
-    #TabsToolbar { margin-left: var(--uc-urlbar-width) !important; }
+    #TabsToolbar { margin-right: var(--uc-urlbar-width) !important; }
 
 
     /* move entire nav bar  */
-    #nav-bar { margin: calc((var(--urlbar-min-height) * -1) - 8px) calc(100vw - var(--uc-urlbar-width)) 0 0 !important; }
+    #nav-bar { margin: calc((var(--urlbar-min-height) * -1) - 8px) 0 0 calc(100vw - var(--uc-urlbar-width)) !important; }
 
 
 } /* end media query */

@@ -11,7 +11,7 @@ ExecStart=/usr/bin/rclone mount %i %h/Drives/%i \
 --dir-cache-time 1000h \
 --poll-interval 5s \
 --umask 007 \
---cache-dir=$HOME/.cache/rclone \
+--cache-dir=%h/.cache/rclone \
 --vfs-cache-mode full \
 --vfs-cache-max-size 500G \
 --vfs-cache-max-age 24h \

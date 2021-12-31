@@ -22,7 +22,6 @@ alias jl="jupyter lab"
 #============================== UTILS ===============================#
 alias tt="ttyper --language english1000"
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
-alias nb="newsboat"
 alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"
 alias lsmnt="findmnt"

@@ -291,10 +291,11 @@ for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
 for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
 for_window [title="Wi Hotspot"] floating enable
+for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
 
 # Transparency
-for_window [app_id="Alacritty"] opacity $opacity
+# for_window [app_id="Alacritty"] opacity $opacity
 
 # ws1 mail
 assign     [app_id="thunderbird"] $ws1
@@ -329,7 +330,7 @@ assign     [class="Code"] $ws7
 # ws8 work
 assign     [app_id="libreoffice"] $ws8
 assign     [class="obsidian"] $ws8
-assign 		 [app_id="org.kde.okular"] $ws8
+# assign 		 [app_id="org.kde.okular"] $ws8
 
 # ws9 term
 assign     [app_id="Alacritty"] $ws9
