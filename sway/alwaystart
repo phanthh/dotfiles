@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall kanshi; kanshi &
+killall wm_pswall; wm_pswall &
+killall sworkstyle; sworkstyle &

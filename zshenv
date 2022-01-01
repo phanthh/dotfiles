@@ -10,6 +10,7 @@ export JAVA_FONTS=/usr/share/fonts/TTF
 
 export MOZ_DISABLE_RDD_SANDBOX=1
 export MOZ_ENABLE_WAYLAND=1
+export MOZ_DBUS_REMOTE=1
 export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct

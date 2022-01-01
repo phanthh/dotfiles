@@ -12,7 +12,7 @@ o() {
   nohup xdg-open $* >/dev/null 2>&1 &
 }
 
-eg() {
+ee() {
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudo $GEDITOR $* & disown $!
   else
@@ -54,7 +54,6 @@ fdf() {
 }
 
 # fk - kill process
-alias ki="fk"
 fk() {
     local pid 
     if [ "$UID" != "0" ]; then

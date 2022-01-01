@@ -1,11 +1,10 @@
 #!/bin/sh
 
+# daemons
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
-thunderbird &
-kanshi &
-
+foot --server &
 swayidle -w \
 	timeout 3000 'swaylock -f' \
 	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -13,15 +12,24 @@ swayidle -w \
 	before-sleep 'swaylock -f' \
 	timeout 6005 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
-alacritty &
-util_browse &
 clight &
+sway-alttab &
+
+# graphical
+thunderbird &
+util_browse &
+footclient &
+keepassxc &
 
 # brightnessctl s 0% &
 # exmonctl -s 0% &
+
+# misc dependent daemons 
 sleep 5
-keepassxc &
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
+
+
+
 
 
 
