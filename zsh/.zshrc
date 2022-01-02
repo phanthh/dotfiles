@@ -1,43 +1,39 @@
-#========================= STARTUP =============================#
-if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SESSION ]]; then
-  echo "Starting $SESSION session..."
-  echo -e "import art\nart.tprint('$SESSION',font='sblood')" | python
-  case $SESSION in
-    sway) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway exec sway --my-next-gpu-wont-be-nvidia;;
-    shell) XDG_SESSION_TYPE=shell exec $SHELL ;;
-    terminal) XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway exec sway -c $XDG_CONFIG_HOME/sway/terminal ;;
-    *) echo "Session $SESSION is invalid !" ;;
-  esac 
-	logout
-	exit
-fi
-
-#========================= HISTORY =============================#
-HISTSIZE=10000000
+#========================= history
+HISTSIZE=1000000
 SAVEHIST=10000000
 [ ! -d ~/.cache/zsh ] && mkdir ~/.cache/zsh
 HISTFILE=~/.cache/zsh/history
 
-#======================= AUTOSTART TMUX ========================#
+#========================= tmux
 [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1 
 
-#======================= OHMYZSH ===============================#
-export ZSH="$HOME/.local/share/oh-my-zsh"
-# kardan
-# windows
-ZSH_THEME="windows"
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
+#========================= prompt
+cl='%F{cyan}'
+er='%F{red}'
+re='%f'
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=(precmd_vcs_info)
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
+zstyle ':vcs_info:*' enable git
+PROMPT="\$vcs_info_msg_0_"
+PROMPT+="%B%(?.$cl.$er%?!)C:$re%b"
+PROMPT+="%/%B%(?.$cl.$er)>$re%b "
 
-#======================= ZOXIDE ===============================#
+if [[ $XDG_SESSION_TYPE != tty ]]; then
+	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) MIT License. All rights reserved.\n"
+fi
+
+#========================= plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh --cmd cd)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" 
 
-#======================= ALIASES ===============================#
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" 
-
-#======================= VIM KEYBIND ===========================#
-# MENU COMPLETION
+#========================= vim
+# menu completion
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 bindkey -M menuselect '^h' vi-backward-char
@@ -45,12 +41,12 @@ bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
-# VIM STYLE EDITING
+# vim style
 bindkey -v
 bindkey jj vi-cmd-mode
 # export KEYTIMEOUT=1
 
-# VIM CURSOR
+# cursor
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
@@ -71,13 +67,11 @@ zle -N zle-line-init
 echo -ne '\e[5 q' 
 preexec() { echo -ne '\e[5 q' ;} 
 
-#==================== BACKSPACE DELETE ===========================#
-bindkey '^H' backward-kill-word
-
-#======================= SHORTCUTS ==============================#
+#======================= shortcuts 
 bindkey '^F' autosuggest-accept
 bindkey -s '^O' 'n^M'
 bindkey -s '^N' 'newsboat^M'
+bindkey '^H' backward-kill-word
 
 #========================= CONDA ================================#
 
@@ -91,9 +85,3 @@ bindkey -s '^N' 'newsboat^M'
 # fi
 
 # <<< conda initialize <<<
-
-#======================= START PROMPT ============================#
-
-if [[ $XDG_SESSION_TYPE != tty ]]; then
-	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) Linux Foundation. All rights reserved.\n"
-fi

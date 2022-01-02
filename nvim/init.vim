@@ -101,12 +101,12 @@ Plug 'junegunn/vim-easy-align'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'on' : [] }
-Plug 'alvan/vim-closetag', { 'on' : [] }
+Plug 'alvan/vim-closetag'
 
 " misc
 Plug 'nathom/filetype.nvim'
 " Plug 'honza/vim-snippets'
-Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kmonad/kmonad-vim'
 Plug 'jxnblk/vim-mdx-js'
 
@@ -316,7 +316,7 @@ function s:code_spec()
   set conceallevel=0
 
   " plugins
-  call plug#load('colorizer', 'nvim-treesitter', 'vim-closetag')
+  call plug#load('colorizer', 'nvim-treesitter')
 
   " cmp sources
   lua require('cmp').setup.buffer {
@@ -331,6 +331,10 @@ function s:code_spec()
 endfunction
 
 function s:spec_web()
+  call s:code_spec()
+endfunction
+
+function s:spec_c()
   call s:code_spec()
 endfunction
 
@@ -376,12 +380,12 @@ endfunction
 
 function s:spec_python()
   call s:code_spec()
-  nnoremap <silent><expr> <leader>r  :MagmaEvaluateOperator<CR>
-  nnoremap <silent>       <leader>rr :MagmaEvaluateLine<CR>
-  xnoremap <silent>       <leader>r  :<C-u>MagmaEvaluateVisual<CR>
-  nnoremap <silent>       <leader>rc :MagmaReevaluateCell<CR>
-  nnoremap <silent>       <leader>rd :MagmaDelete<CR>
-  nnoremap <silent>       <leader>ro :MagmaShowOutput<CR>
+  " nnoremap <silent><expr> <leader>r  :MagmaEvaluateOperator<CR>
+  " nnoremap <silent>       <leader>rr :MagmaEvaluateLine<CR>
+  " xnoremap <silent>       <leader>r  :<C-u>MagmaEvaluateVisual<CR>
+  " nnoremap <silent>       <leader>rc :MagmaReevaluateCell<CR>
+  " nnoremap <silent>       <leader>rd :MagmaDelete<CR>
+  " nnoremap <silent>       <leader>ro :MagmaShowOutput<CR>
   let g:magma_automatically_open_output = v:false
 endfunction
 
@@ -393,6 +397,7 @@ augroup s:spec
   autocmd FileType rust call s:spec_rust()
 	autocmd FileType scala call s:spec_scala()
 	autocmd FileType python call s:spec_python()
+	autocmd FileType cpp,c call s:spec_c()
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact,css,html call s:spec_web()
 augroup end
 

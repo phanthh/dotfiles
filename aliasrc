@@ -1,4 +1,4 @@
-#=============================== SUDO ===============================#
+#======================== sudo 
 alias w="which"
 alias s="sudo"
 alias su="sudo -i"
@@ -11,7 +11,7 @@ alias iotop="sudo iotop"
 alias intop="sudo intel_gpu_top"
 alias ratop="sudo radeontop"
 
-#=============================== SPEED ==============================#
+#======================== frequent
 alias ls="ls --color=always --group-directories-first --time-style=iso"
 alias ew="e ~/Academia/PKM/index.md"
 alias l="ls -l"
@@ -19,14 +19,13 @@ alias la="ls -la"
 alias ka="killall"
 alias jl="jupyter lab"
 
-#============================== UTILS ===============================#
+#======================== utils 
 alias tt="ttyper --language english1000"
 alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"
-alias lsmnt="findmnt"
 alias lsusr="awk -F: '{ print $1 }' /etc/passwd"
-alias lsz="du -sch *(D) | sort -h"
+alias lsz="du -h | sort -h"
 alias diff="colordiff"
 
 # alias weather="curl wttr.in"
@@ -38,7 +37,7 @@ alias R="R --quiet"
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
 alias hblock="echo 'are you sure you want to do this ?'"
 
-#============================ SAFETY NETS ============================#
+#======================== safety
 alias rm="rm -Iv --preserve-root"
 alias mv="mv -iv"
 alias cp="cp -riv"
