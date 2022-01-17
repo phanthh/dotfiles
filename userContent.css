@@ -1,0 +1,30 @@
+:root {
+    --tridactyl-font-family: "Hack" !important;
+    --tridactyl-bg: #101010 !important; 
+    --tridactyl-fg: #ffffff !important;
+
+    /* --tridactyl-status-font-size: 12px !important; */
+    --tridactyl-status-font-family: "Hack" !important;
+    --tridactyl-status-font-bg: var(--tridactyl-cmdl-bg) !important;
+    --tridactyl-status-border: 2px solid black !important;
+    --tridactyl-status-border-radius: 0px !important;
+
+    /* --tridactyl-header-font-size: 16px !important; */
+    
+    --tridactyl-of-fg: #101010 !important;
+    --tridactyl-of-bg: #ffffff !important;
+
+    --tridactyl-hintspan-fg: #ffffff !important;
+    --tridactyl-hintspan-bg: #101010 !important;
+
+    --tridactyl-hint-active-fg: #424242 !important;
+    --tridactyl-hint-active-bg: #ffffff !important;
+    --tridactyl-hint-active-outline: 1px solid #101010 !important;
+
+    --tridactyl-hint-bg: rgba(42, 42, 42, 0.25) !important;
+    --tridactyl-hint-outline: 1px solid var(--tridactyl-hintspan-bg) !important;
+
+    /* --tridactyl-cmdl-font-size: 1.5rem !important; */
+    --tridactyl-cmplt-option-height: 1.9em !important;
+    --tridactyl-border-radius: 0px !important;
+}

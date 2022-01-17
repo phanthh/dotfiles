@@ -17,11 +17,11 @@ alias ew="e ~/Academia/PKM/index.md"
 alias l="ls -l"
 alias la="ls -la"
 alias ka="killall"
-alias jl="jupyter lab"
+# alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
+alias jl="prime-run jupyter lab"
 
 #======================== utils 
 alias tt="ttyper --language english1000"
-alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"
 alias lsusr="awk -F: '{ print $1 }' /etc/passwd"

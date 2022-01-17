@@ -17,8 +17,8 @@ precmd_functions+=(precmd_vcs_info)
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
 zstyle ':vcs_info:*' enable git
-PROMPT="\$vcs_info_msg_0_"
-PROMPT+="%B%(?.$cl.$er%?!)C:$re%b"
+RPROMPT="\$vcs_info_msg_0_"
+PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
 PROMPT+="%/%B%(?.$cl.$er)>$re%b "
 
 if [[ $XDG_SESSION_TYPE != tty ]]; then
@@ -29,8 +29,8 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh --cmd cd)"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/funcrc" 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc" 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc" 
 
 #========================= vim
 # menu completion

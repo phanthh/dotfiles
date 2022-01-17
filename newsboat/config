@@ -24,13 +24,16 @@ browser "~/.sh/util_browse"
 prepopulate-query-feeds yes
 refresh-on-startup yes
 
-macro w set browser "mpv %u" ; open-in-browser ; set browser "~/.bin/browser"
+macro w set browser "mpv %u" ; open-in-browser ; set browser "~/.sh/util_browse"
 
 # color background default default 
+
 # color listnormal color241 default
 # color listnormal_unread color231 default
+
 # color listfocus color16 blue
 # color listfocus_unread color16 blue
+
 # color info default black
 # color article default default
 

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # daemons
+aw-qt --autostart-modules aw-server &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
@@ -12,8 +13,7 @@ swayidle -w \
 	before-sleep 'swaylock -f' \
 	timeout 6005 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
-clight &
-sway-alttab &
+
 
 # graphical
 thunderbird &
@@ -24,13 +24,12 @@ keepassxc &
 # brightnessctl s 0% &
 # exmonctl -s 0% &
 
+sleep 1
+clight &
+
 # misc dependent daemons 
 sleep 5
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
 
-
-
-
-
-
-
+sleep 1
+~/.repo/aw-watcher-window-wayland/target/release/aw-watcher-window-wayland &

@@ -14,6 +14,7 @@ export MOZ_DBUS_REMOTE=1
 export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
+export SDL_VIDEODRIVER=wayland
 
 #=================== xdg
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -57,7 +58,7 @@ export STACK_ROOT="$XDG_DATA_HOME/stack"
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 
 #=================== secrets
-. $XDG_CONFIG_HOME/keyrc
+
 
 #=================== android
 export ANDROID_HOME="$HOME/.android/sdk"
@@ -83,3 +84,4 @@ export PATH="$HOME/.local/bin:$HOME/.sh:$PATH"
 
 #=================== zsh
 export ZDOTDIR="$HOME/.config/zsh"
+. $ZDOTDIR/.keyrc

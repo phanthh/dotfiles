@@ -1,5 +1,24 @@
-theme = "space-villain"
-icons = "awesome5"
+[icons]
+name = "awesome5"
+
+[theme]
+name = "space-villain"
+
+[theme.overrides]
+idle_bg = "#101010" 
+idle_fg = "#ffffff"
+info_bg = "#424242"
+info_fg = "#ffffff"
+good_bg = "#424242"
+good_fg = "#ffffff"
+warning_bg = "#424242" 
+warning_fg = "#ffffff"
+critical_bg = "#ffffff"
+critical_fg = "#424242"
+separator = "\ue0b2"
+separator_bg = "auto"
+separator_fg = "auto"
+
 
 [[block]]
 block = "focused_window"
@@ -9,17 +28,15 @@ show_marks = "visible"
 [[block]]
 block = "toggle"
 command_state = "ibus engine | grep Bamboo"
-command_on = "~/.bin/toggleibus"
-command_off = "~/.bin/toggleibus"
+command_on = "~/.sh/util_toggleibus"
+command_off = "~/.sh/util_toggleibus"
 interval = 60
 
 [[block]]
 block = "music"
-player = "spotify"
 buttons = ["play", "next"]
-on_collapsed_click = "~/.bin/spotifyd"
-on_click = "killall spotify"
 marquee_interval = 60
+on_click = "killall mpv; killall spotify"
 
 [[block]]
 block = "pomodoro"
@@ -28,6 +45,7 @@ break_length = 10
 message = "Take a break!"
 break_message = "Back to work!"
 notifier = "notifysend"
+notifier_path = "~/.sh/wm_pomodoronoti"
 
 [[block]]
 block = "backlight"

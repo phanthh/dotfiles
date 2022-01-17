@@ -1,16 +1,11 @@
 #=============================== VARIABLES ===================================#
 
 # Colors 
-set $foreground #ffffff
-set $background #101010
-set $background2 #424242
-set $primary #0078d7
-set $secondary #ffb900
-set $warning #e81123
-set $border #101010
-set $border2 #101010
+set $fg #ffffff
+set $bg #101010
+set $pr #424242
 set $opacity 0.95
-
+ 
 # Mod and Submod keys
 set $mod Mod1
 set $smod Mod4
@@ -71,6 +66,7 @@ exec_always ~/.config/sway/alwaystart
 # Background
 output * bg #000000 solid_color
 output * adaptive_sync on
+# output * bg ~/Pictures/wallpaper/getshitdone.jpg fill
 output HDMI-A-1 enable position 0,-1080
 output eDP-1 enable position 0,0
 
@@ -89,8 +85,8 @@ bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym $mod+F4 exec ~/.sh/wm_open pavucontrol
 
 # Music Control
-bindsym $mod+F11 exec playerctl -p spotify play-pause
-bindsym $mod+F12 exec playerctl -p spotify next
+bindsym $mod+F11 exec playerctl -a play-pause
+bindsym $mod+F12 exec playerctl -a -i mpv next
 
 # Brightness
 bindsym $mod+F7 exec brightnessctl s 5%-
@@ -208,7 +204,7 @@ bindsym $smod+m exec ~/.sh/menu_mount
 bindsym $smod+Shift+m exec ~/.sh/menu_umount
 
 # Play track
-bindsym $mod+Shift+m exec ~/.sh/menu_spotifyplay 
+bindsym $mod+Shift+m exec ~/.sh/menu_music 
 
 #============ WORKSPACE 
 
@@ -250,11 +246,11 @@ default_floating_border normal
 hide_edge_borders --i3 smart
 
 # Window colors
-#                       border      background     text       	 indicator  	 child_border
-client.focused          $border2    $background2   $foreground   $secondary    $primary
-client.unfocused        $border2    $background    $foreground   $secondary    $background
-client.focused_inactive $border     $background    $foreground   $secondary    $background
-client.urgent           $primary    $background2   $foreground   $primary  		 $primary
+#                       border background text  indicator child_border
+client.focused          $fg    $bg        $fg   $fg       $fg
+client.unfocused        $bg    $bg        $fg   $fg       $bg
+client.focused_inactive $fg    $bg        $fg   $fg       $bg
+client.urgent           $fg    $bg        $fg   $fg  	    $fg
 
 # Mouse behaviors
 mouse_warping none
@@ -271,16 +267,16 @@ workspace_layout tabbed
 bar {
     status_command i3status-rs ~/.config/i3status-rust/config.toml
     colors {
-        background $background
-        separator $foreground
-        statusline $foreground
+        background $bg
+        separator  $fg
+        statusline $fg
 
-        #                  border         background       text
-        focused_workspace  $border2       $background2     $foreground
-        active_workspace   $border2       $background2     $foreground
-        inactive_workspace $border        $background      $foreground
-        urgent_workspace   $primary       $primary         $foreground
-        binding_mode       $primary       $primary         $foreground
+        #                  border background text
+        focused_workspace  $fg    $bg        $fg
+        active_workspace   $fg    $bg        $fg
+        inactive_workspace $bg    $bg        $fg
+        urgent_workspace   $bg    $fg        $bg
+        binding_mode       $bg    $fg        $bg
     }
 
     workspace_min_width 50
@@ -294,7 +290,7 @@ bar {
 # Floating
 for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1280 720
-for_window [title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable, resize set width 50 px height 30 px
 for_window [title="Wi Hotspot"] floating enable
 for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
@@ -307,11 +303,11 @@ assign     [app_id="thunderbird"] workspace number 1
 assign     [class="Mailspring"] workspace number 1
 assign     [app_id="org.keepassxc.KeePassXC"] workspace number 1
 
-
 # ws2 media
 assign     [class="Spotify"] workspace number 2
 for_window [class="Spotify"] move to workspace number 2
 assign     [class="scrcpy"] workspace number 2
+assign     [app_id="osu"] workspace number 2
 
 # ws3 lib
 assign     [app_id="calibre"] workspace number 3
@@ -322,10 +318,12 @@ assign     [class="Binance"] workspace number 4
 for_window [class="Binance"] move to workspace number 4
 assign     [class="Exodus"] workspace number 4
 
-# ws5 soc
-assign     [class="Binance"] workspace number 4
+# ws5 social
+assign     [class="discord"] workspace number 5
+for_window [class="discord"] workspace number 5
 
-# ws6 
+# ws6 zoom
+assign     [app_id="zoom"] workspace number 6
 
 # ws7 dev
 assign     [class="VirtualBox Machine"] workspace number 7
