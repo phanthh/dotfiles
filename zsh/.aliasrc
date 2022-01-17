@@ -37,6 +37,8 @@ alias R="R --quiet"
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
 alias hblock="echo 'are you sure you want to do this ?'"
 
+#======================== git
+
 #======================== safety
 alias rm="rm -Iv --preserve-root"
 alias mv="mv -iv"
