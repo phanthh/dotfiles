@@ -1,5 +1,5 @@
-#============================ EDIT  ===========================#
-
+#============================ edit
+# edit
 e() {
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudoedit $*
@@ -8,183 +8,130 @@ e() {
   fi
 }
 
-es()
+# edit (gui)
+ee() {
+  if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
+    sudo $GEDITOR $* &
+    disown $!
+  else
+    $GEDITOR $* &
+    disown $!
+  fi
+}
 
+# open (gui)
 o() {
   nohup xdg-open $* >/dev/null 2>&1 &
 }
 
-ee() {
-  if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
-    sudo $GEDITOR $* & disown $!
-  else
-    $GEDITOR $* & disown $!
-  fi
-}
-
+# config (user)
 c() {
-	local file
-	file=$(find ~/.config -type d \( -name '*calibre*' -o -name '*spotify*' -o -name '*libreoffice*' -o -name '*plugged*' -o -name '*JetBrains*' -o -name '*.git*' -o -name '*obsidian*' -o -name '*GIMP*' -o -name '*coc*' -o -name '*chromium*' -o -name '*BraveSoftware*' \) -prune -o -type f -path "*$1*" -print | fzf -q "$1")
-	[ ! -z "$file" ] && $EDITOR "$file"
+  local file
+  file=$(find ~/.config -type d \( -name '*calibre*' -o -name '*spotify*' -o -name '*libreoffice*' -o -name '*plugged*' -o -name '*JetBrains*' -o -name '*.git*' -o -name '*obsidian*' -o -name '*GIMP*' -o -name '*coc*' -o -name '*chromium*' -o -name '*BraveSoftware*' \) -prune -o -type f -path "*$1*" -print | fzf -q "$1")
+  [ ! -z "$file" ] && $EDITOR "$file"
 }
 
+# config (system)
 ce() {
-	local file
-	file=$(sudo find /etc | sudo fzf -q "$1")
-	[ ! -z "$file" ] && sudoedit "$file"
+  local file
+  file=$(sudo find /etc | sudo fzf -q "$1")
+  [ ! -z "$file" ] && sudoedit "$file"
 
 }
 
+# help cmd
 hl() {
   $1 --help | less
 }
 
+#=========================== fzf
 
-#=========================== FZF ===========================#
-
-# fdh - cd to selected directory, include hidden
-fd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-}
-
-# cdf - cd into the directory of the selected file
-fdf() {
-   local file
-   local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
-}
-
-# fk - kill process
+# kill process
 fk() {
-    local pid 
-    if [ "$UID" != "0" ]; then
-        pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
-    else
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-    fi  
+  local pid
+  if [ "$UID" != "0" ]; then
+    pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+  else
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  fi
 
-    if [ "x$pid" != "x" ]
-    then
-        echo $pid | xargs kill -${1:-9}
-    fi  
+  if [ "x$pid" != "x" ]; then
+    echo $pid | xargs kill -${1:-9}
+  fi
 }
 
-#=========================== PACMAN ===========================#
+#=========================== packages
 
-# Install packages 
-AUR_WRAPPER=paru
+AUR_WRAPPER="paru"
+
+# query
 qu() {
-    if [ -z "$1" ]; then
-      $AUR_WRAPPER -Qq | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
-    else 
-      $AUR_WRAPPER -Qq "$1" | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
-    fi
+  if [ -z "$1" ]; then
+    $AUR_WRAPPER -Qq | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
+  else
+    $AUR_WRAPPER -Qq "$1" | fzf --multi --preview "$AUR_WRAPPER -Si {1}"
+  fi
 }
 
+# install
 in() {
-    if [ -z "$1" ]; then
-      $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
-    else 
-      $AUR_WRAPPER -S $*
-    fi
+  if [ -z "$1" ]; then
+    $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
+  else
+    $AUR_WRAPPER -S $*
+  fi
 }
 
-# Remove installed packages 
+# remove
 re() {
-    if [ -z "$1" ]; then
-      $AUR_WRAPPER -Qeq | fzf --multi --preview "$AUR_WRAPPER -Qi {1}" | xargs -ro $AUR_WRAPPER -Rns
-    else 
-      $AUR_WRAPPER -Rns $*
-    fi
+  if [ -z "$1" ]; then
+    $AUR_WRAPPER -Qeq | fzf --multi --preview "$AUR_WRAPPER -Qi {1}" | xargs -ro $AUR_WRAPPER -Rns
+  else
+    $AUR_WRAPPER -Rns $*
+  fi
 }
 
-# Update system
+# update
 up() {
-    $AUR_WRAPPER -Syu
+  $AUR_WRAPPER -Syu
 }
 
-#=========================== NNN ===========================#
-n ()
-{
-    # Block nesting of nnn in subshells
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"
-        return
-    fi
+#=========================== nnn
 
-    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # To cd on quit only on ^G, remove the "export" as in:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    # NOTE: NNN_TMPFILE is fixed, should not be modified
-    
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+n() {
+  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+    echo "nnn is already running"
+    return
+  fi
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    nnn "$@"
-    if [ -f "$NNN_TMPFILE" ]; then
-        . "$NNN_TMPFILE"
-        rm -f "$NNN_TMPFILE" > /dev/null
-    fi
+  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  nnn "$@"
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" >/dev/null
+  fi
 }
 
-#=========================== TOOLS ===========================#
-# ex - archive extractor
-# usage: ex <file>
-ex () {
-  if [ -f $1 ] ; then
+#=========================== utils
+
+# archive extractor
+ex() {
+  if [ -f $1 ]; then
     case $1 in
-      *.tar.bz2) tar xjf $1   ;;
-      *.tar.gz)  tar xzf $1   ;;
-      *.bz2)     bunzip2 $1   ;;
-      *.rar)     unrar x $1     ;;
-      *.gz)      gunzip $1    ;;
-      *.tar)     tar xf $1    ;;
-      *.tbz2)    tar xjf $1   ;;
-      *.tgz)     tar xzf $1   ;;
-      *.zip)     unzip $1     ;;
-      *.Z)       uncompress $1;;
-      *.7z)      7z x $1      ;;
-      *)         echo "'$1' cannot be extracted via ex()" ;;
+    *.tar.bz2) tar xjf $1 ;;
+    *.tar.gz) tar xzf $1 ;;
+    *.bz2) bunzip2 $1 ;;
+    *.rar) unrar x $1 ;;
+    *.gz) gunzip $1 ;;
+    *.tar) tar xf $1 ;;
+    *.tbz2) tar xjf $1 ;;
+    *.tgz) tar xzf $1 ;;
+    *.zip) unzip $1 ;;
+    *.Z) uncompress $1 ;;
+    *.7z) 7z x $1 ;;
+    *) echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
-    echo "'$1' is not a valid file" 
+    echo "'$1' is not a valid file"
   fi
-} 
-
-bak () {
-  mv "$1" "$(basename $1).bak"
 }
-
-mkcd () {
-  mkdir "$1"
-  cd "$1"
-}
-
-cpcd () {
-  cp -r "$1" "$2"
-  cd "$2"
-}
-
-#==================== BTRFS SNAPSHOTS =========================#
-
-# delsnap() {
-#   sudo snapper -c home delete $1
-# }
-
-# cdsnap() {
-#   cd /home/.snapshots/$1/snapshot/
-# }
-
-# snapshot() {
-#   if [ $# -eq 0 ]; then
-#       sudo snapper -c home create -d $(date --iso-8601)
-#   else 
-#       sudo snapper -c home create -d $1
-#   fi
-# }
