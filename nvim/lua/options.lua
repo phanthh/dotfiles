@@ -1,6 +1,6 @@
 -- Settings
 local home = os.getenv("HOME")
-vim.cmd("filetype plugin indent on")
+vim.cmd("filetype plugin on")
 -- speed
 vim.o.updatetime = 50
 vim.o.timeout = true
@@ -8,7 +8,7 @@ vim.o.timeoutlen = 350
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 350
 vim.o.lazyredraw = false -- gui
-vim.o.showmode = false -- gui 
+vim.o.showmode = false -- gui
 vim.o.autoindent = true
 vim.o.autoread = true
 

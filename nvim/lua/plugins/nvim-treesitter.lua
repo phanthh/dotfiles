@@ -19,6 +19,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	context_commentstring = { enable = true },
 	autotag = { enable = true },
+	indent = { enable = true },
 	rainbow = {
 		enable = true,
 		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
