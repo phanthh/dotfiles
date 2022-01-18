@@ -135,7 +135,6 @@ require("packer").startup({
 		use({
 			"karoliskoncevicius/vim-sendtowindow",
 			event = "TermOpen",
-			ft = { "python", "scala", "r" },
 		})
 		use("tpope/vim-surround")
 		use("tpope/vim-commentary")

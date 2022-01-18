@@ -289,7 +289,7 @@ bar {
 
 # Floating
 for_window [app_id="pcmanfm"] floating enable
-for_window [app_id="pcmanfm"] resize set 1280 720
+for_window [app_id="pcmanfm"] resize set 854 480
 for_window [app_id="firefox" title="Extension: (Zotero Connector) - Zotero Item Selector — Mozilla Firefox"] floating enable, resize set width 50 px height 30 px
 for_window [title="Wi Hotspot"] floating enable
 for_window [title="Firefox — Sharing Indicator"] floating enable
