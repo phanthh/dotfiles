@@ -1,6 +1,7 @@
 0 */3 * * * $HOME/.sh/util_push $HOME/.sh
 0 */3 * * * cp /var/spool/cron/phanthh $HOME/.config/crontab && cp $HOME/.mozilla/firefox/t2xewuf0.default-release/chrome/userChrome.css $HOME/.config && cp $HOME/.mozilla/firefox/t2xewuf0.default-release/chrome/userContent.css $HOME/.config && $HOME/.sh/util_push $HOME/.config
 0 */3 * * * $HOME/.sh/util_push $HOME/Academia/PKM
+@weekly find $HOME/.local/share/nvim/undo/ -maxdepth 1 -mindepth 1 -type f -mtime +30 -delete
 
 # wm_pswall
 # */10 * * * * $HOME/.sh/wm_pswall >/dev/null 2>&1
