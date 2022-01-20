@@ -97,7 +97,7 @@ local mathh = {
 	s("bbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
 	s("tt", { t("\\text{"), i(1), t("} "), i(0) }),
 	-- specials
-	s("norm", { t("\\|{"), i(1), t("||"), i(0) }),
+	s("norm", { t("||"), i(1), t("||"), i(0) }),
 	s("notin", { t("\\not\\in"), i(0) }),
 	s("^^", { t("\\hat{"), i(1), t("} "), i(0) }),
 	s("--", { t("\\bar{"), i(1), t("} "), i(0) }),
@@ -122,6 +122,8 @@ local mathh = {
 	s("pp", { t("\\pi "), i(0) }),
 	s("ss", { t("\\sin "), i(0) }),
 	s("cc", { t("\\cos "), i(0) }),
+	s("nn", { t("\\in "), i(0) }),
+	s("SS", { t("\\{"), i(1), t("\\}"), i(0) }),
 	-- utils
 	s("lmup", fmta("\\limsup_{<1> \to <2>}<3>", { i(1, "n"), i(2, "\\infty"), i(0) })),
 	s("pd", fmta("\\frac{\\partial <1>}{partial <2>} <3>", { i(1), i(2, "x"), i(0) })),
@@ -135,6 +137,7 @@ ls.autosnippets = {
 		s("bf", { t("\\textbf{"), i(1), t("} "), i(0) }),
 		s("il", { t("\\textit{"), i(1), t("} "), i(0) }),
 	}, mathh),
+
 	markdown = u.concat({
 		-- bold, italic
 		s("bf", { t("**"), i(1), t("** "), i(0) }),
