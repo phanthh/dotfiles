@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 #=================== session
-# sway - shell
+# sway - shell - gnome
 export SESSION="sway"
 
 #=================== wayland 
