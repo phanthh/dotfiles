@@ -90,11 +90,11 @@ local mathh = {
 		i(0),
 	}),
 	-- formating
-	s("bbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
-	s("iif", { t("\\mathit{"), i(1), t("} "), i(0) }),
-	s("ccl", { t("\\mathcal{"), i(1), t("} "), i(0) }),
-	s("bbb", { t("\\mathbb{"), i(1), t("} "), i(0) }),
-	s("bbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
+	s("mbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
+	s("mil", { t("\\mathit{"), i(1), t("} "), i(0) }),
+	s("mcl", { t("\\mathcal{"), i(1), t("} "), i(0) }),
+	s("mbb", { t("\\mathbb{"), i(1), t("} "), i(0) }),
+	s("mbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
 	s("tt", { t("\\text{"), i(1), t("} "), i(0) }),
 	-- specials
 	s("norm", { t("||"), i(1), t("||"), i(0) }),
