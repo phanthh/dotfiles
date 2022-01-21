@@ -184,6 +184,12 @@ require("packer").startup({
 			end,
 		})
 		use("lewis6991/impatient.nvim")
+		-- use({
+		-- 	"glacambre/firenvim",
+		-- 	run = function()
+		-- 		vim.fn["firenvim#install"](0)
+		-- 	end,
+		-- })
 		-- use 'jxnblk/vim-mdx-js'
 	end,
 	config = {

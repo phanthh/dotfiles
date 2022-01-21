@@ -1,11 +1,12 @@
 #!/bin/sh
 
 # daemons
-aw-qt --autostart-modules aw-server &
+# aw-qt --autostart-modules aw-server &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
 # foot --server &
+# blueman-applet &
 swayidle -w \
 	timeout 3000 'swaylock -f' \
 	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -21,15 +22,13 @@ swayidle -w \
 footclient &
 # keepassxc &
 
+
 # brightnessctl s 0% &
 # exmonctl -s 0% &
 
 sleep 1
-clight &
+# clight &
 
 # misc dependent daemons 
 sleep 5
 gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
-
-sleep 1
-~/.repo/aw-watcher-window-wayland/target/release/aw-watcher-window-wayland &
