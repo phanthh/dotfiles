@@ -5,7 +5,7 @@ aw-qt --autostart-modules aw-server &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
-foot --server &
+# foot --server &
 swayidle -w \
 	timeout 3000 'swaylock -f' \
 	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -16,10 +16,10 @@ swayidle -w \
 
 
 # graphical
-thunderbird &
-util_browse &
+# thunderbird &
+# util_browse &
 footclient &
-keepassxc &
+# keepassxc &
 
 # brightnessctl s 0% &
 # exmonctl -s 0% &
