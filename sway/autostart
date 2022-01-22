@@ -12,14 +12,14 @@ swayidle -w \
 	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	before-sleep 'playerctl pause' \
 	before-sleep 'swaylock -f' \
-	timeout 6005 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
+	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
 
 
 # graphical
-# thunderbird &
-# util_browse &
 footclient &
+# util_browse & # firefox
+# thunderbird &
 # keepassxc &
 
 

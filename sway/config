@@ -105,7 +105,7 @@ bindsym --release $smod+x exec swaylock
 bindsym --release $smod+Shift+x exec systemctl suspend
 bindsym --release $smod+Shift+Escape exec ~/.sh/menu_reboot
 bindsym --release $smod+Escape exec ~/.sh/menu_prompt "Shutdown" "poweroff"
-bindsym --release $smod+Shift+e exec ~/.sh/menu_prompt "Logout" "swaymsg exit"
+bindsym --release $smod+Shift+e exec ~/.sh/menu_logout
 
 #============ WINDOWS 
 
