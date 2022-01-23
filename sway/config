@@ -171,6 +171,10 @@ bindsym $mod+Shift+i move container to workspace next
 bindsym $mod+Return exec ~/.sh/wm_open -s foot footclient
 bindsym $mod+Shift+Return exec footclient
 
+# Editor
+bindsym $mod+backlash exec ~/.sh/wm_open neovide
+bindsym $mod+Shift+backslash exec neovide
+
 # Browser
 bindsym $mod+n exec ~/.sh/wm_open $(xdg-mime query default text/html | cut -f 1 -d '.')
 

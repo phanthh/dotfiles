@@ -1,11 +1,3 @@
--- Autoreload
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost pluginList.lua source <afile> | PackerCompile
-  augroup end
-]])
-
 require("packer").startup({
 	function(use)
 		-- colorscheme
@@ -184,12 +176,6 @@ require("packer").startup({
 			end,
 		})
 		use("lewis6991/impatient.nvim")
-		-- use({
-		-- 	"glacambre/firenvim",
-		-- 	run = function()
-		-- 		vim.fn["firenvim#install"](0)
-		-- 	end,
-		-- })
 		-- use 'jxnblk/vim-mdx-js'
 	end,
 	config = {

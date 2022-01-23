@@ -90,17 +90,17 @@ local mathh = {
 		i(0),
 	}),
 	-- formating
-	s("mbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
-	s("mil", { t("\\mathit{"), i(1), t("} "), i(0) }),
-	s("mcl", { t("\\mathcal{"), i(1), t("} "), i(0) }),
-	s("mbb", { t("\\mathbb{"), i(1), t("} "), i(0) }),
-	s("mbf", { t("\\mathbf{"), i(1), t("} "), i(0) }),
-	s("tt", { t("\\text{"), i(1), t("} "), i(0) }),
+	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
+	s("mil", { t("\\mathit{"), i(1), t("}"), i(0) }),
+	s("mcl", { t("\\mathcal{"), i(1), t("}"), i(0) }),
+	s("mbb", { t("\\mathbb{"), i(1), t("}"), i(0) }),
+	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
+	s("tt", { t("\\text{"), i(1), t("}"), i(0) }),
 	-- specials
 	s("norm", { t("||"), i(1), t("||"), i(0) }),
 	s("notin", { t("\\not\\in"), i(0) }),
-	s("^^", { t("\\hat{"), i(1), t("} "), i(0) }),
-	s("--", { t("\\bar{"), i(1), t("} "), i(0) }),
+	s("^^", { t("\\hat{"), i(1), t("}"), i(0) }),
+	s("--", { t("\\bar{"), i(1), t("}"), i(0) }),
 	-- symbols
 	s("ooo", { t("\\infty"), i(0) }),
 	s("=>", { t("\\implies"), i(0) }),
@@ -118,7 +118,7 @@ local mathh = {
 	s("OO", { t("\\O"), i(0) }),
 	s("xx", { t("\\times"), i(0) }),
 	s("**", { t("\\cdot"), i(0) }),
-	s("...", { t("\\ldots "), i(0) }),
+	s("...", { t("\\ldots"), i(0) }),
 	s("pp", { t("\\pi "), i(0) }),
 	s("ss", { t("\\sin "), i(0) }),
 	s("cc", { t("\\cos "), i(0) }),
@@ -134,18 +134,18 @@ local mathh = {
 ls.autosnippets = {
 	tex = u.concat({
 		-- bold, italic
-		s("bf", { t("\\textbf{"), i(1), t("} "), i(0) }),
-		s("il", { t("\\textit{"), i(1), t("} "), i(0) }),
+		s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
+		s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
 	}, mathh),
 
 	markdown = u.concat({
 		-- bold, italic
-		s("bf", { t("**"), i(1), t("** "), i(0) }),
-		s("il", { t("*"), i(1), t("* "), i(0) }),
+		s("bf", { t("**"), i(1), t("**"), i(0) }),
+		s("il", { t("*"), i(1), t("*"), i(0) }),
 	}, mathh),
 	rmd = u.concat({
 		-- bold, italic
-		s("bf", { t("**"), i(1), t("** "), i(0) }),
-		s("il", { t("*"), i(1), t("* "), i(0) }),
+		s("bf", { t("**"), i(1), t("**"), i(0) }),
+		s("il", { t("*"), i(1), t("*"), i(0) }),
 	}, mathh),
 }

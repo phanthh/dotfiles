@@ -6,3 +6,5 @@ require("mappings")
 require("pluginList")
 require("packer_compiled")
 require("workspec")
+require("autocmd")
+
