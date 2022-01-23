@@ -4,7 +4,6 @@ function s:coding_spec()
   set nospell
   set number
   set dictionary=
-  set conceallevel=0
 endfunction
 
 function s:repl_spec()
@@ -52,7 +51,6 @@ augroup end
 function s:writing_spec()
   set spell spelllang=en_us 
   set noruler noshowcmd nonumber
-  set conceallevel=2
   nmap <buffer><f12> :GrammarousCheck<cr>
   nmap <buffer><s-f12> :GrammarousReset<cr>
 endfunction

@@ -108,22 +108,35 @@ require("packer").startup({
 				require("plugins.vim-grammarous")
 			end,
 			cmd = { "GrammarousCheck", "GrammarousReset" },
-			ft = { "tex", "markdown" },
+		})
+
+		use({
+			"renerocksai/telekasten.nvim",
+			requires = {
+				"nvim-telescope/telescope.nvim",
+			},
+			after = {
+				"telescope.nvim",
+			},
+			config = function()
+				require("plugins.telekasten")
+			end,
 		})
 
 		-- utils
+    use("nvim-lua/plenary.nvim")
 		use({ "sbdchd/neoformat", cmd = "Neoformat" })
 		use({ "tpope/vim-fugitive", cmd = "Git" })
 		use("airblade/vim-gitgutter")
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim",
-			},
-			config = function()
-				require("gitsigns").setup()
-			end,
-		})
+		-- use({
+		-- 	"lewis6991/gitsigns.nvim",
+		-- 	requires = {
+		-- 		"nvim-lua/plenary.nvim",
+		-- 	},
+		-- 	config = function()
+		-- 		require("gitsigns").setup()
+		-- 	end,
+		-- })
 		use({
 			"karoliskoncevicius/vim-sendtowindow",
 			event = "TermOpen",
@@ -136,7 +149,10 @@ require("packer").startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
-			cmd = "Telescope",
+			cmd = {
+				"Telekasten",
+				"Telescope",
+			},
 		})
 		use("jiangmiao/auto-pairs")
 
@@ -154,6 +170,7 @@ require("packer").startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
+			cmd = { "NvimTreeToggle" },
 			config = function()
 				require("plugins.nvim-tree")
 			end,

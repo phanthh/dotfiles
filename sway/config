@@ -172,7 +172,7 @@ bindsym $mod+Return exec ~/.sh/wm_open -s foot footclient
 bindsym $mod+Shift+Return exec footclient
 
 # Editor
-bindsym $mod+backlash exec ~/.sh/wm_open neovide
+bindsym $mod+backslash exec ~/.sh/wm_open neovide
 bindsym $mod+Shift+backslash exec neovide
 
 # Browser

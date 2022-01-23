@@ -1,7 +1,6 @@
 -- Settings
-local home = os.getenv("HOME")
-vim.cmd("filetype plugin on")
--- speed
+local home = os.getenv("HOME") 
+vim.cmd("filetype plugin on") -- speed
 vim.o.updatetime = 50
 vim.o.timeout = true
 vim.o.timeoutlen = 350
@@ -74,6 +73,8 @@ local disabled_built_ins = {
 	"rrhelper",
 	"spellfile_plugin",
 	"matchit",
+  "python2_provider",
+  "python3_provider"
 }
 
 for _, plugin in pairs(disabled_built_ins) do
