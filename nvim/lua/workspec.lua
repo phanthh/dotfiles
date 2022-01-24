@@ -1,7 +1,6 @@
 vim.cmd([[
 " Coding
 function s:coding_spec()
-  set nospell
   set number
   set dictionary=
 endfunction
@@ -49,7 +48,6 @@ augroup end
 
 " Writing
 function s:writing_spec()
-  set spell spelllang=en_us 
   set noruler noshowcmd nonumber
   nmap <buffer><f12> :GrammarousCheck<cr>
   nmap <buffer><s-f12> :GrammarousReset<cr>
@@ -65,6 +63,14 @@ function s:spec_tex()
   nnoremap <leader><leader> za 
 endfunction
 
+function s:spec_md()
+  " telekasten
+  nnoremap <leader>zf :Telekasten find_notes<cr>
+  nnoremap <leader>zd :Telekasten find_daily_notes<cr>
+  nnoremap <leader>zg :Telekasten search_notes<cr>
+  nnoremap <leader>zz :Telekasten follow_link<cr>
+  nnoremap <leader>z :Telekasten panel<cr>
+endfunction
 function s:spec_rmd()
   call s:spec_r()
   map <f10> :w <bar> :!util_rmdcompile % 'pdf_document'<cr>
@@ -75,6 +81,7 @@ augroup s:writing
   autocmd!
   autocmd FileType tex,markdown,rmd call s:writing_spec()
   autocmd FileType tex call s:spec_tex()
+  autocmd FileType md call s:spec_md()
   autocmd FileType rmd call s:spec_rmd()
 augroup end
 ]])

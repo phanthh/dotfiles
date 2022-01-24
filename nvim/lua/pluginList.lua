@@ -16,13 +16,12 @@ require("packer").startup({
 			end,
 		})
 
-		-- lsp
+		-- language server
 		use({ "neovim/nvim-lspconfig", event = "InsertEnter" })
 
 		-- snippets
 		use({
 			"L3MON4D3/LuaSnip",
-			after = "friendly-snippets",
 			event = "InsertEnter",
 			config = function()
 				require("plugins.luasnip")
@@ -30,12 +29,11 @@ require("packer").startup({
 			requires = {
 				{
 					"rafamadriz/friendly-snippets",
-					event = "InsertEnter",
 				},
 			},
 		})
 
-		-- autocomplete
+		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
 			event = "InsertEnter",
@@ -90,6 +88,12 @@ require("packer").startup({
 				"windwp/nvim-ts-autotag",
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				"p00f/nvim-ts-rainbow",
+				{
+					"lewis6991/spellsitter.nvim",
+					config = function()
+						require("spellsitter").setup()
+					end,
+				},
 			},
 		})
 
@@ -99,7 +103,6 @@ require("packer").startup({
 			config = function()
 				require("plugins.vimtex")
 			end,
-			ft = { "tex" },
 		})
 
 		use({
@@ -124,7 +127,7 @@ require("packer").startup({
 		})
 
 		-- utils
-    use("nvim-lua/plenary.nvim")
+		use("nvim-lua/plenary.nvim")
 		use({ "sbdchd/neoformat", cmd = "Neoformat" })
 		use({ "tpope/vim-fugitive", cmd = "Git" })
 		use("airblade/vim-gitgutter")
@@ -154,7 +157,7 @@ require("packer").startup({
 				"Telescope",
 			},
 		})
-		use("jiangmiao/auto-pairs")
+		-- use("jiangmiao/auto-pairs")
 
 		-- misc
 		use("kmonad/kmonad-vim")

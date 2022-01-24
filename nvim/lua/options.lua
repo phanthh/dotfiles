@@ -1,5 +1,5 @@
 -- Settings
-local home = os.getenv("HOME") 
+local home = os.getenv("HOME")
 vim.cmd("filetype plugin on") -- speed
 vim.o.updatetime = 50
 vim.o.timeout = true
@@ -36,7 +36,7 @@ vim.o.ignorecase = true
 vim.o.wrap = true
 vim.o.linebreak = true
 
--- safetynet
+-- safety net
 vim.o.backup = true
 vim.o.backupdir = home .. "/.local/share/nvim/backup"
 vim.o.history = 1000
@@ -44,6 +44,8 @@ vim.o.undolevels = 1000
 vim.o.undofile = true
 
 -- misc
+vim.o.spell = true
+vim.o.spelllang = "en_us"
 vim.o.hidden = true
 vim.o.shell = "/bin/sh"
 vim.o.shortmess = vim.o.shortmess .. "Ic"
@@ -53,7 +55,7 @@ vim.o.backspace = "indent,eol,start"
 
 vim.g.mapleader = " "
 
--- disable unecessary plugins
+-- disable unnecessary plugins
 local disabled_built_ins = {
 	"netrw",
 	"netrwPlugin",
@@ -73,8 +75,8 @@ local disabled_built_ins = {
 	"rrhelper",
 	"spellfile_plugin",
 	"matchit",
-  "python2_provider",
-  "python3_provider"
+	"python2_provider",
+	"python3_provider",
 }
 
 for _, plugin in pairs(disabled_built_ins) do

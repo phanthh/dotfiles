@@ -29,3 +29,9 @@ require("nvim-treesitter.configs").setup({
 		-- termcolors = {} -- table of colour name strings
 	},
 })
+
+vim.cmd([[
+set foldlevel=99
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+]])
