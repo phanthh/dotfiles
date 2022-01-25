@@ -1,6 +1,7 @@
 -- Settings
 local home = os.getenv("HOME")
 vim.cmd("filetype plugin on") -- speed
+vim.cmd("syntax off") -- speed
 vim.o.updatetime = 50
 vim.o.timeout = true
 vim.o.timeoutlen = 350

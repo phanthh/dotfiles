@@ -103,6 +103,7 @@ require("packer").startup({
 			config = function()
 				require("plugins.vimtex")
 			end,
+      cmd = "VimtexCompile"
 		})
 
 		use({
