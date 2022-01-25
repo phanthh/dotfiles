@@ -66,9 +66,11 @@ endfunction
 function s:spec_md()
   " telekasten
   nnoremap <leader>zf :Telekasten find_notes<cr>
+  nnoremap <leader>zl :Telekasten insert_link<cr>
   nnoremap <leader>zd :Telekasten find_daily_notes<cr>
   nnoremap <leader>zg :Telekasten search_notes<cr>
   nnoremap <leader>zz :Telekasten follow_link<cr>
+  nnoremap <leader>zi :Telekasten paste_img_and_link<cr>
   nnoremap <leader>z :Telekasten panel<cr>
 endfunction
 function s:spec_rmd()
@@ -81,7 +83,7 @@ augroup s:writing
   autocmd!
   autocmd FileType tex,markdown,rmd call s:writing_spec()
   autocmd FileType tex call s:spec_tex()
-  autocmd FileType md call s:spec_md()
+  autocmd FileType markdown call s:spec_md()
   autocmd FileType rmd call s:spec_rmd()
 augroup end
 ]])
