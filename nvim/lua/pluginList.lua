@@ -27,9 +27,7 @@ require("packer").startup({
 				require("plugins.luasnip")
 			end,
 			requires = {
-				{
-					"rafamadriz/friendly-snippets",
-				},
+				"rafamadriz/friendly-snippets",
 			},
 		})
 
@@ -103,7 +101,7 @@ require("packer").startup({
 			config = function()
 				require("plugins.vimtex")
 			end,
-      cmd = "VimtexCompile"
+			cmd = "VimtexCompile",
 		})
 
 		use({
@@ -119,35 +117,22 @@ require("packer").startup({
 			requires = {
 				"nvim-telescope/telescope.nvim",
 			},
-			after = {
-				"telescope.nvim",
-			},
+			after = "telescope.nvim",
 			config = function()
 				require("plugins.telekasten")
 			end,
 		})
 
 		-- utils
-		use("nvim-lua/plenary.nvim")
-		use({ "sbdchd/neoformat", cmd = "Neoformat" })
-		use({ "tpope/vim-fugitive", cmd = "Git" })
-		use("airblade/vim-gitgutter")
-		-- use({
-		-- 	"lewis6991/gitsigns.nvim",
-		-- 	requires = {
-		-- 		"nvim-lua/plenary.nvim",
-		-- 	},
-		-- 	config = function()
-		-- 		require("gitsigns").setup()
-		-- 	end,
-		-- })
+
 		use({
-			"karoliskoncevicius/vim-sendtowindow",
-			event = "TermOpen",
+			"nacro90/numb.nvim",
+			event = "CmdlineEnter",
+			config = function()
+				require("numb").setup()
+			end,
 		})
-		use("tpope/vim-surround")
-		use("tpope/vim-commentary")
-		use("junegunn/vim-easy-align")
+
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = {
@@ -158,17 +143,7 @@ require("packer").startup({
 				"Telescope",
 			},
 		})
-		-- use("jiangmiao/auto-pairs")
 
-		-- misc
-		use("kmonad/kmonad-vim")
-		use({
-			"nathom/filetype.nvim",
-			config = function()
-				require("plugins.ft")
-			end,
-		})
-		use("ActivityWatch/aw-watcher-vim")
 		use({
 			"kyazdani42/nvim-tree.lua",
 			requires = {
@@ -179,12 +154,35 @@ require("packer").startup({
 				require("plugins.nvim-tree")
 			end,
 		})
+
+		use({
+			"windwp/nvim-autopairs",
+			keys = { { "i", "(" }, { "i", "{" }, { "i", "[" } },
+			config = function()
+				require("nvim-autopairs").setup({})
+			end,
+		})
+
+		use({ "sbdchd/neoformat", cmd = "Neoformat" })
+		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
+		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
+		use({ "tpope/vim-surround", keys = "S" })
+		use({ "tpope/vim-commentary", keys = "gcc" })
+
+		-- latent
+		use({
+			"nathom/filetype.nvim",
+			config = function()
+				require("plugins.ft")
+			end,
+		})
+
 		use({
 			"norcalli/nvim-colorizer.lua",
 			config = function()
 				require("colorizer").setup()
 			end,
-			ft = { "css", "scss", "i3config", "lua" },
+			ft = { "css", "scss", "typescriptreact" },
 		})
 
 		use({
@@ -196,7 +194,21 @@ require("packer").startup({
 				vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_gk)", opts)
 			end,
 		})
+
+		use({
+			"phaazon/hop.nvim",
+			cmd = "HopWord",
+			config = function()
+				-- you can configure Hop the way you like here; see :h hop-config
+				require("hop").setup({ keys = "etovqpdygflzhckisuran" })
+			end,
+		})
+
+		use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
+		use("nvim-lua/plenary.nvim")
+		use("airblade/vim-gitgutter")
+		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
 	end,
 	config = {

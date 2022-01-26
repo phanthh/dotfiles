@@ -20,6 +20,7 @@ vim.o.termguicolors = true
 vim.o.guifont = "Hack Nerd Font:h12"
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.pumheight = 7
 
 -- tab
 vim.o.expandtab = true

@@ -2,7 +2,7 @@ vim.cmd([[
 " auto compile packer
 augroup packer_user_config
   autocmd!
-  autocmd BufWritePost pluginList.lua PackerCompile | LuaCacheClear | set nospell
+  autocmd BufWritePost pluginList.lua source <afile> | PackerCompile | LuaCacheClear | set nospell
 augroup end
 
 " auto read
