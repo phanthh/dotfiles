@@ -5,8 +5,6 @@ export SESSION="sway"
 
 #=================== wayland 
 export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
-export JAVA_FONTS=/usr/share/fonts/TTF
 
 export MOZ_DISABLE_RDD_SANDBOX=1
 export MOZ_ENABLE_WAYLAND=1
@@ -66,6 +64,7 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:/opt/flutter/bin"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 

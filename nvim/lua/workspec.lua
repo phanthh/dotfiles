@@ -37,7 +37,7 @@ endfunction
 
 augroup s:coding
   autocmd!
-  autocmd FileType rust,scala,python,r,cpp,c,javascript,javascriptreact,typescript,typescriptreact,css,html,lua,sh call s:coding_spec()
+  autocmd FileType rust,scala,python,r,cpp,c,javascript,javascriptreact,typescript,typescriptreact,css,html,lua,sh,dart call s:coding_spec()
   " specific
   autocmd FileType rust call s:spec_rust()
 	autocmd FileType scala call s:spec_scala()
