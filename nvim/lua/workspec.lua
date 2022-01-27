@@ -43,7 +43,7 @@ augroup s:coding
 	autocmd FileType scala call s:spec_scala()
 	autocmd FileType python call s:spec_python()
 	autocmd FileType r call s:spec_r()
-  autocmd TermOpen * setlocal nonumber
+  autocmd TermOpen * setlocal nonumber nospell
 augroup end
 
 " Writing
