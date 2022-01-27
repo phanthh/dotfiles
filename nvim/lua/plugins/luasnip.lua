@@ -101,6 +101,7 @@ local mathh = {
 	s("notin", { t("\\not\\in"), i(0) }),
 	s("^^", { t("\\hat{"), i(1), t("}"), i(0) }),
 	s("--", { t("\\bar{"), i(1), t("}"), i(0) }),
+	s("sre", { t("\\sqrt{"), i(1), t("}"), i(0) }),
 	-- symbols
 	s("ooo", { t("\\infty"), i(0) }),
 	s("=>", { t("\\implies"), i(0) }),
