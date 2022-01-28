@@ -135,3 +135,9 @@ ex() {
     echo "'$1' is not a valid file"
   fi
 }
+
+linknb() {
+  syncfile="$(echo "$1" | cut -f 1 -d '.').sync.ipynb"
+  cp "$1" "$syncfile"
+  jupytext --set-formats ipynb,py:percent "$syncfile" 
+}
