@@ -36,6 +36,7 @@ alias timer="termdown -f standard"
 alias R="R --quiet"
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
 alias hblock="echo 'are you sure you want to do this ?'"
+alias nb="util_createnb"
 
 #======================== git
 alias gp="~/.sh/util_push"

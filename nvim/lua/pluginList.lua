@@ -204,7 +204,12 @@ require("packer").startup({
 			end,
 		})
 
-		use("untitled-ai/jupyter_ascending.vim")
+		use({
+			"untitled-ai/jupyter_ascending.vim",
+			config = function()
+				vim.g.jupyter_ascending_match_pattern = ".sync.*"
+			end,
+		})
 		use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
