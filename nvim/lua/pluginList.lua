@@ -124,6 +124,14 @@ require("packer").startup({
 		})
 
 		-- utils
+		-- use({
+		-- 	"danymat/neogen",
+		-- 	config = function()
+		-- 		require("neogen").setup({ enabled = true })
+		-- 	end,
+		-- 	requires = "nvim-treesitter/nvim-treesitter",
+		-- 	cmd = "Neogen",
+		-- })
 
 		use({
 			"nacro90/numb.nvim",
