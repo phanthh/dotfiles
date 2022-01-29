@@ -19,6 +19,7 @@ alias la="ls -la"
 alias ka="killall"
 # alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias jl="prime-run jupyter lab"
+alias jn="prime-run jupyter-notebook"
 
 #======================== utils 
 alias tt="ttyper --language english1000"
