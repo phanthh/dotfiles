@@ -75,8 +75,7 @@ qu() {
 
 # install
 in() {
-  if [ -z "$1" ]; then
-    $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
+  if [ -z "$1" ]; then $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
   else
     $AUR_WRAPPER -S $*
   fi

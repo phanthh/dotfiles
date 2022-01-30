@@ -20,6 +20,7 @@ endfunction
 function s:spec_python()
   nnoremap <s-f9> :vsplit term://prime-run ipython<bar>:wincmd h<cr>
   nnoremap <f9> :split term://prime-run ipython<bar>:wincmd h<cr>
+  nnoremap <s-f10> :!jupytext --to notebook %<cr><cr>
   " call s:repl_spec()
 endfunction
 
