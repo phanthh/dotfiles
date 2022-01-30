@@ -77,16 +77,11 @@ ls.snippets = {
 
 local mathh = {
 	-- env
-	s("mk", {
-		t("$"),
-		i(1),
-		t("$"),
-		i(0),
-	}),
+	s("mk", { t("$"), i(1), t("$"), i(0) }),
 	s("dm", {
-		t({ "$$", "\t" }),
+		t({ "$$", "" }),
 		i(1),
-		t({ "\t", ".$$", "\t" }),
+		t({ "", ".$$", "" }),
 		i(0),
 	}),
 	-- formating
@@ -131,14 +126,12 @@ local mathh = {
 	s("//", fmta("\\frac{<1>}{<2>}<3>", { i(1), i(2), i(0) })),
 }
 
-
 ls.autosnippets = {
 	tex = u.concat({
 		-- bold, italic
 		s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
 		s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
 	}, mathh),
-
 	markdown = u.concat({
 		-- bold, italic
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
@@ -149,4 +142,19 @@ ls.autosnippets = {
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
 		s("il", { t("*"), i(1), t("*"), i(0) }),
 	}, mathh),
+	python = {
+		-- bold, italic
+		s("bf", { t("**"), i(1), t("**"), i(0) }),
+		s("il", { t("*"), i(1), t("*"), i(0) }),
+		-- env
+		s("mk", { t("$"), i(1), t("$"), i(0) }),
+		s("dm", {
+			t({ "$$", "\t" }),
+			i(1),
+			t({ "\t", ".$$", "\t" }),
+			i(0),
+		}),
+		s(";;", { t({ "# %%", "" }), i(0) }),
+		s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),
+	},
 }
