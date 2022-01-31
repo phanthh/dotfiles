@@ -19,7 +19,7 @@ swayidle -w \
 # graphical
 footclient &
 # util_browse & # firefox
-# thunderbird &
+thunderbird &
 # keepassxc &
 
 
