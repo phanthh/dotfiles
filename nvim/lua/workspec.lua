@@ -7,7 +7,7 @@ endfunction
 
 function s:repl_spec()
   let g:sendtowindow_use_default=0
-  nmap <leader><leader> vip<Plug>SendDownV
+  nmap <leader><leader> V<Plug>SendDownV
   xmap <leader><leader> <Plug>SendDownV
 endfunction
 
@@ -75,7 +75,9 @@ function s:spec_md()
   nnoremap <leader>zi :Telekasten paste_img_and_link<cr>
   nnoremap <leader>z :Telekasten panel<cr>
 endfunction
+
 function s:spec_rmd()
+  syntax on
   call s:spec_r()
   map <f10> :w <bar> :!util_rmdcompile % 'pdf_document'<cr>
   imap <f10> <esc>:w<bar>:!util_rmdcompile % 'pdf_document'<cr>

@@ -187,6 +187,9 @@ bindsym $mod+d exec ~/.sh/menu_timer
 # Screen Shot
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
+# Password
+bindsym $mod+Shift+d exec ~/.sh/menu_pass
+
 # Applications
 bindsym $mod+Shift+a exec ~/.sh/wm_open $(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.')
 bindsym $mod+Shift+s exec ~/.sh/wm_open spotify

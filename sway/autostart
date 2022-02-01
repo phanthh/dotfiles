@@ -5,7 +5,7 @@ aw-qt --autostart-modules aw-server &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
-# foot --server &
+foot --server &
 # blueman-applet &
 swayidle -w \
 	timeout 3000 'swaylock -f' \
@@ -18,9 +18,9 @@ swayidle -w \
 
 # graphical
 footclient &
-# util_browse & # firefox
+util_browse & 
 thunderbird &
-# keepassxc &
+# keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 
 
 # brightnessctl s 0% &
