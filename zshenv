@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
+#
 #=================== session
 # sway - shell - gnome
 export SESSION="sway"
