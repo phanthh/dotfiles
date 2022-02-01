@@ -105,7 +105,7 @@ local mathh = {
 	s(">=", { t("\\geq"), i(0) }),
 	s("!=", { t("\\neq"), i(0) }),
 	s("->", { t("\\to"), i(0) }),
-	s("<=>", { t("\\Leftrightarrow"), i(0) }),
+	s("lra", { t("\\Leftrightarrow"), i(0) }),
 	s("~~", { t("\\sim"), i(0) }),
 	s("iff", { t("\\iff"), i(0) }),
 	s("invs", { t("^{-1}"), i(0) }),
