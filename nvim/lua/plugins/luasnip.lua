@@ -21,6 +21,31 @@ ls.config.set_config({
 })
 
 ls.snippets = {
+	rmd = {
+		-- templage
+		s(
+			"ttt",
+			fmta(
+				[[
+---
+title: <1>
+subtitle: <2>
+author: <3>
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: pdf_document
+---
+
+<4>
+]],
+				{
+					i(1, "@title"),
+					i(2, "@subtitle"),
+					i(3, "@author"),
+					i(0),
+				}
+			)
+		),
+	},
 	tex = {
 		-- template
 		s(
@@ -90,7 +115,6 @@ local mathh = {
 	s("mcl", { t("\\mathcal{"), i(1), t("}"), i(0) }),
 	s("mbb", { t("\\mathbb{"), i(1), t("}"), i(0) }),
 	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
-	s("tt", { t("\\text{"), i(1), t("}"), i(0) }),
 	-- specials
 	s("nrm", { t("||"), i(1), t("||"), i(0) }),
 	s("notin", { t("\\not\\in"), i(0) }),
