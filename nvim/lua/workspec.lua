@@ -79,8 +79,8 @@ endfunction
 function s:spec_rmd()
   syntax on
   call s:spec_r()
-  map <f10> :w <bar> :!util_rmdcompile % 'pdf_document'<cr>
-  imap <f10> <esc>:w<bar>:!util_rmdcompile % 'pdf_document'<cr>
+  map <f10> <cmd>let b:pdfcompile=1<bar>echo 'Auto compile R markdown enabled!'<cr>
+  map <s-f10> <cmd>let b:pdfcompile=0<bar>echo 'Auto compile R markdown disabled!'<cr>
 endfunction
 
 augroup s:writing
