@@ -124,14 +124,14 @@ require("packer").startup({
 		})
 
 		-- utils
-		-- use({
-		-- 	"danymat/neogen",
-		-- 	config = function()
-		-- 		require("neogen").setup({ enabled = true })
-		-- 	end,
-		-- 	requires = "nvim-treesitter/nvim-treesitter",
-		-- 	cmd = "Neogen",
-		-- })
+		use({
+			"danymat/neogen",
+			config = function()
+				require("neogen").setup({ enabled = true })
+			end,
+			requires = "nvim-treesitter/nvim-treesitter",
+			cmd = "Neogen",
+		})
 
 		use({
 			"nacro90/numb.nvim",
@@ -217,6 +217,7 @@ require("packer").startup({
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
 		use("airblade/vim-gitgutter")
+
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
 	end,
