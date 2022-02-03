@@ -67,8 +67,8 @@ exec_always ~/.config/sway/alwaystart
 output * bg #000000 solid_color
 output * adaptive_sync on
 # output * bg ~/Pictures/wallpaper/getshitdone.jpg fill
-output HDMI-A-1 enable position 0,-1080
-output eDP-1 enable position 0,0
+output HDMI-A-1 enable position 0,0
+output eDP-1 enable position 1920,0
 
 #=============================== KEYBINDING ==================================#
 

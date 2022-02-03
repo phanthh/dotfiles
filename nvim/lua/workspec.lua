@@ -37,10 +37,15 @@ function s:spec_scala()
   imap <f9> <esc> :w <bar> :!sbt test<>
 endfunction
 
+function s:spec_zsh()
+  syntax on
+endfunction
+
 augroup s:coding
   autocmd!
-  autocmd FileType rust,scala,python,r,cpp,c,javascript,javascriptreact,typescript,typescriptreact,css,html,lua,sh,dart call s:coding_spec()
+  autocmd FileType zsh,rust,scala,python,r,cpp,c,javascript,javascriptreact,typescript,typescriptreact,css,html,lua,sh,dart call s:coding_spec()
   " specific
+  autocmd FileType zsh call s:spec_zsh()
   autocmd FileType rust call s:spec_rust()
 	autocmd FileType scala call s:spec_scala()
 	autocmd FileType python call s:spec_python()
@@ -90,4 +95,5 @@ augroup s:writing
   autocmd FileType markdown call s:spec_md()
   autocmd FileType rmd call s:spec_rmd()
 augroup end
+
 ]])

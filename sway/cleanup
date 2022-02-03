@@ -1,0 +1,7 @@
+#!/bin/sh
+
+killall kanshi &
+killall sworkstyle &
+killall sway-alttab &
+killall aw-watcher-window-wayland &
+
