@@ -57,6 +57,9 @@ vim.o.backspace = "indent,eol,start"
 
 vim.g.mapleader = " "
 
+vim.g.python_host_prog = '/usr/bin/python2'
+vim.g.python3_host_prog = '/usr/bin/python3'
+
 -- disable unnecessary plugins
 local disabled_built_ins = {
 	"netrw",
@@ -75,10 +78,11 @@ local disabled_built_ins = {
 	"2html_plugin",
 	"logipat",
 	"rrhelper",
+	"rplugin",
 	"spellfile_plugin",
 	"matchit",
-	"python2_provider",
-	"python3_provider",
+	-- "python3_provider",
+	-- "python2_provider",
 }
 
 for _, plugin in pairs(disabled_built_ins) do

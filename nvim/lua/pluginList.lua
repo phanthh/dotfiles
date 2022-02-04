@@ -216,8 +216,17 @@ require("packer").startup({
 		use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
-		use("airblade/vim-gitgutter")
+		use({
+			"lewis6991/gitsigns.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+			},
+			config = function()
+				require("gitsigns").setup()
+			end,
+		})
 
+		-- use("airblade/vim-gitgutter")
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
 	end,
