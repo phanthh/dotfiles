@@ -1,7 +1,8 @@
 #!/bin/sh
 
-killall kanshi &
-killall sworkstyle &
-killall sway-alttab &
-killall aw-watcher-window-wayland &
+pkill -f 'kanshi' &
+pkill -f 'sworkstyle' &
+pkill -f 'sway-alttab' &
+pkill -f 'aw-watcher-window-wayland' &
+pkill -f 'aw-watcher-spotify' &
 

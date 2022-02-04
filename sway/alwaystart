@@ -1,9 +1,10 @@
 #!/bin/sh
 
-killall kanshi; kanshi &
 # killall wm_pswall; wm_pswall &
-killall sworkstyle; sworkstyle &
-killall sway-alttab; sway-alttab &
 
-killall aw-watcher-window-wayland; ~/.repo/aw-watcher-window-wayland/target/release/aw-watcher-window-wayland &
-killall aw-watcher-spotify; ~/.repo/aw-watcher-spotify/aw-watcher-spotify &
+pkill -f 'kanshi'; kanshi &
+pkill -f 'sworkstyle'; sworkstyle &
+pkill -f 'sway-alttab'; sway-alttab &
+pkill -f 'aw-watcher-window-wayland'; aw-watcher-window-wayland &
+pkill -f 'aw-watcher-spotify'; aw-watcher-spotify &
+pkill -f 'aw-watcher-utilization'; aw-watcher-utilization &

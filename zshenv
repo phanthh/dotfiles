@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 #
 #=================== session
-# sway - shell - gnome
+# sway - shell
 export SESSION="sway"
 
 #=================== wayland 
@@ -55,6 +55,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 #=================== secrets
 
