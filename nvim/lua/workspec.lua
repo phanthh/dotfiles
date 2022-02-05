@@ -7,34 +7,31 @@ endfunction
 
 function s:repl_spec()
   let g:sendtowindow_use_default=0
-  nmap <leader><leader> V<Plug>SendDownV
+  nmap <leader><leader> <Plug>SendDown
   xmap <leader><leader> <Plug>SendDownV
 endfunction
 
 function s:spec_r()
-  nnoremap <s-f9> :vsplit term://R<bar>:wincmd h<cr>
-  nnoremap <f9> :split term://R<bar>:wincmd h<cr>
   call s:repl_spec()
+  map <s-f9> :vsplit term://R<bar>:wincmd h<cr>
+  map <f9> :split term://R<bar>:wincmd h<cr>
 endfunction
 
 function s:spec_python()
-  nnoremap <s-f9> :vsplit term://prime-run ipython<bar>:wincmd h<cr>
-  nnoremap <f9> :split term://prime-run ipython<bar>:wincmd h<cr>
-  nnoremap <s-f10> :!jupytext --to notebook %<cr><cr>
+  map <s-f9> :vsplit term://prime-run ipython<bar>:wincmd h<cr>
+  map <f9> :split term://prime-run ipython<bar>:wincmd h<cr>
+  map <s-f10> :!jupytext --to notebook %<cr><cr>
   nmap <c-x> <Plug>JupyterExecute
   " call s:repl_spec()
 endfunction
 
 function s:spec_rust()
-	map <s-f10> :w <bar> :!cargo run <cr>
-	imap <s-f10> <esc> :w <bar> :!cargo run<cr>
+	map <s-f10> <cmd>!cargo run <cr>
 endfunction 
 
 function s:spec_scala() 
-  map <s-f10> :w <bar> :!sbt run <cr>
-  map <s-f10> <esc> :w <bar> :!sbt run<cr>
-  map <f9> :w <bar> :!sbt test <cr>
-  imap <f9> <esc> :w <bar> :!sbt test<>
+  map <s-f10> <cmd>!sbt run <cr>
+  map <f9> <cmd>!sbt test <cr>
 endfunction
 
 augroup s:coding
@@ -51,8 +48,8 @@ augroup end
 " Writing
 function s:writing_spec()
   set noruler noshowcmd nonumber
-  nmap <buffer><f12> :GrammarousCheck<cr>
-  nmap <buffer><s-f12> :GrammarousReset<cr>
+  nmap <buffer><f12> <cmd>GrammarousCheck<cr>
+  nmap <buffer><s-f12> <cmd>GrammarousReset<cr>
 endfunction
 
 function s:spec_tex()
@@ -60,9 +57,7 @@ function s:spec_tex()
   set foldmethod=expr 
   set foldexpr=vimtex#fold#level(v:lnum) 
   set foldtext=vimtex#fold#text()
-  map <f10> :w <bar> :VimtexCompile<cr>
-  imap <f10> <esc>:w<bar>:VimtexCompile<cr>
-  nnoremap <leader><leader> za 
+  map <f10> <cmd>VimtexCompile<cr>
 endfunction
 
 function s:spec_md()
@@ -79,7 +74,6 @@ endfunction
 function s:spec_rmd()
   call s:spec_r()
   map <f10> <cmd>let b:pdfcompile=1<bar>echo 'Auto compile R markdown enabled!'<cr>
-  map <s-f10> <cmd>let b:pdfcompile=0<bar>echo 'Auto compile R markdown disabled!'<cr>
 endfunction
 
 augroup s:writing
@@ -89,5 +83,4 @@ augroup s:writing
   autocmd FileType markdown call s:spec_md()
   autocmd FileType rmd call s:spec_rmd()
 augroup end
-
 ]])
