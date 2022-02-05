@@ -151,17 +151,17 @@ local mathh = {
 }
 
 ls.autosnippets = {
-	tex = u.concat({
+	tex = u.iconcat({
 		-- bold, italic
 		s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
 		s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
 	}, mathh),
-	markdown = u.concat({
+	markdown = u.iconcat({
 		-- bold, italic
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
 		s("il", { t("*"), i(1), t("*"), i(0) }),
 	}, mathh),
-	rmd = u.concat({
+	rmd = u.iconcat({
 		-- bold, italic
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
 		s("il", { t("*"), i(1), t("*"), i(0) }),

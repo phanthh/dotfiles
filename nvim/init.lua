@@ -3,7 +3,7 @@ require("impatient")
 -- config
 require("options")
 require("mappings")
+require("autocmd")
 require("pluginList")
 require("packer_compiled")
 -- require("workspec")
-require("autocmd")

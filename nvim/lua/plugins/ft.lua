@@ -2,79 +2,37 @@ local km = require("utils").keymap
 local concat = require("utils").concat
 local opts = { noremap = true, silent = true }
 
-local coding_spec = function()
-	vim.o.number = true
-	vim.o.dictionary = ""
-end
-
-local repl_spec = function()
+local repl_spec = function(cmd)
 	vim.g.sendtowindow_use_default = 0
 	km("n", "<leader><leader>", "<Plug>SendDown", opts)
+	km("", "<s-f9>", string.format("<cmd>vsplit term://%s<bar>wincmd h<cr>", cmd), opts)
+	km("", "<f9>", string.format("<cmd>split term://%s<bar>wincmd h<cr>", cmd), opts)
 end
 
-local writing_spec = function()
-	vim.o.ruler = false
-	vim.o.showcmd = false
-	vim.o.number = false
-	km("", "<f12>", "<cmd>GrammarousCheck<cr>", opts)
-	km("", "<s-f12>", "<cmd>GrammarousReset<cr>", opts)
-end
-
-local code_exts_ft = {
-	["lua"] = "lua",
-	["r"] = "r",
+local exts_ft = {
 	["py"] = "python",
 	["rs"] = "rust",
-	["scala"] = "scala",
-	["cpp"] = "cpp",
-	["c"] = "c",
 	["js"] = "javascript",
 	["jsx"] = "javascriptreact",
 	["ts"] = "typescript",
 	["tsx"] = "typescriptreact",
-	["css"] = "css",
-	["scss"] = "scss",
-	["html"] = "html",
-	["dart"] = "dart",
+	["md"] = "markdown",
 }
-local code_specs = {}
-for ext, ft in pairs(code_exts_ft) do
-  local spec
-	local base_spec = function()
-    vim.bo.filetype = ft
-    coding_spec()
-  end
-	if ext == "r" then
-		spec = function()
-			base_spec()
-			repl_spec()
-			km("", "<s-f9>", "<cmd>vsplit term://R<bar><cmd>wincmd h<cr>", opts)
-			km("", "<f9>", "<cmd>split term://R<bar><cmd>wincmd h<cr>", opts)
+
+local spec_ft = function(base, conf)
+	local ret = {}
+	for k, v in pairs(conf) do
+    local ext = (type(k) == "string") and k or v
+    local ft = exts_ft[ext] and exts_ft[ext] or ext
+		ret[ext] = function()
+			vim.bo.filetype = ft
+			base()
+			if type(v) == 'function' then
+				v()
+			end
 		end
-	elseif ext == "py" then
-		spec = function()
-			base_spec()
-			repl_spec()
-			km("", "<s-f9>", "<cmd>vsplit term://prime-run ipython<bar><cmd>wincmd h<cr>", opts)
-			km("", "<f9>", "<cmd>split term://prime-run ipython<bar><cmd>wincmd h<cr>", opts)
-			km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
-			km("n", "<c-x>", "<Plug>JupyterExecute", opts)
-		end
-	elseif ext == "rs" then
-		spec = function()
-			base_spec()
-			km("", "<s-f10>", "<cmd>!cargo run<cr>", opts)
-		end
-	elseif ext == "scala" then
-		spec = function()
-			base_spec()
-			km("", "<s-f10>", "<cmd>!sbt run<cr>", opts)
-			km("", "<f9>", "<cmd>!sbt test<cr>", opts)
-		end
-  else
-    spec = base_spec
 	end
-	code_specs[ext] = spec
+	return ret
 end
 
 require("filetype").setup({
@@ -83,36 +41,78 @@ require("filetype").setup({
 		complex = {
 			[".config/sway/config"] = "i3config",
 			[".config/zsh/*"] = "zsh",
-			[".config/testing/*"] = "markdown",
 		},
-		function_extensions = concat(code_specs, {
-			-- writing
-			["tex"] = function()
-				writing_spec()
-				vim.o.foldlevel = 99
-				vim.o.foldmethod = "expr"
-				vim.o.foldexpr = "vimtex#fold#level(v:lnum)"
-				vim.o.foldtext = "vimtex#fold#text()"
-				km("", "<f10>", "<cmd>VimtexCompile<cr>", opts)
-			end,
-			["md"] = function()
-				writing_spec()
-				km("n", "<leader>zf", ":Telekasten find_notes<cr>", opts)
-				km("n", "<leader>zl", ":Telekasten insert_link<cr>", opts)
-				km("n", "<leader>zd", ":Telekasten find_daily_notes<cr>", opts)
-				km("n", "<leader>zg", ":Telekasten search_notes<cr>", opts)
-				km("n", "<leader>zz", ":Telekasten follow_link<cr>", opts)
-				km("n", "<leader>zi", ":Telekasten paste_img_and_link<cr>", opts)
-				km("n", "<leader>z", ":Telekasten panel<cr>", opts)
-			end,
-			["rmd"] = function()
-				writing_spec()
-				repl_spec()
-				km("", "<s-f9>", "<cmd>vsplit term://R<bar><cmd>wincmd h<cr>", opts)
-				km("", "<f9>", "<cmd>split term://R<bar><cmd>wincmd h<cr>", opts)
-				km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile Rmd enabled!'<cr>", opts)
-			end,
-		}),
+		function_extensions = concat(
+			spec_ft(function()
+				vim.o.dictionary = ""
+				vim.o.number = true
+			end, {
+				["r"] = function()
+					repl_spec("R")
+				end,
+				["py"] = function()
+					repl_spec("prime-run ipython")
+					km("n", "<c-x>", "<Plug>JupyterExecute", { silent = false})
+					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
+				end,
+				["rs"] = function()
+					km("", "<s-f10>", "<cmd>!cargo run<cr>", opts)
+				end,
+				["scala"] = function()
+					repl_spec("scala")
+					km("", "<s-f10>", "<cmd>!sbt run<cr>", opts)
+					km("", "<f11>", "<cmd>!sbt test<cr>", opts)
+				end,
+				["lua"] = function()
+					vim.o.spell = false
+					repl_spec("lua")
+				end,
+				"cpp",
+				"c",
+				["js"] = function()
+					repl_spec("node")
+				end,
+				"jsx",
+				"ts",
+				"tsx",
+				"css",
+				"scss",
+				"html",
+				"dart",
+			}),
+			spec_ft(function()
+				vim.o.ruler = false
+				vim.o.showcmd = false
+				vim.o.number = false
+				km("", "<f12>", "<cmd>GrammarousCheck<cr>", opts)
+				km("", "<s-f12>", "<cmd>GrammarousReset<cr>", opts)
+			end, {
+				["tex"] = function()
+					vim.o.number = true
+					vim.o.foldlevel = 99
+					vim.o.foldmethod = "expr"
+					vim.o.foldexpr = "vimtex#fold#level(v:lnum)"
+					vim.o.foldtext = "vimtex#fold#text()"
+					km("", "<f10>", "<cmd>VimtexCompile<cr>", opts)
+				end,
+				["md"] = function()
+					km("n", "<leader>zf", ":Telekasten find_notes<cr>", opts)
+					km("n", "<leader>zl", ":Telekasten insert_link<cr>", opts)
+					km("n", "<leader>zd", ":Telekasten find_daily_notes<cr>", opts)
+					km("n", "<leader>zg", ":Telekasten search_notes<cr>", opts)
+					km("n", "<leader>zz", ":Telekasten follow_link<cr>", opts)
+					km("n", "<leader>zi", ":Telekasten paste_img_and_link<cr>", opts)
+					km("n", "<leader>z", ":Telekasten panel<cr>", opts)
+				end,
+				["rmd"] = function()
+					repl_spec()
+					km("", "<s-f9>", "<cmd>vsplit term://R<bar><cmd>wincmd h<cr>", opts)
+					km("", "<f9>", "<cmd>split term://R<bar><cmd>wincmd h<cr>", opts)
+					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile Rmd enabled!'<cr>", opts)
+					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile Rmd disabled!'<cr>", opts)
+				end,
+			})
+		),
 		-- function_literal = {
 		-- 	Brewfile = function()
 		-- 		vim.cmd("syntax off")
