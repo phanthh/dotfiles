@@ -1,7 +1,7 @@
 require("packer").startup({
 	function(use)
-		local coding_ft = require("utils").coding_ft
-		local writing_ft = require("utils").writing_ft
+    local coding_ft = require('utils').coding_ft
+    local writing_ft = require('utils').writing_ft
 		-- colorscheme
 		use({
 			"Mofiqul/vscode.nvim",
@@ -106,7 +106,7 @@ require("packer").startup({
 				"nvim-telescope/telescope.nvim",
 			},
 			after = "telescope.nvim",
-			cmd = "Telekasten",
+      cmd = "Telekasten",
 			config = function()
 				require("plugins.telekasten")
 			end,
@@ -199,7 +199,7 @@ require("packer").startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			requires = "nvim-treesitter/nvim-treesitter",
-			ft = coding_ft,
+			ft = coding_ft
 		})
 
 		use({
@@ -241,7 +241,7 @@ require("packer").startup({
 			requires = {
 				"nvim-lua/plenary.nvim",
 			},
-			ft = coding_ft,
+      ft =  coding_ft,
 			config = function()
 				require("gitsigns").setup()
 			end,
