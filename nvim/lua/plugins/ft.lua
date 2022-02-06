@@ -88,7 +88,6 @@ require("filetype").setup({
 				km("", "<s-f12>", "<cmd>GrammarousReset<cr>", opts)
 			end, {
 				["tex"] = function()
-					vim.o.number = true
 					vim.o.foldlevel = 99
 					vim.o.foldmethod = "expr"
 					vim.o.foldexpr = "vimtex#fold#level(v:lnum)"

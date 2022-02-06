@@ -5,4 +5,5 @@ pkill -f 'sworkstyle' &
 pkill -f 'sway-alttab' &
 pkill -f 'aw-watcher-window-wayland' &
 pkill -f 'aw-watcher-spotify' &
+pkill -f 'aw-watcher-afk' &
 

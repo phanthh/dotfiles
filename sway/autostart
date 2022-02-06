@@ -19,12 +19,11 @@ swayidle -w \
 # graphical
 footclient &
 # util_browse & 
-# thunderbird &
+thunderbird &
 # keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 
-
 # brightnessctl s 0% &
-# exmonctl -s 0% &
+# util_exmonctl -s 0% &
 
 sleep 1
 # clight &

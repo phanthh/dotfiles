@@ -1,17 +1,12 @@
 require("packer").startup({
 	function(use)
+		local coding_ft = require("utils").coding_ft
+		local writing_ft = require("utils").writing_ft
 		-- colorscheme
 		use({
 			"Mofiqul/vscode.nvim",
 			config = function()
-				vim.g.vscode_italic_comment = 1
-				-- override colors
-				require("vscode.colors").generate = function()
-					local colors = require("plugins.vscode.dark").colors
-					colors.vscUiBlue = "#084671"
-					colors.vscUiOrange = "#f28b25"
-					return colors
-				end
+				require("plugins.vscode.config")
 				vim.cmd([[colorscheme vscode]])
 			end,
 		})
@@ -65,13 +60,6 @@ require("packer").startup({
 						},
 					},
 				},
-				{
-					"uga-rosa/cmp-dictionary",
-					after = "nvim-cmp",
-					config = function()
-						require("plugins.cmp-dictionary")
-					end,
-				},
 			},
 		})
 
@@ -118,12 +106,26 @@ require("packer").startup({
 				"nvim-telescope/telescope.nvim",
 			},
 			after = "telescope.nvim",
+			cmd = "Telekasten",
 			config = function()
 				require("plugins.telekasten")
 			end,
 		})
 
 		-- utils
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			ft = coding_ft,
+			config = function()
+				require("lualine").setup({
+					options = {
+						theme = "vscode",
+					},
+				})
+			end,
+		})
+
 		use({
 			"danymat/neogen",
 			config = function()
@@ -167,17 +169,39 @@ require("packer").startup({
 			"windwp/nvim-autopairs",
 			keys = { { "i", "(" }, { "i", "{" }, { "i", "[" } },
 			config = function()
-				require("nvim-autopairs").setup({})
+				require("nvim-autopairs").setup()
+			end,
+		})
+
+		use({
+			"blackCauldron7/surround.nvim",
+			config = function()
+				require("surround").setup({ mappings_style = "surround" })
 			end,
 		})
 
 		use({ "sbdchd/neoformat", cmd = "Neoformat" })
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
-		use({ "tpope/vim-surround", keys = "S" })
 		use({ "tpope/vim-commentary", keys = "gcc" })
 
 		-- latent
+		use({
+			"sunjon/shade.nvim",
+			config = function()
+				require("shade").setup({
+					overlay_opacity = 55,
+				})
+			end,
+			event = "WinLeave",
+		})
+
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			requires = "nvim-treesitter/nvim-treesitter",
+			ft = coding_ft,
+		})
+
 		use({
 			"nathom/filetype.nvim",
 			config = function()
@@ -212,19 +236,35 @@ require("packer").startup({
 			end,
 		})
 
-		use("untitled-ai/jupyter_ascending.vim")
-		use("ActivityWatch/aw-watcher-vim")
-		use("lewis6991/impatient.nvim")
-		use("nvim-lua/plenary.nvim")
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = {
 				"nvim-lua/plenary.nvim",
 			},
+			ft = coding_ft,
 			config = function()
 				require("gitsigns").setup()
 			end,
 		})
+
+		use({
+			"ethanholz/nvim-lastplace",
+			config = function()
+				require("nvim-lastplace").setup({})
+			end,
+		})
+
+		use({
+			"henriquehbr/nvim-startup.lua",
+			config = function()
+				require("nvim-startup").setup()
+			end,
+		})
+
+		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
+		use("ActivityWatch/aw-watcher-vim")
+		use("lewis6991/impatient.nvim")
+		use("nvim-lua/plenary.nvim")
 
 		-- use("airblade/vim-gitgutter")
 		-- use("junegunn/vim-easy-align")
