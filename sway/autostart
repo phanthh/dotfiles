@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # daemons
-# aw-qt --autostart-modules aw-server &
+aw-qt &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
@@ -18,7 +18,7 @@ swayidle -w \
 
 # graphical
 footclient &
-# util_browse & 
+util_browse & 
 thunderbird &
 # keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 

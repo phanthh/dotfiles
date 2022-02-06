@@ -3,7 +3,7 @@
 pkill -f 'kanshi' &
 pkill -f 'sworkstyle' &
 pkill -f 'sway-alttab' &
-pkill -f 'aw-watcher-window-wayland' &
-pkill -f 'aw-watcher-spotify' &
-pkill -f 'aw-watcher-afk' &
+pkill -f 'aw-watcher' &
+pkill -f 'aw-qt' &
+pkill -f 'aw-server' &
 

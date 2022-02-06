@@ -29,7 +29,6 @@ require("packer").startup({
 		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
 			after = "LuaSnip",
 			config = function()
 				require("plugins.nvim-cmp")
