@@ -22,7 +22,7 @@ PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
 PROMPT+="%/%B%(?.$cl.$er)>$re%b "
 
 if [[ $XDG_SESSION_TYPE != tty ]]; then
-	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) MIT License. All rights reserved.\n"
+	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
 fi
 
 #========================= plugins

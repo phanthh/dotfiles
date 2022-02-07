@@ -22,12 +22,12 @@ local exts_ft = {
 local spec_ft = function(base, conf)
 	local ret = {}
 	for k, v in pairs(conf) do
-    local ext = (type(k) == "string") and k or v
-    local ft = exts_ft[ext] and exts_ft[ext] or ext
+		local ext = (type(k) == "string") and k or v
+		local ft = exts_ft[ext] and exts_ft[ext] or ext
 		ret[ext] = function()
 			vim.bo.filetype = ft
 			base()
-			if type(v) == 'function' then
+			if type(v) == "function" then
 				v()
 			end
 		end
@@ -40,11 +40,13 @@ require("filetype").setup({
 		-- extensions = { pn = "potion" },
 		complex = {
 			[".config/sway/config"] = "i3config",
-			[".config/zsh/*"] = "zsh",
+			["fstab"] = "fstab",
 		},
 		function_extensions = concat(
 			spec_ft(function()
-				vim.o.dictionary = ""
+				vim.o.spell = false
+				vim.o.ruler = true
+				vim.o.showcmd = true
 				vim.o.number = true
 			end, {
 				["r"] = function()
@@ -64,7 +66,6 @@ require("filetype").setup({
 					km("", "<f11>", "<cmd>!sbt test<cr>", opts)
 				end,
 				["lua"] = function()
-					vim.o.spell = false
 					repl_spec("lua")
 				end,
 				"cpp",
@@ -81,6 +82,7 @@ require("filetype").setup({
 				"dart",
 			}),
 			spec_ft(function()
+				vim.o.spell = true
 				vim.o.ruler = false
 				vim.o.showcmd = false
 				vim.o.number = false

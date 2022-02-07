@@ -22,6 +22,12 @@ augroup s:term_spec
   autocmd TermOpen * setlocal nonumber nospell
 augroup end
 
+" filetype spec
+augroup s:ft_spec
+  autocmd!
+  autocmd Filetype zsh,fstab,help syntax on
+augroup end
+
 " auto read
 augroup autoread
   autocmd!
