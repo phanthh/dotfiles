@@ -21,6 +21,7 @@ alias ka="killall"
 alias jl="prime-run jupyter lab"
 alias jn="prime-run jupyter-notebook"
 alias mm="micromamba"
+alias mma="micromamba activate"
 
 #======================== utils 
 alias tt="ttyper --language english1000"

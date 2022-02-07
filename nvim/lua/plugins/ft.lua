@@ -51,7 +51,7 @@ require("filetype").setup({
 					repl_spec("R")
 				end,
 				["py"] = function()
-					repl_spec("prime-run ipython")
+					repl_spec("micromamba activate && prime-run ipython")
 					km("n", "<c-x>", "<Plug>JupyterExecute", { silent = false })
 					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
 				end,

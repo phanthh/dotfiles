@@ -73,15 +73,20 @@ bindkey -s '^O' 'n^M'
 bindkey -s '^N' 'newsboat^M'
 bindkey '^H' backward-kill-word
 
-#========================= CONDA ================================#
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-
-# if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-#     . "/opt/miniconda3/etc/profile.d/conda.sh"
-# else
-#     export PATH="/opt/miniconda3/bin:$PATH"
-# fi
-
-# <<< conda initialize <<<
+#======================= mamba
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="/usr/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/home/phanthh/.local/lib/mamba/";
+__mamba_setup="$('/usr/bin/micromamba' shell hook --shell zsh --prefix '/home/phanthh/.local/lib/mamba/' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "/home/phanthh/.local/lib/mamba/etc/profile.d/micromamba.sh" ]; then
+        . "/home/phanthh/.local/lib/mamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="/home/phanthh/.local/lib/mamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
