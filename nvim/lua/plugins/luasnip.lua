@@ -122,7 +122,7 @@ local mathh = {
 	s("--", { t("\\bar{"), i(1), t("}"), i(0) }),
 	s("sre", { t("\\sqrt{"), i(1), t("}"), i(0) }),
 	-- symbols
-	s("inn", { t("\\langle "), i(1), t(" \\rangle"), i(0) }),
+	s("prd", { t("\\langle "), i(1), t(" \\rangle"), i(0) }),
 	s("ooo", { t("\\infty"), i(0) }),
 	s("=>", { t("\\implies"), i(0) }),
 	s("=<", { t("\\impliedby"), i(0) }),
