@@ -4,9 +4,10 @@ local opts = { noremap = true, silent = true }
 
 local repl_spec = function(cmd)
 	vim.g.sendtowindow_use_default = 0
-	km("n", "<leader><leader>", "<Plug>SendDown", opts)
+	km("n", "<c-j>", "V<Plug>SendDownV", { silent = true })
+	km("n", "<c-J>", "vip<Plug>SendDownV", { silent = true })
 	km("", "<s-f9>", string.format("<cmd>vsplit term://%s<bar>wincmd h<cr>", cmd), opts)
-	km("", "<f9>", string.format("<cmd>split term://%s<bar>wincmd h<cr>", cmd), opts)
+	km("", "<f9>", string.format("<cmd>split term://%s<bar>wincmd k<cr>", cmd), opts)
 end
 
 local exts_ft = {
@@ -106,9 +107,7 @@ require("filetype").setup({
 					km("n", "<leader>z", ":Telekasten panel<cr>", opts)
 				end,
 				["rmd"] = function()
-					repl_spec()
-					km("", "<s-f9>", "<cmd>vsplit term://R<bar><cmd>wincmd h<cr>", opts)
-					km("", "<f9>", "<cmd>split term://R<bar><cmd>wincmd h<cr>", opts)
+					repl_spec("R")
 					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile Rmd enabled!'<cr>", opts)
 					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile Rmd disabled!'<cr>", opts)
 				end,
