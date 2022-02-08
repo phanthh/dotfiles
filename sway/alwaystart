@@ -4,7 +4,5 @@
 
 pkill -f 'kanshi'; kanshi &
 pkill -f 'sworkstyle'; sworkstyle &
-pkill -f 'sway-alttab'; sway-alttab &
-
 sleep 5
 pkill -f 'aw-watcher-window-wayland'; aw-watcher-window-wayland &

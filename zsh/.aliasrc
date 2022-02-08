@@ -38,6 +38,8 @@ alias midef="mimeopen --ask-default"
 alias timer="termdown -f standard"
 alias R="R --quiet"
 alias btrfs-tree="sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/top\//' | as-tree"
+alias npm="pnpm"
+alias npx="pnpm dlx"
 
 #======================== git
 alias gp="~/.sh/util_push"

@@ -2,7 +2,6 @@
 
 pkill -f 'kanshi' &
 pkill -f 'sworkstyle' &
-pkill -f 'sway-alttab' &
 pkill -f 'aw-watcher' &
 pkill -f 'aw-qt' &
 pkill -f 'aw-server' &
