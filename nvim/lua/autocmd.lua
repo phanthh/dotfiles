@@ -25,7 +25,7 @@ augroup end
 " filetype spec
 augroup s:ft_spec
   autocmd!
-  autocmd Filetype zsh,fstab,help,rmd syntax on
+  autocmd Filetype zsh,fstab,help,rmd,tmux syntax on
 augroup end
 
 " auto read

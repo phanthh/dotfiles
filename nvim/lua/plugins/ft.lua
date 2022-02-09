@@ -41,6 +41,7 @@ require("filetype").setup({
 		-- extensions = { pn = "potion" },
 		complex = {
 			[".config/sway/config"] = "i3config",
+			[".config/tmux/tmux.conf"] = "tmux",
 			["fstab"] = "fstab",
 		},
 		function_extensions = concat(
