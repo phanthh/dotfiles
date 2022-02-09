@@ -1,7 +1,7 @@
 require("packer").startup({
 	function(use)
-    local coding_ft = require('utils').coding_ft
-    local writing_ft = require('utils').writing_ft
+		local coding_ft = require("utils").coding_ft
+		local writing_ft = require("utils").writing_ft
 		-- colorscheme
 		use({
 			"Mofiqul/vscode.nvim",
@@ -104,8 +104,7 @@ require("packer").startup({
 			requires = {
 				"nvim-telescope/telescope.nvim",
 			},
-			after = "telescope.nvim",
-      cmd = "Telekasten",
+			cmd = "Telekasten",
 			config = function()
 				require("plugins.telekasten")
 			end,
@@ -147,10 +146,7 @@ require("packer").startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
-			cmd = {
-				"Telekasten",
-				"Telescope",
-			},
+			cmd = "Telescope"
 		})
 
 		use({
@@ -175,7 +171,15 @@ require("packer").startup({
 		use({
 			"blackCauldron7/surround.nvim",
 			config = function()
-				require("surround").setup({ mappings_style = "surround" })
+				require("surround").setup({
+					mappings_style = "surround",
+					pairs = {
+						nestable = {
+							b = { "**", "**" },
+							i = { "*", "*" },
+						},
+					},
+				})
 			end,
 		})
 
@@ -198,7 +202,7 @@ require("packer").startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			requires = "nvim-treesitter/nvim-treesitter",
-			ft = coding_ft
+			ft = coding_ft,
 		})
 
 		use({
@@ -240,7 +244,7 @@ require("packer").startup({
 			requires = {
 				"nvim-lua/plenary.nvim",
 			},
-      ft =  coding_ft,
+			ft = coding_ft,
 			config = function()
 				require("gitsigns").setup()
 			end,

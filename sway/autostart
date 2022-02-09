@@ -20,6 +20,7 @@ swayidle -w \
 footclient &
 util_browse & 
 thunderbird &
+discord &
 # keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 
 # brightnessctl s 0% &
