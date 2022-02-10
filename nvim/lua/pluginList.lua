@@ -195,6 +195,7 @@ require("packer").startup({
 				}
 			end,
 		})
+
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
 		use({ "tpope/vim-commentary", keys = "gcc" })
@@ -261,12 +262,12 @@ require("packer").startup({
 			end,
 		})
 
-		use({
-			"ethanholz/nvim-lastplace",
-			config = function()
-				require("nvim-lastplace").setup({})
-			end,
-		})
+		-- use({
+		-- 	"ethanholz/nvim-lastplace",
+		-- 	config = function()
+		-- 		require("nvim-lastplace").setup({})
+		-- 	end,
+		-- })
 
 		use({
 			"henriquehbr/nvim-startup.lua",
