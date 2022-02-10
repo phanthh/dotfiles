@@ -35,6 +35,7 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 #=================== migrate
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
@@ -56,6 +57,7 @@ export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export MAMBARC="$XDG_CONFIG_HOME/mambarc"
 
 #=================== secrets
 

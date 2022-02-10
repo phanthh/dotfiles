@@ -111,18 +111,18 @@ require("packer").startup({
 		})
 
 		-- utils
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			ft = coding_ft,
-			config = function()
-				require("lualine").setup({
-					options = {
-						theme = "vscode",
-					},
-				})
-			end,
-		})
+		-- use({
+		-- 	"nvim-lualine/lualine.nvim",
+		-- 	requires = { "kyazdani42/nvim-web-devicons" },
+		-- 	ft = coding_ft,
+		-- 	config = function()
+		-- 		require("lualine").setup({
+		-- 			options = {
+		-- 				theme = "vscode",
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- })
 
 		use({
 			"danymat/neogen",
@@ -188,6 +188,11 @@ require("packer").startup({
 			cmd = "Neoformat",
 			config = function()
 				vim.g.neoformat_enabled_python = { "black" }
+				vim.g.neoformat_python_black = {
+					exe = "/usr/bin/black",
+					stdin = "1",
+					args = { "-q", "-" },
+				}
 			end,
 		})
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
