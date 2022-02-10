@@ -146,7 +146,7 @@ require("packer").startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
-			cmd = "Telescope"
+			cmd = "Telescope",
 		})
 
 		use({
@@ -183,7 +183,13 @@ require("packer").startup({
 			end,
 		})
 
-		use({ "sbdchd/neoformat", cmd = "Neoformat" })
+		use({
+			"sbdchd/neoformat",
+			cmd = "Neoformat",
+			config = function()
+				vim.g.neoformat_enabled_python = { "black" }
+			end,
+		})
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
 		use({ "tpope/vim-commentary", keys = "gcc" })

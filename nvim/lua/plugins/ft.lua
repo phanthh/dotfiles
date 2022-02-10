@@ -56,8 +56,6 @@ require("filetype").setup({
 				end,
 				["py"] = function()
 					repl_spec("micromamba activate && prime-run ipython")
-					km("n", "<c-x>", "<Plug>JupyterExecute", { silent = false })
-					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
 				end,
 				["rs"] = function()
 					km("", "<s-f10>", "<cmd>!cargo run<cr>", opts)
@@ -119,10 +117,11 @@ require("filetype").setup({
 		-- 		vim.cmd("syntax off")
 		-- 	end,
 		-- },
-		-- function_complex = {
-		-- 	["*.math_notes/%w+"] = function()
-		-- 		vim.cmd("iabbrev $ $$")
-		-- 	end,
-		-- },
+		function_complex = {
+			["*.math_notes/%w+"] = function()
+					km("n", "<c-x>", "<Plug>JupyterExecute", { silent = false })
+					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
+			end,
+		},
 	},
 })
