@@ -57,7 +57,7 @@ require("filetype").setup({
 				["py"] = function()
 					vim.o.spell = true
 					repl_spec("micromamba activate && prime-run ipython")
-					km("n", "<c-x>", "<Plug>JupyterExecute", { silent = false })
+					km("n", "<c-x>", "<cmd>w<cr><Plug>JupyterExecute", { silent = false })
 					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>", opts)
 				end,
 				["rs"] = function()
