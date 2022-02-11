@@ -2,6 +2,7 @@ require("packer").startup({
 	function(use)
 		local coding_ft = require("utils").coding_ft
 		local writing_ft = require("utils").writing_ft
+
 		-- colorscheme
 		use({
 			"Mofiqul/vscode.nvim",
@@ -12,7 +13,10 @@ require("packer").startup({
 		})
 
 		-- language server
-		use({ "neovim/nvim-lspconfig", event = "InsertEnter" })
+		use({
+			"neovim/nvim-lspconfig",
+			event = "InsertEnter",
+		})
 
 		-- snippets
 		use({
@@ -111,18 +115,20 @@ require("packer").startup({
 		})
 
 		-- utils
-		-- use({
-		-- 	"nvim-lualine/lualine.nvim",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- 	ft = coding_ft,
-		-- 	config = function()
-		-- 		require("lualine").setup({
-		-- 			options = {
-		-- 				theme = "vscode",
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- })
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			ft = coding_ft,
+			config = function()
+				require("lualine").setup({
+					options = {
+						theme = "vscode",
+						component_separators = { left = " ", right = " " },
+						section_separators = { left = " ", right = " " },
+					},
+				})
+			end,
+		})
 
 		use({
 			"danymat/neogen",
@@ -184,21 +190,43 @@ require("packer").startup({
 		})
 
 		use({
-			"sbdchd/neoformat",
-			cmd = "Neoformat",
+			"mhartington/formatter.nvim",
 			config = function()
-				vim.g.neoformat_enabled_python = { "black" }
-				vim.g.neoformat_python_black = {
-					exe = "/usr/bin/black",
-					stdin = "1",
-					args = { "-q", "-" },
-				}
+				require("formatter").setup({
+					filetype = {
+						lua = {
+							function()
+								return {
+									exe = "stylua",
+									args = { "-" },
+									stdin = true,
+								}
+							end,
+						},
+						python = {
+							function()
+								return {
+									exe = "/usr/bin/black",
+									args = { "-" },
+									stdin = true,
+								}
+							end,
+						},
+					},
+				})
 			end,
+		})
+
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+			keys = "gc",
 		})
 
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
-		use({ "tpope/vim-commentary", keys = "gcc" })
 
 		-- latent
 		use({
@@ -261,13 +289,6 @@ require("packer").startup({
 				require("gitsigns").setup()
 			end,
 		})
-
-		-- use({
-		-- 	"ethanholz/nvim-lastplace",
-		-- 	config = function()
-		-- 		require("nvim-lastplace").setup({})
-		-- 	end,
-		-- })
 
 		use({
 			"henriquehbr/nvim-startup.lua",

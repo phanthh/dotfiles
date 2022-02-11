@@ -1,7 +1,9 @@
 -- Key map
-local km = require('utils').keymap
+local km = require("utils").keymap
 local opts = { noremap = true, silent = true }
-km("i", "jj", "<esc><cmd>w<cr>", opts)
+km("i", "jj", "<esc>", opts)
+km("n", "<c-s>", "<cmd>w<cr>", opts)
+km("i", "<c-s>", "<esc><cmd>w<cr>", opts)
 km("n", "j", "gj", opts)
 km("n", "k", "gk", opts)
 km("n", "<c-w>i", ":tabnext<cr>", opts)
@@ -16,7 +18,6 @@ km("v", "J", ":m '>+1<cr>gv=gv", opts)
 km("v", "K", ":m '<-2<cr>gv=gv", opts)
 km("n", "<c-n>", ":NvimTreeToggle<cr>", opts)
 km("n", "<leader>r", ":NvimTreeRefresh<cr>", opts)
-km("n", "<f8>", ":Neoformat<cr>", opts)
 km("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 km("n", "<leader>fg", "<cmd>Telescope git_files<cr>", opts)
 km("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", opts)

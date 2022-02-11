@@ -16,6 +16,11 @@ augroup pdf_compile
   autocmd BufWritePost *.rmd,*.Rmd if b:pdfcompile == 1 | call s:rmd_pdf()
 augroup end
 
+augroup auto_format
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+augroup END
+
 " terminal spec
 augroup s:term_spec
   autocmd!
