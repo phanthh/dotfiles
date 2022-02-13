@@ -1,7 +1,7 @@
 -- Key map
 local km = require("utils").keymap
 local opts = { noremap = true, silent = true }
-km("i", "jj", "<esc>", opts)
+km("i", "jj", "<esc><cmd>w<cr>", opts)
 km("n", "<c-s>", "<cmd>w<cr>", opts)
 km("i", "<c-s>", "<esc><cmd>w<cr>", opts)
 km("n", "j", "gj", opts)
