@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
 	km("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
 	km("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 	km("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-	km('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+	km("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 	km("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", opts)
 	km("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", opts)
 	km("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", opts)
@@ -43,7 +43,7 @@ local servers = {
 	"r_language_server",
 	"sumneko_lua",
 	"tsserver",
-  "dartls",
+	"dartls",
 	-- "tailwindcss"
 }
 
