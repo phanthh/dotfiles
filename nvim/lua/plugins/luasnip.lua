@@ -135,7 +135,7 @@ local mathh = {
 	s("invs", { t("^{-1}"), i(0) }),
 	s("lm", { t("\\lim"), i(0) }),
 	s("AA", { t("\\forall"), i(0) }),
-	s("OO", { t("\\O"), i(0) }),
+	s("OO", { t("\\emptyset"), i(0) }),
 	s("xx", { t("\\times"), i(0) }),
 	s("**", { t("\\cdot"), i(0) }),
 	s("...", { t("\\ldots"), i(0) }),

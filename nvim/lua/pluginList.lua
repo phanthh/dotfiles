@@ -44,10 +44,10 @@ require("packer").startup({
 				{ "hrsh7th/cmp-cmdline", event = "InsertEnter" },
 				{
 					"uga-rosa/cmp-dictionary",
+					event = "InsertEnter",
 					config = function()
 						require("plugins.cmp-dictionary")
 					end,
-					event = "InsertEnter",
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
@@ -59,7 +59,6 @@ require("packer").startup({
 						{
 							"jose-elias-alvarez/nvim-lsp-ts-utils",
 							module = "nvim-lsp-ts-utils",
-							after = { "nvim-treesitter", "plenary.nvim", "cmp-nvim-lsp" },
 						},
 					},
 				},
@@ -176,6 +175,7 @@ require("packer").startup({
 
 		use({
 			"ur4ltz/surround.nvim",
+			event = "InsertEnter",
 			config = function()
 				require("surround").setup({
 					mappings_style = "surround",
@@ -226,6 +226,7 @@ require("packer").startup({
 			keys = "gc",
 		})
 
+		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
 
@@ -288,13 +289,6 @@ require("packer").startup({
 			ft = coding_ft,
 			config = function()
 				require("gitsigns").setup()
-			end,
-		})
-
-		use({
-			"henriquehbr/nvim-startup.lua",
-			config = function()
-				require("nvim-startup").setup()
 			end,
 		})
 
