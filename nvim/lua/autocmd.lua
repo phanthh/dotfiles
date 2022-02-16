@@ -11,7 +11,7 @@ function s:rmd_pdf()
 endfunction
 
 let b:pdfcompile=0
-augroup pdf_compile 
+augroup pdf_compile
   autocmd!
   autocmd BufWritePost *.rmd,*.Rmd if b:pdfcompile == 1 | call s:rmd_pdf()
 augroup end
@@ -31,14 +31,5 @@ augroup end
 augroup s:ft_spec
   autocmd!
   autocmd Filetype zsh,fstab,help,rmd,tmux,dosini syntax on
-augroup end
-
-" auto read
-augroup autoread
-  autocmd!
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-  autocmd FileChangedShellPost *
-            \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 augroup end
 ]])

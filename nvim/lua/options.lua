@@ -8,7 +8,7 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 350
 vim.o.lazyredraw = false -- gui
 vim.o.showmode = false -- gui
-vim.o.autoindent = true
+vim.o.autoindent = false
 vim.o.autoread = true
 
 -- visual
@@ -55,8 +55,8 @@ vim.o.backspace = "indent,eol,start"
 
 vim.g.mapleader = " "
 
-vim.g.python_host_prog = '/usr/bin/python2'
-vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.python_host_prog = "/usr/bin/python2"
+vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- disable unnecessary plugins
 local disabled_built_ins = {

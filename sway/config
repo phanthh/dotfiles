@@ -1,11 +1,11 @@
 #=============================== VARIABLES ===================================#
 
-# Colors 
+# Colors
 set $fg #ffffff
 set $bg #101010
 set $pr #424242
 set $opacity 0.95
- 
+
 # Mod and Submod keys
 set $mod Mod1
 set $smod Mod4
@@ -21,7 +21,7 @@ set $smod Mod4
 # set $ws9 "9   "
 # set $ws10 "10  "
 
-floating_modifier $mod 
+floating_modifier $mod
 
 #================================== INPUT ====================================#
 
@@ -72,7 +72,7 @@ output eDP-1 enable position 1920,0
 
 #=============================== KEYBINDING ==================================#
 
-# Xkeys 
+# Xkeys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -107,9 +107,9 @@ bindsym --release $smod+Shift+Escape exec ~/.sh/menu_reboot
 bindsym --release $smod+Escape exec ~/.sh/menu_prompt "Shutdown" "poweroff"
 bindsym --release $smod+Shift+e exec ~/.sh/menu_logout
 
-#============ WINDOWS 
+#============ WINDOWS
 
-# Close window 
+# Close window
 bindsym $mod+q kill
 
 # Change focus
@@ -132,30 +132,30 @@ bindsym $mod+Shift+Right move right
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border pixel 1; [floating con_id=__focused__] border normal
 
-# Focus parent/child 
+# Focus parent/child
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
-# Split 
+# Split
 bindsym $smod+w split h
 bindsym $smod+s split v
 
-# Fullscreen 
+# Fullscreen
 bindsym $mod+f fullscreen toggle
 
 # Resize
 set $inc 10
 bindsym $mod+Left resize shrink width $inc px or $inc ppt
 bindsym $mod+Down resize grow height $inc px or $inc ppt
-bindsym $mod+Up resize shrink height $inc px or $inc ppt 
-bindsym $mod+Right resize grow width $inc px or $inc ppt 
+bindsym $mod+Up resize shrink height $inc px or $inc ppt
+bindsym $mod+Right resize grow width $inc px or $inc ppt
 
 # Move window to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5 
+bindsym $mod+Shift+5 move container to workspace number 5
 bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
@@ -166,7 +166,7 @@ bindsym $mod+Shift+u move container to workspace prev
 bindsym $mod+Shift+i move container to workspace next
 
 # Terminal
-# bindsym $mod+Return exec ~/.sh/wm_open alacritty 
+# bindsym $mod+Return exec ~/.sh/wm_open alacritty
 # bindsym $mod+Shift+Return exec alacritty
 bindsym $mod+Return exec ~/.sh/wm_open -s foot footclient
 bindsym $mod+Shift+Return exec footclient
@@ -202,7 +202,7 @@ bindsym $mod+Shift+p exec ~/.sh/wm_open keepassxc
 bindsym $mod+semicolon exec ~/.sh/wm_open neovide
 
 # Toggle Ibus
-bindsym $mod+z exec ~/.sh/util_toggleibus 
+bindsym $mod+z exec ~/.sh/util_toggleibus
 
 # Mount drive
 bindsym $smod+m exec ~/.sh/menu_mount
@@ -211,11 +211,11 @@ bindsym $smod+m exec ~/.sh/menu_mount
 bindsym $smod+Shift+m exec ~/.sh/menu_umount
 
 # Play track
-bindsym $mod+Shift+m exec ~/.sh/menu_music 
+bindsym $mod+Shift+m exec ~/.sh/menu_music
 
-#============ WORKSPACE 
+#============ WORKSPACE
 
-# Change workspace layout 
+# Change workspace layout
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
@@ -261,13 +261,13 @@ client.urgent           $fg    $bg        $fg   $fg  	    $fg
 
 # Mouse behaviors
 mouse_warping none
-focus_follows_mouse no 
+focus_follows_mouse no
 # workspace_auto_back_and_forth yes
 
-# Global font 
+# Global font
 font pango:NotoSans Nerd Font 9
 
-# Default workspace layout 
+# Default workspace layout
 workspace_layout tabbed
 
 # Bar

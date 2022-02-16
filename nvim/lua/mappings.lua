@@ -2,8 +2,8 @@
 local km = require("utils").keymap
 local opts = { noremap = true, silent = true }
 km("i", "jj", "<esc>", opts)
-km("n", "<c-s>", "<cmd>w<cr>", opts)
-km("i", "<c-s>", "<esc><cmd>w<cr>", opts)
+km("n", "<c-s>", "<cmd>wa<cr>", opts)
+km("i", "<c-s>", "<esc><cmd>wa<cr>", opts)
 -- km("n", "j", "gj", opts)
 -- km("n", "k", "gk", opts)
 km("n", "<c-w>i", ":tabnext<cr>", opts)
