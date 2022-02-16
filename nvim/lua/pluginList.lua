@@ -33,25 +33,25 @@ require("packer").startup({
 		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
-			after = "LuaSnip",
+			event = "InsertEnter",
 			config = function()
 				require("plugins.nvim-cmp")
 			end,
 			requires = {
-				{ "saadparwaiz1/cmp_luasnip", after = { "nvim-cmp", "LuaSnip" } },
-				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-				{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+				{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+				{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
+				{ "hrsh7th/cmp-path", event = "InsertEnter" },
+				{ "hrsh7th/cmp-cmdline", event = "InsertEnter" },
 				{
 					"uga-rosa/cmp-dictionary",
 					config = function()
 						require("plugins.cmp-dictionary")
 					end,
-					after = "nvim-cmp",
+					event = "InsertEnter",
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
-					after = { "nvim-cmp", "nvim-lspconfig" },
+					event = "InsertEnter",
 					config = function()
 						require("plugins.cmp-nvim-lsp")
 					end,
@@ -191,6 +191,7 @@ require("packer").startup({
 
 		use({
 			"mhartington/formatter.nvim",
+			event = { "BufWritePre" },
 			config = function()
 				require("formatter").setup({
 					filetype = {
