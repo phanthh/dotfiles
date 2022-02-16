@@ -105,7 +105,6 @@ require("filetype").setup({
 					km("n", "<leader>zg", ":Telekasten search_notes<cr>", opts)
 					km("n", "<leader>zp", ":Telekasten paste_img_and_link<cr>", opts)
 					km("i", "<c-l>", "<esc><cmd>:Telekasten insert_link<cr>", { silent = true })
-					km("i", "<c-i>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
 					km("n", "<c-i>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
 				end,
 				["rmd"] = function()
