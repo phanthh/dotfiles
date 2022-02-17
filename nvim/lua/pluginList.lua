@@ -151,6 +151,7 @@ require("packer").startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
+			module = "telescope",
 			cmd = "Telescope",
 		})
 

@@ -143,6 +143,7 @@ local mathh = {
 	s("ss", { t("\\sin "), i(0) }),
 	s("cc", { t("\\cos "), i(0) }),
 	s("nn", { t("\\in "), i(0) }),
+	s("Ss", { t("\\subset "), i(0) }),
 	s("SS", { t("\\{"), i(1), t("\\}"), i(0) }),
 	-- utils
 	s("lmup", fmta("\\limsup_{<1> \to <2>}<3>", { i(1, "n"), i(2, "\\infty"), i(0) })),
