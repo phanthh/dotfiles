@@ -178,15 +178,7 @@ require("packer").startup({
 			"ur4ltz/surround.nvim",
 			event = "InsertEnter",
 			config = function()
-				require("surround").setup({
-					mappings_style = "surround",
-					pairs = {
-						nestable = {
-							b = { "**", "**" },
-							i = { "*", "*" },
-						},
-					},
-				})
+				require("surround").setup({ mappings_style = "surround" })
 			end,
 		})
 
