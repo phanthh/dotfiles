@@ -43,9 +43,11 @@ require("filetype").setup({
 			[".config/sway/config"] = "i3config",
 			[".config/tmux/tmux.conf"] = "tmux",
 			["fstab"] = "fstab",
+			["sudoers"] = "sudoers",
 		},
 		function_extensions = concat(
 			spec_ft(function()
+				vim.cmd("syntax off")
 				vim.o.spell = false
 				vim.o.ruler = true
 				vim.o.showcmd = true
@@ -85,12 +87,14 @@ require("filetype").setup({
 				"dart",
 			}),
 			spec_ft(function()
+				vim.cmd("syntax off")
 				vim.o.spell = true
 				vim.o.ruler = false
 				vim.o.showcmd = false
 				vim.o.number = false
 				km("", "<f12>", "<cmd>GrammarousCheck<cr>", opts)
 				km("", "<s-f12>", "<cmd>GrammarousReset<cr>", opts)
+				km("n", "K", "<cmd>lua require('nabla').popup()<cr>", opts)
 			end, {
 				["tex"] = function()
 					vim.o.foldlevel = 99

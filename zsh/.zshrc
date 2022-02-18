@@ -5,7 +5,7 @@ SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
 #========================= tmux
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1 
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 
 #========================= prompt
 cl='%F{cyan}'
@@ -29,8 +29,8 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh --cmd cd)"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc" 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc" 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
 
 #========================= vim
 # menu completion
@@ -60,14 +60,14 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins 
+    zle -K viins
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' 
-preexec() { echo -ne '\e[5 q' ;} 
+echo -ne '\e[5 q'
+preexec() { echo -ne '\e[5 q' ;}
 
-#======================= shortcuts 
+#======================= shortcuts
 bindkey '^F' autosuggest-accept
 bindkey -s '^O' 'n^M'
 bindkey -s '^N' 'newsboat^M'

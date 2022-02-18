@@ -26,10 +26,4 @@ augroup s:term_spec
   autocmd!
   autocmd TermOpen * setlocal nonumber nospell
 augroup end
-
-" filetype spec
-augroup s:ft_spec
-  autocmd!
-  autocmd Filetype zsh,fstab,help,rmd,tmux,dosini syntax on
-augroup end
 ]])

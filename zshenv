@@ -4,7 +4,7 @@
 # sway - shell
 export SESSION="sway"
 
-#=================== wayland 
+#=================== wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export MOZ_DISABLE_RDD_SANDBOX=1
@@ -19,6 +19,7 @@ export SDL_VIDEODRIVER=wayland
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_LIBRARY_HOME="$HOME/.local/lib"
 
 #=================== defaults
 export EDITOR="nvim"
@@ -44,7 +45,6 @@ export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME/bash-completion/bash_completi
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
@@ -52,15 +52,17 @@ export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave-hsts"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export YTFZF_CONFIG_DIR="$XDG_CONFIG_HOME/ytfzf"
 export YTFZF_CONFIG_FILE="$YTFZF_CONFIG_DIR/conf.sh"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
+
+#=================== mamba
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export MAMBARC="$XDG_CONFIG_HOME/mambarc"
 
-#=================== secrets
-
+#=================== rust
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 #=================== android
 export ANDROID_HOME="$HOME/.android/sdk"

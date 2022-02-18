@@ -34,6 +34,7 @@ require("packer").startup({
 		use({
 			"hrsh7th/nvim-cmp",
 			event = "InsertEnter",
+			module = "cmp",
 			config = function()
 				require("plugins.nvim-cmp")
 			end,
@@ -285,6 +286,7 @@ require("packer").startup({
 			end,
 		})
 
+		use({ "jbyuki/nabla.nvim", module = "nabla" })
 		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
 		use("ActivityWatch/aw-watcher-vim")
