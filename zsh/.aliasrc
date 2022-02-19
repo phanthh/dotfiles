@@ -1,4 +1,4 @@
-#======================== sudo 
+#======================== sudo
 alias w="which"
 alias s="sudo"
 alias su="sudo -i"
@@ -13,7 +13,6 @@ alias ratop="sudo radeontop"
 
 #======================== frequent
 alias ls="ls --color=always --group-directories-first --time-style=iso"
-alias ew="e ~/Academia/PKM/index.md"
 alias l="ls -l"
 alias la="ls -la"
 alias ka="killall"
@@ -23,7 +22,7 @@ alias jn="prime-run jupyter-notebook"
 alias mm="micromamba"
 alias mma="micromamba activate"
 
-#======================== utils 
+#======================== utils
 alias tt="ttyper --language english1000"
 alias mdl="ytmdl --disable-file"
 alias myip="curl ifconfig.me"

@@ -19,6 +19,15 @@ ee() {
   fi
 }
 
+# pkm
+ew(){
+  local prevd
+  prevd=$(pwd)
+  cd "$HOME/Academia/PKM"
+  $EDITOR
+  cd "$prevd"
+}
+
 # open (gui)
 o() {
   nohup xdg-open $* >/dev/null 2>&1 &
@@ -145,5 +154,5 @@ ex() {
 linknb() {
   syncfile="$(echo "$1" | cut -f 1 -d '.').sync.ipynb"
   cp "$1" "$syncfile"
-  jupytext --set-formats ipynb,py:percent "$syncfile" 
+  jupytext --set-formats ipynb,py:percent "$syncfile"
 }
