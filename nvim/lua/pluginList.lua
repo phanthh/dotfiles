@@ -225,15 +225,15 @@ require("packer").startup({
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
 
 		-- latent
-		use({
-			"sunjon/shade.nvim",
-			config = function()
-				require("shade").setup({
-					overlay_opacity = 55,
-				})
-			end,
-			event = "WinLeave",
-		})
+		-- use({
+		-- 	"sunjon/shade.nvim",
+		-- 	config = function()
+		-- 		require("shade").setup({
+		-- 			overlay_opacity = 55,
+		-- 		})
+		-- 	end,
+		-- 	event = "WinLeave",
+		-- })
 
 		use({
 			"lukas-reineke/indent-blankline.nvim",
