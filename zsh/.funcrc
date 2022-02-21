@@ -24,7 +24,7 @@ ew(){
   local prevd
   prevd=$(pwd)
   cd "$HOME/Academia/PKM"
-  $EDITOR
+  $EDITOR index.md
   cd "$prevd"
 }
 
