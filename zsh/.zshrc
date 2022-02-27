@@ -1,6 +1,6 @@
 #========================= history
 HISTSIZE=1000000
-SAVEHIST=10000000
+SAVEHIST=1000000
 [ ! -d ~/.cache/zsh ] && mkdir ~/.cache/zsh
 HISTFILE=~/.cache/zsh/history
 
@@ -8,10 +8,10 @@ HISTFILE=~/.cache/zsh/history
 [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 
 #========================= distros
-DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
-SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share/zsh/plugins"
-if [[ $DISTRO == 'fedora' ]] || [[ $DISTRO == 'debian' ]] ; then
-  SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share"
+DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
+SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share"
+if [[ $DISTRO == 'arch' ]] || [[ $DISTRO == 'void' ]] ; then
+  SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share/zsh/plugins"
 fi
 
 #========================= prompt
@@ -96,6 +96,6 @@ unset __mamba_setup
 # <<< mamba initialize <<<
 
 #======================= welcome
-if [[ $XDG_SESSION_TYPE != tty ]]; then
+if [[ $XDG_SESSION_TYPE != tty && -z $DISTRO ]]; then
 	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
 fi

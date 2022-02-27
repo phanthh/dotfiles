@@ -22,6 +22,8 @@ alias jl="prime-run jupyter lab"
 alias jn="prime-run jupyter-notebook"
 alias mm="micromamba"
 alias mma="micromamba activate"
+alias b="distrobox"
+alias bs="~/.sh/util_distroboxsetup"
 
 #======================== utils
 alias tt="ttyper --language english1000"

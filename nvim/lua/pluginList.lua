@@ -3,6 +3,9 @@ require("packer").startup({
 		local coding_ft = require("utils").coding_ft
 		local writing_ft = require("utils").writing_ft
 
+		-- packer
+		use("wbthomason/packer.nvim")
+
 		-- colorscheme
 		use({
 			"Mofiqul/vscode.nvim",
