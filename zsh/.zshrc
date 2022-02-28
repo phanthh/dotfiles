@@ -66,18 +66,10 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-#======================= welcome
-if [[ $XDG_SESSION_TYPE != tty && -z $DISTRO ]]; then
-	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
-fi
-
-#========================= distros
+#========================= distro
 DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
-SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share"
-if [[ $DISTRO == 'arch' ]] || [[ $DISTRO == 'void' ]] ; then
-  SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share/zsh/plugins"
-fi
-
+DISTRONAME=$(awk -F= '$1=="PRETTY_NAME" { print $2 ;}' /etc/os-release | tr -d '"')
+[[ $DISTRO == 'arch' ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
 
 #========================= prompt
 cl='%F{cyan}'
@@ -89,15 +81,18 @@ precmd_functions+=(precmd_vcs_info)
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
 zstyle ':vcs_info:*' enable git
-[[ $DISTRO == 'arch' ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
 RPROMPT="\$vcs_info_msg_0_"
 PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
 PROMPT+="%/%B%(?.$cl.$er)${DISTROPROMPT}>$re%b "
 
 #========================= plugins
-[[ $DISTRO == 'gentoo']] && exit 0
-source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-eval "$(zoxide init zsh --cmd cd)"
+source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
+eval "$(zoxide init zsh --cmd cd)"
+
+#======================= welcome
+if [[ $XDG_SESSION_TYPE != tty ]]; then
+	echo "$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
+fi
