@@ -7,35 +7,6 @@ HISTFILE=~/.cache/zsh/history
 #========================= tmux
 [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 
-#========================= distros
-DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
-SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share"
-if [[ $DISTRO == 'arch' ]] || [[ $DISTRO == 'void' ]] ; then
-  SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share/zsh/plugins"
-fi
-
-#========================= prompt
-cl='%F{cyan}'
-er='%F{red}'
-re='%f'
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=(precmd_vcs_info)
-setopt prompt_subst
-zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
-zstyle ':vcs_info:*' enable git
-[[ $DISTRO == 'arch' ]] && DISTRO='' || DISTRO="$cl@${DISTRO}$re"
-RPROMPT="\$vcs_info_msg_0_"
-PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
-PROMPT+="%/%B%(?.$cl.$er)${DISTRO}>$re%b "
-
-#========================= plugins
-source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-eval "$(zoxide init zsh --cmd cd)"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
-
 #========================= vim
 # menu completion
 zstyle ':completion:*' menu select
@@ -99,3 +70,34 @@ unset __mamba_setup
 if [[ $XDG_SESSION_TYPE != tty && -z $DISTRO ]]; then
 	echo "Arch Linux [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
 fi
+
+#========================= distros
+DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
+SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share"
+if [[ $DISTRO == 'arch' ]] || [[ $DISTRO == 'void' ]] ; then
+  SYSTEM_ZSH_PLUGIN_PREFIX="/usr/share/zsh/plugins"
+fi
+
+
+#========================= prompt
+cl='%F{cyan}'
+er='%F{red}'
+re='%f'
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=(precmd_vcs_info)
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
+zstyle ':vcs_info:*' enable git
+[[ $DISTRO == 'arch' ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
+RPROMPT="\$vcs_info_msg_0_"
+PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
+PROMPT+="%/%B%(?.$cl.$er)${DISTROPROMPT}>$re%b "
+
+#========================= plugins
+[[ $DISTRO == 'gentoo']] && exit 0
+source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+eval "$(zoxide init zsh --cmd cd)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
