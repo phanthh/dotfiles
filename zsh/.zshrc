@@ -32,7 +32,7 @@ PROMPT+="%/%B%(?.$cl.$er)${DISTRO}>$re%b "
 #========================= plugins
 source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "${SYSTEM_ZSH_PLUGIN_PREFIX}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh --cmd z)"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
 
