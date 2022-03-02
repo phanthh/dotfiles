@@ -18,7 +18,7 @@ swayidle -w \
 
 # graphical
 footclient &
-util_browse & 
+util_browse &
 thunderbird &
 discord &
 # keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
@@ -29,6 +29,6 @@ discord &
 sleep 1
 # clight &
 
-# misc dependent daemons 
+# misc dependent daemons
 sleep 5
-gammastep -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq '.location | .lat,.lng' | paste -s -d ':') &
+gammastep
