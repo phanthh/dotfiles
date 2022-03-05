@@ -61,8 +61,8 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export MAMBARC="$XDG_CONFIG_HOME/mambarc"
 
 #=================== rust
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_LIBRARY_HOME/rustup"
+export CARGO_HOME="$XDG_LIBRARY_HOME/cargo"
 
 #=================== android
 export ANDROID_HOME="$HOME/.android/sdk"
