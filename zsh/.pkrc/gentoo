@@ -1,14 +1,24 @@
 # query
 qu() {
-  qlist -Iv | fzf --multi --preview "equery g -AM {1}"
+  qlist -Iv | fzf --ansi --preview "equery -N m {} && equery -N u {}"
 }
 
 # install
 in() {
-  $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
+  qsearch -aNq | fzf --ansi --preview "equery -N m {} && echo 'Use:' && quse -vp {} | sed 's/ *$//g'" | xargs -ro sudo emerge -av
 }
 
 # remove
 re() {
-  $AUR_WRAPPER -Qeq | fzf --multi --preview "$AUR_WRAPPER -Qi {1}" | xargs -ro $AUR_WRAPPER -Rns
+  qlist -I | fzf --ansi --preview "equery -N m {} && equery -N u {}" | xargs -ro sudo emerge -cav
+}
+
+# update
+up() {
+  sudo emerge -uDNav --with-bdeps=y @world
+}
+
+# clean
+cl() {
+  sudo emerge --ask --depclean
 }

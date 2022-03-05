@@ -1,11 +1,22 @@
+#========================= tmux
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+
+#========================= distrobox
+HOST_DISTRO='arch'
+DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
+DISTRONAME=$(awk -F= '$1=="PRETTY_NAME" { print $2 ;}' /etc/os-release | tr -d '"')
+DISTROPROMPT=''
+[[ $DISTRO != $HOST_DISTRO ]] && {
+  DISTROPROMPT="$cl@${DISTRO}$re"
+}
+
+[[ $DISTRO != 'gentoo' ]] && $HOME/.local/bin/distrobox-enter gentoo
+
 #========================= history
 HISTSIZE=1000000
 SAVEHIST=1000000
 [ ! -d ~/.cache/zsh ] && mkdir ~/.cache/zsh
 HISTFILE=~/.cache/zsh/history
-
-#========================= tmux
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 
 #========================= vim
 # menu completion
@@ -51,7 +62,7 @@ bindkey '^H' backward-kill-word
 #======================= mamba
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/usr/bin/micromamba";
+export MAMBA_EXE="$HOME/.local/bin/micromamba";
 export MAMBA_ROOT_PREFIX="/home/phanthh/.local/lib/mamba/";
 __mamba_setup="$('/usr/bin/micromamba' shell hook --shell zsh --prefix '/home/phanthh/.local/lib/mamba/' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -66,18 +77,6 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-#========================= distrobox
-HOST_DISTRO='arch'
-DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
-DISTRONAME=$(awk -F= '$1=="PRETTY_NAME" { print $2 ;}' /etc/os-release | tr -d '"')
-[[ $DISTRO == $HOST_DISTRO ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
-case $DISTRO in
-  arch) alias up='paru -Syu' ;;
-  gentoo)
-    alias up='sudo emerge -uDNav --with-bdeps=y @world'
-    alias cl='sudo emerge --ask --depclean'
-    ;;
-esac
 
 #========================= prompt
 cl='%F{cyan}'
