@@ -1,0 +1,14 @@
+# query
+qu() {
+  qlist -Iv | fzf --multi --preview "equery g -AM {1}"
+}
+
+# install
+in() {
+  $AUR_WRAPPER -Slq | fzf --multi --preview "$AUR_WRAPPER -Si {1}" | xargs -ro $AUR_WRAPPER -S
+}
+
+# remove
+re() {
+  $AUR_WRAPPER -Qeq | fzf --multi --preview "$AUR_WRAPPER -Qi {1}" | xargs -ro $AUR_WRAPPER -Rns
+}

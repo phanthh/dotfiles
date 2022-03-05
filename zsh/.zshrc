@@ -66,10 +66,18 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-#========================= distro
+#========================= distrobox
+HOST_DISTRO='arch'
 DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
 DISTRONAME=$(awk -F= '$1=="PRETTY_NAME" { print $2 ;}' /etc/os-release | tr -d '"')
-[[ $DISTRO == 'arch' ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
+[[ $DISTRO == $HOST_DISTRO ]] && DISTROPROMPT='' || DISTROPROMPT="$cl@${DISTRO}$re"
+case $DISTRO in
+  arch) alias up='paru -Syu' ;;
+  gentoo)
+    alias up='sudo emerge -uDNav --with-bdeps=y @world'
+    alias cl='sudo emerge --ask --depclean'
+    ;;
+esac
 
 #========================= prompt
 cl='%F{cyan}'
@@ -90,6 +98,7 @@ source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
 eval "$(zoxide init zsh --cmd cd)"
 
 #======================= welcome
