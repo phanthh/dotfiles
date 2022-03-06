@@ -11,7 +11,7 @@ DISTROPROMPT=''
   source $HOME/.zshenv
 }
 
-[[ $DISTRO != 'gentoo' ]] && $HOME/.local/bin/distrobox-enter gentoo
+# [[ $DISTRO != 'gentoo' ]] && $HOME/.local/bin/distrobox-enter gentoo
 
 #========================= history
 HISTSIZE=1000000
