@@ -28,9 +28,6 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 # export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 # export TASKDATA="$XDG_CONFIG_HOME/task/"
 export CALIBRE_USE_DARK_PALETTE=1
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_COLLATE=C
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
@@ -85,6 +82,7 @@ export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 #=================== path
 export PATH="$PATH:$CARGO_HOME/bin"
 export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"
+export PATH="$XDG_LIBRARY_HOME/npm/bin:$PATH"
 export PATH="$HOME/.local/bin:$HOME/.sh:$PATH"
 
 #=================== zsh
