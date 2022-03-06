@@ -22,3 +22,7 @@ up() {
 cl() {
   sudo emerge --ask --depclean
 }
+
+sy() {
+  sudo emerge --sync
+}
