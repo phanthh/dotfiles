@@ -56,9 +56,8 @@ preexec() { echo -ne '\e[5 q' ;}
 
 #======================= shortcuts
 bindkey '^F' autosuggest-accept
-bindkey -s '^O' 'n^M'
-bindkey -s '^N' 'newsboat^M'
 bindkey '^H' backward-kill-word
+bindkey -s '^O' 'n^M'
 
 #======================= mamba
 # >>> mamba initialize >>>
@@ -77,7 +76,6 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-
 
 #========================= prompt
 cl='%F{cyan}'
