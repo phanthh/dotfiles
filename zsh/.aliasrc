@@ -25,6 +25,7 @@ alias mm="micromamba"
 alias mma="micromamba activate"
 alias b="distrobox"
 alias bs="~/.sh/util_distroboxsetup"
+alias play="WINEPREFIX=~/.local/lib/wine wine"
 
 #======================== utils
 alias tt="ttyper --language english1000"
