@@ -1,5 +1,5 @@
 #======================== sudo
-alias w="which"
+alias wi="which"
 alias s="sudo"
 alias su="sudo -i"
 alias ss="sudo !!"
@@ -25,7 +25,7 @@ alias mm="micromamba"
 alias mma="micromamba activate"
 alias b="distrobox"
 alias bs="~/.sh/util_distroboxsetup"
-alias play="WINEPREFIX=~/.local/lib/wine wine"
+alias w="WINEPREFIX=~/.local/lib/wine"
 
 #======================== utils
 alias tt="ttyper --language english1000"
