@@ -1,7 +1,7 @@
 #======================== sudo
 alias wi="which"
 alias s="sudo"
-alias su="sudo -i"
+# alias su="sudo -i"
 alias ss="sudo !!"
 alias sctl="sudo systemctl"
 alias jctl="sudo journalctl"
