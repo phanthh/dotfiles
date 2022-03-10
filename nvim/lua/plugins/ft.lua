@@ -112,6 +112,7 @@ require("filetype").setup({
 					km("n", "<c-i>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
 				end,
 				["rmd"] = function()
+					vim.cmd("syntax on")
 					repl_spec("R")
 					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile Rmd enabled!'<cr>", opts)
 					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile Rmd disabled!'<cr>", opts)
