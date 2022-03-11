@@ -1,8 +1,8 @@
 #======================== sudo
 alias wi="which"
 alias s="sudo"
-alias sd="sudo -i"
-alias ss="sudo !!"
+alias si="sudo !!"
+alias su="sudo -i"
 alias sctl="sudo systemctl"
 alias jctl="sudo journalctl"
 alias bctl="bluetoothctl"
