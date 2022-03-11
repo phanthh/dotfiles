@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # daemons
-aw-qt &
+# aw-qt &
 dunst &
 lxsession -n &
 ibus-daemon -drxR &
@@ -20,7 +20,7 @@ swayidle -w \
 footclient &
 util_browse &
 thunderbird &
-discord &
+# discord &
 # keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 
 # brightnessctl s 0% &
