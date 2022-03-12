@@ -27,6 +27,7 @@ alias b="distrobox"
 alias bs="~/.sh/util_distroboxsetup"
 # alias w="WINEPREFIX=/home/wine/.wine"
 alias wido="~/.sh/util_winedo"
+alias wirun="~/.sh/util_winedo wine"
 
 #======================== utils
 alias tt="ttyper --language english1000"
