@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 #
 #=================== session
-# sway - shell - gnome - plasma - labwc
-export SESSION="plasma"
+# sway - labwc - shell - gnome - plasma
+export SESSION="sway"
 
 #=================== wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
