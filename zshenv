@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 #
 #=================== session
-# sway - shell - labwc
-export SESSION="labwc"
+# sway - shell - gnome - plasma - labwc
+export SESSION="plasma"
 
 #=================== wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -12,7 +12,6 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_DBUS_REMOTE=1
 export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
 export SDL_VIDEODRIVER=wayland
 
 #=================== xdg
