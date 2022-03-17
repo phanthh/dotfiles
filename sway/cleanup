@@ -7,3 +7,4 @@ pkill -f 'aw-qt' &
 pkill -f 'aw-server' &
 pkill -f 'aw-server' &
 pkill -f 'swhks' &
+pkill -f 'gammastep' &

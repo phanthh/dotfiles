@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # daemons
-# aw-qt &
 dunst &
 lxsession -n &
 
@@ -11,6 +10,3 @@ swayidle -w \
 	before-sleep 'playerctl pause' \
 	before-sleep 'swaylock -f' \
 	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
-
-
-$HOME/.sh/util_autoscript &
