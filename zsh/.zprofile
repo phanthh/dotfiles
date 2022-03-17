@@ -7,17 +7,15 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SE
   case $SESSION in
     sway)
       XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway QT_QPA_PLATFORMTHEME=qt5ct sway --unsupported-gpu
-      $XDG_CONFIG_HOME/sway/cleanup
       ;;
     labwc)
       XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=labwc QT_QPA_PLATFORMTHEME=qt5ct labwc
-      $XDG_CONFIG_HOME/sway/cleanup
       ;;
     gnome)
       XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
       ;;
     plasma)
-      XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=plasma startplasma-wayland
+      XDG_SESSION_TYPE=wayland startplasma-wayland
       ;;
     shell)
       XDG_SESSION_TYPE=shell $SHELL
@@ -26,6 +24,7 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SE
       echo "Session $SESSION is invalid !"
       ;;
   esac
+  $XDG_CONFIG_HOME/sway/cleanup
   /usr/bin/rm -rf $XDG_CACHE_HOME/*
 	logout
 	exit

@@ -1,9 +1,5 @@
 #!/bin/sh
 
 # killall wm_pswall; wm_pswall &
-
 pkill -f 'kanshi'; kanshi &
 pkill -f 'sworkstyle'; sworkstyle &
-sleep 5
-pkill -f 'aw-watcher-window-wayland'; aw-watcher-window-wayland &
-pkill -f 'aw-watcher-spotify'; aw-watcher-spotify &

@@ -4,13 +4,7 @@
 # aw-qt &
 dunst &
 lxsession -n &
-ibus-daemon -drxR &
-foot --server &
 
-swhks &
-pkexec swhkd -c ~/.config/swhkd/swhkdrc &
-
-# blueman-applet &
 swayidle -w \
 	timeout 3000 'swaylock -f' \
 	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -18,20 +12,5 @@ swayidle -w \
 	before-sleep 'swaylock -f' \
 	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &
 
-# graphical
-util_browse &
-thunderbird &
-# discord &
-# keepassxc --keyfile "$PASS_KEYFILE" "$PASS_DATABASE" &
 
-[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && {
-  brightnessctl s 0%
-  util_exmonctl -s 0
-}
-
-sleep 1
-clight &
-footclient &
-
-sleep 1
-gammastep &
+$HOME/.sh/util_autoscript &
