@@ -64,50 +64,18 @@ exec_always ~/.config/sway/alwaystart
 #================================ DISPLAY ====================================#
 
 # Background
-output * bg #000000 solid_color
+# output * bg #000000 solid_color
 output * adaptive_sync on
-# output * bg ~/Pictures/wallpaper/getshitdone.jpg fill
+output * bg ~/Pictures/wallpaper/eleven-dark.jpg fill
 output HDMI-A-1 enable position 0,0
 output eDP-1 enable position 1920,0
 
 #=============================== KEYBINDING ==================================#
 
-# Xkeys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Volume
-bindsym $mod+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym $mod+F4 exec ~/.sh/wm_open pavucontrol
-
-# Music Control
-bindsym $mod+F11 exec playerctl -a play-pause
-bindsym $mod+F12 exec playerctl -a -i mpv next
-
-# Brightness
-bindsym $mod+F7 exec brightnessctl s 5%-
-bindsym $mod+F8 exec brightnessctl s 5%+
-bindsym $mod+Shift+F7 exec exmonctl -d 5
-bindsym $mod+Shift+F8 exec exmonctl -i 5
-
-# Power
-bindsym $mod+p exec ~/.sh/menu_powerprofile
+#============ WINDOWS
 
 # Sway
 bindsym $smod+Shift+r reload
-
-# System
-bindsym --release $smod+x exec swaylock
-bindsym --release $smod+Shift+x exec systemctl suspend
-bindsym --release $smod+Shift+Escape exec ~/.sh/menu_reboot
-bindsym --release $smod+Escape exec ~/.sh/menu_prompt "Shutdown" "poweroff"
-bindsym --release $smod+Shift+e exec ~/.sh/menu_logout
-
-#============ WINDOWS
 
 # Close window
 bindsym $mod+q kill
@@ -164,54 +132,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+Shift+u move container to workspace prev
 bindsym $mod+Shift+i move container to workspace next
-
-# Terminal
-# bindsym $mod+Return exec ~/.sh/wm_open alacritty
-# bindsym $mod+Shift+Return exec alacritty
-bindsym $mod+Return exec ~/.sh/wm_open -s foot footclient
-bindsym $mod+Shift+Return exec footclient
-
-# Editor
-bindsym $mod+backslash exec ~/.sh/wm_open neovide
-bindsym $mod+Shift+backslash exec neovide
-
-# Browser
-bindsym $mod+n exec ~/.sh/wm_open $(xdg-mime query default text/html | cut -f 1 -d '.')
-
-# Launcher
-bindsym $smod+d exec ~/.sh/menu_run
-
-# Timer
-bindsym $mod+d exec ~/.sh/menu_timer
-
-# Screen Shot
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
-
-# Password
-bindsym $mod+Shift+d exec ~/.sh/menu_pass
-
-# Applications
-bindsym $mod+Shift+a exec ~/.sh/wm_open $(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.')
-bindsym $mod+Shift+s exec ~/.sh/wm_open spotify
-bindsym $mod+Shift+c exec ~/.sh/wm_open calibre
-bindsym $mod+Shift+e exec ~/.sh/wm_open $(xdg-mime query default inode/directory | cut -f 1 -d '.')
-bindsym $mod+Shift+o exec ~/.sh/wm_open obsidian
-bindsym $mod+Shift+z exec ~/.sh/wm_open zotero
-bindsym $mod+Shift+b exec ~/.sh/wm_open blueman-manager
-bindsym $mod+Shift+p exec ~/.sh/wm_open keepassxc
-bindsym $mod+semicolon exec ~/.sh/wm_open neovide
-
-# Toggle Ibus
-bindsym $mod+z exec ~/.sh/util_toggleibus
-
-# Mount drive
-bindsym $smod+m exec ~/.sh/menu_mount
-
-# Unmount drive
-bindsym $smod+Shift+m exec ~/.sh/menu_umount
-
-# Play track
-bindsym $mod+Shift+m exec ~/.sh/menu_music
 
 #============ WORKSPACE
 

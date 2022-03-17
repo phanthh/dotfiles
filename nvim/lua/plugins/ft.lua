@@ -42,6 +42,8 @@ require("filetype").setup({
 		complex = {
 			[".config/sway/config"] = "i3config",
 			[".config/tmux/tmux.conf"] = "tmux",
+			[".config/swhkd/*"] = "swhkd",
+			[".config/sxhkd/*"] = "sxhkd",
 			["fstab"] = "fstab",
 			["sudoers"] = "sudoers",
 		},

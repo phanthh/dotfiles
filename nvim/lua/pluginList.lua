@@ -19,6 +19,7 @@ require("packer").startup({
 		use({
 			"neovim/nvim-lspconfig",
 			event = "InsertEnter",
+			module = "lspconfig",
 		})
 
 		-- snippets
@@ -28,6 +29,7 @@ require("packer").startup({
 			config = function()
 				require("plugins.luasnip")
 			end,
+			module = "luasnip",
 			requires = {
 				"rafamadriz/friendly-snippets",
 			},
@@ -308,6 +310,8 @@ require("packer").startup({
 		use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
+		use("kovetskiy/sxhkd-vim")
+		use("waycrate/swhkd-vim")
 
 		-- use("airblade/vim-gitgutter")
 		-- use("junegunn/vim-easy-align")
