@@ -19,7 +19,7 @@
   -->
   <theme>
     <name>custom</name>
-    <cornerRadius>10</cornerRadius>
+    <cornerRadius>5</cornerRadius>
     <font place="ActiveWindow"><name>NotoSans Nerd Font</name><size>9</size></font>
     <font place="MenuItem"><name>NotoSans Nerd Font</name><size>9</size></font>
     <font place="OSD"><name>NotoSans Nerd Font</name><size>9</size></font>
