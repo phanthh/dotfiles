@@ -1,0 +1,116 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 24,
+
+    "modules-left": [
+        "wlr/taskbar",
+    ],
+    "modules-center": [],
+
+    "modules-right": [
+        "backlight",
+        "memory",
+        "pulseaudio",
+        "battery",
+        "bluetooth",
+        "network",
+        "clock#us",
+        "clock#vn",
+        "clock#time",
+        "clock#date",
+        "tray",
+    ],
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "backlight": {
+        "format": " {percent}%",
+        "interval": 2,
+        "on-scroll-up": "brightnessctl set +2%",
+        "on-scroll-down": "brightnessctl set 2%-"
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": " {}%", // Icon: memory
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{icon} {volume}%",
+        "format-muted": "", // Icon: volume-mute
+        "format-icons": {
+            "default": ["", ""] // Icons: volume-down, volume-up
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip": false
+    },
+
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 25,
+            "critical": 15
+        },
+        // Connected to AC
+        "format": "{icon}   {capacity}%", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{icon} {capacity}%",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": " {essid}", // Icon: wifi
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr} (signal: {signalStrength}%)"
+    },
+
+    "clock#us": {
+        "interval": 60,
+        "timezone": "America/Mazatlan",
+        "format": "US {:%H:%M}",
+    },
+
+    "clock#vn": {
+        "interval": 60,
+        "timezone": "Asia/Ho_Chi_Minh",
+        "format": "VN {:%H:%M}",
+    },
+
+    "clock#time": {
+        "interval": 60,
+        "format": "FI {:%H:%M}",
+    },
+
+
+    "clock#date": {
+        "interval": 10,
+        "format": "   {:%a %d/%m/%Y}", // Icon: calendar-alt
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    }
+}

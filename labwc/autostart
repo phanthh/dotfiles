@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# daemons
+kanshi &
+dunst &
+lxsession -n &
+
+# background
+swaybg -i "$HOME/Pictures/wallpaper/eleven-dark.jpg" -o '*' -m fill &
+
+# bar
+# sfwbar -m eDP-1 &
+# sfwbar -m HDMI-A-1 &
+waybar &
+
+swayidle -w \
+	timeout 3000 'swaylock -f' \
+	timeout 3005 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	before-sleep 'playerctl pause' \
+	before-sleep 'swaylock -f' \
+	timeout 6000 '[ "$(cat /sys/class/power_supply/BAT1/status)" = "Discharging" ] && systemctl suspend' &

@@ -1,0 +1,98 @@
+# XKeys
+XF86Audio{RaiseVolume,LowerVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SOURCE@ toggle
+
+# Volume
+Mod1 + F1
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+Mod1 + {F2, F3}
+  pactl set-sink-volume @DEFAULT_SINK@ {-,+}2%
+
+Mod1 + F4
+  ~/.sh/wm_open pavucontrol
+
+# Music Control
+Mod1 + F11
+  playerctl -a play-pause
+
+Mod1 + F12
+  playerctl -a -i mpv next
+
+# Brightness
+Mod1 + {F7,F8}
+  brightnessctl s 5%{-,+}
+
+Mod1 + Shift + {F7,F8}
+  ~/.sh/util_exmonctl -{d,i} 5
+
+# Power
+Mod1 + p
+  ~/.sh/menu_powerprofile
+
+# System
+Mod4 + {_,Shift +} @{x,escape}
+  {swaylock,~/.sh/menu_prompt "shutdown" "poweroff",systemctl suspend,~/.sh/menu_reboot}
+
+Mod4 + Shift + @e
+  ~/.sh/menu_logout
+
+# Terminal
+Mod1 + {_,Shift + }Return
+  {~/.sh/wm_open -s foot footclient,footclient}
+
+# Editor
+Mod1 + {_,Shift + }backslash
+  {~/.sh,wm_open ,_}neovide
+
+# Browser
+Mod1 + n
+  ~/.sh/wm_open $(xdg-mime query default text/html | cut -f 1 -d '.')
+
+# Launcher
+Mod4 + d
+  ~/.sh/menu_run
+
+# Timer
+# Mod1 + d
+#   ~/.sh/menu_timer
+
+# Screen Shot
+Print
+  grim -g "$(slurp)" - | wl-copy
+
+# Password
+Mod1 + Shift + d
+  ~/.sh/menu_pass
+
+# Applications
+Mod1 + Shift + {a,s,c,e,o,z,b,p,semicolon}
+  ~/.sh/wm_open {$(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.'),\
+                 spotify,\
+                 calibre,\
+                 $(xdg-mime query default inode/directory | cut -f 1 -d '.'),\
+                 obsidian,\
+                 zotero,\
+                 blueman-manager,\
+                 keepassxc,\
+                 neovide}
+
+
+# Toggle Ibus
+Mod1 + z
+  ~/.sh/util_toggleibus
+
+# Mount drive
+Mod4 + m
+  ~/.sh/menu_mount
+
+# Unmount drive
+Mod4 + Shift + m
+  ~/.sh/menu_umount
+
+# Play track
+Mod1 + Shift + m
+  ~/.sh/menu_music

@@ -44,6 +44,7 @@ require("filetype").setup({
 			[".config/tmux/tmux.conf"] = "tmux",
 			[".config/swhkd/*"] = "swhkd",
 			[".config/sxhkd/*"] = "sxhkd",
+			[".config/waybar/config"] = "json",
 			["fstab"] = "fstab",
 			["sudoers"] = "sudoers",
 		},
