@@ -19,7 +19,6 @@ require("packer").startup({
 		use({
 			"neovim/nvim-lspconfig",
 			event = "InsertEnter",
-			module = "lspconfig",
 		})
 
 		-- snippets
@@ -29,7 +28,6 @@ require("packer").startup({
 			config = function()
 				require("plugins.luasnip")
 			end,
-			module = "luasnip",
 			requires = {
 				"rafamadriz/friendly-snippets",
 			},
