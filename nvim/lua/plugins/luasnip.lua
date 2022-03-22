@@ -185,3 +185,18 @@ ls.autosnippets = {
 		s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),
 	},
 }
+
+
+The **nondeterministic automaton** $\hat{M}$ induced by the $\varepsilon$-automata can how be defined as follows:
+$$
+\hat{M} = (Q, \Sigma,\hat{\delta}, q_0, \hat{F})
+.$$
+where
+$$
+\hat{\delta}(q, a) = \bigcup_{q' \in \varepsilon^*(q) } \delta(q',a)
+.$$
+$$
+\hat{F} = \{q \in Q | \varepsilon^*(q) \cap F \neq \emptyset\}
+.$$
+
+![[pasted_img_20220201164745.png]]
