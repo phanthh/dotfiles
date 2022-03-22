@@ -124,7 +124,7 @@ local mathh = {
 	-- symbols
 	s("prd", { t("\\langle "), i(1), t(" \\rangle"), i(0) }),
 	s("ooo", { t("\\infty"), i(0) }),
-	s("=>", { t("\\implies"), i(0) }),
+	s("ipl", { t("\\implies"), i(0) }),
 	s("=<", { t("\\impliedby"), i(0) }),
 	s("<=", { t("\\leq"), i(0) }),
 	s(">=", { t("\\geq"), i(0) }),
