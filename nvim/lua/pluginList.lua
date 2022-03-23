@@ -18,13 +18,11 @@ require("packer").startup({
 		-- language server
 		use({
 			"neovim/nvim-lspconfig",
-			event = "InsertEnter",
 		})
 
 		-- snippets
 		use({
 			"L3MON4D3/LuaSnip",
-			event = "InsertEnter",
 			config = function()
 				require("plugins.luasnip")
 			end,
@@ -269,7 +267,7 @@ require("packer").startup({
 			config = function()
 				require("colorizer").setup()
 			end,
-			ft = { "css", "scss", "typescriptreact" },
+			ft = { "css", "scss", "typescriptreact", "dosini", "toml", "yaml" },
 		})
 
 		use({

@@ -65,35 +65,61 @@
       <action name="NextWindow" />
     </keybind>
     <keybind key="A-q">
-      <action name="Close" />
-    </keybind>
-    <keybind key="A-f">
-      <action name="ToggleMaximize" />
-    </keybind>
-    <keybind key="A-h">
-      <action name="MoveToEdge"><direction>left</direction></action>
-    </keybind>
-    <keybind key="A-l">
-      <action name="MoveToEdge"><direction>right</direction></action>
-    </keybind>
-    <keybind key="A-k">
-      <action name="MoveToEdge"><direction>up</direction></action>
-    </keybind>
-    <keybind key="A-j">
-      <action name="MoveToEdge"><direction>down</direction></action>
-    </keybind>
-    <keybind key="W-h">
-      <action name="SnapToEdge"><direction>left</direction></action>
-    </keybind>
-    <keybind key="W-l">
-      <action name="SnapToEdge"><direction>right</direction></action>
-    </keybind>
-    <keybind key="W-k">
-      <action name="SnapToEdge"><direction>up</direction></action>
-    </keybind>
-    <keybind key="W-j">
-      <action name="SnapToEdge"><direction>down</direction></action>
-    </keybind>
+    <action name="Close" />
+  </keybind>
+  <keybind key="A-f">
+    <action name="ToggleMaximize" />
+  </keybind>
+  <keybind key="A-h">
+    <action name="MoveToEdge"><direction>left</direction></action>
+  </keybind>
+  <keybind key="A-l">
+    <action name="MoveToEdge"><direction>right</direction></action>
+  </keybind>
+  <keybind key="A-k">
+    <action name="MoveToEdge"><direction>up</direction></action>
+  </keybind>
+  <keybind key="A-j">
+    <action name="MoveToEdge"><direction>down</direction></action>
+  </keybind>
+  <keybind key="W-h">
+    <action name="SnapToEdge"><direction>left</direction></action>
+  </keybind>
+  <keybind key="W-l">
+    <action name="SnapToEdge"><direction>right</direction></action>
+  </keybind>
+  <keybind key="W-k">
+    <action name="SnapToEdge"><direction>up</direction></action>
+  </keybind>
+  <keybind key="W-j">
+    <action name="SnapToEdge"><direction>down</direction></action>
+  </keybind>
+
+  <keybind key="A-Left">
+    <action name="MoveToEdge"><direction>left</direction></action>
+  </keybind>
+  <keybind key="A-Right">
+    <action name="MoveToEdge"><direction>right</direction></action>
+  </keybind>
+  <keybind key="A-Up">
+    <action name="MoveToEdge"><direction>up</direction></action>
+  </keybind>
+  <keybind key="A-Down">
+    <action name="MoveToEdge"><direction>down</direction></action>
+  </keybind>
+  <keybind key="W-Left">
+    <action name="SnapToEdge"><direction>left</direction></action>
+  </keybind>
+  <keybind key="W-Right">
+    <action name="SnapToEdge"><direction>right</direction></action>
+  </keybind>
+  <keybind key="W-Up">
+    <action name="SnapToEdge"><direction>up</direction></action>
+  </keybind>
+  <keybind key="W-Down">
+    <action name="SnapToEdge"><direction>down</direction></action>
+  </keybind>
+  i
     <keybind key="A-Space">
       <action name="ShowMenu"><menu>client-menu</menu></action>
     </keybind>
