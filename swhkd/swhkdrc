@@ -1,3 +1,7 @@
+# Reload swhkd
+Mod4 + r
+  pkexec pkill -HUP swhkd
+
 # XKeys
 XF86Audio{RaiseVolume,LowerVolume}
   pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
@@ -96,3 +100,7 @@ Mod4 + Shift + m
 # Play track
 Mod1 + Shift + m
   ~/.sh/menu_music
+
+# Paste
+Mod4 + v
+  cliphist list | ~/.sh/menu_cmd | cliphist decode | wl-copy
