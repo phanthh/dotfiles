@@ -4,10 +4,10 @@ Mod4 + r
 
 # XKeys
 XF86Audio{RaiseVolume,LowerVolume}
-  pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
+  pamixer -u{i,d} 2 && pamixer --get-volume > $WOBSOCK
 
 XF86AudioMute
-  pactl set-sink-mute @DEFAULT_SOURCE@ toggle
+  pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
 
 # Volume
 Mod1 + F1
@@ -28,10 +28,10 @@ Mod1 + F12
 
 # Brightness
 Mod1 + {F7,F8}
-  brightnessctl s 5%{-,+}
+  brightnessctl s 5%{-,+} | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 
 Mod1 + Shift + {F7,F8}
-  ~/.sh/util_exmonctl -{d,i} 5
+  ~/.sh/util_exmonctl -{d,i} 5 > $WOBSOCK
 
 # Power
 Mod1 + p

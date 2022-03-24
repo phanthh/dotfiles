@@ -6,7 +6,6 @@ export SESSION="sway"
 
 #=================== wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-
 export MOZ_DISABLE_RDD_SANDBOX=1
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_DBUS_REMOTE=1
@@ -30,6 +29,7 @@ export CALIBRE_USE_DARK_PALETTE=1
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+export WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
 
 #=================== migrate
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"

@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # daemons
+kanshi &
 dunst &
 lxsession -n &
+sworkstyle &
 
 swayidle -w \
 	timeout 3000 'swaylock -f' \
