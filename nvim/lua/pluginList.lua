@@ -16,9 +16,7 @@ require("packer").startup({
 		})
 
 		-- language server
-		use({
-			"neovim/nvim-lspconfig",
-		})
+		use({ "neovim/nvim-lspconfig" })
 
 		-- snippets
 		use({
@@ -29,13 +27,13 @@ require("packer").startup({
 			requires = {
 				"rafamadriz/friendly-snippets",
 			},
+			module = "luasnip",
 		})
 
 		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
 			event = "InsertEnter",
-			module = "cmp",
 			config = function()
 				require("plugins.nvim-cmp")
 			end,
