@@ -25,12 +25,12 @@ block = "focused_window"
 max_width = 50
 show_marks = "visible"
 
-[[block]]
-block = "toggle"
-command_state = "ibus engine | grep Bamboo"
-command_on = "~/.sh/util_toggleibus"
-command_off = "~/.sh/util_toggleibus"
-interval = 60
+# [[block]]
+# block = "toggle"
+# command_state = "ibus engine | grep Bamboo"
+# command_on = "~/.sh/util_toggleibus"
+# command_off = "~/.sh/util_toggleibus"
+# interval = 60
 
 [[block]]
 block = "music"
@@ -38,14 +38,14 @@ buttons = ["play", "next"]
 marquee_interval = 60
 on_click = "killall mpv; killall spotify"
 
-[[block]]
-block = "pomodoro"
-length = 50
-break_length = 10
-message = "Take a break!"
-break_message = "Back to work!"
-notifier = "notifysend"
-notifier_path = "~/.sh/wm_pomodoronoti"
+# [[block]]
+# block = "pomodoro"
+# length = 50
+# break_length = 10
+# message = "Take a break!"
+# break_message = "Back to work!"
+# notifier = "notifysend"
+# notifier_path = "~/.sh/wm_pomodoronoti"
 
 [[block]]
 block = "backlight"

@@ -27,31 +27,27 @@ require("packer").startup({
 			requires = {
 				"rafamadriz/friendly-snippets",
 			},
-			module = "luasnip",
 		})
 
 		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
 			config = function()
 				require("plugins.nvim-cmp")
 			end,
 			requires = {
-				{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-				{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
-				{ "hrsh7th/cmp-path", event = "InsertEnter" },
-				{ "hrsh7th/cmp-cmdline", event = "InsertEnter" },
+				{ "saadparwaiz1/cmp_luasnip" },
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "hrsh7th/cmp-cmdline" },
 				{
 					"uga-rosa/cmp-dictionary",
-					event = "InsertEnter",
 					config = function()
 						require("plugins.cmp-dictionary")
 					end,
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
-					event = "InsertEnter",
 					config = function()
 						require("plugins.cmp-nvim-lsp")
 					end,
@@ -304,9 +300,8 @@ require("packer").startup({
 		use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
-		use("kovetskiy/sxhkd-vim")
-		use("waycrate/swhkd-vim")
-
+		-- use("kovetskiy/sxhkd-vim")
+		-- use("waycrate/swhkd-vim")
 		-- use("airblade/vim-gitgutter")
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
