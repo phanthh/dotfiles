@@ -139,9 +139,6 @@ local mathh = {
 	s("xx", { t("\\times"), i(0) }),
 	s("**", { t("\\cdot"), i(0) }),
 	s("...", { t("\\ldots"), i(0) }),
-	s("pp", { t("\\pi "), i(0) }),
-	s("ss", { t("\\sin "), i(0) }),
-	s("cc", { t("\\cos "), i(0) }),
 	s("nn", { t("\\in "), i(0) }),
 	s("EE", { t("\\exists "), i(0) }),
 	s("sS", { t("\\subset "), i(0) }),
@@ -151,6 +148,12 @@ local mathh = {
 	s("lmup", fmta("\\limsup_{<1> \to <2>}<3>", { i(1, "n"), i(2, "\\infty"), i(0) })),
 	s("pd", fmta("\\frac{\\partial <1>}{partial <2>} <3>", { i(1), i(2, "x"), i(0) })),
 	s("//", fmta("\\frac{<1>}{<2>}<3>", { i(1), i(2), i(0) })),
+}
+
+local rsnip = {
+	s("iin", { t("%in%"), i(0) }),
+	s("pp", { t("%>%"), i(0) }),
+	s("**", { t("%*%"), i(0) }),
 }
 
 ls.autosnippets = {
@@ -164,11 +167,15 @@ ls.autosnippets = {
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
 		s("il", { t("*"), i(1), t("*"), i(0) }),
 	}, mathh),
-	rmd = u.iconcat({
-		-- bold, italic
-		s("bf", { t("**"), i(1), t("**"), i(0) }),
-		s("il", { t("*"), i(1), t("*"), i(0) }),
-	}, mathh),
+	rmd = u.iconcat(
+		u.iconcat({
+			-- bold, italic
+			s("bf", { t("**"), i(1), t("**"), i(0) }),
+			s("il", { t("*"), i(1), t("*"), i(0) }),
+		}, mathh),
+		rsnip
+	),
+	r = rsnip,
 	python = {
 		-- bold, italic
 		s("bf", { t("**"), i(1), t("**"), i(0) }),
