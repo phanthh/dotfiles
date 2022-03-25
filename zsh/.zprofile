@@ -24,7 +24,7 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SE
       echo "Session $SESSION is invalid !"
       ;;
   esac
-  $HOME/.sh/util_cleanup
+  $HOME/.sh/wm_cleanup
   /usr/bin/rm -rf $XDG_CACHE_HOME/*
 	logout
 	exit
