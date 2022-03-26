@@ -221,6 +221,7 @@ for_window [app_id="firefox" title="Extension: (Zotero Connector) - Zotero Item 
 for_window [title="Wi Hotspot"] floating enable
 for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
+for_window [title="Friends List" class="Steam"] floating enable
 
 # Transparency
 # for_window [app_id="Alacritty"] opacity $opacity
@@ -234,9 +235,11 @@ assign     [app_id="org.keepassxc.KeePassXC"] workspace number 1
 assign     [class="Spotify"] workspace number 2
 for_window [class="Spotify"] move to workspace number 2
 assign     [class="scrcpy"] workspace number 2
-assign     [app_id="osu"] workspace number 2
 
 # ws3 games
+assign     [app_id="osu"] workspace number 3
+assign     [class="exe"] workspace number 3
+assign     [class="Steam"] workspace number 3
 
 # ws4 trade
 assign     [class="Binance"] workspace number 4
