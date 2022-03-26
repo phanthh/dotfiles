@@ -236,9 +236,7 @@ for_window [class="Spotify"] move to workspace number 2
 assign     [class="scrcpy"] workspace number 2
 assign     [app_id="osu"] workspace number 2
 
-# ws3 lib
-assign     [app_id="calibre"] workspace number 3
-assign     [class="Zotero"] workspace number 3
+# ws3 games
 
 # ws4 trade
 assign     [class="Binance"] workspace number 4
@@ -258,7 +256,9 @@ assign     [class="jetbrains-idea-ce"] workspace number 7
 assign     [class="jetbrains-studio"] workspace number 7
 assign     [class="Code"] workspace number 7
 
-# ws8 work
+# ws8 office
+assign     [app_id="calibre"] workspace number 8
+assign     [class="Zotero"] workspace number 8
 assign     [app_id="libreoffice"] workspace number 8
 assign     [class="obsidian"] workspace number 8
 assign 		 [app_id="org.kde.okular"] workspace number 8
