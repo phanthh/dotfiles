@@ -297,7 +297,7 @@ require("packer").startup({
 		use({ "jbyuki/nabla.nvim", module = "nabla" })
 		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
-		use("ActivityWatch/aw-watcher-vim")
+		-- use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
 		-- use("kovetskiy/sxhkd-vim")

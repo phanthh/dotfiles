@@ -4,6 +4,7 @@
 set $fg #ffffff
 set $bg #101010
 set $pr #424242
+set $ac #202020
 set $opacity 0.95
 
 # Mod and Submod keys
@@ -167,17 +168,18 @@ bindsym $mod+less move workspace to output left
 for_window  [class=".*"] title_format "<b>%title</b>"
 title_align center
 
-# Window border
+# Window behaviors
 default_border pixel 1
 default_floating_border normal
 hide_edge_borders --i3 smart
+focus_on_window_activation smart
 
 # Window colors
 #                       border background text  indicator child_border
-client.focused          $fg    $bg        $fg   $fg       $fg
-client.unfocused        $bg    $bg        $fg   $fg       $bg
-client.focused_inactive $fg    $bg        $fg   $fg       $bg
-client.urgent           $fg    $bg        $fg   $fg  	    $fg
+client.focused          $fg    $bg        $fg   $ac       $fg
+client.unfocused        $bg    $bg        $fg   $ac       $bg
+client.focused_inactive $bg    $bg        $fg   $ac       $bg
+client.urgent           $fg    $bg        $fg   $ac 	    $fg
 
 # Mouse behaviors
 mouse_warping none
@@ -239,7 +241,7 @@ assign     [class="scrcpy"] workspace number 2
 # ws3 games
 assign     [app_id="osu"] workspace number 3
 assign     [class="exe"] workspace number 3
-assign     [class="Steam"] workspace number 2
+assign     [class="Steam"] workspace number 3
 
 # ws4 trade
 assign     [class="Binance"] workspace number 4
