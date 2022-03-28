@@ -235,11 +235,11 @@ assign     [app_id="org.keepassxc.KeePassXC"] workspace number 1
 assign     [class="Spotify"] workspace number 2
 for_window [class="Spotify"] move to workspace number 2
 assign     [class="scrcpy"] workspace number 2
-assign     [class="Steam"] workspace number 2
 
 # ws3 games
 assign     [app_id="osu"] workspace number 3
 assign     [class="exe"] workspace number 3
+assign     [class="Steam"] workspace number 2
 
 # ws4 trade
 assign     [class="Binance"] workspace number 4
