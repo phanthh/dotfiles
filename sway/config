@@ -4,7 +4,7 @@
 set $fg #ffffff
 set $bg #101010
 set $pr #424242
-set $ac #202020
+set $ac #ffffff
 set $opacity 0.95
 
 # Mod and Submod keys
