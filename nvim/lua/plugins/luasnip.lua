@@ -4,102 +4,26 @@ local u = require("utils")
 -- Custom snippets
 local ls = require("luasnip")
 local s = ls.snippet
-local sn = ls.snippet_node
-local isn = ls.indent_snippet_node
 local t = ls.text_node
 local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
-local r = ls.restore_node
-local fmta = require("luasnip.extras.fmt").fmta
-local events = require("luasnip.util.events")
-local ai = require("luasnip.nodes.absolute_indexer")
+local fmt = require("luasnip.extras.fmt").fmt
 
 ls.config.set_config({
 	enable_autosnippets = true,
 })
 
-ls.snippets = {
-	rmd = {
-		-- templage
-		s(
-			"ttt",
-			fmta(
-				[[
----
-title: <1>
-subtitle: <2>
-author: <3>
-date: "`r format(Sys.time(), '%d %B %Y')`"
-output: pdf_document
----
-
-<4>
-]],
-				{
-					i(1, "@title"),
-					i(2, "@subtitle"),
-					i(3, "@author"),
-					i(0),
-				}
-			)
-		),
-	},
-	tex = {
-		-- template
-		s(
-			"ttt",
-			fmta(
-				[[
-\documentclass[11pt]{article}
-\usepackage[a4paper, total={6in, 9in}]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[english]{babel}
-\usepackage{mathtools,amsmath,amssymb}
-\usepackage[shortlabels]{enumitem}
-\usepackage{subcaption}
-\usepackage{graphicx}
-
-% decor
-\usepackage{fancyhdr}
-\usepackage{setspace}
-\usepackage{hyperref}
-
-% header
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.3mm} % Top line width
-\renewcommand{\footrulewidth}{0mm} % Bottom line width
-\setlength{\headheight}{45pt}
-
-\lhead{}
-\chead{\hspace*{55mm}\raisebox{7mm}{\hspace*{31mm}\small\begin{tabular}{r}
-    \textbf{<1>} \\\\ <2> \\\\ \today \\\\
-\end{tabular}}}
-
-\title{<3>}
-\author{<4> \vspace*{0.5cm} \\\\ Hau Phan - 886680}
-
-\begin{document}
-\maketitle
-\thispagestyle{fancy}
-<5>
-\end{document}
-]],
-				{
-					i(1, "@coursename"),
-					i(2, "@courseid"),
-					i(3, "@title"),
-					i(4, "@subtitle"),
-					i(0),
-				}
-			)
-		),
-	},
+-- Quick format snippets
+local texformat = {
+	s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
+	s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
 }
 
+local mdformat = {
+	s("bf", { t("**"), i(1), t("**"), i(0) }),
+	s("il", { t("*"), i(1), t("*"), i(0) }),
+}
+
+-- Math snippets
 local mathh = {
 	-- env
 	s("mk", { t("$"), i(1), t("$"), i(0) }),
@@ -145,50 +69,118 @@ local mathh = {
 	s("Ss", { t("\\supset "), i(0) }),
 	s("SS", { t("\\{"), i(1), t("\\}"), i(0) }),
 	-- utils
-	s("lmup", fmta("\\limsup_{<1> \to <2>}<3>", { i(1, "n"), i(2, "\\infty"), i(0) })),
-	s("pd", fmta("\\frac{\\partial <1>}{partial <2>} <3>", { i(1), i(2, "x"), i(0) })),
-	s("//", fmta("\\frac{<1>}{<2>}<3>", { i(1), i(2), i(0) })),
+	s("lmup", fmt("\\limsup_{{{1} \to {2}}}{3}", { i(1, "n"), i(2, "\\infty"), i(0) })),
+	s("pd", fmt("\\frac{{\\partial {1}}}{{\\partial {2} }} {3}", { i(1), i(2, "x"), i(0) })),
+	s("//", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 
+-- Quick R snippets
 local rsnip = {
 	s("iin", { t("%in%"), i(0) }),
 	s("pp", { t("%>%"), i(0) }),
 	s("**", { t("%*%"), i(0) }),
 }
 
-ls.autosnippets = {
-	tex = u.iconcat({
-		-- bold, italic
-		s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
-		s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
-	}, mathh),
-	markdown = u.iconcat({
-		-- bold, italic
-		s("bf", { t("**"), i(1), t("**"), i(0) }),
-		s("il", { t("*"), i(1), t("*"), i(0) }),
-	}, mathh),
-	rmd = u.iconcat(
-		u.iconcat({
-			-- bold, italic
-			s("bf", { t("**"), i(1), t("**"), i(0) }),
-			s("il", { t("*"), i(1), t("*"), i(0) }),
-		}, mathh),
-		rsnip
+-- R
+ls.add_snippets("r", rsnip, { type = "autosnippets" })
+
+-- Rmd
+ls.add_snippets("rmd", rsnip, { type = "autosnippets" })
+ls.add_snippets("rmd", mathh, { type = "autosnippets" })
+ls.add_snippets("rmd", mdformat, { type = "autosnippets" })
+ls.add_snippets("rmd", {
+	s(
+		"ttt",
+		fmt(
+			[[
+---
+title: {1}
+subtitle: {2}
+author: {3}
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: pdf_document
+---
+
+{4}
+]],
+			{
+				i(1, "@title"),
+				i(2, "@subtitle"),
+				i(3, "@author"),
+				i(0),
+			}
+		)
 	),
-	r = rsnip,
-	python = {
-		-- bold, italic
-		s("bf", { t("**"), i(1), t("**"), i(0) }),
-		s("il", { t("*"), i(1), t("*"), i(0) }),
-		-- env
-		s("mk", { t("$"), i(1), t("$"), i(0) }),
-		s("dm", {
-			t({ "$$", "\t" }),
-			i(1),
-			t({ "\t", ".$$", "\t" }),
-			i(0),
-		}),
-		s(";;", { t({ "# %%", "" }), i(0) }),
-		s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),
-	},
-}
+})
+
+-- Latex
+ls.add_snippets("tex", mathh, { type = "autosnippets" })
+ls.add_snippets("tex", texformat, { type = "autosnippets" })
+ls.add_snippets("tex", {
+	-- template
+	s(
+		"ttt",
+		fmt(
+			[[
+%format
+\documentclass{{article}}
+\usepackage[a4paper]{{geometry}}
+\usepackage[english]{{babel}}
+\usepackage[utf8]{{inputenc}}
+\usepackage[shortlabels]{{enumitem}}
+\usepackage{{setspace}}
+\singlespacing
+
+%math
+\usepackage{{mathtools,amsmath,amssymb}}
+\usepackage{{graphicx}}
+
+%decor
+\usepackage{{setspace}}
+\usepackage{{hyperref}}
+\hypersetup{{
+  colorlinks=true,
+  citecolor=blue,
+  filecolor=black,
+  linkcolor=blue,
+  urlcolor=blue
+}}
+
+\usepackage{{fancyhdr}}
+\pagestyle{{fancy}}
+\fancyhf{{}}
+\lhead{{{1}: {2}}}
+\rfoot{{\thepage}}
+
+%meta
+\title{{{3}}}
+\author{{{4}}}
+
+\begin{{document}}
+\maketitle
+\thispagestyle{{fancy}}
+{5}
+\end{{document}}
+]],
+			{
+				i(1, "@courseid"),
+				i(2, "@coursename"),
+				i(3, "@title"),
+				i(4, "@author"),
+				i(0),
+			}
+		)
+	),
+})
+
+-- Markdown
+ls.add_snippets("md", mdformat, { type = "autosnippets" })
+ls.add_snippets("md", mathh, { type = "autosnippets" })
+
+-- Python
+ls.add_snippets("python", mdformat, { type = "autosnippets" })
+ls.add_snippets("python", mathh, { type = "autosnippets" })
+ls.add_snippets("python", {
+	s(";;", { t({ "# %%", "" }), i(0) }),
+	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),
+}, { type = "autosnippets" })
