@@ -174,8 +174,8 @@ ls.add_snippets("tex", {
 })
 
 -- Markdown
-ls.add_snippets("md", mdformat, { type = "autosnippets" })
-ls.add_snippets("md", mathh, { type = "autosnippets" })
+ls.add_snippets("markdown", mdformat, { type = "autosnippets" })
+ls.add_snippets("markdown", mathh, { type = "autosnippets" })
 
 -- Python
 ls.add_snippets("python", mdformat, { type = "autosnippets" })
