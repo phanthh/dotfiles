@@ -33,6 +33,12 @@ show_marks = "visible"
 # interval = 60
 
 [[block]]
+block = "custom"
+command = "i3-gnome-pomodoro status"
+on_click = "i3-gnome-pomodoro toggle"
+interval = 60
+
+[[block]]
 block = "music"
 buttons = ["play", "next"]
 marquee_interval = 60

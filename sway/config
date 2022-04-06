@@ -223,6 +223,7 @@ for_window [app_id="firefox" title="Extension: (Zotero Connector) - Zotero Item 
 for_window [title="Wi Hotspot"] floating enable
 for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
+for_window [app_id="gnome-pomodoro"] floating enable
 for_window [title="Friends List" class="Steam"] floating enable
 
 # Transparency
