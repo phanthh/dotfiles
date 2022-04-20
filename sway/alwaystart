@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# killall wm_pswall; wm_pswall &
-pkill -f 'kanshi'; kanshi &
-pkill -f 'sworkstyle'; sworkstyle &

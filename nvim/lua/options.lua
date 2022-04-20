@@ -45,7 +45,7 @@ vim.o.undofile = true
 
 -- misc
 vim.o.spelllang = "en_us"
-vim.o.hidden = true
+vim.o.hidden = false
 vim.o.shell = "/bin/sh"
 vim.o.shortmess = vim.o.shortmess .. "Ic"
 vim.o.clipboard = "unnamedplus"

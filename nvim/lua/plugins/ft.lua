@@ -40,7 +40,7 @@ require("filetype").setup({
 	overrides = {
 		-- extensions = { pn = "potion" },
 		complex = {
-			[".config/sway/config"] = "i3config",
+			[".config/sway/config"] = "sh",
 			[".config/tmux/tmux.conf"] = "tmux",
 			[".config/swhkd/*"] = "swhkd",
 			[".config/sxhkd/*"] = "sxhkd",
@@ -112,7 +112,7 @@ require("filetype").setup({
 					km("n", "<leader>zg", ":Telekasten search_notes<cr>", opts)
 					km("n", "<leader>zp", ":Telekasten paste_img_and_link<cr>", opts)
 					km("i", "<c-l>", "<esc><cmd>:Telekasten insert_link<cr>", { silent = true })
-					km("n", "<c-i>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
+					km("n", "<Tab>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
 				end,
 				["rmd"] = function()
 					vim.cmd("syntax on")

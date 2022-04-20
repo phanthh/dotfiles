@@ -2,9 +2,13 @@
 
 # Colors
 set $fg #ffffff
+set $bb #090909
 set $bg #101010
-set $pr #424242
+set $bl #202020
+set $gr #424242
+set $gl #696969
 set $ac #ffffff
+set $bd 3
 set $opacity 0.95
 
 # Mod and Submod keys
@@ -65,7 +69,7 @@ exec_always ~/.config/sway/alwaystart
 #================================ DISPLAY ====================================#
 
 # Background
-# output * bg #000000 solid_color
+# output * bg #101010 solid_color
 output * adaptive_sync on
 output * bg ~/Pictures/wallpaper/eleven-dark.jpg fill
 output HDMI-A-1 enable position 0,0
@@ -99,7 +103,22 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Change focus between tiling / floating windows
-bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border pixel 1; [floating con_id=__focused__] border normal
+
+
+                              #                       border background text  indicator child_border
+bindsym $mod+Shift+space floating toggle; \
+  [tiling con_id=__focused__] border pixel $bd, \
+                              client.focused          $bg    $gr        $fg   $ac       $gl, \
+                              client.unfocused        $bg    $bg        $fg   $ac       $bg, \
+                              client.focused_inactive $bg    $bg        $fg   $ac       $bg, \
+                              client.urgent           $bg    $gr        $fg   $ac 	    $fg, \
+                              titlebar_padding 15 10; \
+  [floating con_id=__focused__] border normal 5, \
+                              client.focused          $bl    $bl        $fg   $ac       $bl, \
+                              client.unfocused        $bb    $bb        $fg   $ac       $bb, \
+                              client.focused_inactive $bb    $bb        $fg   $ac       $bb, \
+                              client.urgent           $bl    $bl        $fg   $ac 	    $bl, \
+                              titlebar_padding 15 8;
 
 # Focus parent/child
 bindsym $mod+a focus parent
@@ -166,20 +185,22 @@ bindsym $mod+less move workspace to output left
 
 # Window title
 for_window  [class=".*"] title_format "<b>%title</b>"
-title_align center
+title_align left
 
 # Window behaviors
-default_border pixel 1
-default_floating_border normal
+default_border pixel $bd
+default_floating_border pixel $bd
+titlebar_padding 15 10
+titlebar_border_thickness 5
 hide_edge_borders --i3 smart
 focus_on_window_activation smart
 
 # Window colors
 #                       border background text  indicator child_border
-client.focused          $fg    $bg        $fg   $ac       $fg
+client.focused          $bg    $gr        $fg   $ac       $gl
 client.unfocused        $bg    $bg        $fg   $ac       $bg
 client.focused_inactive $bg    $bg        $fg   $ac       $bg
-client.urgent           $fg    $bg        $fg   $ac 	    $fg
+client.urgent           $bg    $gr        $fg   $ac 	    $fg
 
 # Mouse behaviors
 mouse_warping none
@@ -213,8 +234,14 @@ bar {
     # tray_output none
     # strip_workspace_numbers yes
 }
-
+#
 #============================ WINDOWS BEHAVIORS ==============================#
+
+# Decor
+for_window [title="."] title_format "   %title"
+for_window [app_id="blueman-manager"] title_format "   %title"
+for_window [app_id="mpv"] title_format "   %title"
+for_window [app_id="vlc"] title_format "   %title"
 
 # Floating
 for_window [app_id="pcmanfm"] floating enable
@@ -234,27 +261,45 @@ assign     [app_id="thunderbird"] workspace number 1
 assign     [class="Mailspring"] workspace number 1
 assign     [app_id="org.keepassxc.KeePassXC"] workspace number 1
 
+for_window [app_id="thunderbird"] title_format "   %title"
+for_window [class="Mailspring"] title_format "   %title"
+for_window [app_id="org.keepassxc.KeePassXC"] title_format "   %title"
+
+
 # ws2 media
 assign     [class="Spotify"] workspace number 2
 for_window [class="Spotify"] move to workspace number 2
 assign     [class="scrcpy"] workspace number 2
 
+for_window [class="Spotify"] title_format "   %title"
+for_window [class="scrcpy"] title_format "   %title"
+
 # ws3 games
-assign     [app_id="osu"] workspace number 3
+assign     [app_id="osu!"] workspace number 3
+for_window [app_id="osu!"] move to workspace number 3
 assign     [class="exe"] workspace number 3
 assign     [class="Steam"] workspace number 3
 
-# ws4 trade
-assign     [class="Binance"] workspace number 4
-for_window [class="Binance"] move to workspace number 4
+
+for_window [class="Steam"] title_format "   %title"
+
+# ws4 others
 assign     [class="Exodus"] workspace number 4
+assign     [app_id="org.qbittorrent.qBittorrent"] workspace number 4
+
+for_window [class="Exodus"] title_format "   %title"
+for_window [app_id="org.qbittorrent.qBittorrent"] title_format "   %title"
 
 # ws5 social
 assign     [class="discord"] workspace number 5
 for_window [class="discord"] workspace number 5
 
+for_window [class="discord"] title_format "   %title"
+
 # ws6 zoom
 assign     [app_id="zoom"] workspace number 6
+
+for_window [app_id="zoom"] title_format "   %title"
 
 # ws7 dev
 assign     [class="VirtualBox Machine"] workspace number 7
@@ -262,17 +307,41 @@ assign     [class="jetbrains-idea-ce"] workspace number 7
 assign     [class="jetbrains-studio"] workspace number 7
 assign     [class="Code"] workspace number 7
 
+for_window [class="jetbrains-idea-ce"] title_format "   %title"
+for_window [class="jetbrains-studio"] title_format "   %title"
+for_window [class="Code"] title_format "   %title"
+
 # ws8 office
 assign     [app_id="calibre"] workspace number 8
-assign     [class="Zotero"] workspace number 8
-assign     [app_id="libreoffice"] workspace number 8
-assign     [class="obsidian"] workspace number 8
 assign 		 [app_id="org.kde.okular"] workspace number 8
+assign 		 [app_id="org.pwmt.zathura"] workspace number 8
+assign     [app_id="libreoffice"] workspace number 8
+assign     [class="Zotero"] workspace number 8
+assign     [class="obsidian"] workspace number 8
+
+for_window [app_id="calibre"] title_format "   %title"
+for_window [app_id="org.kde.okular"] title_format "   %title"
+for_window [app_id="org.pwmt.zathura"] title_format "   %title"
+for_window [app_id="libreoffice"] title_format "   %title"
+for_window [class="Zotero"] title_format "   %title"
+for_window [class="obsidian"] title_format "   %title"
 
 # ws9 term
 assign     [app_id="Alacritty"] workspace number 9
 assign     [app_id="foot"] workspace number 9
 
+for_window [app_id="Alacritty"] title_format "   %title"
+for_window [app_id="foot"] title_format "   %title"
+
 # ws10 web
 assign     [app_id="firefox"] workspace number 10
+assign     [app_id="librewolf"] workspace number 10
 assign 		 [app_id="brave-browser"] workspace number 10
+assign 		 [class="Chromium"] workspace number 10
+
+for_window [app_id="firefox"] title_format "   %title"
+for_window [app_id="librewolf"] title_format "   %title"
+for_window [app_id="brave-browser"] title_format "   %title"
+for_window [class="Chromium"] title_format "   %title"
+
+#============================ WINDOW DECORATIONS ==============================#

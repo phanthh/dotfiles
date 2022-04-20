@@ -30,7 +30,7 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-left
+    origin = bottom-right
 
     # Offset from the origin
     offset = 20x20
@@ -86,10 +86,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#ffffff"
+    frame_color = "#696969"
 
     # Define a color for the separator.
     # possible values are:
@@ -294,14 +294,14 @@
     background = "#202020"
 		foreground = "#ffffff"
     frame_color = "#0078d7"
-    timeout = 30
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
     background = "#202020"
 		foreground = "#ffffff"
-    frame_color = "#ffffff"
+    frame_color = "#696969"
     timeout = 0
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon

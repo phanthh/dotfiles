@@ -2,7 +2,7 @@ umask 027
 
 #====================== session
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty && ! -z $SESSION ]]; then
-  echo "Starting $SESSION session..."
+  echo "Starting $SESSION session...\n"
   echo -e "\nimport art\nart.tprint('$SESSION',font='sblood')" | python
   case $SESSION in
     sway)

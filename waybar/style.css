@@ -1,215 +1,94 @@
-/* =============================================================================
- *
- * Waybar styles
- *
- * Styles reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
+@define-color bg #000000;
+@define-color fg #ffffff;
+@define-color dark #181818;
+@define-color light #272727;
+@define-color red #eb4d4b;
 
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-    70% {
-        color: white;
-    }
-
-    to {
-        color: white;
-        background-color: orange;
-    }
-}
-
-@keyframes blink-critical {
-    70% {
-      color: white;
-    }
-
-    to {
-        color: white;
-        background-color: red;
-    }
-}
-
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Cantarell, "Font Awesome 6 Free Solid", "Font Awesome 6 Brands", "Font Awesome 6 Free Regular", Noto Sans;
+    font-size: 13px;
     border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+    border-radius: 3px;
 }
 
-/* The whole bar */
-#waybar {
-    background-color: #101010; /* Sway palette: unfocused/background */
-    color: #ffffff; /* Sway palette: focused/text */
-    font-family: NotoSans Nerd Font;
-    font-size: 12px;
+window#waybar {
+    background-color: @bg;
+    border-radius: 0px;
+    color: @fg;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-/* Each module */
-#backlight,
-#battery,
 #clock,
 #cpu,
-#custom-keyboard-layout,
-#idle_inhibitor,
-#memory,
-#mode,
-#network,
-#pulseaudio,
 #temperature,
-#tray {
-    margin-left: 18px;
+#memory,
+#custom-media,
+#tray,
+#mode,
+#disk,
+#custom-powermenu,
+#custom-audio,
+#language,
+#network,
+#custom-launcher {
+    padding: 0 8;
+    background: @dark;
+    margin-top: 6;
+    margin-bottom: 6;
 }
 
-#backlight {
-    /* No styles */
+#language,
+#custom-powermenu,
+#custom-audio {
+    background: @light;
 }
 
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: orange;
-}
-
-#battery.critical {
-    color: red;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#cpu {
-  /* No styles */
-}
-
-#cpu.warning {
-    color: orange;
-}
-
-#cpu.critical {
-    color: red;
-}
-
-#custom-keyboard-layout {
-    margin-left: 22px;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#memory.warning {
-    color: orange;
-}
-
-#memory.critical {
-    color: red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    color: #ffffff; /* Sway palette: urgent/text */
-    background-color: #900000; /* Sway palette: urgent/background */
-    margin-left: 0;
-    /* To compensate for the top border and still have vertical centering */
-    padding: 0 16px;
-}
-
-#network {
-    /* No styles */
-}
-
-#network.disconnected {
-    color: orange;
-}
-
-#pulseaudio {
-    /* No styles */
-}
-
-#pulseaudio.muted {
-    /* No styles */
-}
-
-#temperature {
-    /* No styles */
-}
-
-#temperature.critical {
-    color: red;
-}
-
-#tray {
-    /* No styles */
-}
-
-#window {
-    margin-left: 32px;
-    margin-right: 32px;
+#custom-launcher {
+    margin: 0;
+    margin-right: 0;
+    border-radius: 0;
+    padding: 0 13;
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 15px;
-    padding-right: 18px;
-    color: #888888; /* Sway palette: unfocused/text */
+    color: @fg;
+    padding: 0px 5px 0px 5px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 #workspaces button:hover {
-    /* Reset all hover styles */
-    background: inherit;
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-
-#workspaces button.visible {
-    border-color: #333333; /* Sway palette focused_inactive/border */
-    color: #ffffff; /* Sway palette: focused_inactive/text */
-    background-color: #5f676a; /* Sway palette focused_inactive/background */
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.focused {
-    border-color: #4c7899; /* Sway palette: focused/border */
-    color: #ffffff; /* Sway palette: focused/text */
-    background-color: #285577; /* Sway palette: focused/background */
+    background-color: @light;
 }
 
 #workspaces button.urgent {
-    border-color: #2f343a; /* Sway palette: urgent/border */
-    color: #ffffff; /* Sway palette: urgent/text */
-    background-color: #900000; /* Sway palette: urgent/background */
+    background-color: @red;
 }
 
-#taskbar button {
-  padding-left: 18px;
-  padding-right: 18px;
+#taskbar {
+    margin-top: 3px;
+}
+#taskbar button.active {
+    background: @light;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
 }

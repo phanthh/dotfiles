@@ -1,5 +1,5 @@
 local override = {
-	vscBack = "#000000",
+	vscBack = "#101010",
 	vscLeftDark = "#101010",
 	vscPopupBack = "#101010",
 	vscPopupHighlightBlue = "#9CDCFE",

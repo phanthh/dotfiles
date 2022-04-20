@@ -193,6 +193,16 @@ require("packer").startup({
 								}
 							end,
 						},
+						cpp = {
+							function()
+								return {
+									exe = "clang-format",
+									args = { "--assume-filename", vim.api.nvim_buf_get_name(0) },
+									stdin = true,
+									cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
+								}
+							end,
+						},
 						python = {
 							function()
 								return {
@@ -225,7 +235,7 @@ require("packer").startup({
 			config = function()
 				require("Comment").setup()
 			end,
-			keys = "gc",
+			key = "gc",
 		})
 
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
@@ -261,7 +271,7 @@ require("packer").startup({
 			config = function()
 				require("colorizer").setup()
 			end,
-			ft = { "css", "scss", "typescriptreact", "dosini", "toml", "yaml" },
+			ft = { "css", "scss", "typescriptreact", "dosini", "toml", "yaml", "sh", "cfg" },
 		})
 
 		use({
@@ -297,9 +307,21 @@ require("packer").startup({
 		use({ "jbyuki/nabla.nvim", module = "nabla" })
 		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
-		-- use("ActivityWatch/aw-watcher-vim")
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
+		-- use({
+		-- 	"itchyny/calendar.vim",
+		-- 	cmd = "Calendar",
+		-- 	config = function()
+		-- 		vim.g.calendar_google_calendar = 1
+		-- 		vim.g.calendar_google_task = 0
+		-- 		vim.g.calendar_google_api_key = os.getenv("CALENDAR_VIM_API_KEY")
+		-- 		vim.g.calendar_google_client_id = os.getenv("CALENDAR_VIM_CLIENT_ID")
+		-- 		vim.g.calendar_google_client_secret = os.getenv("CALENDAR_VIM_CLIENT_SECRET")
+		-- 	end,
+		-- })
+		-- use("ActivityWatch/aw-watcher-vim")
+		-- use("spywhere/tmux.nvim")
 		-- use("kovetskiy/sxhkd-vim")
 		-- use("waycrate/swhkd-vim")
 		-- use("airblade/vim-gitgutter")

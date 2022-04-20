@@ -90,6 +90,11 @@ hl() {
   $1 --help | less
 }
 
+# utils
+u() {
+  "util_$1" "${@:2}"
+}
+
 #=========================== fzf
 
 # kill process

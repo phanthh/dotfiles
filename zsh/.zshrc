@@ -1,5 +1,6 @@
 #========================= tmux
 [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+# [ -z "${NVIM_LISTEN_ADDRESS}" ] && nvim "term://$SHELL"
 
 #========================= distrobox
 HOST_DISTRO='arch'
@@ -101,5 +102,5 @@ eval "$(zoxide init zsh --cmd cd)"
 
 #======================= welcome
 if [[ $XDG_SESSION_TYPE != tty ]]; then
-	echo "$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
+	echo "\n$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
 fi

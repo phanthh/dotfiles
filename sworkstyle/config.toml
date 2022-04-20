@@ -11,15 +11,15 @@
 # icon: Your beatifull icon
 #
 # verbose format:
-# 
+#
 #	'{pattern}' = { type = 'generic' | 'exact', value = '{icon}' }
 #
 #
 # If it couldn't match something it will print:
-# 
-# WARN [sworkstyle:config] No match for '{app_name}' with title '{title}' 
 #
-# You can use {title} to do a generic matching 
+# WARN [sworkstyle:config] No match for '{app_name}' with title '{title}'
+#
+# You can use {title} to do a generic matching
 # You can use {app_name} to do an exact match
 
 fallback = ''
@@ -32,7 +32,6 @@ fallback = ''
 'vlc' = ''
 'zoom' = ''
 'org.qbittorrent.qBittorrent' = ''
-'Thunderbird' = ''
 'thunderbird' = ''
 'Postman' = ''
 'Insomnia' = ''
@@ -46,8 +45,8 @@ fallback = ''
 'neovide' = ''
 'Spotify' = ''
 'GitHub Desktop' = ''
-'/(?i)Github.*Firefox/' = ''
 'firefox' = ''
+'librewolf' = ''
 'Nightly' = ''
 'firefoxdeveloperedition' = ''
 '/nvim ?\w*/' = ''
@@ -59,11 +58,12 @@ fallback = ''
 'org.pwmt.zathura' = ''
 'libreoffice' = ''
 'org.kde.okular' = ''
-'/calibre/' = ''
+'calibre' = ''
 'Zotero' = ''
 'scrcpy' = ''
 '/android/' = ''
 'obsidian' = ''
 'blueman-manager' = ''
 'Binance' = ''
+'Exodus' = ''
 'mpv' = ''

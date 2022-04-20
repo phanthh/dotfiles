@@ -12,17 +12,13 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	mapping = {
-		["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-		["<c-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<c-y>"] = cmp.config.disable,
-		["<c-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		["<cr>"] = cmp.mapping.confirm({ select = true }),
-		["<c-j>"] = cmp.mapping(function(fallback)
+	mapping = cmp.mapping.preset.insert({
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-j>"] = cmp.mapping(function(fallback)
 			if luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif has_words_before() then
@@ -32,7 +28,7 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 
-		["<c-k>"] = cmp.mapping(function(fallback)
+		["<C-k>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			elseif cmp.visible() then
@@ -41,7 +37,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+	}),
 	sources = cmp.config.sources({
 		{ name = "path" },
 		{ name = "nvim_lsp" },
@@ -52,9 +48,17 @@ cmp.setup({
 })
 
 cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
 		{ name = "cmdline" },
 	}),
+})
+
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
 })

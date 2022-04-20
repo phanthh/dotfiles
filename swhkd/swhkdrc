@@ -72,6 +72,10 @@ Print
 Mod1 + Shift + d
   ~/.sh/menu_pass
 
+# Pomodoro
+# Mod1 + d
+#  gnome-pomodoro
+
 # Applications
 Mod1 + Shift + {a,s,c,e,o,z,b,p,semicolon}
   ~/.sh/wm_open {$(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.'),\

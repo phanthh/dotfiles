@@ -20,7 +20,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_LIBRARY_HOME="$HOME/.local/lib"
 
 #=================== defaults
-export EDITOR="nvim"
+export EDITOR="nvim" #nvim
 export GEDITOR="neovide"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 # export TASKRC="$XDG_CONFIG_HOME/task/taskrc"

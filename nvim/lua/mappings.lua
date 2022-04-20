@@ -26,3 +26,17 @@ km("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 km("n", "gdd", "<cmd>Neogen<cr>", opts)
 km("n", "<c-f>", "<cmd>HopWord<cr>", opts)
 km("i", "jf", "<esc><cmd>HopWord<cr>", opts)
+
+-- terminal
+-- km("n", "<c-a>v", "<cmd>vsplit term://$SHELL<bar>startinsert<cr>", opts)
+-- km("n", "<c-a>s", "<cmd>split term://$SHELL<bar>startinsert<cr>", opts)
+-- km("t", "<c-a>v", "<cmd>vsplit term://$SHELL<bar>startinsert<cr>", opts)
+-- km("t", "<c-a>s", "<cmd>split term://$SHELL<bar>startinsert<cr>", opts)
+--
+-- for _, v in pairs({ "i", "t", "n" }) do
+-- 	km(v, "<c-a>j", "<c-\\><c-n><c-w>j", opts)
+-- 	km(v, "<c-a>k", "<c-\\><c-n><c-w>k", opts)
+-- 	km(v, "<c-a>h", "<c-\\><c-n><c-w>h", opts)
+-- 	km(v, "<c-a>l", "<c-\\><c-n><c-w>l", opts)
+-- 	km(v, "<c-a>c", "<c-\\><c-n><c-w>c", opts)
+-- end
