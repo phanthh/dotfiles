@@ -38,7 +38,7 @@ input type:keyboard {
 
 # Touchpad
 input type:touchpad {
-    # events disabled
+    events disabled
     tap enabled
     natural_scroll enabled
 		scroll_factor 0.5
