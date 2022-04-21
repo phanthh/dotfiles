@@ -1,6 +1,6 @@
 #!/bin/sh
 
-lxsession -n # XDG_AUTOSTART
+lxsession -n & # XDG_AUTOSTART
 swaybg -i "$HOME/Pictures/wallpaper/eleven-dark.jpg" -o '*' -m fill & # background
 waybar & # bar
 
