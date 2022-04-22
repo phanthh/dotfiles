@@ -72,12 +72,8 @@ Print
 Mod1 + Shift + d
   ~/.sh/menu_pass
 
-# Pomodoro
-# Mod1 + d
-#  gnome-pomodoro
-
 # Applications
-Mod1 + Shift + {a,s,c,e,o,z,b,p,semicolon}
+Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
   ~/.sh/wm_open {$(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.'),\
                  spotify,\
                  calibre,\
@@ -86,6 +82,7 @@ Mod1 + Shift + {a,s,c,e,o,z,b,p,semicolon}
                  zotero,\
                  blueman-manager,\
                  keepassxc,\
+                 gnome-pomodoro,\
                  neovide}
 
 
