@@ -206,7 +206,7 @@ require("packer").startup({
 						python = {
 							function()
 								return {
-									exe = "/usr/bin/black",
+									exe = "black",
 									args = { "-" },
 									stdin = true,
 								}
