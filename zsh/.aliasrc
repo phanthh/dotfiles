@@ -12,7 +12,7 @@ alias intop="sudo intel_gpu_top"
 alias ratop="sudo radeontop"
 
 #======================== frequent
-alias ls="exa -h"
+alias ls="exa"
 alias l="ls -l"
 alias la="ls -la"
 # alias ls="ls --color=always --group-directories-first --time-style=iso"
