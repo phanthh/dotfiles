@@ -43,7 +43,7 @@ require("filetype").setup({
 			[".config/sway/config"] = "sh",
 			[".config/tmux/tmux.conf"] = "tmux",
 			[".config/swhkd/*"] = "swhkd",
-			[".config/sxhkd/*"] = "sxhkd",
+			-- [".config/sxhkd/*"] = "sxhkd",
 			[".config/waybar/config"] = "json",
 			["fstab"] = "fstab",
 			["sudoers"] = "sudoers",

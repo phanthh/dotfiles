@@ -323,7 +323,7 @@ require("packer").startup({
 		-- use("ActivityWatch/aw-watcher-vim")
 		-- use("spywhere/tmux.nvim")
 		-- use("kovetskiy/sxhkd-vim")
-		-- use("waycrate/swhkd-vim")
+		use("waycrate/swhkd-vim")
 		-- use("airblade/vim-gitgutter")
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'

@@ -1,5 +1,5 @@
 #========================= tmux
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ ! -z "${DISPLAY}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 # [ -z "${NVIM_LISTEN_ADDRESS}" ] && nvim "term://$SHELL"
 
 #========================= distrobox

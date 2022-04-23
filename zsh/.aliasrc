@@ -12,10 +12,10 @@ alias intop="sudo intel_gpu_top"
 alias ratop="sudo radeontop"
 
 #======================== frequent
-alias ls="exa"
+# [ ! -z $DISPLAY ] && alias ls="exa"
+alias ls="ls -hv --color=always --time-style=iso --group-directories-first"
 alias l="ls -l"
 alias la="ls -la"
-# alias ls="ls --color=always --group-directories-first --time-style=iso"
 alias ka="killall"
 # alias prime-run="__GL_SHOW_GRAPHICS_OSD=1 prime-run"
 alias jl="prime-run jupyter lab"

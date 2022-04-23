@@ -3,6 +3,7 @@
 #=================== session
 # sway - labwc - shell - gnome - plasma
 export SESSION="sway"
+export SESSION_HOLD=0
 
 #=================== wayland
 export _JAVA_AWT_WM_NONREPARENTING=1

@@ -64,7 +64,7 @@ seat seat0 hide_cursor when-typing enable
 #============================= STARTUP SCRIPTS ===============================#
 
 exec ~/.config/sway/autostart
-exec_always ~/.config/sway/alwaystart
+# exec_always ~/.config/sway/alwaystart
 
 #================================ DISPLAY ====================================#
 
