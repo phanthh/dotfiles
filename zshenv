@@ -79,6 +79,9 @@ export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export R_LIBS_USER="$HOME/.local/lib/R"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 
+export LESS="-R --use-color -Dd+b"
+export MANPAGER="less"
+
 #=================== path
 export PATH="$PATH:$CARGO_HOME/bin"
 export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"

@@ -1,5 +1,8 @@
 #========================= tmux
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ ! -z "${DISPLAY}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+[[ -x "$(command -v tmux)" && -z ${TMUX} && $XDG_SESSION_TYPE != tty ]] && {
+  tmux attach || tmux
+} >/dev/null 2>&1
+
 # [ -z "${NVIM_LISTEN_ADDRESS}" ] && nvim "term://$SHELL"
 
 #========================= distrobox
@@ -17,7 +20,7 @@ DISTROPROMPT=''
 #========================= history
 HISTSIZE=1000000
 SAVEHIST=1000000
-[ ! -d ~/.cache/zsh ] && mkdir ~/.cache/zsh
+[[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
 HISTFILE=~/.cache/zsh/history
 
 #========================= vim
@@ -101,6 +104,6 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
 eval "$(zoxide init zsh --cmd cd)"
 
 #======================= welcome
-if [[ $XDG_SESSION_TYPE != tty ]]; then
-	echo "\n$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
-fi
+[[ $XDG_SESSION_TYPE != tty ]] && {
+  echo "\n$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
+}
