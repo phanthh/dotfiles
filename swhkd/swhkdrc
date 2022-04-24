@@ -39,10 +39,10 @@ Mod1 + p
 
 # System
 Mod4 + {_,Shift +} @{x,escape}
-  {swaylock,~/.sh/menu_prompt "shutdown" "poweroff",systemctl suspend,~/.sh/menu_reboot}
+  {swaylock,~/.sh/menu_prompt "⏻" "poweroff",systemctl suspend,~/.sh/menu_reboot}
 
 Mod4 + Shift + @e
-  ~/.sh/menu_logout
+  ~/.sh/menu_prompt "" "swaymsg exit"
 
 # Terminal
 Mod1 + {_,Shift + }Return
