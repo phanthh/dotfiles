@@ -8,6 +8,7 @@ pkill -f 'gammastep' &
 pkill -f 'wluma' &
 pkill -f "tail -f $WOBSOCK" &
 pkill -f 'clight' &
+pkill -f 'tmux' &
 # activitywatch
 # pkill -f 'aw-watcher' &
 # pkill -f 'aw-qt' &

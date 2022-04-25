@@ -252,6 +252,7 @@ for_window [title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="org.kde.okular" title="New Text Note — Okular"] floating enable
 for_window [app_id="gnome-pomodoro"] floating enable
 for_window [title="Friends List" class="Steam"] floating enable
+for_window [app_id="zenity"] floating enable
 
 # Transparency
 # for_window [app_id="Alacritty"] opacity $opacity
@@ -343,5 +344,9 @@ for_window [app_id="firefox"] title_format "   %title"
 for_window [app_id="librewolf"] title_format "   %title"
 for_window [app_id="brave-browser"] title_format "   %title"
 for_window [class="Chromium"] title_format "   %title"
+
+# free
+
+for_window [app_id="pavucontrol"] title_format "   %title"
 
 #============================ WINDOW DECORATIONS ==============================#
