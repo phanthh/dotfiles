@@ -38,11 +38,8 @@ Mod1 + p
   ~/.sh/menu_powerprofile
 
 # System
-Mod4 + {_,Shift +} @{x,escape}
-  {swaylock,~/.sh/menu_prompt "⏻" "poweroff",systemctl suspend,~/.sh/menu_reboot}
-
-Mod4 + Shift + @e
-  ~/.sh/menu_prompt "" "swaymsg exit"
+Mod4 + x
+  ~/.sh/menu_control
 
 # Terminal
 Mod1 + {_,Shift + }Return

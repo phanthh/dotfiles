@@ -40,9 +40,10 @@ interval = 60
 
 [[block]]
 block = "music"
+player = "spotify"
 buttons = ["play", "next"]
 marquee_interval = 60
-on_click = "killall mpv; killall spotify"
+# on_click = "killall spotify"
 
 # [[block]]
 # block = "pomodoro"
