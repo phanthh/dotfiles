@@ -29,6 +29,7 @@ alias bs="~/.sh/util_distroboxsetup"
 alias br="~/.sh/util_browse"
 alias wine-run="~/.sh/util_wine"
 alias proton-run="~/.sh/util_proton"
+alias cmatrix="cmatrix -C blue"
 
 #======================== utils
 alias tt="ttyper --language english1000"
