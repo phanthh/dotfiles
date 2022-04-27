@@ -21,7 +21,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_LIBRARY_HOME="$HOME/.local/lib"
 
 #=================== defaults
-export EDITOR="nvim" #nvim
+export EDITOR="nvim"
 export GEDITOR="neovide"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 # export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
@@ -31,6 +31,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
+export LESS="-R --use-color -Dd+b"
+export MANPAGER="less"
 
 #=================== migrate
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
@@ -52,10 +54,13 @@ export YTFZF_CONFIG_FILE="$YTFZF_CONFIG_DIR/conf.sh"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
-#=================== mamba
+
+#=================== mamba / python
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export MAMBARC="$XDG_CONFIG_HOME/mambarc"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+[ ! -d $XDG_CACHE_HOME/keras ] && mkdir -p $XDG_CACHE_HOME/keras
 
 #=================== rust
 export RUSTUP_HOME="$XDG_LIBRARY_HOME/rustup"
@@ -78,9 +83,6 @@ export R_HOME_USER="$XDG_DATA_HOME/R"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export R_LIBS_USER="$HOME/.local/lib/R"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
-
-export LESS="-R --use-color -Dd+b"
-export MANPAGER="less"
 
 #=================== path
 export PATH="$PATH:$CARGO_HOME/bin"
