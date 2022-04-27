@@ -65,6 +65,9 @@ Mod4 + d
 Print
   grim -g "$(slurp)" - | wl-copy
 
+Shift + Print
+  grim -g "$(slurp)" /tmp/grim.png && wl-copy < /tmp/grim.png && imv /tmp/grim.png
+
 # Password
 Mod1 + Shift + d
   ~/.sh/menu_pass
@@ -81,7 +84,6 @@ Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
                  keepassxc,\
                  gnome-pomodoro,\
                  neovide}
-
 
 # Toggle Ibus
 Mod1 + z
