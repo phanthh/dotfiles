@@ -54,13 +54,12 @@ export YTFZF_CONFIG_FILE="$YTFZF_CONFIG_DIR/conf.sh"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
-
 #=================== mamba / python
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export MAMBARC="$XDG_CONFIG_HOME/mambarc"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-[ ! -d $XDG_CACHE_HOME/keras ] && mkdir -p $XDG_CACHE_HOME/keras
+[ ! -d $XDG_CACHE_HOME/keras ] && mkdir $XDG_CACHE_HOME/keras
 
 #=================== rust
 export RUSTUP_HOME="$XDG_LIBRARY_HOME/rustup"
@@ -75,6 +74,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/opt/flutter/bin"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+
+#=================== wine
+[ ! -D $XDG_CACHE_HOME/wine-temp ] && mkdir $XDG_CACHE_HOME/wine-temp
 
 #=================== configs
 . $XDG_CONFIG_HOME/nnn/config
