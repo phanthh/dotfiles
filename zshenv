@@ -76,7 +76,7 @@ export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
 #=================== wine
-[ ! -D $XDG_CACHE_HOME/wine-temp ] && mkdir $XDG_CACHE_HOME/wine-temp
+[ ! -d $XDG_CACHE_HOME/wine-temp ] && mkdir $XDG_CACHE_HOME/wine-temp
 
 #=================== configs
 . $XDG_CONFIG_HOME/nnn/config
