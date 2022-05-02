@@ -18,6 +18,7 @@ local exts_ft = {
 	["ts"] = "typescript",
 	["tsx"] = "typescriptreact",
 	["md"] = "markdown",
+	["m"] = "matlab",
 }
 
 local spec_ft = function(base, conf)
@@ -58,6 +59,9 @@ require("filetype").setup({
 			end, {
 				["r"] = function()
 					repl_spec("R")
+				end,
+				["m"] = function()
+					repl_spec("octave")
 				end,
 				["py"] = function()
 					vim.o.spell = true
