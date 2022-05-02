@@ -2,7 +2,7 @@
 # edit
 e() {
   case "$1" in
-    *.py)
+    *.py|pythonrc)
       micromamba activate ;;
     *)
       ;;

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-lxsession -n & # XDG_AUTOSTART
+lxsession -n &                                                        # XDG_AUTOSTART
 swaybg -i "$HOME/Pictures/wallpaper/eleven-dark.jpg" -o '*' -m fill & # background
-waybar & # bar
+waybar &                                                              # bar
 
 # sfwbar -m eDP-1 &
 # sfwbar -m HDMI-A-1 &
