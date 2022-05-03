@@ -60,6 +60,7 @@ export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export R_HISTFILE="$XDG_DATA_HOME/R/.Rhistory"
 export R_HOME_USER="$XDG_DATA_HOME/R"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
 # cache
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
