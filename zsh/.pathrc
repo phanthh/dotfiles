@@ -1,7 +1,6 @@
 #!/usr/bin/zsh
-#
 
-# append
+# append (lower priority)
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
@@ -10,6 +9,7 @@ export PATH="$PATH:/opt/flutter/bin"
 export PATH="$PATH:$CARGO_HOME/bin"
 export PATH="$PATH:$XDG_DATA_HOME/solana/install/active_release/bin"
 
-# prepend
+# prepend (high priority)
 export PATH="$XDG_LIBRARY_HOME/npm/bin:$PATH"
-export PATH="$HOME/.local/bin:$HOME/.sh:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.sh:$PATH"
