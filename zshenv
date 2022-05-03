@@ -77,7 +77,8 @@ export R_LIBS_USER="$XDG_LIBRARY_HOME/R"
 
 # other
 export TFDS_DATA_DIR="$HOME/Analysis/datasets/tensorflow_datasets"
-export WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
+export WOBSOCK="$XDG_RUNTIME_DIR/wob.sock"
+export SOVSOCK="$XDG_RUNTIME_DIR/sov.sock"
 
 #=================== nnn
 . $XDG_CONFIG_HOME/nnn/config

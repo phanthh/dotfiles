@@ -6,9 +6,12 @@ pkill -f 'dunst' &
 pkill -f 'sworkstyle' &
 pkill -f 'gammastep' &
 pkill -f 'wluma' &
-pkill -f "tail -f $WOBSOCK" &
 pkill -f 'clight' &
 pkill -f 'tmux' &
+pkill -f "tail -f $WOBSOCK" &
+pkill -f "tail -f $SOVSOCK" &
+pkill -f 'sov' &
+
 # activitywatch
 # pkill -f 'aw-watcher' &
 # pkill -f 'aw-qt' &
