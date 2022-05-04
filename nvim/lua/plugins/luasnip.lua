@@ -1,18 +1,18 @@
 require("luasnip.loaders.from_vscode").lazy_load()
-local u = require("utils")
 
--- Custom snippets
-local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+
+local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 
 ls.config.set_config({
 	enable_autosnippets = true,
 })
 
--- Quick format snippets
+---- Common snippets
+-- formatting
 local texformat = {
 	s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
 	s("il", { t("\\textit{"), i(1), t("}"), i(0) }),
@@ -23,7 +23,7 @@ local mdformat = {
 	s("il", { t("*"), i(1), t("*"), i(0) }),
 }
 
--- Math snippets
+-- math
 local mathh = {
 	-- env
 	s("mk", { t("$"), i(1), t("$"), i(0) }),
@@ -74,7 +74,7 @@ local mathh = {
 	s("//", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 
--- Quick R snippets
+-- R
 local rsnip = {
 	s("iin", { t("%in%"), i(0) }),
 	s("pp", { t("%>%"), i(0) }),
