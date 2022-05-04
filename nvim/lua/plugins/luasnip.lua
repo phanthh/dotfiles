@@ -1,17 +1,17 @@
 require("luasnip.loaders.from_vscode").lazy_load()
 
+local fmt = require("luasnip.extras.fmt").fmt
+local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
-
-local ls = require("luasnip")
-local fmt = require("luasnip.extras.fmt").fmt
 
 ls.config.set_config({
 	enable_autosnippets = true,
 })
 
 ---- Common snippets
+
 -- formatting
 local texformat = {
 	s("bf", { t("\\textbf{"), i(1), t("}"), i(0) }),
@@ -70,7 +70,7 @@ local mathh = {
 	s("SS", { t("\\{"), i(1), t("\\}"), i(0) }),
 	-- utils
 	s("lmup", fmt("\\limsup_{{{1} \to {2}}}{3}", { i(1, "n"), i(2, "\\infty"), i(0) })),
-	s("pd", fmt("\\frac{{\\partial {1}}}{{\\partial {2} }} {3}", { i(1), i(2, "x"), i(0) })),
+	s("pdd", fmt("\\frac{{\\partial {1}}}{{\\partial {2} }} {3}", { i(1), i(2, "x"), i(0) })),
 	s("//", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 
@@ -80,6 +80,8 @@ local rsnip = {
 	s("pp", { t("%>%"), i(0) }),
 	s("**", { t("%*%"), i(0) }),
 }
+
+---- Adding snippets
 
 -- R
 ls.add_snippets("r", rsnip, { type = "autosnippets" })
@@ -117,7 +119,6 @@ output: pdf_document
 ls.add_snippets("tex", mathh, { type = "autosnippets" })
 ls.add_snippets("tex", texformat, { type = "autosnippets" })
 ls.add_snippets("tex", {
-	-- template
 	s(
 		"ttt",
 		fmt(
@@ -178,8 +179,8 @@ ls.add_snippets("markdown", mdformat, { type = "autosnippets" })
 ls.add_snippets("markdown", mathh, { type = "autosnippets" })
 
 -- Python
-ls.add_snippets("python", mdformat, { type = "autosnippets" })
-ls.add_snippets("python", mathh, { type = "autosnippets" })
+ls.add_snippets("python", mdformat)
+ls.add_snippets("python", mathh)
 ls.add_snippets("python", {
 	s(";;", { t({ "# %%", "" }), i(0) }),
 	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),

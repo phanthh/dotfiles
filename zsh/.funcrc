@@ -1,12 +1,6 @@
 #============================ edit
 # edit
 e() {
-  case "$1" in
-    *.py|pythonrc)
-      micromamba activate ;;
-    *)
-      ;;
-  esac
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
     sudoedit $*
   else

@@ -66,9 +66,9 @@ bindkey -s '^O' 'n^M'
 #======================= mamba
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="$HOME/.local/bin/micromamba";
+export MAMBA_EXE="/home/phanthh/.local/bin/micromamba";
 export MAMBA_ROOT_PREFIX="/home/phanthh/.local/lib/mamba";
-__mamba_setup="$('/usr/bin/micromamba' shell hook --shell zsh --prefix '/home/phanthh/.local/lib/mamba' 2> /dev/null)"
+__mamba_setup="$('/home/phanthh/.local/bin/micromamba' shell hook --shell zsh --prefix '/home/phanthh/.local/lib/mamba' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
