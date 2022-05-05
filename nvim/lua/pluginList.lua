@@ -209,11 +209,11 @@ require("packer").startup({
 		-- 	event = "WinLeave",
 		-- })
 
-		use({
-			"lukas-reineke/indent-blankline.nvim",
-			requires = "nvim-treesitter/nvim-treesitter",
-			ft = coding_ft,
-		})
+		-- use({
+		-- 	"lukas-reineke/indent-blankline.nvim",
+		-- 	requires = "nvim-treesitter/nvim-treesitter",
+		-- 	ft = coding_ft,
+		-- })
 
 		use({
 			"nathom/filetype.nvim",
