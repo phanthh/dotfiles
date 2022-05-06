@@ -209,11 +209,11 @@ require("packer").startup({
 		-- 	event = "WinLeave",
 		-- })
 
-		-- use({
-		-- 	"lukas-reineke/indent-blankline.nvim",
-		-- 	requires = "nvim-treesitter/nvim-treesitter",
-		-- 	ft = coding_ft,
-		-- })
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			requires = "nvim-treesitter/nvim-treesitter",
+			ft = coding_ft,
+		})
 
 		use({
 			"nathom/filetype.nvim",
@@ -260,8 +260,8 @@ require("packer").startup({
 			end,
 		})
 
-		use({ "jbyuki/nabla.nvim", module = "nabla" })
-		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
+		-- use({ "jbyuki/nabla.nvim", module = "nabla" })
+		-- use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
@@ -284,7 +284,4 @@ require("packer").startup({
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
 	end,
-	config = {
-		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-	},
 })

@@ -1,4 +1,4 @@
-#=============================== VARIABLES ===================================#
+#=============================== VARIABLES ==================================#
 
 # Colors
 set $fg #ffffff
@@ -108,10 +108,10 @@ bindsym $mod+Shift+Right move right
                               #                       border background text  indicator child_border
 bindsym $mod+Shift+space floating toggle; \
   [tiling con_id=__focused__] border pixel $bd, \
-                              client.focused          $bg    $gr        $fg   $ac       $gl, \
+                              client.focused          $bg    $gl        $fg   $ac       $gl, \
                               client.unfocused        $bg    $bg        $fg   $ac       $bg, \
                               client.focused_inactive $bg    $bg        $fg   $ac       $bg, \
-                              client.urgent           $bg    $gr        $fg   $ac 	    $fg, \
+                              client.urgent           $bg    $gl        $fg   $ac 	    $fg, \
                               titlebar_padding 15 10; \
   [floating con_id=__focused__] border normal 5, \
                               client.focused          $bl    $bl        $fg   $ac       $bl, \
@@ -201,10 +201,10 @@ focus_on_window_activation smart
 
 # Window colors
 #                       border background text  indicator child_border
-client.focused          $bg    $gr        $fg   $ac       $gl
+client.focused          $bg    $gl        $fg   $ac       $gl
 client.unfocused        $bg    $bg        $fg   $ac       $bg
 client.focused_inactive $bg    $bg        $fg   $ac       $bg
-client.urgent           $bg    $gr        $fg   $ac 	    $fg
+client.urgent           $bg    $gl        $fg   $ac 	    $fg
 
 # Mouse behaviors
 mouse_warping none

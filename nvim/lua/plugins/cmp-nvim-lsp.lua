@@ -39,7 +39,7 @@ local servers = {
 	"texlab",
 	"clangd",
 	"vimls",
-	"bashls",
+	-- "bashls",
 	"r_language_server",
 	"sumneko_lua",
 	"tsserver",
