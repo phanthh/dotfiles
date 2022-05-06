@@ -40,6 +40,15 @@ M.coding_ft = {
 	"scss",
 	"html",
 	"dart",
+	"sh",
+}
+
+M.config_ft = {
+	"dosini",
+	"toml",
+	"yaml",
+	"json",
+	"cfg",
 }
 
 M.writing_ft = {

@@ -1,59 +1,58 @@
 require("packer").startup({
 	function(use)
-		local coding_ft = require("utils").coding_ft
-		local writing_ft = require("utils").writing_ft
+		local u = require("utils")
 
-		-- packer
-		use("wbthomason/packer.nvim")
+		use("wbthomason/packer.nvim") -- plugins manager
 
-		-- colorscheme
 		use({
-			"Mofiqul/vscode.nvim",
+			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
 				require("plugins.vscode.config")
 				vim.cmd([[colorscheme vscode]])
 			end,
 		})
 
-		-- language server
-		use({ "neovim/nvim-lspconfig" })
-
-		-- snippets
 		use({
-			"L3MON4D3/LuaSnip",
+			"neovim/nvim-lspconfig", -- lsp helper
+			module = "lspconfig",
+		})
+
+		use({
+			"L3MON4D3/LuaSnip", -- snippets engine
+			module = "luasnip",
 			config = function()
 				require("plugins.luasnip")
 			end,
 			requires = {
-				"rafamadriz/friendly-snippets",
+				{ "rafamadriz/friendly-snippets" }, -- snippets library
 			},
 		})
 
-		-- auto complete
+		local signal = { "InsertEnter" }
+		local trigger = { "g", "K", "[", "]", "<c-k>", "<leader>" }
 		use({
-			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
+			"hrsh7th/nvim-cmp", -- autocompletion engine
+			module = "cmp",
+			keys = trigger,
 			config = function()
 				require("plugins.nvim-cmp")
+				vim.cmd([[LspStart]])
 			end,
 			requires = {
-				{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-				{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+				{ "saadparwaiz1/cmp_luasnip", event = signal }, -- luasnip source
+				{ "hrsh7th/cmp-buffer", event = signal }, -- buffer source
+				{ "hrsh7th/cmp-path", event = signal }, -- path source
+				{ "hrsh7th/cmp-cmdline", event = signal }, -- cmdline source
 				{
-					"uga-rosa/cmp-dictionary",
-					after = "nvim-cmp",
+					"uga-rosa/cmp-dictionary", -- dictionary source
+					event = signal,
 					config = function()
 						require("plugins.cmp-dictionary")
 					end,
 				},
 				{
-					"hrsh7th/cmp-nvim-lsp",
-					after = "nvim-cmp",
-					config = function()
-						require("plugins.cmp-nvim-lsp")
-					end,
+					"hrsh7th/cmp-nvim-lsp", -- lsp source
+					event = signal,
 					requires = {
 						{
 							"jose-elias-alvarez/nvim-lsp-ts-utils",
@@ -64,19 +63,18 @@ require("packer").startup({
 			},
 		})
 
-		-- treesitter
 		use({
-			"nvim-treesitter/nvim-treesitter",
+			"nvim-treesitter/nvim-treesitter", -- treesitter engine
+			run = ":TSUpdate",
 			config = function()
 				require("plugins.nvim-treesitter")
 			end,
-			run = ":TSUpdate",
 			requires = {
-				"windwp/nvim-ts-autotag",
-				"JoosepAlviste/nvim-ts-context-commentstring",
-				"p00f/nvim-ts-rainbow",
+				"windwp/nvim-ts-autotag", -- autoclose and auto rename html tags
+				"JoosepAlviste/nvim-ts-context-commentstring", -- dynamic commentstring
+				"p00f/nvim-ts-rainbow", -- rainbow brackets
 				{
-					"lewis6991/spellsitter.nvim",
+					"lewis6991/spellsitter.nvim", -- dynamic spellcheck
 					config = function()
 						require("spellsitter").setup()
 					end,
@@ -84,39 +82,37 @@ require("packer").startup({
 			},
 		})
 
-		-- writing
 		use({
-			"lervag/vimtex",
+			"lervag/vimtex", -- latex support
+			cmd = "VimtexCompile",
 			config = function()
 				require("plugins.vimtex")
 			end,
-			cmd = "VimtexCompile",
 		})
 
 		use({
-			"rhysd/vim-grammarous",
+			"rhysd/vim-grammarous", -- grammar checking
+			cmd = { "GrammarousCheck", "GrammarousReset" },
 			config = function()
 				require("plugins.vim-grammarous")
 			end,
-			cmd = { "GrammarousCheck", "GrammarousReset" },
 		})
 
 		use({
-			"renerocksai/telekasten.nvim",
+			"renerocksai/telekasten.nvim", -- zettelkasten
+			cmd = "Telekasten",
 			requires = {
 				"nvim-telescope/telescope.nvim",
 			},
-			cmd = "Telekasten",
 			config = function()
 				require("plugins.telekasten")
 			end,
 		})
 
-		-- utils
 		use({
-			"nvim-lualine/lualine.nvim",
+			"nvim-lualine/lualine.nvim", -- status line
 			requires = { "kyazdani42/nvim-web-devicons" },
-			ft = coding_ft,
+			ft = u.config_ft,
 			config = function()
 				require("lualine").setup({
 					options = {
@@ -129,16 +125,16 @@ require("packer").startup({
 		})
 
 		use({
-			"danymat/neogen",
+			"danymat/neogen", -- documentation generator
+			cmd = "Neogen",
 			config = function()
 				require("neogen").setup({ enabled = true })
 			end,
 			requires = "nvim-treesitter/nvim-treesitter",
-			cmd = "Neogen",
 		})
 
 		use({
-			"nacro90/numb.nvim",
+			"nacro90/numb.nvim", -- peaking line
 			event = "CmdlineEnter",
 			config = function()
 				require("numb").setup()
@@ -146,27 +142,27 @@ require("packer").startup({
 		})
 
 		use({
-			"nvim-telescope/telescope.nvim",
-			requires = {
-				"kyazdani42/nvim-web-devicons", -- optional, for file icon
-			},
-			module = "telescope",
+			"nvim-telescope/telescope.nvim", -- telescope
 			cmd = "Telescope",
+			module = "telescope",
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+			},
 		})
 
 		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = {
-				"kyazdani42/nvim-web-devicons", -- optional, for file icon
-			},
+			"kyazdani42/nvim-tree.lua", -- file tree
 			cmd = { "NvimTreeToggle" },
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+			},
 			config = function()
 				require("plugins.nvim-tree")
 			end,
 		})
 
 		use({
-			"windwp/nvim-autopairs",
+			"windwp/nvim-autopairs", -- pair brackets
 			keys = { { "i", "(" }, { "i", "{" }, { "i", "[" } },
 			config = function()
 				require("nvim-autopairs").setup()
@@ -174,7 +170,7 @@ require("packer").startup({
 		})
 
 		use({
-			"ur4ltz/surround.nvim",
+			"ur4ltz/surround.nvim", -- easy surround
 			event = "InsertEnter",
 			config = function()
 				require("surround").setup({ mappings_style = "surround" })
@@ -182,51 +178,49 @@ require("packer").startup({
 		})
 
 		use({
-			"mhartington/formatter.nvim",
-			event = { "BufWritePre" },
+			"mhartington/formatter.nvim", -- formatter
+			event = "BufWritePre",
 			config = function()
 				require("plugins.formatter")
 			end,
 		})
 
 		use({
-			"numToStr/Comment.nvim",
+			"numToStr/Comment.nvim", -- comment helper
+			keys = "gc",
 			config = function()
 				require("Comment").setup()
 			end,
-			key = "gc",
 		})
 
-		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } })
-		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
-
-		-- latent
+		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
+		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
+		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
 
 		use({
-			"lukas-reineke/indent-blankline.nvim",
+			"lukas-reineke/indent-blankline.nvim", -- vertical lines
+			ft = u.coding_ft,
 			requires = "nvim-treesitter/nvim-treesitter",
-			ft = coding_ft,
 		})
 
 		use({
-			"nathom/filetype.nvim",
+			"nathom/filetype.nvim", -- filetype.lua
 			config = function()
 				require("plugins.ft")
 			end,
 		})
 
 		use({
-			"norcalli/nvim-colorizer.lua",
+			"norcalli/nvim-colorizer.lua", -- coloring color codes
+			ft = u.iconcat(u.config_ft, u.coding_ft),
 			config = function()
 				require("colorizer").setup()
 			end,
-			ft = { "css", "scss", "typescriptreact", "dosini", "toml", "yaml", "sh", "cfg" },
 		})
 
 		use({
-			"PHSix/faster.nvim",
-			event = { "VimEnter *" },
+			"PHSix/faster.nvim", -- faster jk
+			event = "VimEnter *",
 			config = function()
 				local opts = { noremap = false, silent = true }
 				vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_gj)", opts)
@@ -235,7 +229,7 @@ require("packer").startup({
 		})
 
 		use({
-			"phaazon/hop.nvim",
+			"phaazon/hop.nvim", -- easymotion
 			cmd = "HopWord",
 			config = function()
 				-- you can configure Hop the way you like here; see :h hop-config
@@ -244,21 +238,20 @@ require("packer").startup({
 		})
 
 		use({
-			"lewis6991/gitsigns.nvim",
+			"lewis6991/gitsigns.nvim", -- git mark
+			ft = u.coding_ft,
 			requires = {
 				"nvim-lua/plenary.nvim",
 			},
-			ft = coding_ft,
 			config = function()
 				require("gitsigns").setup()
 			end,
 		})
 
-		-- use({ "jbyuki/nabla.nvim", module = "nabla" })
-		-- use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" })
-		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
-		use("lewis6991/impatient.nvim")
-		use("nvim-lua/plenary.nvim")
+		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" }) -- clean whitespace
+		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
+		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
+		use("lewis6991/impatient.nvim") -- faster loading plugins with caching
 		-- use({
 		-- 	"sunjon/shade.nvim",
 		-- 	config = function()
@@ -283,7 +276,7 @@ require("packer").startup({
 		-- use("spywhere/tmux.nvim")
 		-- use("kovetskiy/sxhkd-vim")
 		use("waycrate/swhkd-vim")
-		-- use("airblade/vim-gitgutter")
+		-- use({ "airblade/vim-gitgutter", event = "CmdlineEnter" })
 		-- use("junegunn/vim-easy-align")
 		-- use 'jxnblk/vim-mdx-js'
 	end,
