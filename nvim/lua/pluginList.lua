@@ -32,22 +32,25 @@ require("packer").startup({
 		-- auto complete
 		use({
 			"hrsh7th/nvim-cmp",
+			event = "InsertEnter",
 			config = function()
 				require("plugins.nvim-cmp")
 			end,
 			requires = {
-				{ "saadparwaiz1/cmp_luasnip" },
-				{ "hrsh7th/cmp-buffer" },
-				{ "hrsh7th/cmp-path" },
-				{ "hrsh7th/cmp-cmdline" },
+				{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+				{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 				{
 					"uga-rosa/cmp-dictionary",
+					after = "nvim-cmp",
 					config = function()
 						require("plugins.cmp-dictionary")
 					end,
 				},
 				{
 					"hrsh7th/cmp-nvim-lsp",
+					after = "nvim-cmp",
 					config = function()
 						require("plugins.cmp-nvim-lsp")
 					end,
@@ -199,15 +202,6 @@ require("packer").startup({
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" })
 
 		-- latent
-		-- use({
-		-- 	"sunjon/shade.nvim",
-		-- 	config = function()
-		-- 		require("shade").setup({
-		-- 			overlay_opacity = 55,
-		-- 		})
-		-- 	end,
-		-- 	event = "WinLeave",
-		-- })
 
 		use({
 			"lukas-reineke/indent-blankline.nvim",
@@ -265,6 +259,15 @@ require("packer").startup({
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" })
 		use("lewis6991/impatient.nvim")
 		use("nvim-lua/plenary.nvim")
+		-- use({
+		-- 	"sunjon/shade.nvim",
+		-- 	config = function()
+		-- 		require("shade").setup({
+		-- 			overlay_opacity = 55,
+		-- 		})
+		-- 	end,
+		-- 	event = "WinLeave",
+		-- })
 		-- use({
 		-- 	"itchyny/calendar.vim",
 		-- 	cmd = "Calendar",
