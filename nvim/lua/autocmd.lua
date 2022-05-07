@@ -10,10 +10,19 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.b.pdfcompile = 0
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = "global",
-	pattern = { "*.rmd", "*.Rmd" },
+	pattern = { "*.rmd", "*.tex" },
 	callback = function()
 		if vim.b.pdfcompile == 1 then
-			vim.fn.jobstart(string.format("util_rmdcompile %s pdf_document", vim.fn.expand("%:p")))
+			if vim.bo.filetype == "rmd" then
+				vim.fn.jobstart(
+					string.format(
+						[[rm compile.log; Rscript -e "library(rmarkdown); rmarkdown::render('%s', 'pdf_document')" > compile.log 2>&1]],
+						vim.fn.expand("%:p")
+					)
+				)
+			elseif vim.bo.filetype == "tex" then
+				vim.fn.jobstart(string.format("pdflatex %s > compile.log 2>&1", vim.fn.expand("%:p")))
+			end
 		end
 	end,
 })
@@ -23,8 +32,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	group = "global",
 	pattern = "*",
 	callback = function()
-    vim.lsp.buf.formatting()
-  end
+		vim.lsp.buf.formatting()
+	end,
 })
 
 -- term options

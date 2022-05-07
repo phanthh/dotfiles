@@ -40,7 +40,7 @@ local servers = {
 	"texlab",
 	"clangd",
 	"vimls",
-	-- "bashls",
+	"bashls",
 	"r_language_server",
 	"sumneko_lua",
 	"tsserver",
@@ -59,11 +59,26 @@ for _, lsp in ipairs(servers) do
 				},
 			},
 		}
+		opts.on_attach = function(client, bufnr)
+			on_attach(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
+		end
 	elseif lsp == "tsserver" then
 		opts.init_options = require("nvim-lsp-ts-utils").init_options
 		opts.on_attach = function(client, bufnr)
 			on_attach(client, bufnr)
 			require("plugins.nvim-lsp-ts-utils").config(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
+		end
+	elseif lsp == "pyright" then
+		opts.on_attach = function(client, bufnr)
+			on_attach(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
+		end
+	elseif lsp == "bashls" then
+		opts.on_attach = function(client, bufnr)
+			on_attach(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
 		end
 	end
 	nvim_lsp[lsp].setup(opts)

@@ -108,7 +108,8 @@ require("filetype").setup({
 					vim.o.foldmethod = "expr"
 					vim.o.foldexpr = "vimtex#fold#level(v:lnum)"
 					vim.o.foldtext = "vimtex#fold#text()"
-					km("", "<f10>", "<cmd>VimtexCompile<cr>", opts)
+					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile enabled!'<cr>", opts)
+					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile disabled!'<cr>", opts)
 				end,
 				["md"] = function()
 					km("n", "<leader>z", ":Telekasten panel<cr>", opts)
@@ -121,8 +122,8 @@ require("filetype").setup({
 				["rmd"] = function()
 					vim.cmd("syntax on")
 					repl_spec("R")
-					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile Rmd enabled!'<cr>", opts)
-					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile Rmd disabled!'<cr>", opts)
+					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile enabled!'<cr>", opts)
+					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile disabled!'<cr>", opts)
 				end,
 			})
 		),
