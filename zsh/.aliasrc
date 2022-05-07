@@ -30,6 +30,7 @@ alias b="distrobox"
 alias bs="~/.sh/util_distroboxsetup"
 alias br="~/.sh/util_browse"
 alias fm="~/.sh/util_filemanager"
+alias nb="newsboat"
 alias wine-run="~/.sh/util_wine"
 alias proton-run="~/.sh/util_proton"
 
