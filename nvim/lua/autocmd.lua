@@ -1,29 +1,42 @@
-vim.cmd([[
-" auto compile packer
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost pluginList.lua,ft.lua source <afile> | PackerCompile | LuaCacheClear
-augroup end
+-- autocompile packer
+vim.api.nvim_create_augroup("global", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = "global",
+	pattern = "pluginList.lua, ft.lua",
+	command = "source <afile> | PackerCompile | LuaCacheClear",
+})
 
-" auto compile rmarkdown to pdf
-function s:rmd_pdf()
-  call jobstart(['util_rmdcompile', expand('%:p'), 'pdf_document'])
-endfunction
+-- autocompile rmd
+vim.b.pdfcompile = 0
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = "global",
+	pattern = { "*.rmd", "*.Rmd" },
+	callback = function()
+		if vim.b.pdfcompile == 1 then
+			vim.fn.jobstart(string.format("util_rmdcompile %s pdf_document", vim.fn.expand("%:p")))
+		end
+	end,
+})
 
-let b:pdfcompile=0
-augroup pdf_compile
-  autocmd!
-  autocmd BufWritePost *.rmd,*.Rmd if b:pdfcompile == 1 | call s:rmd_pdf()
-augroup end
+-- format on write
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = "global",
+	pattern = "*",
+	callback = function()
+    vim.lsp.buf.formatting()
+  end
+})
 
-augroup auto_format
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-augroup END
+-- term options
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = "global",
+	pattern = "*",
+	command = "setlocal nonumber nospell",
+})
 
-" terminal spec
-augroup s:term_spec
-  autocmd!
-  autocmd TermOpen * setlocal nonumber nospell
-augroup end
-]])
+-- syntax on
+vim.api.nvim_create_autocmd("FileType", {
+	group = "global",
+	pattern = "help",
+	command = "syntax on",
+})

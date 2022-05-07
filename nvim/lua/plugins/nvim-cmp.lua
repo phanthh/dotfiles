@@ -100,6 +100,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
+
 		["<C-k>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
