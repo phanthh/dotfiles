@@ -1,5 +1,3 @@
-require("luasnip.loaders.from_vscode").lazy_load()
-
 local fmt = require("luasnip.extras.fmt").fmt
 local ls = require("luasnip")
 local s = ls.snippet
@@ -9,6 +7,11 @@ local i = ls.insert_node
 ls.config.set_config({
 	enable_autosnippets = true,
 })
+
+-- ls.filetype_extend("markdown", { "tex" })
+-- ls.filetype_extend("rmd", { "tex" })
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 ---- Common snippets
 
@@ -39,6 +42,9 @@ local mathh = {
 	s("mcl", { t("\\mathcal{"), i(1), t("}"), i(0) }),
 	s("mbb", { t("\\mathbb{"), i(1), t("}"), i(0) }),
 	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
+	s("lr(", { t("\\left("), i(1), t("\\right"), i(0) }),
+	s("lr[", { t("\\left["), i(1), t("\\right"), i(0) }),
+	s("lr{", { t("\\left\\{"), i(1), t("\\right\\"), i(0) }),
 	-- specials
 	s("nrm", { t("||"), i(1), t("||"), i(0) }),
 	s("notin", { t("\\not\\in"), i(0) }),
