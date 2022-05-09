@@ -44,8 +44,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- syntax on
-vim.api.nvim_create_autocmd("FileType", {
-	group = "global",
-	pattern = "help",
-	command = "syntax on",
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = "global",
+-- 	pattern = "help",
+-- 	command = "syntax on",
+-- })

@@ -11,10 +11,10 @@ XF86AudioMute
 
 # Volume
 Mod1 + F1
-  pactl set-sink-mute @DEFAULT_SINK@ toggle
+  pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
 
 Mod1 + {F2, F3}
-  pactl set-sink-volume @DEFAULT_SINK@ {-,+}2%
+  pamixer -u{i,d} 2 && pamixer --get-volume > $WOBSOCK
 
 Mod1 + F4
   ~/.sh/wm_open pavucontrol

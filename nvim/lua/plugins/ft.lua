@@ -52,7 +52,6 @@ require("filetype").setup({
 		},
 		function_extensions = concat(
 			spec_ft(function()
-				vim.cmd("syntax off")
 				vim.o.spell = false
 				vim.o.ruler = true
 				vim.o.showcmd = true
@@ -95,7 +94,6 @@ require("filetype").setup({
 				"dart",
 			}),
 			spec_ft(function()
-				vim.cmd("syntax off")
 				vim.o.spell = true
 				vim.o.ruler = false
 				vim.o.showcmd = false
@@ -121,7 +119,6 @@ require("filetype").setup({
 					km("n", "<Tab>", "<esc><cmd>:Telekasten follow_link<cr>", { silent = true })
 				end,
 				["rmd"] = function()
-					vim.cmd("syntax on")
 					repl_spec("R")
 					km("", "<f10>", "<cmd>let b:pdfcompile=1<bar>echo 'Auto compile enabled!'<cr>", opts)
 					km("", "<s-f10>", "<cmd>let b:pdfcompile=0<bar>echo 'Auto compile disabled!'<cr>", opts)
