@@ -42,6 +42,7 @@ require("filetype").setup({
 		-- extensions = { pn = "potion" },
 		complex = {
 			[".config/sway/config"] = "sh",
+			[".config/task/taskrc"] = "sh",
 			[".config/tmux/tmux.conf"] = "tmux",
 			[".config/swhkd/*"] = "swhkd",
 			-- [".config/sxhkd/*"] = "sxhkd",
