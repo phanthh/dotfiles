@@ -58,6 +58,11 @@ marquee_interval = 60
 block = "backlight"
 
 [[block]]
+block = "load"
+format = " {1m} {5m} {15m}"
+interval = 60
+
+[[block]]
 block = "memory"
 format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
 format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
@@ -69,6 +74,14 @@ warning_mem = 80
 warning_swap = 80
 critical_mem = 95
 critical_swap = 95
+
+[[block]]
+block = "taskwarrior"
+interval = 60
+format = "{count}"
+format_everything_done = "✓"
+warning_threshold = 10
+critical_threshold = 20
 
 [[block]]
 block = "pacman"
