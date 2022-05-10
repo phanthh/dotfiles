@@ -38,17 +38,17 @@ input type:keyboard {
 
 # Touchpad
 input type:touchpad {
-#     events disabled
+#   events disabled
     tap enabled
     natural_scroll enabled
 		scroll_factor 0.5
-		dwt enabled
+		dwt disabled
 }
 
 # Mouse
 input type:pointer {
 		scroll_factor 0.5
-		dwt enabled
+		dwt disabled
 }
 
 # Numlock

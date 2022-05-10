@@ -25,12 +25,6 @@ separator_fg = "auto"
 # max_width = 50
 # show_marks = "visible"
 
-# [[block]]
-# block = "toggle"
-# command_state = "ibus engine | grep Bamboo"
-# command_on = "~/.sh/util_toggleibus"
-# command_off = "~/.sh/util_toggleibus"
-# interval = 60
 
 [[block]]
 block = "custom"
@@ -90,6 +84,20 @@ format = "{aur}"
 format_up_to_date = "✓"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "~/.sh/util_pendingupdate"
+
+[[block]]
+block = "toggle"
+text = " ibus"
+command_state = "ibus engine | grep 'Bamboo'"
+command_on = "~/.sh/util_ibus -s vn"
+command_off = "~/.sh/util_ibus -s en"
+
+[[block]]
+block = "toggle"
+text = " touchpad"
+command_state = "~/.sh/util_touchpad -i | grep 'enabled'"
+command_on = "~/.sh/util_touchpad -s enabled"
+command_off = "~/.sh/util_touchpad -s disabled"
 
 [[block]]
 block = "sound"

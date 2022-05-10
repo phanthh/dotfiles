@@ -116,13 +116,33 @@ require("packer").startup({
 		})
 
 		use({
+			"akinsho/bufferline.nvim", -- tab line
+			tag = "v2.*",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("bufferline").setup({
+					options = {
+						offsets = {
+							{
+								filetype = "NvimTree",
+								text = "File Explorer",
+								highlight = "Directory",
+								text_align = "left",
+							},
+						},
+					},
+				})
+			end,
+		})
+
+		use({
 			"nvim-lualine/lualine.nvim", -- status line
 			requires = { "kyazdani42/nvim-web-devicons" },
-			ft = u.config_ft,
 			config = function()
 				require("lualine").setup({
 					options = {
 						theme = "vscode",
+						globalstatus = true,
 						component_separators = { left = " ", right = " " },
 						section_separators = { left = " ", right = " " },
 					},
@@ -163,7 +183,13 @@ require("packer").startup({
 				"kyazdani42/nvim-web-devicons",
 			},
 			config = function()
-				require("plugins.nvim-tree")
+				require("nvim-tree").setup({
+					actions = {
+						open_file = {
+							resize_window = true,
+						},
+					},
+				})
 			end,
 		})
 
@@ -256,6 +282,7 @@ require("packer").startup({
 			end,
 		})
 
+		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
 		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" }) -- clean whitespace
 		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook

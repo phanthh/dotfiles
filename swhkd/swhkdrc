@@ -87,7 +87,11 @@ Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
 
 # Toggle Ibus
 Mod1 + z
-  ~/.sh/util_toggleibus
+.sh/util_ibus -t
+
+# Toggle touchpad
+Mod1 + x
+  ~/.sh/util_touchpad -t
 
 # Mount drive
 Mod4 + m
