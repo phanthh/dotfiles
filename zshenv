@@ -21,7 +21,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_LIBRARY_HOME="$HOME/.local/lib"
 
 #=================== defaults
-export CALIBRE_USE_DARK_PALETTE=1
 export EDITOR="nvim"
 export GEDITOR="neovide"
 export GTK_IM_MODULE=ibus
@@ -29,6 +28,7 @@ export LESS="-R --use-color -Dd+b"
 export MANPAGER="less"
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
+export CALIBRE_USE_DARK_PALETTE=1
 
 #=================== migrates
 # config
