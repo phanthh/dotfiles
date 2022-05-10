@@ -43,6 +43,15 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	command = "setlocal nonumber nospell",
 })
 
+-- reset waybar
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- 	group = "global",
+-- 	pattern = "*/waybar/config",
+-- 	callback = function()
+-- 		io.popen("pkill -SIGUSR2 waybar")
+-- 	end,
+-- })
+
 -- syntax on
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	group = "global",

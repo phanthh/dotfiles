@@ -1,0 +1,52 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 40,
+  "spacing": 4,
+  "modules-left": [],
+  "modules-center": ["custom/launcher", "wlr/taskbar"],
+  "modules-right": ["tray", "pulseaudio", "battery", "clock"],
+  "tray": {
+    "icon-size": 15,
+    "spacing": 10
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "today-format": "<b>{}</b>",
+    "format": "{:<b>%H:%M</b>  | <b>%e %b</b>}"
+    //"format": "{:<b>%H:%M</b>}",
+    //"format-alt": "{:<b>%e %b</b>  |  <b>%H:%M</b>}"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "tooltip-format": "{title}",
+    "icon-theme": "Adwaita",
+    "icon-size": 26,
+    "on-click": "minimize-raise"
+  },
+  "custom/launcher": {
+    "format": "",
+    "tooltip": true,
+    "on-click": "menu_run"
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "tooltip-format": "{capacity}% {time}",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 25
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "format-muted": "",
+    "format-icons": ["", ""],
+    "scroll-step": 5,
+    "tooltip-format": "{volumne}",
+    "on-click": "pavucontrol"
+  }
+}

@@ -17,12 +17,12 @@ umask 027
     labwc)
       XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=labwc QT_QPA_PLATFORMTHEME=qt5ct labwc
       ;;
-    gnome)
-      XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
-      ;;
-    plasma)
-      XDG_SESSION_TYPE=wayland startplasma-wayland
-      ;;
+    # gnome)
+    #   XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
+    #   ;;
+    # plasma)
+    #   XDG_SESSION_TYPE=wayland startplasma-wayland
+    #   ;;
     *|shell)
       export SESSION_HOLD=1
       export XDG_SESSION_TYPE=tty

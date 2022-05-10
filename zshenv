@@ -1,9 +1,9 @@
 #!/usr/bin/zsh
 #
 #=================== session
-# sway - labwc - shell - gnome - plasma
-export SESSION="sway"
-export SESSION_HOLD=0
+# sway - labwc - shell #### - gnome - plasma
+export SESSION="labwc"
+export SESSION_HOLD=1
 
 #=================== wayland
 export CLUTTER_BACKEND=wayland
