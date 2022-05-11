@@ -78,6 +78,14 @@ ce() {
 
 }
 
+# config (user)
+cs() {
+  local file
+  file=$(find ~/.sh/ | fzf -q "$1")
+  [ ! -z "$file" ] && $EDITOR "$file"
+
+}
+
 # help cmd
 hl() {
   $1 --help | less

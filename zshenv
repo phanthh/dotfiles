@@ -2,7 +2,7 @@
 #
 #=================== session
 # sway - labwc - shell #### - gnome - plasma
-export SESSION="labwc"
+export SESSION="sway"
 export SESSION_HOLD=0
 
 #=================== wayland
@@ -29,6 +29,7 @@ export MANPAGER="less"
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export CALIBRE_USE_DARK_PALETTE=1
+export _JAVA_OPTIONS="$_JAVA_OPTIONS -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
 #=================== migrates
 # config
@@ -47,7 +48,7 @@ export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/.Rprofile"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+export _JAVA_OPTIONS="$_JAVA_OPTIONS -Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/pythonrc"
 # export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 # export TASKDATA="$XDG_CONFIG_HOME/task/"

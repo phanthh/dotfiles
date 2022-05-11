@@ -4,10 +4,8 @@ alias cmatrix="cmatrix -C blue"
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
-alias R="R --quiet"
 alias npm="pnpm"
 alias npx="pnpm dlx"
-alias wget="wget -c --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias grep="rg"
 
 #======================== shortcuts
