@@ -2,20 +2,25 @@
   "layer": "top",
   "position": "bottom",
   "height": 40,
-  "spacing": 4,
+  "spacing": 0,
   "modules-left": [],
   "modules-center": ["custom/launcher", "wlr/taskbar"],
-  "modules-right": ["tray", "pulseaudio", "battery", "clock"],
+  "modules-right": [
+    "custom/expand",
+    "tray",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
   "tray": {
-    "icon-size": 15,
-    "spacing": 10
+    "icon-size": 16,
+    "spacing": 12
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "today-format": "<b>{}</b>",
-    "format": "{:<b>%H:%M</b>  | <b>%e %b</b>}"
-    //"format": "{:<b>%H:%M</b>}",
-    //"format-alt": "{:<b>%e %b</b>  |  <b>%H:%M</b>}"
+    "format": "{:<b>    %H:%M</b>  \n <b>%D</b>  }"
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -26,8 +31,13 @@
   },
   "custom/launcher": {
     "format": "",
-    "tooltip": true,
+    "tooltip": false,
     "on-click": "menu_run"
+  },
+  "custom/expand": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "menu_control"
   },
   "battery": {
     "interval": 60,
@@ -48,5 +58,16 @@
     "scroll-step": 5,
     "tooltip-format": "{volumne}",
     "on-click": "pavucontrol"
+  },
+  "network": {
+    "format": "",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
   }
 }
