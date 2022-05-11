@@ -87,14 +87,14 @@ aur_command = "~/.sh/util_pendingupdate"
 
 [[block]]
 block = "toggle"
-text = " ibus"
+text = " <b>VN</b>"
 command_state = "ibus engine | grep 'Bamboo'"
 command_on = "~/.sh/util_ibus -s vn"
 command_off = "~/.sh/util_ibus -s en"
 
 [[block]]
 block = "toggle"
-text = " touchpad"
+text = " "
 command_state = "~/.sh/util_touchpad -i | grep 'enabled'"
 command_on = "~/.sh/util_touchpad -s enabled"
 command_off = "~/.sh/util_touchpad -s disabled"
