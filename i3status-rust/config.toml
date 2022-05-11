@@ -87,7 +87,7 @@ aur_command = "~/.sh/util_pendingupdate"
 
 [[block]]
 block = "toggle"
-text = " <b>VN</b>"
+text = " "
 command_state = "ibus engine | grep 'Bamboo'"
 command_on = "~/.sh/util_ibus -s vn"
 command_off = "~/.sh/util_ibus -s en"
