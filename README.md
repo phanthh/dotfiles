@@ -21,6 +21,7 @@
 - **shell**: zsh + [highlight](https://github.com/zsh-users/zsh-syntax-highlighting) + [autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
 - **file manager**: [nnn](https://github.com/jarun/nnn) (terminal) + [pcmanfm](https://github.com/lxde/pcmanfm) (gui)
 - **notification**: [dunst](https://github.com/dunst-project/dunst)
+- **password**: [keepass](https://en.wikipedia.org/wiki/KeePass)
 - **browser**: [ungoogled-chromium](https://github.com/Eloston/ungoogled-chromium)
 
 ### misc
