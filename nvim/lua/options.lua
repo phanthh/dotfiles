@@ -44,6 +44,7 @@ vim.o.undolevels = 1000
 vim.o.undofile = true
 
 -- misc
+vim.o.spell = true
 vim.o.spelllang = "en_us"
 vim.o.hidden = false
 vim.o.shell = "/bin/sh"

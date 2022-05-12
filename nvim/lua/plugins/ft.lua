@@ -39,7 +39,7 @@ end
 
 require("filetype").setup({
 	overrides = {
-		-- extensions = { pn = "potion" },
+		extensions = { mdx = "markdown" },
 		complex = {
 			[".config/sway/config"] = "sh",
 			[".config/task/taskrc"] = "sh",
