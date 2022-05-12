@@ -20,14 +20,12 @@ require("packer").startup({
 		use({
 			"L3MON4D3/LuaSnip", -- snippets engine
 			module = "luasnip",
-			config = function()
-				require("plugins.luasnip")
-			end,
 			requires = {
 				{ "rafamadriz/friendly-snippets" }, -- snippets library
 			},
 		})
 
+		-- lazy loading
 		local signal = { "InsertEnter", "BufWritePre" }
 		local trigger = { "g", "K", "[", "]", "<c-k>", "<leader>" }
 		use({
@@ -36,6 +34,8 @@ require("packer").startup({
 			keys = trigger,
 			module = "cmp",
 			config = function()
+				require("plugins.luasnip")
+				require("plugins.nvim-lspconfig")
 				require("plugins.nvim-cmp")
 				vim.cmd([[LspStart]])
 			end,
