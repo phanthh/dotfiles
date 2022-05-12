@@ -1,4 +1,4 @@
-# dotfiles 
+# dotfiles
 
 ## abstract
 
@@ -9,7 +9,6 @@
   - **plugins**: [packer](https://github.com/wbthomason/packer.nvim) + [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) + [luasnip](https://github.com/L3MON4D3/LuaSnip) + [...](https://github.com/phanthh/dotfiles/blob/master/nvim/lua/pluginList.lua)
 - **shell**: zsh (omz is bloat)
 - **file manager**: [nnn](https://github.com/jarun/nnn) (terminal) + [pcmanfm](https://github.com/lxde/pcmanfm) (gui)
-- **browser**: firefox
-  - **css**: modified [cascade](https://github.com/andreasgrafen/cascade) 
-  - **vim**: [tridactyl](https://github.com/tridactyl/tridactyl) + modified [userContent.css](https://github.com/phanthh/dotfiles/blob/master/userContent.css)
-
+- **browser**: [ungoogled-chromium](https://github.com/Eloston/ungoogled-chromium)
+  <!-- - **css**: modified [cascade](https://github.com/andreasgrafen/cascade) -->
+  <!-- - **vim**: [tridactyl](https://github.com/tridactyl/tridactyl) + modified [userContent.css](https://github.com/phanthh/dotfiles/blob/master/userContent.css) -->
