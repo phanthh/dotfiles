@@ -7,7 +7,7 @@
 - **terminal**: [foot](https://codeberg.org/dnkl/foot)
 - **editor**: [neovim](https://github.com/neovim/neovim)
   - **plugins**: [packer](https://github.com/wbthomason/packer.nvim) + [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) + [luasnip](https://github.com/L3MON4D3/LuaSnip) + [...](https://github.com/phanthh/dotfiles/blob/master/nvim/lua/pluginList.lua)
-- **shell**: zsh (omz is bloat)
+- **shell**: zsh + [highlight](https://github.com/zsh-users/zsh-syntax-highlighting) + [autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
 - **file manager**: [nnn](https://github.com/jarun/nnn) (terminal) + [pcmanfm](https://github.com/lxde/pcmanfm) (gui)
 - **browser**: [ungoogled-chromium](https://github.com/Eloston/ungoogled-chromium)
   <!-- - **css**: modified [cascade](https://github.com/andreasgrafen/cascade) -->
