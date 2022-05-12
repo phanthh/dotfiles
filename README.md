@@ -30,6 +30,6 @@
 - **shortcuts**: [swhkd](https://github.com/waycrate/swhkd)
 - **backlight**: [clight](https://github.com/FedeDP/Clight)
 - **gamma**: [gammastep](https://gitlab.com/chinstrap/gammastep)
-- **firefox** (deprecated):
+- **firefox** (*deprecated*):
   - **css**: modified [cascade](https://github.com/andreasgrafen/cascade)
   - **vim**: [tridactyl](https://github.com/tridactyl/tridactyl) + modified [userContent.css](https://github.com/phanthh/dotfiles/blob/master/userContent.css)
