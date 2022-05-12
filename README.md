@@ -2,8 +2,18 @@
 
 ## abstract
 
+### tiling
+
 - **wm**: [swaywm](https://github.com/swaywm/sway)
 - **bar**: [swaybar](https://github.com/swaywm/sway) + [i3status-rust](https://github.com/greshake/i3status-rust)
+
+### stacking
+
+- **wm**: [labwc](https://github.com/labwc/labwc)
+- **bar**: [waybar](https://github.com/Alexays/Waybar)
+
+### application
+
 - **terminal**: [foot](https://codeberg.org/dnkl/foot)
 - **editor**: [neovim](https://github.com/neovim/neovim)
   - **plugins**: [packer](https://github.com/wbthomason/packer.nvim) + [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) + [luasnip](https://github.com/L3MON4D3/LuaSnip) + [...](https://github.com/phanthh/dotfiles/blob/master/nvim/lua/pluginList.lua)
