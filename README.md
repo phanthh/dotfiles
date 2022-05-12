@@ -17,8 +17,7 @@
 ### application
 
 - **terminal**: [foot](https://codeberg.org/dnkl/foot) + [tmux](https://github.com/tmux/tmux)
-- **editor**: [neovim](https://github.com/neovim/neovim)
-  - **plugins**: [packer](https://github.com/wbthomason/packer.nvim) + [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) + [luasnip](https://github.com/L3MON4D3/LuaSnip) + [...](https://github.com/phanthh/dotfiles/blob/master/nvim/lua/pluginList.lua)
+- **editor**: [neovim](https://github.com/neovim/neovim) + [packer](https://github.com/wbthomason/packer.nvim) ([...](https://github.com/phanthh/dotfiles/blob/master/nvim/lua/pluginList.lua))
 - **shell**: zsh + [highlight](https://github.com/zsh-users/zsh-syntax-highlighting) + [autosuggestion](https://github.com/zsh-users/zsh-autosuggestions)
 - **file manager**: [nnn](https://github.com/jarun/nnn) (terminal) + [pcmanfm](https://github.com/lxde/pcmanfm) (gui)
 - **notification**: [dunst](https://github.com/dunst-project/dunst)
@@ -30,6 +29,6 @@
 - **shortcuts**: [swhkd](https://github.com/waycrate/swhkd)
 - **backlight**: [clight](https://github.com/FedeDP/Clight)
 - **gamma**: [gammastep](https://gitlab.com/chinstrap/gammastep)
-- **firefox** (*deprecated*):
+- **firefox** (_deprecated_):
   - **css**: modified [cascade](https://github.com/andreasgrafen/cascade)
   - **vim**: [tridactyl](https://github.com/tridactyl/tridactyl) + modified [userContent.css](https://github.com/phanthh/dotfiles/blob/master/userContent.css)

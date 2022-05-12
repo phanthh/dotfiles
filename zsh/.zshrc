@@ -62,6 +62,7 @@ preexec() { echo -ne '\e[5 q' ;}
 bindkey '^F' autosuggest-accept
 bindkey '^H' backward-kill-word
 bindkey -s '^O' 'n^M'
+bindkey -s '^P' '~/.sh/util_filemanager^M'
 
 #======================= mamba
 # >>> mamba initialize >>>
