@@ -284,9 +284,11 @@ assign     [app_id="osu!"] workspace number 3
 for_window [app_id="osu!"] move to workspace number 3
 assign     [class="exe"] workspace number 3
 assign     [class="Steam"] workspace number 3
+assign     [app_id="lutris"] workspace number 3
 
 
 for_window [class="Steam"] title_format "   %title"
+for_window [app_id="lutris"] title_format "   %title"
 
 # ws4 others
 assign     [class="Exodus"] workspace number 4
