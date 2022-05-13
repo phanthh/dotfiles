@@ -21,7 +21,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 					)
 				)
 			elseif vim.bo.filetype == "tex" then
-				vim.fn.jobstart(string.format("pdflatex %s > compile.log 2>&1", vim.fn.expand("%:p")))
+				local filename = vim.fn.expand("%:r")
+				vim.fn.jobstart(
+					string.format(
+						"pdflatex %s.tex > compile.log 2>&1 && bibtex %s.aux && pdflatex %s.tex && pdflatex %s.tex",
+						filename,
+						filename,
+						filename,
+						filename
+					)
+				)
 			end
 		end
 	end,
