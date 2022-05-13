@@ -7,8 +7,14 @@ require("packer").startup({
 		use({
 			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
-				require("plugins.vscode.config")
-				vim.cmd([[colorscheme vscode]])
+				require("plugins.vscode")
+				vim.cmd([[
+          colorscheme vscode
+          highlight FloatBorder guifg=#CCCCCC
+          highlight TelescopePromptBorder guifg=#CCCCCC
+          highlight TelescopeResultsBorder guifg=#CCCCCC
+          highlight TelescopePreviewBorder guifg=#CCCCCC
+        ]])
 			end,
 		})
 

@@ -1,26 +1,9 @@
 local nvim_lsp = require("lspconfig")
 
--- ui border override globally
--- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]])
--- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
-
-local border = {
-	{ "🭽", "FloatBorder" },
-	{ "▔", "FloatBorder" },
-	{ "🭾", "FloatBorder" },
-	{ "▕", "FloatBorder" },
-	{ "🭿", "FloatBorder" },
-	{ "▁", "FloatBorder" },
-	{ "🭼", "FloatBorder" },
-	{ "▏", "FloatBorder" },
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
-
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = "rounded"
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
 
 -- LSP keybinds
 local on_attach = function(client, bufnr)
@@ -70,7 +53,11 @@ local servers = {
 
 -- Setup
 for _, lsp in ipairs(servers) do
-	local opts = { on_attach = on_attach, capabilities = capabilities }
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		handlers = handlers,
+	}
 	if lsp == "sumneko_lua" then
 		opts.settings = {
 			Lua = {
