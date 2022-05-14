@@ -189,5 +189,5 @@ ls.add_snippets("python", mdformat)
 ls.add_snippets("python", mathh)
 ls.add_snippets("python", {
 	s(";;", { t({ "# %%", "" }), i(0) }),
-	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""' }) }),
+	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""', "# %%" }) }),
 }, { type = "autosnippets" })
