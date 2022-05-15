@@ -9,7 +9,9 @@ require("null-ls").setup({
 		formatting.stylua,
 		formatting.prettier,
 		-- formatting.black,
-		formatting.autopep8,
+		formatting.autopep8.with({
+			extra_args = { "--ignore", "E402" },
+		}),
 		formatting.shfmt,
 		diagnostics.proselint.with({ filetypes = u.writing_ft }),
 		code_actions.proselint.with({ filetypes = u.writing_ft }),
