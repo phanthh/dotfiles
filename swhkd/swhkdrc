@@ -87,7 +87,7 @@ Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
 
 # Toggle Ibus
 Mod1 + z
-.sh/util_ibus -t
+  ~/.sh/util_ibus -t
 
 # Toggle touchpad
 Mod1 + x

@@ -18,10 +18,11 @@ DISTROPROMPT=''
 # [[ $DISTRO != 'gentoo' ]] && $HOME/.local/bin/distrobox-enter gentoo
 
 #========================= history
-HISTSIZE=1000000
-SAVEHIST=1000000
 [[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
-HISTFILE=~/.cache/zsh/history
+setopt SHARE_HISTORY
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export HISTFILE=~/.cache/zsh/history
 
 #========================= vim
 # menu completion
@@ -89,7 +90,7 @@ re='%f'
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=(precmd_vcs_info)
-setopt prompt_subst
+setopt PROMPT_SUBST
 zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
 zstyle ':vcs_info:*' enable git
 RPROMPT="\$vcs_info_msg_0_"
