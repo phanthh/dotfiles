@@ -4,9 +4,9 @@ local opts = { noremap = true, silent = true }
 
 local repl_spec = function(cmd)
 	vim.g.sendtowindow_use_default = 0
-	km("n", "<c-x>", "V<Plug>SendDownV", { silent = true })
+	-- km("n", "<c-x>", "V<Plug>SendDownV", { silent = true })
+	-- km("", "<s-f9>", string.format("<cmd>vsplit term://%s<cr>G<cmd>wincmd h<cr>", cmd), opts)
 	km("n", "<c-x>", "vip<Plug>SendDownV", { silent = true })
-	km("", "<s-f9>", string.format("<cmd>vsplit term://%s<cr>G<cmd>wincmd h<cr>", cmd), opts)
 	km("", "<f9>", string.format("<cmd>split term://%s<cr>G<cmd>wincmd k<cr>", cmd), opts)
 end
 

@@ -45,10 +45,6 @@ Mod4 + x
 Mod1 + {_,Shift + }Return
   {~/.sh/wm_open -s foot footclient,footclient}
 
-# Editor
-Mod1 + {_,Shift + }backslash
-  {~/.sh,wm_open ,_}neovide
-
 # Browser
 Mod1 + n
   ~/.sh/wm_open $(xdg-mime query default text/html | cut -f 1 -d '.')

@@ -164,7 +164,6 @@ bindsym $mod+e layout toggle split
 bindsym $mod+u workspace prev
 bindsym $mod+i workspace next
 
-
 # Focus workspace
 bindsym --no-repeat $mod+1 workspace number 1
 bindsym --no-repeat $mod+2 workspace number 2
