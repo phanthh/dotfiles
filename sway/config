@@ -71,7 +71,7 @@ exec ~/.config/sway/autostart
 # Background
 # output * bg #101010 solid_color
 output * adaptive_sync on
-output * bg ~/Pictures/wallpaper/eleven-dark.jpg fill
+exec ~/.sh/wm_setwallpaper
 output HDMI-A-1 enable position 0,0
 output eDP-1 enable position 1920,0
 

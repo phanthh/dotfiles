@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-#
+
 #=================== session
 # sway - labwc - shell #### - gnome - plasma
 export SESSION="sway"
@@ -13,6 +13,10 @@ export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+#=================== desktop
+export WALLPAPER_LIGHT="$HOME/Pictures/wallpaper/eleven-light.jpg"
+export WALLPAPER_DARK="$HOME/Pictures/wallpaper/eleven-dark.jpg"
 
 #=================== xdg
 export XDG_CACHE_HOME="$HOME/.cache"

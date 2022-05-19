@@ -104,7 +104,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
 eval "$(zoxide init zsh --cmd cd)"
-eval "$(thefuck --alias f)"
+# eval "$(thefuck --alias f)"
 
 #======================= welcome
 [[ $XDG_SESSION_TYPE != tty ]] && {
