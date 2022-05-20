@@ -1,6 +1,6 @@
 # Reload swhkd
 Mod4 + r
-  pkexec pkill -HUP swhkd
+  pkexec pkill -HUP swhkd && notify-send "Swhkd: restarted" --urgency=low &
 
 # XKeys
 XF86Audio{RaiseVolume,LowerVolume}
@@ -14,7 +14,7 @@ Mod1 + F1
   pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
 
 Mod1 + {F2, F3}
-  pamixer -u{i,d} 2 && pamixer --get-volume > $WOBSOCK
+  pamixer -u{d,i} 2 && pamixer --get-volume > $WOBSOCK
 
 Mod1 + F4
   ~/.sh/wm_open pavucontrol
