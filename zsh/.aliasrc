@@ -7,6 +7,7 @@ alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias npm="pnpm"
 alias npx="pnpm dlx"
 alias grep="rg"
+alias docker="sudo docker"
 
 #======================== shortcuts
 # [ ! -z $DISPLAY ] && alias ls="exa"

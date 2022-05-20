@@ -48,7 +48,8 @@ local servers = {
 	"sumneko_lua",
 	"tsserver",
 	"dartls",
-	-- "tailwindcss"
+	"tailwindcss",
+	"prismals",
 }
 
 -- Setup
