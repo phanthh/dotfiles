@@ -38,7 +38,7 @@ Mod1 + p
   ~/.sh/menu_powerprofile
 
 # System
-Mod4 + x
+Mod4 + esc
   ~/.sh/menu_control
 
 # Terminal
@@ -82,11 +82,11 @@ Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
                  neovide}
 
 # Toggle Ibus
-Mod1 + z
+Mod4 + z
   ~/.sh/util_ibus -t
 
 # Toggle touchpad
-Mod1 + x
+Mod4 + x
   ~/.sh/util_touchpad -t
 
 # Mount drive
