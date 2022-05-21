@@ -38,7 +38,7 @@ Mod1 + p
   ~/.sh/menu_powerprofile
 
 # System
-Mod4 + esc
+Mod4 + Escape
   ~/.sh/menu_control
 
 # Terminal
