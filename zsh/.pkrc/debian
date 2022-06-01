@@ -1,0 +1,16 @@
+# query
+qu() {
+  apt list --installed | fzf --multi --preview "apt-cache show {1}"
+}
+# install
+in() {
+  apt list | awk '{print $1}' | fzf --multi --preview "apt-cache show {1}" | xargs -ro sudo apt-get install
+}
+# remove
+re() {
+  apt-mark showmanual | fzf --multi --preview "apt-cache show {1}" | xargs -ro sudo apt-get remove
+}
+# update
+up() {
+  sudo apt update && sudo apt upgrade
+}
