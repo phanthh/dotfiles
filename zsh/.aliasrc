@@ -6,7 +6,6 @@ alias grep="grep --color=auto"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias npm="pnpm"
 alias npx="pnpm dlx"
-alias docker="sudo docker"
 
 #======================== shortcuts
 # [ ! -z $DISPLAY ] && alias ls="exa"

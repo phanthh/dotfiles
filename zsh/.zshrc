@@ -20,8 +20,8 @@ DISTROPROMPT=''
 #========================= history
 [[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
 setopt SHARE_HISTORY
-export HISTSIZE=1000000
-export SAVEHIST=1000000
+export HISTSIZE=50000
+export SAVEHIST=50000
 export HISTFILE=~/.cache/zsh/history
 
 #========================= vim
