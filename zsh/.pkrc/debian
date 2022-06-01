@@ -1,6 +1,6 @@
 # query
 qu() {
-  apt list --installed | fzf --multi --preview "apt-cache show {1}"
+  apt list --installed | awk '{print $1}' | fzf --multi --preview "apt-cache show {1}"
 }
 # install
 in() {

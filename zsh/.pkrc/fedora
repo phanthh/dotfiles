@@ -1,0 +1,16 @@
+# query
+qu() {
+  dnf list --installed | awk '{print $1}' | fzf --multi --preview "dnf info {1}"
+}
+# install
+in() {
+  dnf list | awk '{print $1}' | fzf --multi --preview "dnf info {1}" | xargs -ro sudo dnf install
+}
+# remove
+re() {
+  dnf history userinstalled | fzf --multi --preview "dnf info {1}" | xargs -ro sudo dnf remove
+}
+# update
+up() {
+  sudo dnf upgrade
+}
