@@ -28,7 +28,7 @@ local function config(client, bufnr)
 		filter_out_diagnostics_by_code = {},
 
 		-- inlay hints
-		auto_inlay_hints = true,
+		auto_inlay_hints = false,
 		inlay_hints_highlight = "Comment",
 		inlay_hints_priority = 200, -- priority of the hint extmarks
 		inlay_hints_throttle = 150, -- throttle the inlay hint request
