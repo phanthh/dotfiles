@@ -288,8 +288,13 @@ require("packer").startup({
 			end,
 		})
 
+		use({
+			"mcauley-penney/tidy.nvim",
+			config = function()
+				require("tidy").setup()
+			end,
+		}) -- clean whitespace
 		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
-		use({ "McAuleyPenney/tidy.nvim", event = "BufWritePre" }) -- clean whitespace
 		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
 		use("lewis6991/impatient.nvim") -- faster loading plugins with caching
