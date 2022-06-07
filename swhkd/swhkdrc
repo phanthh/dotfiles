@@ -47,7 +47,7 @@ Mod1 + {_,Shift + }Return
 
 # Browser
 Mod1 + n
-  ~/.sh/wm_open -s "$(xdg-mime query default text/html | cut -f 1 -d '.')" ~/.sh/util_browsesession
+  ~/.sh/wm_open -s "$(xdg-mime query default text/html | cut -f 1 -d '.')" ~/.sh/util_browse
 
 # Launcher
 Mod4 + d
