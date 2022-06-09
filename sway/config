@@ -299,8 +299,10 @@ for_window [app_id="org.qbittorrent.qBittorrent"] title_format "   %title"
 # ws5 social
 assign     [class="discord"] workspace number 5
 for_window [class="discord"] workspace number 5
+assign     [class="telegramdesktop"] workspace number 5
 
 for_window [class="discord"] title_format "   %title"
+for_window [class="telegramdesktop"] title_format "   %title"
 
 # ws6 zoom
 assign     [app_id="zoom"] workspace number 6
