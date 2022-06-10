@@ -97,6 +97,12 @@ require("packer").startup({
 						require("spellsitter").setup()
 					end,
 				},
+				{
+					"m-demare/hlargs.nvim", -- highlights arguments
+					config = function()
+						require("hlargs").setup()
+					end,
+				},
 			},
 		})
 
