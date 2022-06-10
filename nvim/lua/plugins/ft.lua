@@ -55,6 +55,8 @@ require("filetype").setup({
 				vim.o.ruler = true
 				vim.o.showcmd = true
 				vim.o.number = true
+				km("n", "gdd", "<cmd>Neogen<cr>", opts) -- gendoc
+				km("n", "<f10>", "<esc>:w<bar>:!util_crun %<cr>", opts) -- quick run
 			end, {
 				["r"] = function()
 					repl_spec("R")
@@ -91,6 +93,10 @@ require("filetype").setup({
 				"scss",
 				"html",
 				"dart",
+				"prisma",
+				["http"] = function()
+					km("n", "<c-x>", "<Plug>RestNvim", opts)
+				end,
 			}),
 			spec_ft(function()
 				vim.o.spell = true

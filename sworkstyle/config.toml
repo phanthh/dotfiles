@@ -26,6 +26,7 @@ fallback = ''
 
 [matching]
 'discord' = ''
+'telegram' = ''
 'balena-etcher' = ''
 'Chia Blockchain' = ''
 'Steam' = ''

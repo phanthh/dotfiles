@@ -24,6 +24,14 @@ require("packer").startup({
 		})
 
 		use({
+			"j-hui/fidget.nvim", -- lsp progress indicator
+			after = "nvim-lspconfig",
+			config = function()
+				require("fidget").setup({})
+			end,
+		})
+
+		use({
 			"L3MON4D3/LuaSnip", -- snippets engine
 			module = "luasnip",
 			requires = {
@@ -103,7 +111,7 @@ require("packer").startup({
 		})
 
 		use({
-			"rhysd/vim-grammarous", -- grammar checking
+			"rhysd/vim-grammarous", -- grammar cheker
 			cmd = { "GrammarousCheck", "GrammarousReset" },
 			config = function()
 				require("plugins.vim-grammarous")
@@ -149,8 +157,6 @@ require("packer").startup({
 					options = {
 						theme = "vscode",
 						globalstatus = true,
-						component_separators = { left = " ", right = " " },
-						section_separators = { left = " ", right = " " },
 					},
 				})
 			end,
@@ -190,9 +196,9 @@ require("packer").startup({
 			},
 			config = function()
 				require("nvim-tree").setup({
-					actions = {
-						open_file = {
-							resize_window = true,
+					renderer = {
+						indent_markers = {
+							enable = true,
 						},
 					},
 				})
@@ -215,27 +221,13 @@ require("packer").startup({
 			end,
 		})
 
-		-- use({
-		-- 	"mhartington/formatter.nvim", -- formatter
-		-- 	event = "BufWritePre",
-		-- 	config = function()
-		-- 		require("plugins.formatter")
-		-- 	end,
-		-- })
-		--
-		--
-
 		use({
 			"numToStr/Comment.nvim", -- comment helper
 			keys = "gc",
 			config = function()
-				require("Comment").setup()
+				require("plugins.Comment")
 			end,
 		})
-
-		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
-		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
-		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
 
 		use({
 			"lukas-reineke/indent-blankline.nvim", -- vertical lines
@@ -272,7 +264,6 @@ require("packer").startup({
 			"phaazon/hop.nvim", -- easymotion
 			cmd = "HopWord",
 			config = function()
-				-- you can configure Hop the way you like here; see :h hop-config
 				require("hop").setup({ keys = "etovqpdygflzhckisuran" })
 			end,
 		})
@@ -289,41 +280,46 @@ require("packer").startup({
 		})
 
 		use({
-			"mcauley-penney/tidy.nvim",
+			"mcauley-penney/tidy.nvim", -- clean whitespace
 			config = function()
 				require("tidy").setup()
 			end,
-		}) -- clean whitespace
-		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } })
+		})
+
+		use({
+			"sunjon/shade.nvim", -- shading unfocused windows
+			config = function()
+				require("shade").setup({
+					overlay_opacity = 55,
+				})
+			end,
+			event = "WinLeave",
+		})
+
+		use({
+			"NTBBloodbath/rest.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			ft = { "http" },
+			config = function()
+				require("rest-nvim").setup({
+					result_split_horizontal = true,
+				})
+			end,
+		})
+
+		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
+		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
+		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
+		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } }) -- better bufdel
 		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
 		use("lewis6991/impatient.nvim") -- faster loading plugins with caching
-		-- use({
-		-- 	"sunjon/shade.nvim",
-		-- 	config = function()
-		-- 		require("shade").setup({
-		-- 			overlay_opacity = 55,
-		-- 		})
-		-- 	end,
-		-- 	event = "WinLeave",
-		-- })
-		-- use({
-		-- 	"itchyny/calendar.vim",
-		-- 	cmd = "Calendar",
-		-- 	config = function()
-		-- 		vim.g.calendar_google_calendar = 1
-		-- 		vim.g.calendar_google_task = 0
-		-- 		vim.g.calendar_google_api_key = os.getenv("CALENDAR_VIM_API_KEY")
-		-- 		vim.g.calendar_google_client_id = os.getenv("CALENDAR_VIM_CLIENT_ID")
-		-- 		vim.g.calendar_google_client_secret = os.getenv("CALENDAR_VIM_CLIENT_SECRET")
-		-- 	end,
-		-- })
+
 		-- use("ActivityWatch/aw-watcher-vim")
 		-- use("spywhere/tmux.nvim")
 		-- use("kovetskiy/sxhkd-vim")
-		use("waycrate/swhkd-vim")
-		-- use({ "airblade/vim-gitgutter", event = "CmdlineEnter" })
+		-- use("waycrate/swhkd-vim")
 		-- use("junegunn/vim-easy-align")
-		-- use 'jxnblk/vim-mdx-js'
+		-- use("jxnblk/vim-mdx-js")
 	end,
 })

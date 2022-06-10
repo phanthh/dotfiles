@@ -1,6 +1,6 @@
 -- autocompile packer
 vim.api.nvim_create_augroup("global", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = "global",
 	pattern = "pluginList.lua, ft.lua",
 	command = "source <afile> | PackerCompile | LuaCacheClear",
@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- autocompile rmd
 vim.b.pdfcompile = 0
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = "global",
 	pattern = { "*.rmd", "*.tex" },
 	callback = function()
@@ -37,7 +37,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- format on write
-vim.api.nvim_create_autocmd("BufWritePost", {
+-- vim.api.nvim_create_autocmd("BufLeave", {
+-- 	group = "global",
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.api.nvim_command("write")
+-- 	end,
+-- })
+
+-- format on write
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = "global",
 	pattern = "*",
 	callback = function()
