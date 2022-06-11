@@ -39,6 +39,8 @@ require("packer").startup({
 			},
 		})
 
+		use({ "onsails/lspkind.nvim", module = "lspkind" }) -- nvim-cmp icons
+
 		-- lazy loading
 		local signal = { "InsertEnter", "BufWritePre" }
 		local trigger = { "g", "K", "[", "]", "<c-k>", "<leader>" }
@@ -100,7 +102,7 @@ require("packer").startup({
 				{
 					"m-demare/hlargs.nvim", -- highlights arguments
 					config = function()
-						require("hlargs").setup()
+						require("hlargs").setup({})
 					end,
 				},
 			},
@@ -292,15 +294,15 @@ require("packer").startup({
 			end,
 		})
 
-		use({
-			"sunjon/shade.nvim", -- shading unfocused windows
-			config = function()
-				require("shade").setup({
-					overlay_opacity = 55,
-				})
-			end,
-			event = "WinLeave",
-		})
+		-- use({
+		-- 	"sunjon/shade.nvim", -- shading unfocused windows
+		-- 	config = function()
+		-- 		require("shade").setup({
+		-- 			overlay_opacity = 55,
+		-- 		})
+		-- 	end,
+		-- 	event = "WinLeave",
+		-- })
 
 		use({
 			"NTBBloodbath/rest.nvim",

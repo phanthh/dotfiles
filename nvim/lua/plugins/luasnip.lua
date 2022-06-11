@@ -8,12 +8,14 @@ ls.config.set_config({
 	enable_autosnippets = true,
 })
 
--- ls.filetype_extend("markdown", { "tex" })
--- ls.filetype_extend("rmd", { "tex" })
+ls.filetype_extend("markdown", { "tex" })
+ls.filetype_extend("rmd", { "tex" })
+ls.filetype_extend("typescriptreact", { "html" })
+ls.filetype_extend("javascriptreact", { "html" })
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
----- Common snippets
+---- Common shared snippets
 
 -- formatting
 local texformat = {

@@ -21,6 +21,7 @@ require("nvim-treesitter.configs").setup({
 		"bash",
 		"toml",
 		"json",
+		"prisma",
 	},
 	context_commentstring = { enable = true, enable_autocmd = false },
 	autotag = { enable = true },
