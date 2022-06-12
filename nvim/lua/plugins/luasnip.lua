@@ -79,6 +79,7 @@ local mathh = {
 	-- utils
 	s("lmup", fmt("\\limsup_{{{1} \to {2}}}{3}", { i(1, "n"), i(2, "\\infty"), i(0) })),
 	s("pdd", fmt("\\frac{{\\partial {1}}}{{\\partial {2} }} {3}", { i(1), i(2, "x"), i(0) })),
+	s("ddd", fmt("\\frac{{d {1}}}{{d {2} }} {3}", { i(1), i(2, "x"), i(0) })),
 	s("//", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 
