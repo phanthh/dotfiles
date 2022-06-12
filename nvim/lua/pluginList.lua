@@ -294,15 +294,15 @@ require("packer").startup({
 			end,
 		})
 
-		-- use({
-		-- 	"sunjon/shade.nvim", -- shading unfocused windows
-		-- 	config = function()
-		-- 		require("shade").setup({
-		-- 			overlay_opacity = 55,
-		-- 		})
-		-- 	end,
-		-- 	event = "WinLeave",
-		-- })
+		use({
+			"sunjon/shade.nvim", -- shading unfocused windows
+			config = function()
+				require("shade").setup({
+					overlay_opacity = 55,
+				})
+			end,
+			event = "WinLeave",
+		})
 
 		use({
 			"NTBBloodbath/rest.nvim",
