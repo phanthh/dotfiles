@@ -5,7 +5,7 @@ local function config(client, bufnr)
 		enable_import_on_completion = true,
 		import_all_scan_buffers = 100,
 		import_all_select_source = false,
-		auto_inlay_hints = true,
+		auto_inlay_hints = false,
 		update_imports_on_move = true,
 		require_confirmation_on_move = true,
 	})
