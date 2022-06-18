@@ -27,6 +27,7 @@ alias bs="~/.sh/util_distroboxsetup"
 alias br="~/.sh/util_browse"
 alias fm="~/.sh/util_filemanager"
 alias nb="newsboat"
+alias mux="tmuxinator"
 
 #======================== utils
 alias myip="curl ifconfig.me"
