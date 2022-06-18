@@ -49,6 +49,10 @@ Mod1 + {_,Shift + }Return
 Mod1 + n
   ~/.sh/wm_open -s "$(xdg-mime query default text/html | cut -f 1 -d '.')" ~/.sh/util_browse
 
+# Secondary Browser
+Mod1 + Shift + n
+  ~/.sh/wm_open chromium
+
 # Launcher
 Mod4 + d
   ~/.sh/menu_run

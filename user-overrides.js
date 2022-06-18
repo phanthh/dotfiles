@@ -16,5 +16,4 @@ user_pref("browser.startup.page", 3); // 0102
 user_pref("privacy.clearOnShutdown.history", false); // 2811
 // user_pref("privacy.cpd.history", false); // 2812 optional to match when you use Ctrl-Shift-Del
 
-// enable webgl
-user_pref("webgl.disabled", false);
+user_pref("keyword.enabled", true);
