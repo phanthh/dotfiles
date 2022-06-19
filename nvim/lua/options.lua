@@ -9,6 +9,7 @@ vim.o.lazyredraw = false -- gui
 vim.o.showmode = false -- gui
 vim.o.autoindent = false
 vim.o.autoread = true
+-- vim.o.cmdheight = 0
 
 -- visual
 vim.o.numberwidth = 5

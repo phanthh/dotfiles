@@ -14,8 +14,17 @@ function M.concat(t1, t2)
 	return t1
 end
 
-function M.keymap(...)
-	vim.api.nvim_set_keymap(...)
+local opts = { silent = true, noremap = true }
+-- local mapper = require("nvim-mapper")
+
+function M.keymap(mode, key, cmd, class, name, desc)
+	vim.api.nvim_set_keymap(mode, key, cmd, opts)
+	-- mapper.map(mode, key, cmd, opts, class, name, desc)
+end
+
+function M.keymap_buf(bufnr, mode, key, cmd)
+	vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, opts)
+	-- mapper.map_buf(bufnr, mode, key, cmd, opts, class, name, desc)
 end
 
 function M.printt(t)

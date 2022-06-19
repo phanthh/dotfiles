@@ -191,8 +191,18 @@ require("packer").startup({
 			"nvim-telescope/telescope.nvim", -- telescope
 			cmd = "Telescope",
 			module = "telescope",
+			config = function()
+				require("telescope").load_extension("mapper")
+			end,
 			requires = {
 				"kyazdani42/nvim-web-devicons",
+				{
+					"lazytanuki/nvim-mapper",
+					config = function()
+						require("nvim-mapper").setup({})
+					end,
+					before = "telescope.nvim",
+				},
 			},
 		})
 
@@ -316,9 +326,9 @@ require("packer").startup({
 		})
 
 		use({
-			"glepnir/dashboard-nvim",
+			"petertriho/nvim-scrollbar",
 			config = function()
-				require("plugins.dashboard-nvim")
+				require("scrollbar").setup()
 			end,
 		})
 

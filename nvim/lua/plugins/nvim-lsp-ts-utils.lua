@@ -1,5 +1,6 @@
 local function config(client, bufnr)
 	local ts_utils = require("nvim-lsp-ts-utils")
+	local kmb = require("utils").keymap_buf
 
 	ts_utils.setup({
 		enable_import_on_completion = true,
@@ -12,10 +13,9 @@ local function config(client, bufnr)
 
 	ts_utils.setup_client(client)
 
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+	kmb(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+	kmb(bufnr, "n", "gr", ":TSLspRenameFile<CR>")
+	kmb(bufnr, "n", "gi", ":TSLspImportAll<CR>")
 end
 
 return { config = config }
