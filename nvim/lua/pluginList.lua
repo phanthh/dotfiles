@@ -315,6 +315,13 @@ require("packer").startup({
 			end,
 		})
 
+		use({
+			"glepnir/dashboard-nvim",
+			config = function()
+				require("plugins.dashboard-nvim")
+			end,
+		})
+
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
