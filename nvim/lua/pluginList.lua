@@ -1,13 +1,27 @@
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
+
 require("packer").startup({
 	function(use)
 		local u = require("utils")
 
-		use("wbthomason/packer.nvim") -- plugins manager
+		use("wbthomason/packer.nvim") -- manager
 
 		use({
 			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
-				require("plugins.vscode")
+				require("configs.vscode")
 				vim.cmd([[
           colorscheme vscode
           highlight FloatBorder guifg=#CCCCCC
@@ -41,6 +55,14 @@ require("packer").startup({
 
 		use({ "onsails/lspkind.nvim", module = "lspkind" }) -- nvim-cmp icons
 
+		use({
+			"jose-elias-alvarez/null-ls.nvim", -- non-lsp programs hooker
+			module = "null-ls",
+			requires = {
+				"nvim-lua/plenary.nvim",
+			},
+		})
+
 		-- lazy loading
 		local signal = { "InsertEnter", "BufWritePre" }
 		local trigger = { "g", "K", "[", "]", "<c-k>", "<leader>" }
@@ -50,9 +72,10 @@ require("packer").startup({
 			keys = trigger,
 			module = "cmp",
 			config = function()
-				require("plugins.luasnip")
-				require("plugins.nvim-lspconfig")
-				require("plugins.nvim-cmp")
+				require("configs.luasnip")
+				require("configs.nvim-lspconfig")
+				require("configs.null-ls")
+				require("configs.nvim-cmp")
 				vim.cmd([[LspStart]])
 			end,
 			requires = {
@@ -65,7 +88,7 @@ require("packer").startup({
 					event = signal,
 					keys = trigger,
 					config = function()
-						require("plugins.cmp-dictionary")
+						require("configs.cmp-dictionary")
 					end,
 				},
 				{
@@ -87,7 +110,7 @@ require("packer").startup({
 			"nvim-treesitter/nvim-treesitter", -- treesitter engine
 			run = ":TSUpdate",
 			config = function()
-				require("plugins.nvim-treesitter")
+				require("configs.nvim-treesitter")
 			end,
 			requires = {
 				"windwp/nvim-ts-autotag", -- autoclose and auto rename html tags
@@ -109,20 +132,10 @@ require("packer").startup({
 		})
 
 		use({
-			"jose-elias-alvarez/null-ls.nvim", -- non-lsp programs hooker (i.e. formatter, linter, ...)
-			config = function()
-				require("plugins.null-ls")
-			end,
-			requires = {
-				"nvim-lua/plenary.nvim",
-			},
-		})
-
-		use({
 			"rhysd/vim-grammarous", -- grammar cheker
 			cmd = { "GrammarousCheck", "GrammarousReset" },
 			config = function()
-				require("plugins.vim-grammarous")
+				require("configs.vim-grammarous")
 			end,
 		})
 
@@ -133,7 +146,7 @@ require("packer").startup({
 				"nvim-telescope/telescope.nvim",
 			},
 			config = function()
-				require("plugins.telekasten")
+				require("configs.telekasten")
 			end,
 		})
 
@@ -142,18 +155,7 @@ require("packer").startup({
 			tag = "v2.*",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
-				require("bufferline").setup({
-					options = {
-						offsets = {
-							{
-								filetype = "NvimTree",
-								text = "File Explorer",
-								highlight = "Directory",
-								text_align = "left",
-							},
-						},
-					},
-				})
+				require("configs.bufferline")
 			end,
 		})
 
@@ -161,12 +163,7 @@ require("packer").startup({
 			"nvim-lualine/lualine.nvim", -- status line
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = function()
-				require("lualine").setup({
-					options = {
-						theme = "vscode",
-						globalstatus = true,
-					},
-				})
+				require("configs.lualine")
 			end,
 		})
 
@@ -191,19 +188,7 @@ require("packer").startup({
 			"nvim-telescope/telescope.nvim", -- telescope
 			cmd = "Telescope",
 			module = "telescope",
-			config = function()
-				require("telescope").load_extension("mapper")
-			end,
-			requires = {
-				"kyazdani42/nvim-web-devicons",
-				{
-					"lazytanuki/nvim-mapper",
-					config = function()
-						require("nvim-mapper").setup({})
-					end,
-					before = "telescope.nvim",
-				},
-			},
+			requires = "kyazdani42/nvim-web-devicons",
 		})
 
 		use({
@@ -213,13 +198,7 @@ require("packer").startup({
 				"kyazdani42/nvim-web-devicons",
 			},
 			config = function()
-				require("nvim-tree").setup({
-					renderer = {
-						indent_markers = {
-							enable = true,
-						},
-					},
-				})
+				require("configs.nvim-tree")
 			end,
 		})
 
@@ -243,7 +222,7 @@ require("packer").startup({
 			"numToStr/Comment.nvim", -- comment helper
 			keys = "gc",
 			config = function()
-				require("plugins.Comment")
+				require("configs.Comment")
 			end,
 		})
 
@@ -256,7 +235,7 @@ require("packer").startup({
 		use({
 			"nathom/filetype.nvim", -- filetype.lua
 			config = function()
-				require("plugins.ft")
+				require("configs.ft")
 			end,
 		})
 
@@ -338,7 +317,7 @@ require("packer").startup({
 		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } }) -- better bufdel
 		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
 		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
-		use("lewis6991/impatient.nvim") -- faster loading plugins with caching
+		use("lewis6991/impatient.nvim") -- faster loading with caching
 
 		-- use("ActivityWatch/aw-watcher-vim")
 		-- use("spywhere/tmux.nvim")
@@ -346,5 +325,8 @@ require("packer").startup({
 		-- use("waycrate/swhkd-vim")
 		-- use("junegunn/vim-easy-align")
 		-- use("jxnblk/vim-mdx-js")
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 })

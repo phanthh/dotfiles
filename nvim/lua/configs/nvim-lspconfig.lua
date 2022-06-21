@@ -103,7 +103,7 @@ nvim_lsp.tsserver.setup({
 	init_options = require("nvim-lsp-ts-utils").init_options,
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		require("plugins.nvim-lsp-ts-utils").config(client, bufnr)
+		require("configs.nvim-lsp-ts-utils").config(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end,
 	capabilities = capabilities,
@@ -118,7 +118,7 @@ local others = {
 	"vimls",
 	"r_language_server",
 	"dartls",
-	"tailwindcss",
+	-- "tailwindcss",
 	"prismals",
 	"cssls",
 }
