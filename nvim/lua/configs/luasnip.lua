@@ -194,3 +194,8 @@ ls.add_snippets("python", {
 	s(";;", { t({ "# %%", "" }), i(0) }),
 	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""', "# %%" }) }),
 }, { type = "autosnippets" })
+
+-- Typescript react
+ls.add_snippets("typescriptreact", {
+	s("clg", { t("console.log("), i(1), t(")"), i(0) }),
+}, { type = "autosnippets" })
