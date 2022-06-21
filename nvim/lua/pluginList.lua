@@ -304,12 +304,12 @@ require("packer").startup({
 			end,
 		})
 
-		use({
-			"petertriho/nvim-scrollbar",
-			config = function()
-				require("scrollbar").setup()
-			end,
-		})
+		-- use({
+		-- 	"petertriho/nvim-scrollbar",
+		-- 	config = function()
+		-- 		require("scrollbar").setup()
+		-- 	end,
+		-- })
 
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
