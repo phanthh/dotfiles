@@ -29,3 +29,11 @@ km("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 -- nvim-tree
 km("n", "<c-n>", ":NvimTreeToggle<cr>")
 km("n", "<leader>r", ":NvimTreeRefresh<cr>")
+
+-- harpoon
+km("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>")
+km("n", "<leader>0", ":lua require('harpoon.ui').toggle_quick_menu()<cr>")
+
+for i = 1, 9 do
+	km("n", "<leader>" .. i, string.format(":lua require('harpoon.ui').nav_file(%d)<cr>", i))
+end

@@ -310,7 +310,8 @@ require("packer").startup({
 		-- 		require("scrollbar").setup()
 		-- 	end,
 		-- })
-
+		--
+		use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/plenary.nvim" } })
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
 		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
