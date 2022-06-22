@@ -63,6 +63,13 @@ require("packer").startup({
 			},
 		})
 
+		use({
+			"f-person/git-blame.nvim",
+			config = function()
+				vim.g.gitblame_enabled = 0
+			end,
+		})
+
 		-- lazy loading
 		local signal = { "InsertEnter", "BufWritePre" }
 		local trigger = { "g", "K", "[", "]", "<c-k>", "<leader>" }
@@ -311,6 +318,13 @@ require("packer").startup({
 		-- 	end,
 		-- })
 		--
+		use({
+			"luukvbaal/stabilize.nvim",
+			config = function()
+				require("stabilize").setup({})
+			end,
+		})
+
 		use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/plenary.nvim" } })
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
