@@ -15,7 +15,7 @@ km("i", "<c-s>", "<esc>:wa<cr>")
 -- buffers
 km("n", "<c-w>i", ":bnext<cr>")
 km("n", "<c-w>u", ":bprev<cr>")
-km("n", "<c-w>w", ":Bdelete<cr> ")
+km("n", "<c-w>w", ":wa<bar>Bdelete<cr> ")
 km("n", "<c-w>0", ":bfirst<cr")
 km("n", "<c-w>$", ":blast<cr>")
 
