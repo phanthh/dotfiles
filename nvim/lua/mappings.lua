@@ -5,8 +5,9 @@ local km = require("utils").keymap
 km("i", "jj", "<esc>")
 km("n", "<c-f>", ":HopWord<cr>")
 km("i", "jf", "<esc>:HopWord<cr>")
-km("v", "N", ":m '>+1<cr>gv=gv") -- multiline jump
-km("v", "P", ":m '<-2<cr>gv=gv")
+km("v", "J", ":m '>+1<cr>gv=gv")
+km("v", "K", ":m '<-2<cr>gv=gv")
+km("v", "p", '"_dP')
 
 -- saving
 km("n", "<c-s>", ":wa<cr>")
