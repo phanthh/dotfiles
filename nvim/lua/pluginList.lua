@@ -23,14 +23,27 @@ require("packer").startup({
 			config = function()
 				require("configs.vscode")
 				vim.cmd([[
-          colorscheme vscode
-          highlight FloatBorder guifg=#CCCCCC
-          highlight TelescopePromptBorder guifg=#CCCCCC
-          highlight TelescopeResultsBorder guifg=#CCCCCC
-          highlight TelescopePreviewBorder guifg=#CCCCCC
-        ]])
+		        colorscheme vscode
+		        highlight FloatBorder guifg=#CCCCCC
+		        highlight TelescopePromptBorder guifg=#CCCCCC
+		        highlight TelescopeResultsBorder guifg=#CCCCCC
+		        highlight TelescopePreviewBorder guifg=#CCCCCC
+		      ]])
 			end,
 		})
+
+		-- use({
+		-- 	"kdheepak/monochrome.nvim",
+		-- 	config = function()
+		-- 		vim.cmd([[
+		--         colorscheme monochrome
+		--         highlight FloatBorder guifg=#CCCCCC
+		--         highlight TelescopePromptBorder guifg=#CCCCCC
+		--         highlight TelescopeResultsBorder guifg=#CCCCCC
+		--         highlight TelescopePreviewBorder guifg=#CCCCCC
+		--       ]])
+		-- 	end,
+		-- })
 
 		use({
 			"neovim/nvim-lspconfig", -- lsp helper
