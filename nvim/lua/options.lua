@@ -36,10 +36,6 @@ vim.o.ignorecase = true
 -- wrap
 vim.o.wrap = true
 vim.o.linebreak = true
-vim.o.textwidth = 80
-vim.o.colorcolumn = 80
-vim.o.wrapmargin = 0
-vim.o.formatoptions = vim.o.formatoptions .. "t"
 
 -- safety net
 vim.o.backup = true
