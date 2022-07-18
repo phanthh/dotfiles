@@ -121,6 +121,7 @@ local others = {
 	-- "tailwindcss",
 	"prismals",
 	"cssls",
+	"ltex",
 }
 
 for _, lsp in ipairs(others) do

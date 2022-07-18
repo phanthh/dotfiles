@@ -33,7 +33,7 @@ floating_modifier $mod
 # Keyboard
 input type:keyboard {
 		repeat_delay 225
-		repeat_rate 200
+		repeat_rate 30
 }
 
 # Touchpad

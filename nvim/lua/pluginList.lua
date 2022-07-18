@@ -151,13 +151,13 @@ require("packer").startup({
 			},
 		})
 
-		use({
-			"rhysd/vim-grammarous", -- grammar cheker
-			cmd = { "GrammarousCheck", "GrammarousReset" },
-			config = function()
-				require("configs.vim-grammarous")
-			end,
-		})
+		-- use({
+		-- 	"rhysd/vim-grammarous", -- grammar cheker
+		-- 	cmd = { "GrammarousCheck", "GrammarousReset" },
+		-- 	config = function()
+		-- 		require("configs.vim-grammarous")
+		-- 	end,
+		-- })
 
 		use({
 			"renerocksai/telekasten.nvim", -- zettelkasten

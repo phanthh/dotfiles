@@ -102,8 +102,8 @@ require("filetype").setup({
 				vim.o.ruler = false
 				vim.o.showcmd = false
 				vim.o.number = false
-				km("", "<f12>", "<cmd>GrammarousCheck<cr>")
-				km("", "<s-f12>", "<cmd>GrammarousReset<cr>")
+				-- km("", "<f12>", "<cmd>GrammarousCheck<cr>")
+				-- km("", "<s-f12>", "<cmd>GrammarousReset<cr>")
 				km("n", "K", "<cmd>lua require('nabla').popup()<cr>")
 			end, {
 				["tex"] = function()
