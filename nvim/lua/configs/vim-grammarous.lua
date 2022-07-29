@@ -1,4 +1,4 @@
-vim.g["grammarous#languagetool_cmd"] = "/usr/bin/languagetool"
+vim.g["grammarous#languagetool_cmd"] = "/opt/homebrew/bin/languagetool"
 vim.g["grammarous#disabled_rules"] = {
 	tex = { "UNIT_SPACE", "EN_UNPAIRED_BRACKETS" },
 }

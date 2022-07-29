@@ -1,0 +1,77 @@
+#============ WINDOWS
+# Close window
+alt - q : yabai -m window --close
+
+# Fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Change focus
+alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
+alt - k : yabai -m window --focus stack.prev || yabai -m window --focus north
+alt - h : yabai -m window --focus west || yabai -m window --focus first
+alt - l : yabai -m window --focus east || yabai -m window --focus last
+
+# Move focused window
+alt + shift - h : yabai -m window --swap west
+alt + shift - j : yabai -m window --swap south
+alt + shift - k : yabai -m window --swap north
+alt + shift - l : yabai -m window --swap east
+
+alt + shift - left : yabai -m window --swap west
+alt + shift - down : yabai -m window --swap south
+alt + shift - up : yabai -m window --swap north
+alt + shift - right : yabai -m window --swap east
+
+# Move window to workspace
+alt + shift - 1 : yabai -m window --space 1
+alt + shift - 2 : yabai -m window --space 2
+alt + shift - 3 : yabai -m window --space 3
+alt + shift - 4 : yabai -m window --space 4
+alt + shift - 5 : yabai -m window --space 5
+alt + shift - 6 : yabai -m window --space 6
+alt + shift - 7 : yabai -m window --space 7
+alt + shift - 8 : yabai -m window --space 8
+alt + shift - 9 : yabai -m window --space 9
+alt + shift - 0 : yabai -m window --space 10
+
+alt + shift - u : yabai -m window --space prev
+alt + shift - i : yabai -m window --space next
+
+#============ WORKSPACE
+
+# Change workspace layout
+alt - s : yabai -m space --layout stack
+alt - e : yabai -m window --toggle split || yabai -m space --layout bsp
+
+# Switch next/previous workspace
+alt - u : yabai -m space --focus prev
+alt - i : yabai -m space --focus next
+
+# Focus workspace
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
+
+# Move focused workspace between monitors
+alt + shift - 0x2B : yabai -m space --display prev && yabai -m display --focus prev
+alt + shift - 0x2F : yabai -m space --display next && yabai -m display --focus next
+
+# Move focused between monitors
+alt - 0x2B : yabai -m display --focus prev
+alt - 0x2F : yabai -m display --focus next
+
+#============ APPLICATIONS
+alt - return : ~/.sh/wm_open -s 'iterm2' /Applications/iTerm.app/Contents/MacOS/iTerm2
+alt - n : ~/.sh/wm_open -s 'firefox' /Applications/Firefox.app/Contents/MacOS/firefox
+alt + shift - n : ~/.sh/wm_open -s 'google chrome' /Applications/Chromium.app/Contents/MacOS/Chromium
+alt + shift - z : ~/.sh/wm_open -s 'zotero' /Applications/Zotero.app/Contents/MacOS/zotero
+alt + shift - s : ~/.sh/wm_open -s 'slack' /Applications/Slack.app/Contents/MacOS/Slack
+alt + shift - d : ~/.sh/wm_open -s 'DataGrip' /Applications/DataGrip.app/Contents/MacOS/datagrip
+alt + shift - x : ~/.sh/wm_open -s 'keepassxc' /Applications/KeePassXC.app/Contents/MacOS/KeePassXC

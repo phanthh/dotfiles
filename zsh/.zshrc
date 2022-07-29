@@ -1,21 +1,9 @@
 #========================= tmux
-[[ -x "$(command -v tmux)" && -z ${TMUX} && $XDG_SESSION_TYPE != tty ]] && {
+[[ -x "$(command -v tmux)" && -z ${TMUX} ]] && {
   tmux attach || tmux
 } >/dev/null 2>&1
 
 # [ -z "${NVIM_LISTEN_ADDRESS}" ] && nvim "term://$SHELL"
-
-#========================= distrobox
-HOST_DISTRO='arch'
-DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | tr -d '"')
-DISTRONAME=$(awk -F= '$1=="PRETTY_NAME" { print $2 ;}' /etc/os-release | tr -d '"')
-DISTROPROMPT=''
-[[ $DISTRO != $HOST_DISTRO ]] && {
-  DISTROPROMPT="$cl@${DISTRO}$re"
-  source $HOME/.zshenv
-}
-
-# [[ $DISTRO != 'gentoo' ]] && $HOME/.local/bin/distrobox-enter gentoo
 
 #========================= history
 [[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
@@ -63,25 +51,6 @@ preexec() { echo -ne '\e[5 q' ;}
 bindkey '^F' autosuggest-accept
 bindkey '^H' backward-kill-word
 bindkey -s '^O' 'n^M'
-bindkey -s '^P' '~/.sh/util_filemanager^M'
-
-#======================= mamba
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/home/phanthh/.local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/phanthh/.local/lib/mamba";
-__mamba_setup="$('/home/phanthh/.local/bin/micromamba' shell hook --shell zsh --prefix '/home/phanthh/.local/lib/mamba' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    if [ -f "/home/phanthh/.local/lib/mamba/etc/profile.d/micromamba.sh" ]; then
-        . "/home/phanthh/.local/lib/mamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="/home/phanthh/.local/lib/mamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
 
 #========================= prompt
 cl='%F{cyan}'
@@ -102,11 +71,11 @@ source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(thefuck --alias f)"
 
 #======================= welcome
-[[ $XDG_SESSION_TYPE != tty ]] && {
-  echo "\n$DISTRONAME [$(uname -r)]\n(c) $(date +%Y) GNU GPL License. All rights reserved.\n"
-}
+# [[ $XDG_SESSION_TYPE != tty ]] && {
+#   echo "\n$(uname -s) [$(uname -r)]\n(c) $(date +%Y) Proprietary software License. All rights reserved.\n"
+# }

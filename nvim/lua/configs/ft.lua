@@ -43,6 +43,7 @@ require("filetype").setup({
 			[".config/sway/config"] = "sh",
 			[".config/task/taskrc"] = "sh",
 			[".config/tmux/tmux.conf"] = "tmux",
+			[".config/skhd/*"] = "sh",
 			[".config/swhkd/*"] = "swhkd",
 			[".config/waybar/config"] = "json",
 			["fstab"] = "fstab",
@@ -102,11 +103,15 @@ require("filetype").setup({
 				vim.o.ruler = false
 				vim.o.showcmd = false
 				vim.o.number = false
-				-- km("", "<f12>", "<cmd>GrammarousCheck<cr>")
-				-- km("", "<s-f12>", "<cmd>GrammarousReset<cr>")
+				km("", "<f12>", "<cmd>GrammarousCheck<cr>")
+				km("", "<s-f12>", "<cmd>GrammarousReset<cr>")
 				km("n", "K", "<cmd>lua require('nabla').popup()<cr>")
 			end, {
 				["tex"] = function()
+          vim.o.textwidth = 80
+          vim.o.colorcolumn = 80
+          vim.o.wrapmargin = 0
+          vim.o.formatoptions = vim.o.formatoptions .. "t"
 					vim.o.foldlevel = 99
 					vim.o.foldmethod = "expr"
 					vim.o.foldexpr = "vimtex#fold#level(v:lnum)"

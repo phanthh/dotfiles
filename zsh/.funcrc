@@ -2,7 +2,7 @@
 # edit
 e() {
   if ([ ! -f "$1" ] && [ ! -w "$PWD" ]) || ([ -f "$1" ] && [ ! -w "$1" ]); then
-    sudoedit $*
+    sudo -e $*
   else
     $EDITOR $*
   fi

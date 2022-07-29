@@ -1,8 +1,0 @@
-#!/bin/sh
-
-lxsession -n &              # XDG_AUTOSTART
-$HOME/.sh/wm_setwallpaper & # background
-waybar &                    # bar
-
-# sfwbar -m eDP-1 &
-# sfwbar -m HDMI-A-1 &

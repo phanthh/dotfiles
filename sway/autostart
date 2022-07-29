@@ -1,3 +1,0 @@
-#!/bin/sh
-
-lxsession -n & # XDG_AUTOSTART

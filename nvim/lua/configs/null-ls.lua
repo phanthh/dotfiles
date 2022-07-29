@@ -13,7 +13,7 @@ require("null-ls").setup({
 			extra_args = { "--ignore", "E402" },
 		}),
 		formatting.shfmt,
-		diagnostics.eslint_d,
+		-- diagnostics.eslint_d,
 		-- diagnostics.proselint.with({ filetypes = u.writing_ft }),
 		-- code_actions.proselint.with({ filetypes = u.writing_ft }),
 	},

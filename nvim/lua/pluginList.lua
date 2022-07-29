@@ -22,32 +22,18 @@ require("packer").startup({
 			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
 				require("configs.vscode")
-				vim.cmd([[
-		        colorscheme vscode
-		        highlight FloatBorder guifg=#CCCCCC
-		        highlight TelescopePromptBorder guifg=#CCCCCC
-		        highlight TelescopeResultsBorder guifg=#CCCCCC
-		        highlight TelescopePreviewBorder guifg=#CCCCCC
-		      ]])
+				vim.cmd([[colorscheme vscode]])
 			end,
 		})
-
-		-- use({
-		-- 	"kdheepak/monochrome.nvim",
-		-- 	config = function()
-		-- 		vim.cmd([[
-		--         colorscheme monochrome
-		--         highlight FloatBorder guifg=#CCCCCC
-		--         highlight TelescopePromptBorder guifg=#CCCCCC
-		--         highlight TelescopeResultsBorder guifg=#CCCCCC
-		--         highlight TelescopePreviewBorder guifg=#CCCCCC
-		--       ]])
-		-- 	end,
-		-- })
 
 		use({
 			"neovim/nvim-lspconfig", -- lsp helper
 			module = "lspconfig",
+		})
+
+		use({
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+			module = "lsp_lines",
 		})
 
 		use({
@@ -96,11 +82,11 @@ require("packer").startup({
 				require("configs.nvim-lspconfig")
 				require("configs.null-ls")
 				require("configs.nvim-cmp")
+				-- require("configs.lsp_lines")
 				vim.cmd([[LspStart]])
 			end,
 			requires = {
 				{ "saadparwaiz1/cmp_luasnip", event = signal, keys = trigger }, -- luasnip source
-				{ "hrsh7th/cmp-buffer", event = signal, keys = trigger }, -- buffer source
 				{ "hrsh7th/cmp-path", event = signal, keys = trigger }, -- path source
 				{ "hrsh7th/cmp-cmdline", event = signal, keys = trigger }, -- cmdline source
 				{
@@ -151,13 +137,13 @@ require("packer").startup({
 			},
 		})
 
-		-- use({
-		-- 	"rhysd/vim-grammarous", -- grammar cheker
-		-- 	cmd = { "GrammarousCheck", "GrammarousReset" },
-		-- 	config = function()
-		-- 		require("configs.vim-grammarous")
-		-- 	end,
-		-- })
+		use({
+			"rhysd/vim-grammarous", -- grammar cheker
+			cmd = { "GrammarousCheck", "GrammarousReset" },
+			config = function()
+				require("configs.vim-grammarous")
+			end,
+		})
 
 		use({
 			"renerocksai/telekasten.nvim", -- zettelkasten
@@ -204,11 +190,16 @@ require("packer").startup({
 			end,
 		})
 
+		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+
 		use({
 			"nvim-telescope/telescope.nvim", -- telescope
 			cmd = "Telescope",
 			module = "telescope",
 			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("configs.telescope")
+			end,
 		})
 
 		use({
