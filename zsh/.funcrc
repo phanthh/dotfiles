@@ -30,7 +30,7 @@ ew(){
 
 # open (gui)
 o() {
-  nohup xdg-open $* >/dev/null 2>&1 &
+  open $* >/dev/null 2>&1 &
 }
 
 # config (user)

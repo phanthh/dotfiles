@@ -46,13 +46,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- })
 
 -- format on write
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = "global",
-	pattern = "*",
-	callback = function()
-		vim.lsp.buf.formatting()
-	end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	group = "global",
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.lsp.buf.formatting()
+-- 	end,
+-- })
 
 -- term options
 vim.api.nvim_create_autocmd("TermOpen", {

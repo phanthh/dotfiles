@@ -14,6 +14,4 @@ yabai -m config mouse_action2 resize
 
 yabai -m config layout         bsp
 
-yabai -m signal --add event=space_changed action="sh ~/.sh/wm_cleanworkspace"
-
 echo "yabai configuration loaded ..."

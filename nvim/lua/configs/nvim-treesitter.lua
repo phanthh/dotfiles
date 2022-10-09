@@ -22,6 +22,7 @@ require("nvim-treesitter.configs").setup({
 		"toml",
 		"json",
 		"prisma",
+		"sql",
 	},
 	context_commentstring = { enable = true, enable_autocmd = false },
 	autotag = { enable = true },

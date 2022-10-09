@@ -128,12 +128,12 @@ require("packer").startup({
 						require("spellsitter").setup()
 					end,
 				},
-				{
-					"m-demare/hlargs.nvim", -- highlights arguments
-					config = function()
-						require("hlargs").setup({})
-					end,
-				},
+				-- {
+				-- 	"m-demare/hlargs.nvim", -- highlights arguments
+				-- 	config = function()
+				-- 		require("hlargs").setup({})
+				-- 	end,
+				-- },
 			},
 		})
 
@@ -286,6 +286,18 @@ require("packer").startup({
 				require("gitsigns").setup()
 			end,
 		})
+
+		-- use({
+		-- 	"ThePrimeagen/git-worktree.nvim",
+		-- 	module = { "git-worktree", "telescope" },
+		-- 	config = function()
+		-- 		require("git-worktree").setup({
+		-- 			update_on_change = false,
+		-- 		})
+		-- 	end,
+		-- })
+
+		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 		use({
 			"mcauley-penney/tidy.nvim", -- clean whitespace

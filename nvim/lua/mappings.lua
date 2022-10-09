@@ -2,16 +2,16 @@
 local km = require("utils").keymap
 
 -- motions
-km("i", "jj", "<esc>")
-km("n", "<c-f>", ":HopWord<cr>")
 km("i", "jf", "<esc>:HopWord<cr>")
-km("v", "J", ":m '>+1<cr>gv=gv")
-km("v", "K", ":m '<-2<cr>gv=gv")
+km("i", "jj", "<esc>")
+km("n", "<leader><leader>", ":HopWord<cr>")
+km("v", "<", ":m '>+1<cr>gv=gv")
+km("v", ">", ":m '<-2<cr>gv=gv")
 km("v", "p", '"_dP')
 
 -- saving
-km("n", "<c-s>", ":wa<cr>")
-km("i", "<c-s>", "<esc>:wa<cr>")
+km("n", "<c-s>", ":wa<bar>:lua vim.lsp.buf.formatting()<cr>")
+km("i", "<c-s>", "<esc>:wa<bar>:lua vim.lsp.buf.formatting()<cr>")
 
 -- buffers
 km("n", "<c-w>i", ":bnext<cr>")
@@ -39,5 +39,8 @@ for i = 1, 9 do
 	km("n", "<leader>" .. i, string.format(":lua require('harpoon.ui').nav_file(%d)<cr>", i))
 end
 
--- git blame
+-- git
+-- km("n", "<leader>gw", ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>")
+km("n", "<leader>gb", ":lua require('telescope.builtin').git_branches()<cr>")
+km("n", "<leader>gc", ":lua require('telescope.builtin').git_commits()<cr>")
 km("n", "<leader>b", ":GitBlameToggle<cr>")

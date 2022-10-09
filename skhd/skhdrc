@@ -69,8 +69,8 @@ alt - 0x2F : yabai -m display --focus next
 
 #============ APPLICATIONS
 alt - return : ~/.sh/wm_open -s 'iterm2' /Applications/iTerm.app/Contents/MacOS/iTerm2
-alt - n : ~/.sh/wm_open -s 'firefox' /Applications/Firefox.app/Contents/MacOS/firefox
-alt + shift - n : ~/.sh/wm_open -s 'google chrome' /Applications/Chromium.app/Contents/MacOS/Chromium
+alt - n : ~/.sh/wm_open -s 'google chrome' /Applications/Chromium.app/Contents/MacOS/Chromium
+alt + shift - n : ~/.sh/wm_open -s 'firefox' /Applications/Firefox.app/Contents/MacOS/firefox
 alt + shift - z : ~/.sh/wm_open -s 'zotero' /Applications/Zotero.app/Contents/MacOS/zotero
 alt + shift - s : ~/.sh/wm_open -s 'slack' /Applications/Slack.app/Contents/MacOS/Slack
 alt + shift - d : ~/.sh/wm_open -s 'DataGrip' /Applications/DataGrip.app/Contents/MacOS/datagrip
