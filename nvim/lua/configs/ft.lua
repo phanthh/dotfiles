@@ -66,7 +66,8 @@ require("filetype").setup({
 				end,
 				["py"] = function()
 					vim.o.spell = true
-					repl_spec("micromamba activate && prime-run ipython")
+					-- repl_spec("micromamba activate && prime-run ipython")
+					repl_spec("python3")
 					km("n", "<c-x>", "<cmd>w<cr><Plug>JupyterExecute")
 					km("", "<s-f10>", "<cmd>!jupytext --to notebook %<cr><cr>")
 				end,
@@ -108,10 +109,10 @@ require("filetype").setup({
 				km("n", "K", "<cmd>lua require('nabla').popup()<cr>")
 			end, {
 				["tex"] = function()
-          vim.o.textwidth = 80
-          vim.o.colorcolumn = 80
-          vim.o.wrapmargin = 0
-          vim.o.formatoptions = vim.o.formatoptions .. "t"
+					vim.o.textwidth = 80
+					vim.o.colorcolumn = 80
+					vim.o.wrapmargin = 0
+					vim.o.formatoptions = vim.o.formatoptions .. "t"
 					vim.o.foldlevel = 99
 					vim.o.foldmethod = "expr"
 					vim.o.foldexpr = "vimtex#fold#level(v:lnum)"

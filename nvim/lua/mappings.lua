@@ -5,13 +5,13 @@ local km = require("utils").keymap
 km("i", "jf", "<esc>:HopWord<cr>")
 km("i", "jj", "<esc>")
 km("n", "<leader><leader>", ":HopWord<cr>")
-km("v", "<", ":m '>+1<cr>gv=gv")
-km("v", ">", ":m '<-2<cr>gv=gv")
+km("v", "<c-p>", ":m '<-2<cr>gv=gv")
+km("v", "<c-n>", ":m '>+1<cr>gv=gv")
 km("v", "p", '"_dP')
 
 -- saving
-km("n", "<c-s>", ":wa<bar>:lua vim.lsp.buf.formatting()<cr>")
-km("i", "<c-s>", "<esc>:wa<bar>:lua vim.lsp.buf.formatting()<cr>")
+km("n", "<c-s>", ":wa<bar>:lua vim.lsp.buf.format()<cr>")
+km("i", "<c-s>", "<esc>:wa<bar>:lua vim.lsp.buf.format()<cr>")
 
 -- buffers
 km("n", "<c-w>i", ":bnext<cr>")
@@ -44,3 +44,12 @@ end
 km("n", "<leader>gb", ":lua require('telescope.builtin').git_branches()<cr>")
 km("n", "<leader>gc", ":lua require('telescope.builtin').git_commits()<cr>")
 km("n", "<leader>b", ":GitBlameToggle<cr>")
+
+-- minimap
+km("n", "<leader>m", ":MinimapToggle<cr>")
+
+-- repl
+km("n", "<space>rs", "<cmd>IronRepl<cr>")
+km("n", "<space>rr", "<cmd>IronRestart<cr>")
+km("n", "<space>rf", "<cmd>IronFocus<cr>")
+km("n", "<space>rh", "<cmd>IronHide<cr>")

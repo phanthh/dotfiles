@@ -7,7 +7,6 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 350
 vim.o.lazyredraw = false -- gui
 vim.o.showmode = false -- gui
-vim.o.autoindent = false
 vim.o.autoread = true
 -- vim.o.cmdheight = 0
 
@@ -22,10 +21,9 @@ vim.o.splitright = true
 vim.o.pumheight = 7
 
 -- tab
-vim.o.expandtab = true
-vim.o.smarttab = true
+vim.o.autoindent = true
+vim.o.expandtab = false
 vim.o.tabstop = 2
-vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 
 -- search

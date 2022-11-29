@@ -27,6 +27,7 @@ alias rmf="rm -rf"
 # alias br="~/.sh/util_browse"
 # alias fm="~/.sh/util_filemanager"
 alias nb="newsboat"
+alias hm='cd ~'
 
 #==== git
 alias g="git"
@@ -37,7 +38,7 @@ alias ga="git add"
 alias gb="git branch"
 alias gco="git checkout"
 alias gr="git restore"
-alias gp="git pull"
+alias gpl="git pull"
 alias gps="git push"
 alias gf="git fetch"
 alias gd="git diff"

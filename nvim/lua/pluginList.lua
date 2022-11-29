@@ -128,12 +128,12 @@ require("packer").startup({
 						require("spellsitter").setup()
 					end,
 				},
-				-- {
-				-- 	"m-demare/hlargs.nvim", -- highlights arguments
-				-- 	config = function()
-				-- 		require("hlargs").setup({})
-				-- 	end,
-				-- },
+				{
+					"m-demare/hlargs.nvim", -- highlights arguments
+					config = function()
+						require("hlargs").setup({})
+					end,
+				},
 			},
 		})
 
@@ -251,7 +251,7 @@ require("packer").startup({
 		})
 
 		use({
-			"norcalli/nvim-colorizer.lua", -- coloring color codes
+			"NvChad/nvim-colorizer.lua", -- coloring color codes
 			ft = u.iconcat(u.config_ft, u.coding_ft),
 			config = function()
 				require("colorizer").setup()
@@ -317,6 +317,14 @@ require("packer").startup({
 		})
 
 		use({
+			"hkupty/iron.nvim",
+			config = function()
+				require("configs.iron")
+			end,
+			cmd = "IronRepl",
+		})
+
+		use({
 			"NTBBloodbath/rest.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			ft = { "http" },
@@ -341,13 +349,21 @@ require("packer").startup({
 			end,
 		})
 
+		use({
+			"wfxr/minimap.vim",
+			cmd = "MinimapToggle",
+			config = function()
+				require("configs.minimap")
+			end,
+		})
+
 		use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/plenary.nvim" } })
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
-		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
+		-- use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
 		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } }) -- better bufdel
 		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
-		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
+		-- use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
 		use("lewis6991/impatient.nvim") -- faster loading with caching
 
 		-- use("ActivityWatch/aw-watcher-vim")

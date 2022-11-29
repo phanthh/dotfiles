@@ -11,9 +11,11 @@ export MANPAGER="less"
 export ZDOTDIR="$HOME/.config/zsh/"
 
 export PNPM_HOME="/Users/phanthh/Library/pnpm"
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
 
 #=================== path
 . $ZDOTDIR/.pathrc
 
 #=================== keys
 # . $ZDOTDIR/.keyrc
+. "$HOME/.cargo/env"

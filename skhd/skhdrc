@@ -75,3 +75,4 @@ alt + shift - z : ~/.sh/wm_open -s 'zotero' /Applications/Zotero.app/Contents/Ma
 alt + shift - s : ~/.sh/wm_open -s 'slack' /Applications/Slack.app/Contents/MacOS/Slack
 alt + shift - d : ~/.sh/wm_open -s 'DataGrip' /Applications/DataGrip.app/Contents/MacOS/datagrip
 alt + shift - x : ~/.sh/wm_open -s 'keepassxc' /Applications/KeePassXC.app/Contents/MacOS/KeePassXC
+alt + shift - f : ~/.sh/wm_open -s 'spotify' /Applications/Spotify.app/Contents/MacOS/Spotify

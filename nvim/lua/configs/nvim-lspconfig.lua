@@ -35,16 +35,16 @@ local handlers = {
 
 -- LSP keybinds
 local on_attach = function(client, bufnr)
-	local opts = { noremap = true, silent = true }
 	local function km(mode, key, cmd)
-		u.keymap_buf(bufnr, mode, key, cmd, opts)
+		u.keymap_buf(bufnr, mode, key, cmd)
 	end
+
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	km("n", "gD", "<cmd>wa<bar>lua vim.lsp.buf.declaration()<cr>")
 	km("n", "gd", "<cmd>wa<bar>lua vim.lsp.buf.definition()<cr>")
 	km("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
 	km("n", "gi", "<cmd>wa<bar>lua vim.lsp.buf.implementation()<cr>")
-	-- km("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+	km("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
 	km("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>")
 	km("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>")
 	km("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
@@ -52,20 +52,20 @@ local on_attach = function(client, bufnr)
 	km("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
 	km("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 	km("n", "gr", "<cmd>wa<bar>lua vim.lsp.buf.references()<cr>")
-	km("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
-	km("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>")
-	km("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
-	km("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>")
-	km("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<cr>")
+	km("n", "<leader>e", "<cmd>lua vim.diagnostic.show_line_diagnostics()<cr>")
+	km("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+	km("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+	km("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<cr>")
+	km("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>")
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- bashls
 nvim_lsp.bashls.setup({
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end,
 	capabilities = capabilities,
 	handlers = handlers,
@@ -75,17 +75,24 @@ nvim_lsp.bashls.setup({
 nvim_lsp.pyright.setup({
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end,
 	capabilities = capabilities,
 	handlers = handlers,
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "off",
+			},
+		},
+	},
 })
 
 -- sumneko_lua
 nvim_lsp.sumneko_lua.setup({
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end,
 	capabilities = capabilities,
 	handlers = handlers,
@@ -104,7 +111,7 @@ nvim_lsp.tsserver.setup({
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
 		require("configs.nvim-lsp-ts-utils").config(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end,
 	capabilities = capabilities,
 	handlers = handlers,
