@@ -28,6 +28,8 @@ alias rmf="rm -rf"
 # alias fm="~/.sh/util_filemanager"
 alias nb="newsboat"
 alias hm='cd ~'
+alias nev="nix-env"
+alias nch="nix-channel"
 
 #==== git
 alias g="git"

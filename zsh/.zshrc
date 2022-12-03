@@ -70,12 +70,19 @@ zstyle ':vcs_info:*' enable git
 PROMPT="%B\$vcs_info_msg_0_%(?.$cl.$er%?!)C:$re"
 PROMPT+="%/%(?.$cl.$er)${DISTROPROMPT}>$re%b "
 
+case "$(uname -s)" in
+	Darwin*) OS='macos';;
+	Linux*) OS='linux';;
+	*) OS='';;
+esac
+
+
 #========================= plugins
 source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
-# source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/$DISTRO"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/macos"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(thefuck --alias f)"
 

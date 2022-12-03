@@ -122,12 +122,12 @@ require("packer").startup({
 				"windwp/nvim-ts-autotag", -- autoclose and auto rename html tags
 				"JoosepAlviste/nvim-ts-context-commentstring", -- dynamic commentstring
 				"p00f/nvim-ts-rainbow", -- rainbow brackets
-				{
-					"lewis6991/spellsitter.nvim", -- dynamic spellcheck
-					config = function()
-						require("spellsitter").setup()
-					end,
-				},
+				-- {
+				-- 	"lewis6991/spellsitter.nvim", -- dynamic spellcheck
+				-- 	config = function()
+				-- 		require("spellsitter").setup()
+				-- 	end,
+				-- },
 				{
 					"m-demare/hlargs.nvim", -- highlights arguments
 					config = function()
