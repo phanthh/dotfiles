@@ -13,9 +13,9 @@ local function config(client, bufnr)
 
 	ts_utils.setup_client(client)
 
-	kmb(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-	kmb(bufnr, "n", "gr", ":TSLspRenameFile<CR>")
-	kmb(bufnr, "n", "gi", ":TSLspImportAll<CR>")
+	kmb(bufnr, "n", "gs", ":TSLspOrganize<cr>")
+	kmb(bufnr, "n", "gr", ":TSLspRenameFile<cr>")
+	kmb(bufnr, "n", "gi", ":TSLspImportAll<cr>")
 end
 
 return { config = config }

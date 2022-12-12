@@ -7,7 +7,6 @@ vim.o.ttimeout = true
 vim.o.ttimeoutlen = 350
 vim.o.lazyredraw = false -- gui
 vim.o.showmode = false -- gui
-vim.o.autoindent = false
 vim.o.autoread = true
 -- vim.o.cmdheight = 0
 
@@ -22,10 +21,8 @@ vim.o.splitright = true
 vim.o.pumheight = 7
 
 -- tab
-vim.o.expandtab = true
-vim.o.smarttab = true
+vim.o.autoindent = true
 vim.o.tabstop = 2
-vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 
 -- search
@@ -45,9 +42,12 @@ vim.o.undolevels = 1000
 vim.o.undofile = true
 
 -- misc
--- vim.o.spell = true
+vim.o.spell = false
 vim.o.spelllang = "en_us"
 vim.o.hidden = false
+vim.o.ruler = true
+vim.o.showcmd = true
+vim.o.number = true
 vim.o.shell = "/bin/sh"
 vim.o.shortmess = vim.o.shortmess .. "Ic"
 vim.o.clipboard = "unnamedplus"

@@ -14,16 +14,15 @@ function M.concat(t1, t2)
 	return t1
 end
 
-local opts = { silent = true, noremap = true }
 -- local mapper = require("nvim-mapper")
-
-function M.keymap(mode, key, cmd, class, name, desc)
-	vim.api.nvim_set_keymap(mode, key, cmd, opts)
+--
+function M.keymap(mode, lhs, rhs)
+	vim.keymap.set(mode, lhs, rhs, { silent = true, noremap = true })
 	-- mapper.map(mode, key, cmd, opts, class, name, desc)
 end
 
-function M.keymap_buf(bufnr, mode, key, cmd)
-	vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, opts)
+function M.keymap_buf(bufnr, mode, lhs, rhs)
+	vim.keymap.set(mode, lhs, rhs, { silent = true, noremap = true, buffer = bufnr })
 	-- mapper.map_buf(bufnr, mode, key, cmd, opts, class, name, desc)
 end
 
@@ -65,5 +64,16 @@ M.writing_ft = {
 	"markdown",
 	"rmd",
 }
+
+function M.write_spec()
+	vim.opt_local.spell = true
+	vim.opt_local.ruler = false
+	vim.opt_local.showcmd = false
+	vim.opt_local.number = false
+	M.keymap("", "<f12>", "<cmd>GrammarousCheck<cr>")
+	M.keymap("", "<s-f12>", "<cmd>GrammarousReset<cr>")
+	M.keymap("", "<leader>r", "<cmd>FSToggle<cr>")
+	-- M.keymap("n", "K", "<cmd>lua require('nabla').popup()<cr>")
+end
 
 return M

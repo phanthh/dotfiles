@@ -84,18 +84,22 @@ unset __mamba_setup
 # <<< mamba initialize <<<
 
 #========================= prompt
-cl='%F{cyan}'
+cl='%F{yellow}'
+po='%F{green}'
 er='%F{red}'
 re='%f'
 autoload -Uz vcs_info
+setopt PROMPT_SUBST
 precmd_vcs_info() { vcs_info }
 precmd_functions+=(precmd_vcs_info)
-setopt PROMPT_SUBST
-zstyle ':vcs_info:git:*' formats "$cl(%f%b%F{cyan})$re "
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr "$er✗$re"
+zstyle ':vcs_info:*' stagedstr "$po✓$re"
+zstyle ':vcs_info:git:*' formats "$cl($re%b%u%c$cl)$re "
+zstyle ':vcs_info:git:*' actionformats "$er($re%b%a%u%c$er)$re "
 zstyle ':vcs_info:*' enable git
-RPROMPT="\$vcs_info_msg_0_"
-PROMPT="%B%(?.$cl.$er%?!)C:$re%b"
-PROMPT+="%/%B%(?.$cl.$er)${DISTROPROMPT}>$re%b "
+PROMPT="%B\$vcs_info_msg_0_%(?.$cl.$er%?!)C:$re"
+PROMPT+="%/%(?.$cl.$er)${DISTROPROMPT}>$re%b "
 
 #========================= plugins
 source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"

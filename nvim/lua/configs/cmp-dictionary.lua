@@ -1,6 +1,6 @@
 require("cmp_dictionary").setup({
 	dic = {
-		["*"] = "/usr/share/dict/american-english",
+		["*"] = "/usr/share/dict/web2",
 	},
 	exact = 2,
 	async = false,

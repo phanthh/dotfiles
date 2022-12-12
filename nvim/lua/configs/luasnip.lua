@@ -69,7 +69,7 @@ local mathh = {
 	s("AA", { t("\\forall"), i(0) }),
 	s("OO", { t("\\emptyset"), i(0) }),
 	s("xx", { t("\\times"), i(0) }),
-	s("**", { t("\\cdot"), i(0) }),
+	s("***", { t("\\cdot"), i(0) }),
 	s("...", { t("\\ldots"), i(0) }),
 	s("nn", { t("\\in "), i(0) }),
 	s("EE", { t("\\exists "), i(0) }),
@@ -188,8 +188,8 @@ ls.add_snippets("markdown", mdformat, { type = "autosnippets" })
 ls.add_snippets("markdown", mathh, { type = "autosnippets" })
 
 -- Python
-ls.add_snippets("python", mdformat)
-ls.add_snippets("python", mathh)
+-- ls.add_snippets("python", mdformat)
+-- ls.add_snippets("python", mathh)
 ls.add_snippets("python", {
 	s(";;", { t({ "# %%", "" }), i(0) }),
 	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""', "# %%" }) }),

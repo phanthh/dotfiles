@@ -1,16 +1,15 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_bootstrap
-if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 require("packer").startup({
 	function(use)
@@ -21,33 +20,28 @@ require("packer").startup({
 		use({
 			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
-				--				require("configs.vscode")
-				vim.cmd([[
-		        colorscheme vscode
-		        highlight FloatBorder guifg=#CCCCCC
-		        highlight TelescopePromptBorder guifg=#CCCCCC
-		        highlight TelescopeResultsBorder guifg=#CCCCCC
-		        highlight TelescopePreviewBorder guifg=#CCCCCC
-		      ]])
+				require("configs.vscode")
+				-- vim.cmd([[colorscheme vscode]])
 			end,
 		})
 
-		-- use({
-		-- 	"kdheepak/monochrome.nvim",
-		-- 	config = function()
-		-- 		vim.cmd([[
-		--         colorscheme monochrome
-		--         highlight FloatBorder guifg=#CCCCCC
-		--         highlight TelescopePromptBorder guifg=#CCCCCC
-		--         highlight TelescopeResultsBorder guifg=#CCCCCC
-		--         highlight TelescopePreviewBorder guifg=#CCCCCC
-		--       ]])
-		-- 	end,
-		-- })
+		use({
+			"ellisonleao/gruvbox.nvim", -- vscode theme
+			config = function()
+				-- require("configs.vscode")
+				vim.o.background = "dark"
+				vim.cmd([[colorscheme gruvbox]])
+			end,
+		})
 
 		use({
 			"neovim/nvim-lspconfig", -- lsp helper
 			module = "lspconfig",
+		})
+
+		use({
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+			module = "lsp_lines",
 		})
 
 		use({
@@ -96,11 +90,11 @@ require("packer").startup({
 				require("configs.nvim-lspconfig")
 				require("configs.null-ls")
 				require("configs.nvim-cmp")
+				require("configs.lsp_lines")
 				vim.cmd([[LspStart]])
 			end,
 			requires = {
 				{ "saadparwaiz1/cmp_luasnip", event = signal, keys = trigger }, -- luasnip source
-				{ "hrsh7th/cmp-buffer", event = signal, keys = trigger }, -- buffer source
 				{ "hrsh7th/cmp-path", event = signal, keys = trigger }, -- path source
 				{ "hrsh7th/cmp-cmdline", event = signal, keys = trigger }, -- cmdline source
 				{
@@ -137,27 +131,27 @@ require("packer").startup({
 				"JoosepAlviste/nvim-ts-context-commentstring", -- dynamic commentstring
 				"p00f/nvim-ts-rainbow", -- rainbow brackets
 				{
-					"lewis6991/spellsitter.nvim", -- dynamic spellcheck
+					"nvim-treesitter/nvim-treesitter-textobjects",
 					config = function()
-						require("spellsitter").setup()
+						require("configs.nvim-treesitter-textobjects")
+					end,
+				}, -- text objects
+				{
+					"m-demare/hlargs.nvim", -- highlights arguments
+					config = function()
+						require("hlargs").setup({})
 					end,
 				},
-				-- {
-				-- 	"m-demare/hlargs.nvim", -- highlights arguments
-				-- 	config = function()
-				-- 		require("hlargs").setup({})
-				-- 	end,
-				-- },
 			},
 		})
 
-		-- use({
-		-- 	"rhysd/vim-grammarous", -- grammar cheker
-		-- 	cmd = { "GrammarousCheck", "GrammarousReset" },
-		-- 	config = function()
-		-- 		require("configs.vim-grammarous")
-		-- 	end,
-		-- })
+		use({
+			"rhysd/vim-grammarous", -- grammar cheker
+			cmd = { "GrammarousCheck", "GrammarousReset" },
+			config = function()
+				require("configs.vim-grammarous")
+			end,
+		})
 
 		use({
 			"renerocksai/telekasten.nvim", -- zettelkasten
@@ -170,9 +164,16 @@ require("packer").startup({
 			end,
 		})
 
+		-- use({
+		-- 	"epwalsh/obsidian.nvim",
+		-- 	config = function()
+		-- 		require("configs.obsidian")
+		-- 	end,
+		-- 	ft = "markdown",
+		-- })
+
 		use({
 			"akinsho/bufferline.nvim", -- tab line
-			tag = "v2.*",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
 				require("configs.bufferline")
@@ -191,7 +192,7 @@ require("packer").startup({
 			"danymat/neogen", -- documentation generator
 			cmd = "Neogen",
 			config = function()
-				require("neogen").setup({ enabled = true })
+				require("configs.neogen")
 			end,
 			requires = "nvim-treesitter/nvim-treesitter",
 		})
@@ -204,11 +205,16 @@ require("packer").startup({
 			end,
 		})
 
+		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+
 		use({
 			"nvim-telescope/telescope.nvim", -- telescope
 			cmd = "Telescope",
 			module = "telescope",
 			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("configs.telescope")
+			end,
 		})
 
 		use({
@@ -252,15 +258,15 @@ require("packer").startup({
 			requires = "nvim-treesitter/nvim-treesitter",
 		})
 
-		use({
-			"nathom/filetype.nvim", -- filetype.lua
-			config = function()
-				require("configs.ft")
-			end,
-		})
+		-- use({
+		-- 	"nathom/filetype.nvim", -- filetype.lua
+		-- 	config = function()
+		-- 		require("configs.ft")
+		-- 	end,
+		-- })
 
 		use({
-			"norcalli/nvim-colorizer.lua", -- coloring color codes
+			"NvChad/nvim-colorizer.lua", -- coloring color codes
 			ft = u.iconcat(u.config_ft, u.coding_ft),
 			config = function()
 				require("colorizer").setup()
@@ -296,6 +302,18 @@ require("packer").startup({
 			end,
 		})
 
+		-- use({
+		-- 	"ThePrimeagen/git-worktree.nvim",
+		-- 	module = { "git-worktree", "telescope" },
+		-- 	config = function()
+		-- 		require("git-worktree").setup({
+		-- 			update_on_change = false,
+		-- 		})
+		-- 	end,
+		-- })
+
+		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
 		use({
 			"mcauley-penney/tidy.nvim", -- clean whitespace
 			config = function()
@@ -303,14 +321,22 @@ require("packer").startup({
 			end,
 		})
 
+		-- use({
+		-- 	"sunjon/shade.nvim", -- shading unfocused windows
+		-- 	config = function()
+		-- 		require("shade").setup({
+		-- 			overlay_opacity = 55,
+		-- 		})
+		-- 	end,
+		-- 	event = "WinLeave",
+		-- })
+
 		use({
-			"sunjon/shade.nvim", -- shading unfocused windows
+			"hkupty/iron.nvim",
 			config = function()
-				require("shade").setup({
-					overlay_opacity = 55,
-				})
+				require("configs.iron")
 			end,
-			event = "WinLeave",
+			cmd = "IronRepl",
 		})
 
 		use({
@@ -338,13 +364,44 @@ require("packer").startup({
 			end,
 		})
 
+		use({
+			"wfxr/minimap.vim",
+			cmd = "MinimapToggle",
+			config = function()
+				require("configs.minimap")
+			end,
+		})
+
+		use({
+			"ellisonleao/glow.nvim",
+			ft = "markdown",
+			cmd = "Glow",
+			config = function()
+				require("configs.glow")
+			end,
+		})
+
+		use({
+			"nvim-zh/colorful-winsep.nvim",
+			config = function()
+				require("colorful-winsep").setup({
+					highlight = {
+						guibg = "#16161E",
+						guifg = "#d79921",
+					},
+				})
+			end,
+		})
+
+		use({ "opdavies/toggle-checkbox.nvim", module = "toggle-checkbox" })
 		use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/plenary.nvim" } })
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" }) -- profiling startup time
 		use({ "tpope/vim-fugitive", cmd = { "Git", "G" } }) -- git
-		use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
-		use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } }) -- better bufdel
-		use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
-		use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
+		use({ "nullchilly/fsread.nvim", cmd = { "FSRead", "FSToggle" } }) -- flow state reading
+		-- use({ "karoliskoncevicius/vim-sendtowindow", event = "TermOpen" }) -- for repl
+		-- use({ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } }) -- better bufdel
+		-- use({ "jbyuki/nabla.nvim", module = "nabla" }) -- show math as ascii
+		-- use({ "untitled-ai/jupyter_ascending.vim", ft = "python" }) -- send to jupyter notebook
 		use("lewis6991/impatient.nvim") -- faster loading with caching
 
 		-- use("ActivityWatch/aw-watcher-vim")
@@ -353,6 +410,7 @@ require("packer").startup({
 		-- use("waycrate/swhkd-vim")
 		-- use("junegunn/vim-easy-align")
 		-- use("jxnblk/vim-mdx-js")
+		--
 		if packer_bootstrap then
 			require("packer").sync()
 		end
