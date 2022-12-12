@@ -21,7 +21,7 @@ require("packer").startup({
 		use({
 			"Mofiqul/vscode.nvim", -- vscode theme
 			config = function()
-				require("configs.vscode")
+				--				require("configs.vscode")
 				vim.cmd([[
 		        colorscheme vscode
 		        highlight FloatBorder guifg=#CCCCCC
@@ -142,12 +142,12 @@ require("packer").startup({
 						require("spellsitter").setup()
 					end,
 				},
-				{
-					"m-demare/hlargs.nvim", -- highlights arguments
-					config = function()
-						require("hlargs").setup({})
-					end,
-				},
+				-- {
+				-- 	"m-demare/hlargs.nvim", -- highlights arguments
+				-- 	config = function()
+				-- 		require("hlargs").setup({})
+				-- 	end,
+				-- },
 			},
 		})
 

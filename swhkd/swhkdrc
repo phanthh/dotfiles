@@ -51,7 +51,7 @@ Mod1 + n
 
 # Secondary Browser
 Mod1 + Shift + n
-  ~/.sh/wm_open chromium
+  ~/.sh/wm_open firefox
 
 # Launcher
 Mod4 + d
@@ -73,7 +73,7 @@ Mod1 + Shift + d
   ~/.sh/menu_pass
 
 # Applications
-Mod1 + Shift + {a,s,c,e,o,z,b,x,p,semicolon}
+Mod1 + Shift + {a,f,c,e,o,z,b,x,p,semicolon}
   ~/.sh/wm_open {$(xdg-mime query default x-scheme-handler/mailto | cut -f 1 -d '.'),\
                  spotify,\
                  calibre,\
