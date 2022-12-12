@@ -79,13 +79,13 @@ nvim_lsp.pyright.setup({
 	end,
 	capabilities = capabilities,
 	handlers = handlers,
-	settings = {
-		python = {
-			analysis = {
-				typeCheckingMode = "off",
-			},
-		},
-	},
+	-- settings = {
+	-- 	python = {
+	-- 		analysis = {
+	-- 			typeCheckingMode = "off",
+	-- 		},
+	-- 	},
+	-- },
 })
 
 -- sumneko_lua

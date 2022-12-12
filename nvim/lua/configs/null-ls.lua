@@ -8,10 +8,10 @@ require("null-ls").setup({
 	sources = {
 		formatting.stylua,
 		formatting.prettierd,
-		-- formatting.black,
-		formatting.autopep8.with({
-			extra_args = { "--ignore", "E402" },
-		}),
+		formatting.black,
+		-- formatting.autopep8.with({
+		-- 	extra_args = { "--ignore", "E402" },
+		-- }),
 		formatting.shfmt,
 		-- diagnostics.eslint_d,
 		-- diagnostics.proselint.with({ filetypes = u.writing_ft }),

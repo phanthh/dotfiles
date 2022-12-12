@@ -53,7 +53,7 @@ bindkey '^H' backward-kill-word
 bindkey -s '^O' 'n^M'
 
 #========================= prompt
-cl='%F{cyan}'
+cl='%F{yellow}'
 po='%F{green}'
 er='%F{red}'
 re='%f'
@@ -85,6 +85,11 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/macos"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(thefuck --alias f)"
+
+#========================= pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 #======================= welcome
 # [[ $XDG_SESSION_TYPE != tty ]] && {

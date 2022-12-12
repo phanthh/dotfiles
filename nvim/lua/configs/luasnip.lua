@@ -69,7 +69,7 @@ local mathh = {
 	s("AA", { t("\\forall"), i(0) }),
 	s("OO", { t("\\emptyset"), i(0) }),
 	s("xx", { t("\\times"), i(0) }),
-	s("**", { t("\\cdot"), i(0) }),
+	s("***", { t("\\cdot"), i(0) }),
 	s("...", { t("\\ldots"), i(0) }),
 	s("nn", { t("\\in "), i(0) }),
 	s("EE", { t("\\exists "), i(0) }),

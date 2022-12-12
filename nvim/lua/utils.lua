@@ -65,4 +65,15 @@ M.writing_ft = {
 	"rmd",
 }
 
+function M.write_spec()
+	vim.opt_local.spell = true
+	vim.opt_local.ruler = false
+	vim.opt_local.showcmd = false
+	vim.opt_local.number = false
+	M.keymap("", "<f12>", "<cmd>GrammarousCheck<cr>")
+	M.keymap("", "<s-f12>", "<cmd>GrammarousReset<cr>")
+	M.keymap("", "<leader>r", "<cmd>FSToggle<cr>")
+	-- M.keymap("n", "K", "<cmd>lua require('nabla').popup()<cr>")
+end
+
 return M

@@ -29,5 +29,3 @@ iron.setup({
 	},
 	ignore_blank_lines = true,
 })
-
--- iron also has a list of commands, see :h iron-commands for all available commands

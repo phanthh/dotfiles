@@ -22,7 +22,6 @@ vim.o.pumheight = 7
 
 -- tab
 vim.o.autoindent = true
-vim.o.expandtab = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
@@ -43,9 +42,12 @@ vim.o.undolevels = 1000
 vim.o.undofile = true
 
 -- misc
--- vim.o.spell = true
+vim.o.spell = false
 vim.o.spelllang = "en_us"
 vim.o.hidden = false
+vim.o.ruler = true
+vim.o.showcmd = true
+vim.o.number = true
 vim.o.shell = "/bin/sh"
 vim.o.shortmess = vim.o.shortmess .. "Ic"
 vim.o.clipboard = "unnamedplus"
