@@ -76,3 +76,5 @@ alt + shift - s : ~/.sh/wm_open -s 'slack' /Applications/Slack.app/Contents/MacO
 alt + shift - d : ~/.sh/wm_open -s 'DataGrip' /Applications/DataGrip.app/Contents/MacOS/datagrip
 alt + shift - x : ~/.sh/wm_open -s 'keepassxc' /Applications/KeePassXC.app/Contents/MacOS/KeePassXC
 alt + shift - f : ~/.sh/wm_open -s 'spotify' /Applications/Spotify.app/Contents/MacOS/Spotify
+alt + shift - o : ~/.sh/wm_open -s 'obsidian' /Applications/Obsidian.app/Contents/MacOS/Obsidian
+alt + shift - c : ~/.sh/wm_open -s 'discord' /Applications/Discord.app/Contents/MacOS/Discord

@@ -4,8 +4,8 @@ alias cmatrix="cmatrix -C blue"
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
-alias npm="pnpm"
-alias npx="pnpm dlx"
+# alias npm="pnpm"
+# alias npx="pnpm dlx"
 
 #======================== shortcuts
 # [ ! -z $DISPLAY ] && alias ls="exa"
@@ -34,7 +34,7 @@ alias nch="nix-channel"
 #==== git
 alias g="git"
 alias gs="git status"
-alias gl="git log --graph --all --decorate"
+alias gl="git log --graph --pretty=format:'%C(auto) %h | %s | %an | %ar%d'"
 alias gcm="git commit"
 alias ga="git add"
 alias gb="git branch"
@@ -60,6 +60,9 @@ alias tm="tmuxinator"
 alias tme="tmuxinator edit"
 alias tms="tmuxinator start"
 alias tml="tmuxinator list"
+
+#==== todoist
+alias ti="todoist"
 
 #======================== utils
 alias myip="curl ifconfig.me"

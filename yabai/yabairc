@@ -14,4 +14,7 @@ yabai -m config mouse_action2 resize
 
 yabai -m config layout         bsp
 
+yabai -m rule --add title='Preferences$' manage=off layer=above
+yabai -m rule --add app='Python' title='^Figure' manage=off layer=above
+
 echo "yabai configuration loaded ..."

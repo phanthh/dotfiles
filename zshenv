@@ -14,9 +14,10 @@ export PNPM_HOME="/Users/phanthh/Library/pnpm"
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
 export PYENV_ROOT="$HOME/.pyenv"
 
+
 #=================== path
 . $ZDOTDIR/.pathrc
 
 #=================== keys
-# . $ZDOTDIR/.keyrc
+. $ZDOTDIR/.keyrc
 . "$HOME/.cargo/env"

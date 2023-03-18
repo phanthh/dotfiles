@@ -4,7 +4,6 @@
 } >/dev/null 2>&1
 
 # [ -z "${NVIM_LISTEN_ADDRESS}" ] && nvim "term://$SHELL"
-
 #========================= history
 [[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
 setopt SHARE_HISTORY
@@ -78,20 +77,22 @@ esac
 
 
 #========================= plugins
-source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.funcrc"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.pkrc/macos"
+source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(thefuck --alias f)"
 
 #========================= pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 #======================= welcome
 # [[ $XDG_SESSION_TYPE != tty ]] && {
 #   echo "\n$(uname -s) [$(uname -r)]\n(c) $(date +%Y) Proprietary software License. All rights reserved.\n"
 # }
+
+# test -e "${ZDOTDIR}/.iterm3_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
