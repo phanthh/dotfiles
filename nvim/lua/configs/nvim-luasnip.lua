@@ -6,14 +6,14 @@ local i = ls.insert_node
 
 ls.config.set_config({
 	enable_autosnippets = true,
+	history = true,
+	delete_check_events = "TextChanged",
 })
 
 ls.filetype_extend("markdown", { "tex" })
 ls.filetype_extend("rmd", { "tex" })
 ls.filetype_extend("typescriptreact", { "html" })
 ls.filetype_extend("javascriptreact", { "html" })
-
-require("luasnip.loaders.from_vscode").lazy_load()
 
 ---- Common shared snippets
 

@@ -1,5 +1,5 @@
--- Utils functions
 local M = {}
+
 function M.iconcat(t1, t2)
 	for n = 1, #t2 do
 		t1[#t1 + 1] = t2[n]
@@ -15,14 +15,21 @@ function M.concat(t1, t2)
 end
 
 -- local mapper = require("nvim-mapper")
---
-function M.keymap(mode, lhs, rhs)
-	vim.keymap.set(mode, lhs, rhs, { silent = true, noremap = true })
+function M.keymap(mode, lhs, rhs, opts)
+	local options = opts or { silent = true, noremap = true }
+	vim.keymap.set(mode, lhs, rhs, options)
 	-- mapper.map(mode, key, cmd, opts, class, name, desc)
 end
 
-function M.keymap_buf(bufnr, mode, lhs, rhs)
-	vim.keymap.set(mode, lhs, rhs, { silent = true, noremap = true, buffer = bufnr })
+function M.keymap_expr(mode, lhs, rhs, opts)
+	local options = opts or { silent = true, noremap = true, expr = true }
+	vim.keymap.set(mode, lhs, rhs, options)
+	-- mapper.map(mode, key, cmd, opts, class, name, desc)
+end
+
+function M.keymap_buf(bufnr, mode, lhs, rhs, opts)
+	local options = opts or { silent = true, noremap = true, buffer = bufnr }
+	vim.keymap.set(mode, lhs, rhs, options)
 	-- mapper.map_buf(bufnr, mode, key, cmd, opts, class, name, desc)
 end
 
@@ -30,6 +37,16 @@ function M.printt(t)
 	for k, v in pairs(t) do
 		print(k, v)
 	end
+end
+
+function M.on_attach(on_attach)
+	vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function(args)
+			local buffer = args.buf
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			on_attach(client, buffer)
+		end,
+	})
 end
 
 M.coding_ft = {

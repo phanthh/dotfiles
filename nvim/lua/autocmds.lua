@@ -4,7 +4,7 @@ vim.api.nvim_create_augroup("global", { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	group = "global",
 -- 	pattern = "*/nvim/*.lua, */nvim/**/*.lua",
--- 	command = "PackerCompile | LuaCacheClear",
+-- 	command = "source <afile> | PackerCompile | LuaCacheClear",
 -- })
 
 -- autocompile rmd
