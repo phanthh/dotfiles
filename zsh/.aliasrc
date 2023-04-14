@@ -36,6 +36,7 @@ alias g="git"
 alias gs="git status"
 alias gl="git log --graph --pretty=format:'%C(auto) %h | %s | %an | %ar%d'"
 alias gcm="git commit"
+alias gacm="git commit -a"
 alias ga="git add"
 alias gb="git branch"
 alias gco="git checkout"
@@ -63,6 +64,15 @@ alias tml="tmuxinator list"
 
 #==== todoist
 alias ti="todoist"
+
+#==== yarn
+alias yi="yarn install"
+alias yd="yarn run dev"
+alias yl="yarn run lint"
+alias ys="yarn run start"
+alias yt="yarn run test"
+alias yc="yarn run check"
+alias yb="yarn run build"
 
 #======================== utils
 alias myip="curl ifconfig.me"
