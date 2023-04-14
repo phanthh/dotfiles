@@ -1,5 +1,5 @@
 local km = require("utils").keymap
-local kmx = require("utils").keymap_expr
+-- local kmx = require("utils").keymap_expr
 
 -------------- NATIVES
 -- motions
@@ -17,6 +17,7 @@ local clients = {
 	"pyright",
 	"lua_ls",
 	"tsserver",
+	"rust_analyzer",
 } -- blacklisted clients
 
 local function format_save_func()

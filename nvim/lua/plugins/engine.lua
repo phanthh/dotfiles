@@ -9,12 +9,13 @@ return {
 				config = function()
 					require("mason-lspconfig").setup({
 						ensure_installed = {
-							"lua_ls",
-							"tsserver",
-							"pyright",
-							"cssls",
-							"bashls",
-							"clangd",
+							-- "lua_ls",
+							-- "tsserver",
+							-- "pyright",
+							-- "cssls",
+							-- "bashls",
+							-- "clangd",
+							-- "rust_analyzer",
 						},
 					})
 
@@ -114,6 +115,7 @@ return {
 							"black",
 							"shfmt",
 							"clang_format",
+							"rustfmt",
 						},
 					})
 

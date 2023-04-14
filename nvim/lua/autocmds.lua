@@ -37,6 +37,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+-- tsc
+vim.cmd([[
+  augroup strdr4605
+    autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
+  augroup END
+]])
+
 -- format on write
 -- vim.api.nvim_create_autocmd("BufLeave", {
 -- 	group = "global",

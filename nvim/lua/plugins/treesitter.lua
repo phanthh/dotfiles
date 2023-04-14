@@ -11,12 +11,25 @@ return {
 				},
 				indent = { enable = true },
 				rainbow = {
-					enable = true,
+					enable = false,
 					-- query = "rainbow-parens",
 					extended_mode = true,
 					strategy = require("ts-rainbow.strategy.global"),
 				},
-				autotag = { enable = true },
+				autotag = {
+					enable = true,
+					{
+						"html",
+						"javascript",
+						"typescript",
+						"javascriptreact",
+						"typescriptreact",
+						"tsx",
+						"jsx",
+						"markdown",
+						"rust",
+					},
+				},
 				context_commentstring = { enable = true, enable_autocmd = false },
 				ensure_installed = {
 					"latex",
