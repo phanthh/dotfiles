@@ -1,8 +1,8 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		config = function()
 			vim.cmd([[colorscheme gruvbox]])
 		end,
@@ -25,8 +25,8 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		-- lazy = false,
-		-- priority = 1000,
+		lazy = false,
+		priority = 1000,
 		config = function()
 			vim.cmd([[colorscheme kanagawa]])
 		end,

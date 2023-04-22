@@ -38,7 +38,6 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-
 		["<C-k>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
@@ -52,7 +51,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		{ name = "codeium", max_item_count = 1 },
+		{ name = "codeium", max_item_count = 5 },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	}, {

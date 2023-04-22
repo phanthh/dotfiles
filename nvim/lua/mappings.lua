@@ -11,6 +11,7 @@ km("v", "<c-p>", "<cmd>m '<-2<cr>gv=gv")
 km("v", "<c-n>", "<cmd>m '>+1<cr>gv=gv")
 km("v", "p", '"_dP')
 km("i", "<c-c>", "<esc>")
+km("n", "\\\\", "<cmd>wqa!<cr>")
 
 local clients = {
 	"bashls",
@@ -113,7 +114,7 @@ km("n", "<leader>do", "<cmd>lua require('dap').step_over()<cr>")
 km("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>")
 
 -- chatgpt
-km("n", "<leader>pt", "<cmd>ChatGPT<cr>")
+-- km("n", "<leader>pt", "<cmd>ChatGPT<cr>")
 
 -- misc
 km("n", "<leader>ng", "<cmd>Neogen<cr>")
