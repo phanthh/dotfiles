@@ -42,6 +42,13 @@ return {
 		},
 	},
 
+	{
+		"folke/todo-comments.nvim",
+		event = "VeryLazy",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = true,
+	},
+
 	-- {
 	-- 	"jackMort/ChatGPT.nvim",
 	-- 	cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions" },
@@ -72,6 +79,7 @@ return {
 	-- },
 	{
 		"dpayne/CodeGPT.nvim",
+		cmd = "Chat",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
