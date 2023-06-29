@@ -5,6 +5,9 @@ return {
 		event = { "InsertEnter", "BufWritePre" },
 		config = function()
 			require("mason").setup({})
+			require("configs.mason-lspconfig")
+			require("configs.mason-null-ls")
+			require("configs.mason-nvim-dap")
 			require("codeium").setup({})
 			require("configs.nvim-cmp")
 			-- require("nvim-lightbulb").setup({

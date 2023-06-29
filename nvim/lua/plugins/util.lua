@@ -117,5 +117,6 @@ return {
 	},
 	"nvim-lua/plenary.nvim",
 	"onsails/lspkind.nvim",
+	{ "mechatroner/rainbow_csv", ft = { "csv" } },
 	-- "jose-elias-alvarez/nvim-lsp-ts-utils",
 }

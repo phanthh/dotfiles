@@ -64,4 +64,10 @@ return {
 			"HiPhish/nvim-ts-rainbow2",
 		},
 	},
+	{
+		"bennypowers/template-literal-comments.nvim",
+		event = "BufReadPost",
+		config = true,
+		ft = { "javascript", "typescript" },
+	},
 }

@@ -12,8 +12,9 @@ ls.config.set_config({
 
 ls.filetype_extend("markdown", { "tex" })
 ls.filetype_extend("rmd", { "tex" })
-ls.filetype_extend("typescriptreact", { "html" })
-ls.filetype_extend("javascriptreact", { "html" })
+ls.filetype_extend("typescriptreact", { "html", "typescript" })
+ls.filetype_extend("javascriptreact", { "html", "javascript" })
+ls.filetype_extend("typescript", { "html", "javascript" })
 
 ---- Common shared snippets
 
@@ -195,7 +196,19 @@ ls.add_snippets("python", {
 	s(";md", { t({ "# %% [markdown]", '"""', "" }), i(0), t({ "", '"""', "# %%" }) }),
 }, { type = "autosnippets" })
 
--- Typescript react
+-- Javascript
+ls.add_snippets("javascript", {
+	s("clg", { t("console.log("), i(1), t(")"), i(0) }),
+}, { type = "autosnippets" })
+
+ls.add_snippets("typescript", {
+	s("clg", { t("console.log("), i(1), t(")"), i(0) }),
+}, { type = "autosnippets" })
+
+ls.add_snippets("javascriptreact", {
+	s("clg", { t("console.log("), i(1), t(")"), i(0) }),
+}, { type = "autosnippets" })
+
 ls.add_snippets("typescriptreact", {
 	s("clg", { t("console.log("), i(1), t(")"), i(0) }),
 }, { type = "autosnippets" })
