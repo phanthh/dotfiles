@@ -30,7 +30,7 @@ return {
 						"rust",
 					},
 				},
-				context_commentstring = { enable = true, enable_autocmd = false },
+				context_commentstring = { enable = true },
 				ensure_installed = {
 					"latex",
 					"bibtex",

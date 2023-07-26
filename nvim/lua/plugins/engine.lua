@@ -37,16 +37,22 @@ return {
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	{
 		"echasnovski/mini.comment",
+		version = "*",
 		keys = { { "gcc", mode = "n" }, { "gc", mode = "v" } },
-		opts = {
-			hooks = {
-				pre = function()
-					require("ts_context_commentstring.internal").update_commentstring({})
-				end,
-			},
-		},
-		config = function(_, opts)
-			require("mini.comment").setup(opts)
+		config = function()
+			require("mini.comment").setup({
+				options = {
+					custom_commentstring = function()
+						return require("ts_context_commentstring.internal").calculate_commentstring()
+							or vim.bo.commentstring
+					end,
+				},
+				mappings = {
+					comment = "gc",
+					comment_line = "gcc",
+					textobject = "gc",
+				},
+			})
 		end,
 	},
 
