@@ -50,6 +50,7 @@ alias gm="git merge"
 alias grb="git rebase"
 alias grs="git reset"
 alias gwt="git worktree"
+alias gcl="git clone"
 
 #==== tmux/inator
 alias t="tmux"
