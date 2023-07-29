@@ -11,7 +11,8 @@ km("v", "<c-p>", "<cmd>m '<-2<cr>gv=gv")
 km("v", "<c-n>", "<cmd>m '>+1<cr>gv=gv")
 km("v", "p", '"_dP')
 km("i", "<c-c>", "<esc>")
-km("n", "\\\\", "<cmd>wqa!<cr>")
+km("n", "\\\\", "<cmd>wqa<cr>")
+km("n", "<leader>q", "<cmd>q!<cr>")
 
 local clients = {
 	"bashls",
@@ -122,4 +123,4 @@ km("n", "<leader>ng", "<cmd>Neogen<cr>")
 km("n", "<leader>b", "<cmd>GitBlameToggle<cr>")
 km("", "<leader>l", "<cmd>lua require('lsp_lines').toggle()<cr>")
 km("", "<leader>g", "<esc><cmd>Glow<cr>")
-km("n", "<leader>sr", "<cmd>Spectre<cr>")
+km("n", "<leader>sr", "<cmd>lua require('spectre').toggle()<cr>")

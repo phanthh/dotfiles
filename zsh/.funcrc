@@ -35,39 +35,12 @@ o() {
 
 # config (user)
 c() {
+  local cwd=$(pwd)
   local file
-  file=$(find ~/.config -type d \( \
-    -name '*BraveSoftware*' -o \
-    -name '*discord*' -o \
-    -name '*Binance*' -o \
-    -name '*obsidian*' -o \
-    -name '*chromium*' -o \
-    -name '*nvim_vim*' -o \
-    -name '*Cypress*' -o \
-    -name '*Logseq*' -o \
-    -name '*spotify*' -o \
-    -name '*.git*' -o \
-    -name '*Exodus*' -o \
-    -name '*libreoffice*' -o \
-    -name '*calibre*' -o \
-    -name '*Postman*' -o \
-    -name '*plugged*' -o \
-    -name '*JetBrains*' -o \
-    -name '*GIMP*' -o \
-    -name '*coc*' -o \
-    -name '*Google*' -o \
-    -name '*obs-studio*' -o \
-    -name '*xfce*' -o \
-    -name '*blender*' -o \
-    -name '*wireshark*' -o \
-    -name '*pulse*' -o \
-    -name '*ibus*' -o \
-    -path '*tmux/plugins*' -o \
-    -path '*nnn/plugins*' \) \
-    -prune \
-    -o -type f -path "*$1*" \
-    -print | fzf -q "$1")
+  cd ~/.config
+  file=$(git ls-files | fzf -q "$1")
   [ ! -z "$file" ] && $EDITOR "$file"
+  cd $cwd
 }
 
 # config (system)

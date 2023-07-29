@@ -123,7 +123,7 @@ return {
 			},
 		},
 	},
-	{ "j-hui/fidget.nvim", event = "VeryLazy", config = true },
+	{ "j-hui/fidget.nvim", event = "VeryLazy", config = true, tag = "legacy" },
 	-- { "kosayoda/nvim-lightbulb", dependencies = "antoinemadec/FixCursorHold.nvim" },
 	{
 		"gorbit99/codewindow.nvim",
