@@ -35,13 +35,12 @@ local on_attach = function(client, bufnr)
 	end)
 	kmb(bufnr, "n", "<leader>D", vim.lsp.buf.type_definition)
 	kmb(bufnr, "n", "<leader>rn", vim.lsp.buf.rename)
-	kmb(bufnr, "n", "<leader>ca", vim.lsp.buf.code_action)
+	-- kmb(bufnr, "n", "<leader>ca", vim.lsp.buf.code_action)
+	kmb(bufnr, "n", "<leader>ca", require("actions-preview").code_actions)
 	kmb(bufnr, "n", "gr", vim.lsp.buf.references)
 	kmb(bufnr, "n", "<leader>f", function()
 		vim.lsp.buf.format({ async = false })
 	end)
-
-	kmb(bufnr, { "v", "n" }, "gf", require("actions-preview").code_actions)
 end
 
 local handlers = {
