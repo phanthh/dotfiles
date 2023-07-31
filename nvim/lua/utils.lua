@@ -87,6 +87,7 @@ function M.write_spec()
 	vim.opt_local.ruler = false
 	vim.opt_local.showcmd = false
 	vim.opt_local.number = false
+	vim.opt_local.wrap = true
 	M.keymap("", "<f12>", "<cmd>GrammarousCheck<cr>")
 	M.keymap("", "<s-f12>", "<cmd>GrammarousReset<cr>")
 	M.keymap("", "<leader>r", "<cmd>FSToggle<cr>")
