@@ -49,7 +49,7 @@ return {
 		opts = { use_diagnostic_signs = true },
 	},
 
-	"echasnovski/mini.bufremove",
+	-- "echasnovski/mini.bufremove",
 	{ "gpanders/editorconfig.nvim", lazy = false, priority = 9999 },
 	{ "windwp/nvim-spectre", cmd = "Spectre" },
 }
