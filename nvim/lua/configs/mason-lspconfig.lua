@@ -11,6 +11,8 @@ require("mason-lspconfig").setup({
 		"bashls",
 		"clangd",
 		"rust_analyzer",
+		"gopls",
+		"ltex"
 	},
 })
 

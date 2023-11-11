@@ -58,7 +58,6 @@ cmp.setup({
 		{ name = "codeium", max_item_count = 5 },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-	}, {
 		{ name = "buffer" },
 		{ name = "dictionary", max_item_count = 5, keyword_length = 2 },
 	}),

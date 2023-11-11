@@ -81,7 +81,7 @@ local mathh = {
 	s("lmup", fmt("\\limsup_{{{1} \to {2}}}{3}", { i(1, "n"), i(2, "\\infty"), i(0) })),
 	s("pdd", fmt("\\frac{{\\partial {1}}}{{\\partial {2} }} {3}", { i(1), i(2, "x"), i(0) })),
 	s("ddd", fmt("\\frac{{d {1}}}{{d {2} }} {3}", { i(1), i(2, "x"), i(0) })),
-	s("//", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
+	s("ffp", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 
 -- R
@@ -187,6 +187,14 @@ ls.add_snippets("tex", {
 -- Markdown
 ls.add_snippets("markdown", mdformat, { type = "autosnippets" })
 ls.add_snippets("markdown", mathh, { type = "autosnippets" })
+ls.add_snippets("markdown", {
+	s("fm", {
+		t({ "---", "" }),
+		i(1),
+		t({ "", "---", "" }),
+		i(0),
+	}),
+}, { type = "autosnippets" })
 
 -- Python
 -- ls.add_snippets("python", mdformat)
