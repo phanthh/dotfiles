@@ -56,6 +56,7 @@ return {
 					"json",
 					"prisma",
 					"sql",
+					"glimmer",
 				},
 			})
 		end,

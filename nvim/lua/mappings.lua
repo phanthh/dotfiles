@@ -54,7 +54,7 @@ km("n", "<c-w>$", "<cmd>blast<cr>")
 -------------- PLUGINS
 
 -- telescope
-km("n", "<leader>fw", "<cmd>wa<bar>Telescope live_grep<cr>")
+km("n", "<leader>fw", "<cmd>wa<bar>Telescope egrepify<cr>")
 km("n", "<leader>ff", "<cmd>wa<bar>Telescope find_files<cr>")
 km("n", "<leader>fg", "<cmd>wa<bar>Telescope git_files<cr>")
 km("n", "<leader>fb", "<cmd>wa<bar>Telescope buffers<cr>")
@@ -76,11 +76,11 @@ end
 -- git
 km("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 km("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")
-km("n", "<leader>gd", "<cmd>lua require('gitsigns').toggle_deleted()<cr>")
 km("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>")
 km("n", "<leader>gX", "<cmd>Gitsigns reset_buffer<cr>")
 km("n", "<leader>gf", "<cmd>DiffviewOpen<cr>")
 km("n", "<leader>gF", "<cmd>DiffviewClose<cr>")
+km("n", "<leader>gH", "<cmd>DiffviewFileHistory<cr>")
 km({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>")
 km({ "n", "v" }, "<leader>gx", "<cmd>Gitsigns reset_hunk<cr>")
 km({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>")
@@ -118,7 +118,7 @@ km("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>")
 
 -- misc
 km("n", "<leader>ng", "<cmd>Neogen<cr>")
--- km("n", "<leader>t", "<cmd>lua require('toggle-checkbox').toggle()<cr>")
+km("n", "<leader>t", "<cmd>lua require('toggle-checkbox').toggle()<cr>")
 km("n", "<leader>b", "<cmd>GitBlameToggle<cr>")
 km("", "<leader>l", "<cmd>lua require('lsp_lines').toggle()<cr>")
 km("", "<leader>g", "<esc><cmd>Glow<cr>")

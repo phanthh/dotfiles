@@ -14,8 +14,10 @@ cmp.setup({
 			maxwidth = 50,
 			ellipsis_char = "...",
 			before = function(entry, vim_item)
+				vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
 				return vim_item
 			end,
+			symbol_map = { Codeium = "" },
 		}),
 	},
 	snippet = {
@@ -55,7 +57,8 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		{ name = "codeium", max_item_count = 5 },
+		{ name = "codeium",    max_item_count = 5 },
+		-- { name = "cmp_ai",     max_item_count = 5 },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },

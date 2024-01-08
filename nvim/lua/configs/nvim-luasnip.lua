@@ -43,6 +43,7 @@ local mathh = {
 	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
 	s("mil", { t("\\mathit{"), i(1), t("}"), i(0) }),
 	s("mcl", { t("\\mathcal{"), i(1), t("}"), i(0) }),
+	s("mcr", { t("\\mathscr{"), i(1), t("}"), i(0) }),
 	s("mbb", { t("\\mathbb{"), i(1), t("}"), i(0) }),
 	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
 	s("lr(", { t("\\left("), i(1), t("\\right"), i(0) }),

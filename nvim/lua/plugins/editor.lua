@@ -9,10 +9,8 @@ return {
 				},
 				highlight_opened_files = "all",
 			},
-			update_cwd = true,
 			update_focused_file = {
 				enable = true,
-				update_root = true,
 			},
 		},
 	},
@@ -29,6 +27,7 @@ return {
 						override_file_sorter = true,
 						case_mode = "smart_case",
 					},
+					egrepify = {},
 				},
 			})
 		end,
@@ -38,6 +37,12 @@ return {
 				build = "make",
 				config = function()
 					require("telescope").load_extension("fzf")
+				end,
+			},
+			{
+				"fdschmidt93/telescope-egrepify.nvim",
+				config = function()
+					require("telescope").load_extension("egrepify")
 				end,
 			},
 		},

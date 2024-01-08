@@ -1,3 +1,4 @@
+local u = require("utils")
 return {
 	{
 		"akinsho/bufferline.nvim", -- bufferline
@@ -60,12 +61,20 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		event = "BufReadPost",
 		opts = {
-			char = "│",
-			filetype_exclude = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy", "glowpreview" },
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
+			indent = {
+				char = "│",
+			},
+			exclude = {
+				buftypes = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy", "glowpreview" },
+			},
+			scope = {
+				show_start = false,
+				show_end = false,
+				show_exact_scope = false,
+			},
 		},
 	},
 
@@ -123,7 +132,13 @@ return {
 			},
 		},
 	},
-	{ "j-hui/fidget.nvim", event = "VeryLazy", config = true, tag = "legacy" },
+	{
+		"j-hui/fidget.nvim",
+		-- event = "VeryLazy",
+		ft = u.coding_ft,
+		opts = {},
+		-- event = "VeryLazy"
+	},
 	-- { "kosayoda/nvim-lightbulb", dependencies = "antoinemadec/FixCursorHold.nvim" },
 	{
 		"gorbit99/codewindow.nvim",

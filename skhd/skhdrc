@@ -3,7 +3,7 @@
 alt - q : yabai -m window --close
 
 # Fullscreen
-alt - f : yabai -m window --toggle zoom-fullscreen
+# alt - f : yabai -m window --toggle zoom-fullscreen
 
 # Change focus
 alt - j : yabai -m window --focus stack.next || yabai -m window --focus south
@@ -34,13 +34,13 @@ alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
 alt + shift - 0 : yabai -m window --space 10
 
-alt + shift - u : yabai -m window --space prev
-alt + shift - i : yabai -m window --space next
+# alt + shift - u : yabai -m window --space prev
+# alt + shift - i : yabai -m window --space next
 
 #============ WORKSPACE
 
 # Change workspace layout
-alt - s : yabai -m space --layout stack
+# alt - s : yabai -m space --layout stack
 alt - e : yabai -m window --toggle split || yabai -m space --layout bsp
 
 # Switch next/previous workspace
@@ -68,13 +68,15 @@ alt - 0x2B : yabai -m display --focus prev
 alt - 0x2F : yabai -m display --focus next
 
 #============ APPLICATIONS
-alt - return : ~/.sh/wm_open -s 'iterm2' /Applications/iTerm.app/Contents/MacOS/iTerm2
-alt - n : ~/.sh/wm_open -s 'google chrome' /Applications/Chromium.app/Contents/MacOS/Chromium
-alt + shift - n : ~/.sh/wm_open -s 'firefox' /Applications/Firefox.app/Contents/MacOS/firefox
-alt + shift - z : ~/.sh/wm_open -s 'zotero' /Applications/Zotero.app/Contents/MacOS/zotero
-alt + shift - s : ~/.sh/wm_open -s 'slack' /Applications/Slack.app/Contents/MacOS/Slack
-alt + shift - d : ~/.sh/wm_open -s 'DataGrip' /Applications/DataGrip.app/Contents/MacOS/datagrip
-alt + shift - x : ~/.sh/wm_open -s 'keepassxc' /Applications/KeePassXC.app/Contents/MacOS/KeePassXC
-alt + shift - f : ~/.sh/wm_open -s 'spotify' /Applications/Spotify.app/Contents/MacOS/Spotify
-alt + shift - o : ~/.sh/wm_open -s 'obsidian' /Applications/Obsidian.app/Contents/MacOS/Obsidian
-alt + shift - c : ~/.sh/wm_open -s 'discord' /Applications/Discord.app/Contents/MacOS/Discord
+alt - return : open /Applications/iTerm.app
+alt - n : open /Applications/Arc.app
+alt + shift - n : open /Applications/Firefox.app
+alt + shift - z : open /Applications/Zotero.app
+alt + shift - s : open /Applications/Slack.app
+alt + shift - d : open /Applications/DataGrip.app
+alt + shift - x : open /Applications/KeePassXC.app
+alt + shift - f : open /Applications/Spotify.app
+alt + shift - o : open /Applications/Obsidian.app
+alt + shift - c : open /Applications/Discord.app
+
+# Quick paste to pkm

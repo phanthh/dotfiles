@@ -13,6 +13,8 @@ return {
 		-- priority = 1000,
 		config = function()
 			vim.cmd([[colorscheme coal]])
+			vim.o.cursorline = true
+			vim.o.cursorcolumn = true
 		end,
 	},
 	{
@@ -28,6 +30,20 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			require("kanagawa").setup({
+				compile = true,
+				background = { -- map the value of 'background' option to a theme
+					dark = "wave", -- try "dragon" !
+					light = "lotus",
+				},
+				overrides = function(colors)
+					return {
+						NormalFloat = { bg = "none" },
+						FloatBorder = { bg = "none" },
+						FloatTitle = { bg = "none" },
+					}
+				end,
+			})
 			vim.cmd([[colorscheme kanagawa]])
 		end,
 	},

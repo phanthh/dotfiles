@@ -56,6 +56,7 @@ cl='%F{yellow}'
 po='%F{green}'
 er='%F{red}'
 re='%f'
+nl=$'\n'
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
 precmd_vcs_info() { vcs_info }
@@ -66,8 +67,8 @@ zstyle ':vcs_info:*' stagedstr "$po✓$re"
 zstyle ':vcs_info:git:*' formats "$cl($re%b%u%c$cl)$re "
 zstyle ':vcs_info:git:*' actionformats "$er($re%b%a%u%c$er)$re "
 zstyle ':vcs_info:*' enable git
-PROMPT="%B\$vcs_info_msg_0_%(?.$cl.$er%?!)C:$re"
-PROMPT+="%/%(?.$cl.$er)${DISTROPROMPT}>$re%b "
+PROMPT="$nl%B\$vcs_info_msg_0_%(?.$cl.$er%?!)@:$re"
+PROMPT+="%~%(?.$cl.$er)${DISTROPROMPT}$nl>$re%b "
 
 case "$(uname -s)" in
 	Darwin*) OS='macos';;
@@ -75,6 +76,7 @@ case "$(uname -s)" in
 	*) OS='';;
 esac
 
+# eval "$(starship init zsh)"
 
 #========================= plugins
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
@@ -84,6 +86,7 @@ source "$HOME/.repo/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.repo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(thefuck --alias f)"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11/"
 
 #========================= pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
@@ -96,3 +99,8 @@ eval "$(zoxide init zsh --cmd cd)"
 # }
 
 # test -e "${ZDOTDIR}/.iterm3_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
+
+# bun completions
+# [ -s "/Users/phanthh/.bun/_bun" ] && source "/Users/phanthh/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -66,6 +66,15 @@ alias tml="tmuxinator list"
 #==== todoist
 alias ti="todoist"
 
+#==== bun
+alias bi="bun install"
+alias bd="bun run dev"
+alias bl="bun run lint"
+alias bs="bun run start"
+alias bt="bun run test"
+alias bc="bun run check"
+alias bb="bun run build"
+
 #==== yarn
 alias yi="yarn install"
 alias yd="yarn run dev"
@@ -89,3 +98,4 @@ alias mv="mv -i"
 alias cp="cp -ri"
 alias mkdir="mkdir -p"
 alias ln="ln -i"
+alias nt="cd ~/notes && nvim ."
