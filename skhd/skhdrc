@@ -68,11 +68,14 @@ alt - 0x2B : yabai -m display --focus prev
 alt - 0x2F : yabai -m display --focus next
 
 #============ APPLICATIONS
-alt - return : open /Applications/iTerm.app
+alt - return : open ~/dev/kitty/kitty/launcher/kitty.app
 alt - n : open /Applications/Arc.app
 alt + shift - n : open /Applications/Firefox.app
+alt + shift - l : open /Applications/Linear.app
+alt + shift - p : open /Applications/Postman.app
 alt + shift - z : open /Applications/Zotero.app
 alt + shift - s : open /Applications/Slack.app
+alt + shift - t : open /Applications/Todoist.app
 alt + shift - d : open /Applications/DataGrip.app
 alt + shift - x : open /Applications/KeePassXC.app
 alt + shift - f : open /Applications/Spotify.app

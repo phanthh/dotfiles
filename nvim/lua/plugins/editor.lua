@@ -20,6 +20,18 @@ return {
 		version = false,
 		config = function()
 			require("telescope").setup({
+				defaults = {
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+					},
+				},
 				extensions = {
 					fzf = {
 						fuzzy = true,
@@ -28,6 +40,13 @@ return {
 						case_mode = "smart_case",
 					},
 					egrepify = {},
+					buffers = {
+						mappings = {
+							i = {
+								["<c-x>"] = "delete_buffer",
+							},
+						},
+					},
 				},
 			})
 		end,
@@ -45,9 +64,15 @@ return {
 					require("telescope").load_extension("egrepify")
 				end,
 			},
+			{
+				"LinArcX/telescope-env.nvim",
+				config = function()
+					require("telescope").load_extension("env")
+				end,
+			},
 		},
 	},
-	{ "lewis6991/gitsigns.nvim", event = "VeryLazy", config = true },
+	{ "lewis6991/gitsigns.nvim",    event = "VeryLazy", config = true },
 	{
 		"folke/trouble.nvim",
 		cmd = { "TroubleToggle", "Trouble" },
@@ -55,6 +80,6 @@ return {
 	},
 
 	-- "echasnovski/mini.bufremove",
-	{ "gpanders/editorconfig.nvim", lazy = false, priority = 9999 },
-	{ "windwp/nvim-spectre", cmd = "Spectre" },
+	{ "gpanders/editorconfig.nvim", lazy = false,       priority = 9999 },
+	{ "windwp/nvim-spectre",        cmd = "Spectre" },
 }

@@ -11,6 +11,7 @@
 !userChrome.css
 !userContent.css
 !zshenv
+!kitty/
 
 /zsh/.zsh_sessions
 /zsh/.zsh_history

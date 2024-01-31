@@ -49,16 +49,26 @@ return {
 		config = true,
 	},
 
-	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
-	{ "tpope/vim-fugitive", cmd = { "Git", "G" } },
-	{ "tpope/vim-repeat", event = "VeryLazy" },
-	{ "PHSix/faster.nvim", lazy = false },
+	{ "ThePrimeagen/harpoon",     event = "VeryLazy" },
+	{ "tpope/vim-fugitive",       cmd = { "Git", "G" } },
+	{ "tpope/vim-repeat",         event = "VeryLazy" },
+	-- { "PHSix/faster.nvim",        lazy = false },
 	{ "mcauley-penney/tidy.nvim", event = "BufWritePre", config = true },
-	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
-	{ "kylechui/nvim-surround", event = "InsertEnter", config = true },
-	{ "danymat/neogen", cmd = "Neogen", config = true },
-	{ "f-person/git-blame.nvim", cmd = "GitBlameToggle" },
-	{ "nacro90/numb.nvim", event = "CmdlineEnter", config = true },
+	{
+		"ggandor/leap.nvim",
+		lazy = false,
+		dependencies = { "tpope/vim-repeat" },
+		config = function()
+			require("leap").create_default_mappings()
+			require("leap").opts.highlight_unlabeled_phase_one_targets = true
+		end,
+	},
+	{ "windwp/nvim-autopairs",              event = "InsertEnter",  config = true },
+	{ "kylechui/nvim-surround",             event = "InsertEnter",  config = true },
+	{ "danymat/neogen",                     cmd = "Neogen",         config = true },
+	{ "chrisgrieser/nvim-early-retirement", config = true,          event = "VeryLazy" },
+	{ "f-person/git-blame.nvim",            cmd = "GitBlameToggle" },
+	{ "nacro90/numb.nvim",                  event = "CmdlineEnter", config = true },
 	{ "opdavies/toggle-checkbox.nvim" },
 	{
 		"sindrets/diffview.nvim",
@@ -81,17 +91,17 @@ return {
 	"onsails/lspkind.nvim",
 	{ "mechatroner/rainbow_csv", ft = { "csv" } },
 	-- "jose-elias-alvarez/nvim-lsp-ts-utils",
-	{
-		"David-Kunz/gen.nvim",
-		cmd = "Gen",
-		config = function()
-			require("gen").model = "codellama:13b"
-			require("gen").prompts["Doc"] = {
-				prompt = "Generate the doc string for the following piece of code. Keep the code as is:\n$text",
-				replace = true,
-			}
-		end,
-	},
+	-- {
+	-- 	"David-Kunz/gen.nvim",
+	-- 	cmd = "Gen",
+	-- 	config = function()
+	-- 		require("gen").model = "codellama:13b"
+	-- 		require("gen").prompts["Doc"] = {
+	-- 			prompt = "Generate the doc string for the following piece of code. Keep the code as is:\n$text",
+	-- 			replace = true,
+	-- 		}
+	-- 	end,
+	-- },
 
 	-- AI stuffs
 	-- {

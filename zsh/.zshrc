@@ -77,6 +77,10 @@ case "$(uname -s)" in
 esac
 
 # eval "$(starship init zsh)"
+export MCFLY_RESULTS=50
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=2
+eval "$(mcfly init zsh)"
 
 #========================= plugins
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.aliasrc"
@@ -104,3 +108,4 @@ export JAVA_HOME="/opt/homebrew/opt/openjdk@11/"
 # [ -s "/Users/phanthh/.bun/_bun" ] && source "/Users/phanthh/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export SHARP_IGNORE_GLOBAL_LIBVIPS=1

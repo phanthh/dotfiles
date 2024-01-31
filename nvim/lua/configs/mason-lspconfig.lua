@@ -8,11 +8,12 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"pyright",
 		"cssls",
+		"tailwindcss",
 		"bashls",
 		"clangd",
 		"rust_analyzer",
 		"gopls",
-		"ltex"
+		"ltex",
 	},
 })
 
@@ -28,7 +29,7 @@ local on_attach = function(client, bufnr)
 	kmb(bufnr, "n", "gD", vim.lsp.buf.declaration)
 	kmb(bufnr, "n", "gd", vim.lsp.buf.definition)
 	kmb(bufnr, "n", "K", vim.lsp.buf.hover)
-	kmb(bufnr, "n", "gi", vim.lsp.buf.implementation)
+	-- kmb(bufnr, "n", "gi", vim.lsp.buf.implementation)
 	kmb(bufnr, "n", "<C-k>", vim.lsp.buf.signature_help)
 	kmb(bufnr, "n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
 	kmb(bufnr, "n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)

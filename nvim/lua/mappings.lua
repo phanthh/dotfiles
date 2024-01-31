@@ -3,14 +3,15 @@ local km = require("utils").keymap
 
 -------------- NATIVES
 -- motions
-km("n", "j", "<Plug>(faster_move_gj)")
-km("n", "k", "<Plug>(faster_move_gk)")
+-- km("n", "j", "<Plug>(faster_move_gj)")
+-- km("n", "k", "<Plug>(faster_move_gk)")
 km("n", "<leader>a", "ggVG")
 km("i", "jj", "<esc>")
 km("v", "<c-p>", "<cmd>m '<-2<cr>gv=gv")
 km("v", "<c-n>", "<cmd>m '>+1<cr>gv=gv")
 km("v", "p", '"_dP')
 km("i", "<c-c>", "<esc>")
+km("i", "<c-f>", "<esc>")
 km("n", "\\\\", "<cmd>wqa<cr>")
 km("n", "<leader>q", "<cmd>q!<cr>")
 
@@ -55,7 +56,8 @@ km("n", "<c-w>$", "<cmd>blast<cr>")
 
 -- telescope
 km("n", "<leader>fw", "<cmd>wa<bar>Telescope egrepify<cr>")
-km("n", "<leader>ff", "<cmd>wa<bar>Telescope find_files<cr>")
+km("n", "<leader>fe", "<cmd>wa<bar>Telescope env<cr>")
+km("n", "<leader>ff", "<cmd>wa<bar>Telescope find_files hidden=true<cr>")
 km("n", "<leader>fg", "<cmd>wa<bar>Telescope git_files<cr>")
 km("n", "<leader>fb", "<cmd>wa<bar>Telescope buffers<cr>")
 km("n", "<leader>fh", "<cmd>wa<bar>Telescope help_tags<cr>")
@@ -117,9 +119,9 @@ km("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>")
 -- km("n", "<leader>pt", "<cmd>ChatGPT<cr>")
 
 -- misc
-km("n", "<leader>ng", "<cmd>Neogen<cr>")
+km("n", "<leader>d", "<cmd>Neogen<cr>")
 km("n", "<leader>t", "<cmd>lua require('toggle-checkbox').toggle()<cr>")
 km("n", "<leader>b", "<cmd>GitBlameToggle<cr>")
 km("", "<leader>l", "<cmd>lua require('lsp_lines').toggle()<cr>")
 km("", "<leader>g", "<esc><cmd>Glow<cr>")
-km("n", "<leader>sr", "<cmd>lua require('spectre').toggle()<cr>")
+km("n", "<leader>s", "<cmd>lua require('spectre').toggle()<cr>")
