@@ -3,8 +3,8 @@ local km = require("utils").keymap
 
 -------------- NATIVES
 -- motions
--- km("n", "j", "<Plug>(faster_move_gj)")
--- km("n", "k", "<Plug>(faster_move_gk)")
+km("n", "j", "<Plug>(faster_move_gj)")
+km("n", "k", "<Plug>(faster_move_gk)")
 km("n", "<leader>a", "ggVG")
 km("i", "jj", "<esc>")
 km("v", "<c-p>", "<cmd>m '<-2<cr>gv=gv")
@@ -14,6 +14,8 @@ km("i", "<c-c>", "<esc>")
 km("i", "<c-f>", "<esc>")
 km("n", "\\\\", "<cmd>wqa<cr>")
 km("n", "<leader>q", "<cmd>q!<cr>")
+km("n", "s", "<Plug>(leap-forward)")
+km("n", "S", "<Plug>(leap-backward)")
 
 local clients = {
 	"bashls",
@@ -66,6 +68,9 @@ km("n", "<leader>fu", "<cmd>wa<bar>Telescope undo<cr>")
 -- nvim-tree
 km("n", "<c-n>", "<cmd>NvimTreeToggle<cr>")
 km("n", "<leader>r", "<cmd>NvimTreeRefresh<cr>")
+
+-- vim dadbod
+km("n", "<c-b>", "<cmd>DBUIToggle<cr>")
 
 -- harpoon
 km("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>")

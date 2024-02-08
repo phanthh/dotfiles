@@ -71,3 +71,5 @@ vim.cmd([[
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 ]])
+
+vim.g.omni_sql_default_compl_type = "syntax"

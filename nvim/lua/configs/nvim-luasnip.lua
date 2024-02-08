@@ -67,6 +67,7 @@ local mathh = {
 	s("sre", { t("\\sqrt{"), i(1), t("}"), i(0) }),
 	-- symbols
 	s("brc", { t("\\langle "), i(1), t(" \\rangle"), i(0) }),
+	s("idp", { t("\\perp\\!\\!\\!\\!\\perp"), i(0) }),
 	s("oo", { t("\\infty"), i(0) }),
 	s("ipl", { t("\\implies"), i(0) }),
 	s("=<", { t("\\impliedby"), i(0) }),
@@ -83,6 +84,9 @@ local mathh = {
 	s("xx", { t("\\times"), i(0) }),
 	s("..", { t("\\cdot"), i(0) }),
 	s(".*", { t("\\ldots"), i(0) }),
+	s("lrr", { t("\\lor"), i(0) }),
+	s("lnd", { t("\\land"), i(0) }),
+	s("lnt", { t("\\lnot"), i(0) }),
 	s("nn", { t("\\in "), i(0) }),
 	s("EE", { t("\\exists "), i(0) }),
 	s("sS", { t("\\subset "), i(0) }),
@@ -151,6 +155,8 @@ local mathh = {
 	s("ddd", fmt("\\frac{{d {1}}}{{d {2} }} {3}", { i(1), i(2, "x"), i(0) })),
 	s("ffp", fmt("\\frac{{{1}}}{{{2}}}{3}", { i(1), i(2), i(0) })),
 	s("smm", fmt("\\sum_{{{1}}}^{{{2}}}{3}", { i(1), i(2), i(0) })),
+	s("blrr", fmt("\\bigvee_{{{1}}}^{{{2}}}{3}", { i(1), i(2), i(0) })),
+	s("blnd", fmt("\\bigwedge_{{{1}}}^{{{2}}}{3}", { i(1), i(2), i(0) })),
 	s("prd", fmt("\\prod_{{{1}}}^{{{2}}}{3}", { i(1), i(2), i(0) })),
 }
 

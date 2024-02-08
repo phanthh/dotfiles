@@ -52,16 +52,12 @@ return {
 	{ "ThePrimeagen/harpoon",     event = "VeryLazy" },
 	{ "tpope/vim-fugitive",       cmd = { "Git", "G" } },
 	{ "tpope/vim-repeat",         event = "VeryLazy" },
-	-- { "PHSix/faster.nvim",        lazy = false },
+	{ "PHSix/faster.nvim",        lazy = false },
 	{ "mcauley-penney/tidy.nvim", event = "BufWritePre", config = true },
 	{
 		"ggandor/leap.nvim",
 		lazy = false,
 		dependencies = { "tpope/vim-repeat" },
-		config = function()
-			require("leap").create_default_mappings()
-			require("leap").opts.highlight_unlabeled_phase_one_targets = true
-		end,
 	},
 	{ "windwp/nvim-autopairs",              event = "InsertEnter",  config = true },
 	{ "kylechui/nvim-surround",             event = "InsertEnter",  config = true },
