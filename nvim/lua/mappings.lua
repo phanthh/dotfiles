@@ -3,8 +3,10 @@ local km = require("utils").keymap
 
 -------------- NATIVES
 -- motions
-km("n", "j", "<Plug>(faster_move_gj)")
-km("n", "k", "<Plug>(faster_move_gk)")
+-- km("n", "j", "<Plug>(faster_move_gj)")
+-- km("n", "k", "<Plug>(faster_move_gk)")
+km("n", "j", "gj")
+km("n", "k", "gk")
 km("n", "<leader>a", "ggVG")
 km("i", "jj", "<esc>")
 km("v", "<c-p>", "<cmd>m '<-2<cr>gv=gv")
@@ -68,6 +70,9 @@ km("n", "<leader>fu", "<cmd>wa<bar>Telescope undo<cr>")
 -- nvim-tree
 km("n", "<c-n>", "<cmd>NvimTreeToggle<cr>")
 km("n", "<leader>r", "<cmd>NvimTreeRefresh<cr>")
+
+-- oil
+km("n", "-", "<cmd>Oil<cr>")
 
 -- vim dadbod
 km("n", "<c-b>", "<cmd>DBUIToggle<cr>")

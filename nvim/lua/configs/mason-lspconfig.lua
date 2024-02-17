@@ -5,7 +5,6 @@ local kmb = require("utils").keymap_buf
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
-		"tsserver",
 		"pyright",
 		"cssls",
 		"tailwindcss",
@@ -29,7 +28,7 @@ local on_attach = function(client, bufnr)
 	kmb(bufnr, "n", "gD", vim.lsp.buf.declaration)
 	kmb(bufnr, "n", "gd", vim.lsp.buf.definition)
 	kmb(bufnr, "n", "K", vim.lsp.buf.hover)
-	-- kmb(bufnr, "n", "gi", vim.lsp.buf.implementation)
+	kmb(bufnr, "n", "gi", vim.lsp.buf.implementation)
 	kmb(bufnr, "n", "<C-k>", vim.lsp.buf.signature_help)
 	kmb(bufnr, "n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
 	kmb(bufnr, "n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
@@ -75,23 +74,41 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
-	["tsserver"] = function()
-		local ts = require("typescript")
-		ts.setup({
-			server = {
-				on_attach = function(client, bufnr)
-					on_attach(client, bufnr)
-					kmb(bufnr, "n", "gs", function()
-						ts.actions.removeUnused({ sync = true })
-						ts.actions.organizeImports({ sync = true })
-					end)
-					kmb(bufnr, "n", "gi", ts.actions.addMissingImports)
-					kmb(bufnr, "n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>")
-					kmb(bufnr, "n", "gd", "<cmd>TypescriptGoToSourceDefinition<cr>")
-				end,
-				capabilities = capabilities,
-				handlers = handlers,
-			},
-		})
+	-- ["tsserver"] = function()
+	-- 	local ts = require("typescript")
+	-- 	ts.setup({
+	-- 		server = {
+	-- 			on_attach = function(client, bufnr)
+	-- 				on_attach(client, bufnr)
+	-- 				kmb(bufnr, "n", "gs", function()
+	-- 					ts.actions.removeUnused({ sync = true })
+	-- 					ts.actions.organizeImports({ sync = true })
+	-- 				end)
+	-- 				kmb(bufnr, "n", "gi", ts.actions.addMissingImports)
+	-- 				kmb(bufnr, "n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>")
+	-- 				kmb(bufnr, "n", "gd", "<cmd>TypescriptGoToSourceDefinition<cr>")
+	-- 			end,
+	-- 			capabilities = capabilities,
+	-- 			handlers = handlers,
+	-- 		},
+	-- 	})
+	-- end,
+})
+
+require("typescript-tools").setup({
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+		kmb(bufnr, "n", "gs", function()
+			vim.cmd()
+			ts.actions.removeUnused({ sync = true })
+			ts.actions.organizeImports({ sync = true })
+		end)
+		kmb(bufnr, "n", "gi", "<cmd>TSToolsAddMissingImports<cr>")
+		kmb(bufnr, "n", "gs", "<cmd>TSToolsOrganizeImports<cr>")
+		kmb(bufnr, "n", "gd", "<cmd>TSToolsGoToSourceDefinition<cr>")
+		kmb(bufnr, "n", "<leader>rf", "<cmd>TSToolsRenameFile<cr>")
+		kmb(bufnr, "n", "gr", "<cmd>TSToolsFileReferences<cr>")
 	end,
+	capabilities = capabilities,
+	handlers = handlers,
 })

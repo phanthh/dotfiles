@@ -46,6 +46,12 @@ local mathh = {
 		t({ "", "\\end{aligned}" }),
 		i(0),
 	}),
+	s("mg", {
+		t({ "\\begin{gathered}", "" }),
+		i(1),
+		t({ "", "\\end{gathered}" }),
+		i(0),
+	}),
 	-- formating
 	s("mbf", { t("\\mathbf{"), i(1), t("}"), i(0) }),
 	s("dft", { t("\\text{DFT}"), i(0) }),

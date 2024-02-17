@@ -12,6 +12,13 @@ return {
 			update_focused_file = {
 				enable = true,
 			},
+			view = {
+				width = {
+					min = 30,
+					max = -1,
+					padding = 1,
+				},
+			},
 		},
 	},
 	{
@@ -72,7 +79,7 @@ return {
 			},
 		},
 	},
-	{ "lewis6991/gitsigns.nvim",    event = "VeryLazy", config = true },
+	{ "lewis6991/gitsigns.nvim", event = "VeryLazy", config = true },
 	{
 		"folke/trouble.nvim",
 		cmd = { "TroubleToggle", "Trouble" },
@@ -80,6 +87,15 @@ return {
 	},
 
 	-- "echasnovski/mini.bufremove",
-	{ "gpanders/editorconfig.nvim", lazy = false,       priority = 9999 },
-	{ "windwp/nvim-spectre",        cmd = "Spectre" },
+	{ "gpanders/editorconfig.nvim", lazy = false, priority = 9999 },
+	{ "windwp/nvim-spectre", cmd = "Spectre" },
+	{
+		"stevearc/oil.nvim",
+		opt = {},
+		cmd = "Oil",
+		config = function()
+			require("oil").setup({})
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }

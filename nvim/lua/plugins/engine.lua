@@ -8,7 +8,7 @@ return {
 	"jayp0521/mason-nvim-dap.nvim",
 
 	-- vim-dadbod
-	{ "tpope/vim-dadbod",                     event = "VeryLazy" },
+	{ "tpope/vim-dadbod", event = "VeryLazy" },
 	{
 		"kristijanhusak/vim-dadbod-ui",
 		ft = { "sql", "mysql", "plsql" },
@@ -153,5 +153,10 @@ return {
 		end,
 	},
 	"aznhe21/actions-preview.nvim",
-	"jose-elias-alvarez/typescript.nvim",
+	-- "jose-elias-alvarez/typescript.nvim",
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	},
+	"vim-scripts/dbext.vim",
 }
