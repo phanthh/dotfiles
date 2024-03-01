@@ -7,6 +7,7 @@
 #========================= history
 [[ ! -d ~/.cache/zsh ]] && mkdir ~/.cache/zsh
 setopt SHARE_HISTORY
+export NODE_NO_WARNINGS=1
 export HISTSIZE=50000
 export SAVEHIST=50000
 export HISTFILE=~/.cache/zsh/history
@@ -49,7 +50,7 @@ preexec() { echo -ne '\e[5 q' ;}
 #======================= shortcuts
 bindkey '^F' autosuggest-accept
 bindkey '^H' backward-kill-word
-bindkey -s '^O' 'n^M'
+bindkey -s '^O' 'f^M'
 
 #========================= prompt
 cl='%F{yellow}'

@@ -4,8 +4,6 @@ alias cmatrix="cmatrix -C blue"
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
-# alias npm="pnpm"
-# alias npx="pnpm dlx"
 
 #======================== shortcuts
 # [ ! -z $DISPLAY ] && alias ls="exa"
@@ -69,23 +67,21 @@ alias tml="tmuxinator list"
 #==== todoist
 alias ti="todoist"
 
-#==== bun
-alias bi="bun install"
-alias bd="bun run dev"
-alias bl="bun run lint"
-alias bs="bun run start"
-alias bt="bun run test"
-alias bc="bun run check"
-alias bb="bun run build"
+#==== yarn/bun/pnpm/...
+alias p="pnpm"
+alias pi="pnpm install"
+alias pa="pnpm add"
+alias pr="pnpm remove"
+alias pd="pnpm run dev"
+alias pl="pnpm run lint"
+alias ps="pnpm run start"
+alias pt="pnpm run test"
+alias pc="pnpm run check"
+alias pb="pnpm run build"
+alias ppp="pnpm run prepush"
 
-#==== yarn
-alias yi="yarn install"
-alias yd="yarn run dev"
-alias yl="yarn run lint"
-alias ys="yarn run start"
-alias yt="yarn run test"
-alias yc="yarn run check"
-alias yb="yarn run build"
+#==== pulumi
+alias tf="pulumi"
 
 #======================== utils
 alias myip="curl ifconfig.me"

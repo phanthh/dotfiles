@@ -64,8 +64,8 @@ vim.o.backspace = "indent,eol,start"
 
 vim.g.mapleader = " "
 
-vim.g.python_host_prog = "/usr/bin/python2"
-vim.g.python3_host_prog = "/usr/bin/python"
+-- vim.g.python_host_prog = "/usr/bin/python2"
+-- vim.g.python3_host_prog = "/usr/bin/python"
 
 vim.cmd([[
 let &t_ZH="\e[3m"

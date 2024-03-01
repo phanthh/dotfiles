@@ -130,6 +130,10 @@ km("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>")
 
 -- misc
 km("n", "<leader>d", "<cmd>Neogen<cr>")
+km("n", "<leader>dm", "<cmd>Neogen file<cr>")
+km("n", "<leader>df", "<cmd>Neogen func<cr>")
+km("n", "<leader>dc", "<cmd>Neogen class<cr>")
+km("n", "<leader>dt", "<cmd>Neogen type<cr>")
 km("n", "<leader>t", "<cmd>lua require('toggle-checkbox').toggle()<cr>")
 km("n", "<leader>b", "<cmd>GitBlameToggle<cr>")
 km("", "<leader>l", "<cmd>lua require('lsp_lines').toggle()<cr>")

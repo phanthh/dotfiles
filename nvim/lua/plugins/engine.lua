@@ -153,10 +153,10 @@ return {
 		end,
 	},
 	"aznhe21/actions-preview.nvim",
-	-- "jose-elias-alvarez/typescript.nvim",
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	},
+	"jose-elias-alvarez/typescript.nvim",
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- },
 	"vim-scripts/dbext.vim",
 }

@@ -13,6 +13,7 @@ return {
 				enable = true,
 			},
 			view = {
+				side = 'right',
 				width = {
 					min = 30,
 					max = -1,
@@ -87,8 +88,7 @@ return {
 	},
 
 	-- "echasnovski/mini.bufremove",
-	{ "gpanders/editorconfig.nvim", lazy = false, priority = 9999 },
-	{ "windwp/nvim-spectre", cmd = "Spectre" },
+	{ "windwp/nvim-spectre",     cmd = "Spectre" },
 	{
 		"stevearc/oil.nvim",
 		opt = {},

@@ -87,7 +87,7 @@ fk() {
 
 #=========================== nnn
 
-n() {
+f() {
   if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
     echo "nnn is already running"
     return

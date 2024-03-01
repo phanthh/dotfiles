@@ -37,7 +37,7 @@ local mathh = {
 	s("dm", {
 		t({ "$$", "" }),
 		i(1),
-		t({ "", ".$$" }),
+		t({ "", "$$" }),
 		i(0),
 	}),
 	s("ml", {
@@ -50,6 +50,19 @@ local mathh = {
 		t({ "\\begin{gathered}", "" }),
 		i(1),
 		t({ "", "\\end{gathered}" }),
+		i(0),
+	}),
+	s("mt", { t("\\text{"), i(1), t("}"), i(0) }),
+	s("mcs", {
+		t({ "\\begin{cases}", "" }),
+		i(1),
+		t({ "", "\\end{cases}" }),
+		i(0),
+	}),
+	s("mbm", {
+		t({ "\\begin{bmatrix}", "" }),
+		i(1),
+		t({ "", "\\end{bmatrix}" }),
 		i(0),
 	}),
 	-- formating
@@ -70,6 +83,7 @@ local mathh = {
 	s("ht", { t("\\hat{"), i(1), t("}"), i(0) }),
 	s("tl", { t("\\tilde{"), i(1), t("}"), i(0) }),
 	s("--", { t("\\bar{"), i(1), t("}"), i(0) }),
+	s("__", { t("\\underline{"), i(1), t("}"), i(0) }),
 	s("sre", { t("\\sqrt{"), i(1), t("}"), i(0) }),
 	-- symbols
 	s("brc", { t("\\langle "), i(1), t(" \\rangle"), i(0) }),
@@ -88,6 +102,7 @@ local mathh = {
 	s("AA", { t("\\forall"), i(0) }),
 	s("OO", { t("\\emptyset"), i(0) }),
 	s("xx", { t("\\times"), i(0) }),
+	s("oxx", { t("\\otimes"), i(0) }),
 	s("..", { t("\\cdot"), i(0) }),
 	s(".*", { t("\\ldots"), i(0) }),
 	s("lrr", { t("\\lor"), i(0) }),
